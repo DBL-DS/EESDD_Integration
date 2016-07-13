@@ -1,1 +1,41 @@
-﻿
+﻿[
+    {
+        "name": "brake",
+        "title": "跟驰刹车",
+        "description": "该场景分为两段。在第一阶段，驾驶员跟驰前方车辆，在此中完成分心任务。在第二阶段，驾驶员需要在完成分心任务的同时，应对前方车辆突然的紧急刹车。",
+        "picture": "brake.jpg",
+        "areaTitle": [
+            "跟驰前车",
+            "应对紧急刹车"
+        ]
+    },
+    {
+        "name": "normal_change",
+        "title": "正常并线",
+        "description": "该场景分为两段。在第一阶段，驾驶员在指定车道上自由驾驶，在此过程中完成分心任务。在第二阶段，驾驶员需要在完成分心任务的同时，应对旁边车道的车辆的并线。",
+        "picture": "normal_change.jpg",
+        "areaTitle": [
+            "自由驾驶",
+            "应对并线"
+        ]
+    },
+    {
+        "name": "sudden_change",
+        "title": "突然并线",
+        "description": "该场景分为两段。在第一阶段，驾驶员在指定车道上自由驾驶，在此过程中完成分心任务。在第二阶段，驾驶员需要在完成分心任务的同时，应对旁边车道的车辆的突然并线。",
+        "picture": "sudden_change.jpg",
+        "areaTitle": [
+            "自由驾驶",
+            "应对突然并线"
+        ]
+    },
+    {
+        "name": "intersection",
+        "title": "路口等灯",
+        "description": "该场景中，驾驶员需要在路口等待红灯变绿的过程中完成分心任务。",
+        "picture": "intersection.jpg",
+        "areaTitle": [
+            "路口驾驶"
+        ]
+    }
+]

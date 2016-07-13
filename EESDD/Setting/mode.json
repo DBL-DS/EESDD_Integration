@@ -1,1 +1,50 @@
-﻿
+﻿[
+    {
+        "name": "normal",
+        "title": "正常驾驶",
+        "description": "正常驾驶，无分心任务",
+        "picture": "normal.jpg"
+    },
+    {
+        "name": "wechat_voice",
+        "title": "微信语音",
+        "description": "分心任务：使用手机微信的语音功能发送要求的内容给指定用户。",
+        "picture": "wechat_voice.jpg"
+    },
+    {
+        "name": "wechat_text",
+        "title": "微信短信",
+        "description": "分心任务：使用手机微信的短信功能发送要求的内容给指定用户。",
+        "picture": "wechat_text.jpg"
+    },
+    {
+        "name": "radio",
+        "title": "收音机调谐",
+        "description": "分心任务：调谐车载收音机到指定频率。",
+        "picture": "radio.jpg"
+    },
+    {
+        "name": "navigation",
+        "title": "行车导航",
+        "description": "分心任务：根据车载导航的提示驾驶车辆。",
+        "picture": "navigation.jpg"
+    },
+    {
+        "name": "dial",
+        "title": "拨打电话",
+        "description": "分心任务：使用手机拨打指定电话号码。",
+        "picture": "dial.jpg"
+    },
+    {
+        "name": "addition_easy",
+        "title": "简单加法",
+        "description": "分心任务：完成简单加法运算。",
+        "picture": "addition_easy.jpg"
+    },
+    {
+        "name": "addition_difficult",
+        "title": "复杂加法",
+        "description": "分心任务：完成相对复杂加法运算。",
+        "picture": "addition_difficult.jpg"
+    }
+]
