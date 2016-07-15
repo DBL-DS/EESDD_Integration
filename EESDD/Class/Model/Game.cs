@@ -2,6 +2,12 @@
 {
     class Game
     {
+        public Game(Scene scene, Mode mode)
+        {
+            this.scene = scene;
+            this.mode = mode;
+        }
+
         private Scene scene;
         private Mode mode;
 

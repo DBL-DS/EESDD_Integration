@@ -58,28 +58,36 @@
     <Compile Include="Class\Control\GameManager.cs" />
     <Compile Include="Class\Control\LogManager.cs" />
     <Compile Include="Class\Control\UserManager.cs" />
+    <Compile Include="Class\Model\Action.cs" />
     <Compile Include="Class\Model\Admin.cs" />
     <Compile Include="Class\Model\AreaExp.cs" />
     <Compile Include="Class\Model\BrakeAct.cs" />
-    <Compile Include="Class\Model\Eva.cs" />
     <Compile Include="Class\Model\EvaPara.cs" />
     <Compile Include="Class\Model\Exp.cs" />
     <Compile Include="Class\Model\Game.cs" />
+    <Compile Include="Class\Model\ExpCluster.cs" />
+    <Compile Include="Class\Model\GameIndex.cs" />
     <Compile Include="Class\Model\Mode.cs" />
     <Compile Include="Class\Model\Reaction.cs" />
+    <Compile Include="Class\Model\Regular.cs" />
     <Compile Include="Class\Model\Scene.cs" />
     <Compile Include="Class\Model\Svframe.cs" />
     <Compile Include="Class\Model\User.cs" />
-    <Compile Include="Startup.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
+    <Compile Include="Class\Model\VissimPara.cs" />
+    <Compile Include="Lab\Test.cs" />
+    <Compile Include="Lab\TestWindow.xaml.cs">
+      <DependentUpon>TestWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -89,6 +97,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -96,6 +105,14 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Setting\game.json" />
+    <None Include="Setting\mode.json" />
+    <None Include="Setting\path.json" />
+    <None Include="Setting\report.json" />
+    <None Include="Setting\scene.json" />
+    <None Include="Setting\style.json" />
+    <None Include="Setting\text.json" />
+    <None Include="Setting\udp.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -103,17 +120,31 @@
   <ItemGroup>
     <Folder Include="Module\Chart\" />
     <Folder Include="Module\Report\" />
-    <Folder Include="Module\Saver\" />
+    <Folder Include="Module\Simulator\" />
     <Folder Include="Module\UDP\" />
     <Folder Include="Module\Vissim\" />
-    <Folder Include="Setting\" />
     <Folder Include="View\Font\" />
     <Folder Include="View\Image\" />
     <Folder Include="View\Page\" />
     <Folder Include="View\Style\" />
     <Folder Include="View\Widget\" />
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="Lab\TestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>rd /S /Q "$(ProjectDir)$(OutDir)Setting"
+mkdir  "$(ProjectDir)$(OutDir)Setting"
+xcopy "$(ProjectDir)Setting" "$(ProjectDir)$(OutDir)Setting" /e</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

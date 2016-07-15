@@ -10,7 +10,7 @@ namespace EESDD.Class.Model
     {
         public Scene()
         {
-            areaTitle = new List<string>();
+            
         }
 
         private string name;
@@ -46,6 +46,7 @@ namespace EESDD.Class.Model
         public List<string> AreaTitle
         {
             get { return areaTitle; }
+            set { areaTitle = value; }
         }
     }
 }
