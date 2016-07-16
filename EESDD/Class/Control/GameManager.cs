@@ -23,6 +23,11 @@ namespace EESDD.Class.Control
             get { return new List<Game>(gameDict.Values); }
         }
 
+        public List<GameIndex> GameIndexes
+        {
+            get { return new List<GameIndex>(indexDict.Values); }
+        }
+
         public List<Scene> Scenes
         {
             get { return new List<Scene>(sceneDict.Values); }
@@ -55,17 +60,17 @@ namespace EESDD.Class.Control
 
         public int GameCount
         {
-            get { return gameDict.Values.Count; }
+            get { return gameDict == null ? 0 : gameDict.Values.Count; }
         }
 
         public int SceneCount
         {
-            get { return sceneDict.Values.Count; }
+            get { return  sceneDict == null ? 0 : sceneDict.Values.Count; }
         }
 
         public int ModeCount
         {
-            get { return modeDict.Values.Count; }
+            get { return  modeDict == null ? 0 : modeDict.Values.Count; }
         }
 
         public List<Game> GamesWithScene(string scene)
@@ -276,6 +281,14 @@ namespace EESDD.Class.Control
         public bool Load()
         {
             return LoadScenes() != -1 && LoadModes() != -1 && LoadGames() != -1;
+        }
+
+        public bool Save()
+        {
+            return 
+                FileManger.SaveScenes(Scenes) &&
+                FileManger.SaveModes(Modes) &&
+                FileManger.SaveGameIndexes(GameIndexes);
         }
     }
 }

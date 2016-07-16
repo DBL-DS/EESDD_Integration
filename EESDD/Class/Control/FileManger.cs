@@ -26,8 +26,16 @@ namespace EESDD.Class.Control
             string path = FindFile("path.json");
             if (path != null)
             {
-                string jsonStr = File.ReadAllText(path);
-                Path = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(jsonStr);
+                try
+                {
+                    string jsonStr = File.ReadAllText(path);
+                    Path = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(jsonStr);
+
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
 
                 return true;
             }
@@ -59,8 +67,15 @@ namespace EESDD.Class.Control
             List<Scene> scenes;
 
             string scenePath = GetPath("setting", "scene");
-            string jsonStr = File.ReadAllText(scenePath, Encoding.UTF8);
-            scenes = JsonConvert.DeserializeObject<List<Scene>>(jsonStr);
+            try
+            {
+                string jsonStr = File.ReadAllText(scenePath, Encoding.UTF8);
+                scenes = JsonConvert.DeserializeObject<List<Scene>>(jsonStr);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
 
             return scenes;
         }
@@ -70,8 +85,15 @@ namespace EESDD.Class.Control
             List<Mode> modes;
 
             string modePath = GetPath("setting", "mode");
-            string jsonStr = File.ReadAllText(modePath, Encoding.UTF8);
-            modes = JsonConvert.DeserializeObject<List<Mode>>(jsonStr);
+            try
+            {
+                string jsonStr = File.ReadAllText(modePath, Encoding.UTF8);
+                modes = JsonConvert.DeserializeObject<List<Mode>>(jsonStr);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
 
             return modes;
         }
@@ -81,10 +103,65 @@ namespace EESDD.Class.Control
             List<GameIndex> games;
 
             string gamePath = GetPath("setting", "game");
-            string jsonStr = File.ReadAllText(gamePath, Encoding.UTF8);
-            games = JsonConvert.DeserializeObject<List<GameIndex>>(jsonStr);
+            try
+            {
+                string jsonStr = File.ReadAllText(gamePath, Encoding.UTF8);
+                games = JsonConvert.DeserializeObject<List<GameIndex>>(jsonStr);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
             
             return games;
+        }
+
+        public static bool SaveScenes(List<Scene> scenes)
+        {
+            string jsonStr = JsonConvert.SerializeObject(scenes);
+            string scenePath = GetPath("setting", "scene");
+            try
+            {
+                File.WriteAllText(scenePath, jsonStr);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool SaveModes(List<Mode> modes)
+        {
+            string jsonStr = JsonConvert.SerializeObject(modes);
+            string modePath = GetPath("setting", "mode");
+            try
+            {
+                File.WriteAllText(modePath, jsonStr);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool SaveGameIndexes(List<GameIndex> indexes)
+        {
+            string jsonStr = JsonConvert.SerializeObject(indexes);
+            string gamePath = GetPath("setting", "game");
+            try
+            {
+                File.WriteAllText(gamePath, jsonStr);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
