@@ -8,12 +8,12 @@ namespace EESDD.Class.Model
 {
     class Admin:User
     {
-        private string password;
+        string grantUserName;
 
-        public string Password
+        public string GrantUserName
         {
-            get { return password; }
-            set { password = value; }
+            get { return grantUserName; }
+            set { grantUserName = value; }
         }
     }
 }

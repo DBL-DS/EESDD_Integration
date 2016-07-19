@@ -17,8 +17,8 @@ namespace EESDD.Class.Control
             LoadPath();
         }
 
-        public static Dictionary<string, Dictionary<string, string>> Path;
-        public static string WorkPath;
+        private static Dictionary<string, Dictionary<string, string>> Path;
+        private static string WorkPath;
 
         // 加载 path.json
         private static bool LoadPath()

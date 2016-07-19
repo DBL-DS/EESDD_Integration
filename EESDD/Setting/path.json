@@ -8,5 +8,9 @@
         "style": "/Setting/style.json",
         "text": "/Setting/text.json",
         "udp": "/Setting/udp.json"
+    },
+    "database": {
+        "db": "/Setting/database/user.db",
+        "create_sql": "/Setting/database/create_user_table.sql"
     }
 }

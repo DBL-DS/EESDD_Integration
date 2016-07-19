@@ -15,8 +15,8 @@ namespace EESDD.Class.Model
         private int driAge;
         private string career;
         private string contact;
-        private DateTime regDate;
         private ExpCluster expCluster;
+        private string expFile;
 
         public string Gender
         {
@@ -60,16 +60,16 @@ namespace EESDD.Class.Model
             set { contact = value; }
         }
 
-        public DateTime RegDate
-        {
-            get { return regDate; }
-            set { regDate = value; }
-        }
-
         public ExpCluster ExpCluster
         {
             get { return expCluster; }
             set { expCluster = value; }
+        }
+
+        public string ExpFile
+        {
+            get { return expFile; }
+            set { expFile = value; }
         }
     }
 }

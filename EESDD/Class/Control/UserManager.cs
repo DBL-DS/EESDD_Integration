@@ -9,6 +9,29 @@ namespace EESDD.Class.Control
 {
     class UserManager
     {
-        User user;
+        public UserManager()
+        {
+            dbManger.ConnectDB(FileManger.GetPath("database", "db"));
+        }
+
+        private User user;
+        private UserDBManger dbManger;
+
+        public LoginState Login(string username, string password, UserGroup group)
+        {
+            if (group == UserGroup.ADMIN && password.Equals(""))
+                return LoginState.NEEDPASSWORD;
+
+            Tuple<LoginState, User> result = dbManger.ValidateUser(username, password, group);
+            if (result.Item1 == LoginState.SUCCESS)
+                user = result.Item2;
+
+            return result.Item1;
+        }
+
+        private bool Registe()
+        {
+            return false;
+        }
     }
 }
