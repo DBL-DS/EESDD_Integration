@@ -28,37 +28,26 @@ namespace EESDD.Class.Control
 
         public bool ConnectDB(string dbPath)
         {
-            if (!File.Exists(dbPath))
-            {
-                SQLiteConnection.CreateFile(dbPath);
-            }
+            if (!File.Exists(dbPath) 
+                && !CreateDB(dbPath, FileManger.GetPath("database", "create_sql")))
+                return false;
 
             connection = new SQLiteConnection("Data Source=" + dbPath + ";Version=3;");
 
-            return false;
+            return true;
         }
         public bool CreateDB(string dbPath, string sqlPath)
         {
             SQLiteConnection.CreateFile(dbPath);
             connection = new SQLiteConnection("Data Source=" + dbPath + ";Version=3;");
-            connection.Open();
 
-            try
-            {
-                string sql = File.ReadAllText(sqlPath);
-                SQLiteCommand command = new SQLiteCommand(sql, connection);
-                command.ExecuteNonQuery();
-                connection.Close();
-                return true;
-            }
-            catch (Exception)
-            {
-                connection.Close();
-                return false;
-            }
+            string sql = File.ReadAllText(sqlPath);
+
+            return ExecuteNonQuery(sql);
         }
 
-        public Tuple<LoginState, User> ValidateUser(string name, string password, UserGroup group)
+        public Tuple<LoginState, User> ValidateUser(string name, string password, 
+            UserGroup group)
         {
             LoginState state;
             User user = GetUser(name, group);
@@ -76,74 +65,83 @@ namespace EESDD.Class.Control
             return new Tuple<LoginState,User>(state, user);
         }
 
-        private void UpdateLastDate(string name, UserGroup group)
+        private bool UpdateLastDate(string name, UserGroup group)
         {
-            connection.Open();
-
-            string sql = "update " + group + " set lastDate = (datetime('now','localtime'))" 
+            string sql = "update " + group 
+                + " set lastDate = (datetime('now','localtime'))" 
                 + " where name = '" + name + "'";
-            SQLiteCommand command = new SQLiteCommand(sql, connection);
-            command.ExecuteNonQuery();
 
-            connection.Close();
+            return ExecuteNonQuery(sql);
         }
 
         public User GetUser(string name, UserGroup group)
         {
-            connection.Open();
-
-            string sql = "select * from " + group.ToString()
+            string sql = "select * from " + group
                 + " where name = '" + name + "'";
 
-            SQLiteCommand command = new SQLiteCommand(sql, connection);
-            SQLiteDataReader reader = command.ExecuteReader();
-            User user = GetUser(reader, group);
-            reader.Close();
+            List<User> users = GetUsers(sql, group);
 
-            connection.Close();
-
-            return user;
+            if (users != null && users.Count != 0)
+                return users[0];
+            else
+                return null;
         }
 
-        private User GetUser(SQLiteDataReader reader, UserGroup group)
+        public List<User> GetAllRegulars()
         {
+            string sql = "select * from " + UserGroup.REGULAR;
+            List<User> users = GetUsers(sql, UserGroup.REGULAR);
+
+            return users;
+        }
+
+        private List<User> GetUsers(string sql, UserGroup group)
+        {
+            SQLiteDataReader reader = ExecuteQuery(sql);
+
             if (reader != null && ! reader.HasRows)
                 return null;
 
-            reader.Read();
-
-            User user;
-            switch (group)
+            List<User> users = new List<User>();
+            while (reader.Read())
             {
-                case UserGroup.ADMIN:
-                    user = new Admin();
-                    (user as Admin).Group = UserGroup.ADMIN;
-                    (user as Admin).GrantUserName = reader["grantUserName"] as string;
-                    break;
-                case UserGroup.REGULAR:
-                    user = new Regular();
-                    Regular regular = user as Regular;
-                    regular.Group = UserGroup.REGULAR;
-                    regular.Gender = reader["gender"] as string;
-                    regular.Height = (float)reader["height"];
-                    regular.Weight = (float)reader["weight"];
-                    regular.Age = (int)reader["age"];
-                    regular.DriAge = (int)reader["driAge"];
-                    regular.Career = reader["career"] as string;
-                    regular.Contact = reader["contact"] as string;
-                    regular.ExpFile = reader["exp"] as string;
-                    break;
-                default:
-                    return null;
-            }
-            
-            user.Name = reader["name"] as string;
-            user.Password = reader["password"] as string;
-            user.RealName = reader["realName"] as string;
-            user.RegDate = (DateTime)reader["regDate"];
-            user.LastDate = (DateTime)reader["lastDate"];
+                User user;
+                switch (group)
+                {
+                    case UserGroup.ADMIN:
+                        user = new Admin();
+                        (user as Admin).Group = UserGroup.ADMIN;
+                        (user as Admin).GrantUserName = reader["grantUserName"] as string;
+                        break;
+                    case UserGroup.REGULAR:
+                        user = new Regular();
+                        Regular regular = user as Regular;
+                        regular.Group = UserGroup.REGULAR;
+                        regular.Gender = reader["gender"] as string;
+                        regular.Height = (float)reader["height"];
+                        regular.Weight = (float)reader["weight"];
+                        regular.Age = (int)reader["age"];
+                        regular.DriAge = (int)reader["driAge"];
+                        regular.Career = reader["career"] as string;
+                        regular.Contact = reader["contact"] as string;
+                        regular.ExpFile = reader["exp"] as string;
+                        break;
+                    default:
+                        return null;
+                }
 
-            return user;
+                user.Name = reader["name"] as string;
+                user.Password = reader["password"] as string;
+                user.RealName = reader["realName"] as string;
+                user.RegDate = (DateTime)reader["regDate"];
+                user.LastDate = (DateTime)reader["lastDate"];
+
+                users.Add(user);
+            }
+
+            reader.Close();
+
+            return users;
         }
 
         public bool AddUser(User user)
@@ -156,7 +154,7 @@ namespace EESDD.Class.Control
                     sql = "insert into " + admin.Group
                         + " (name, password, realName, grantUserName) values ('"
                         + admin.Name + "', '"
-                        + admin.Password + "', '"
+                        + Encryptor.GetMD5(admin.Password) + "', '"
                         + admin.RealName + "', '"
                         + admin.GrantUserName + "') ";
                     break;
@@ -165,7 +163,7 @@ namespace EESDD.Class.Control
                     sql = "insert into " + regular.Group
                         + " (name, password, realName, grantUserName) values ('"
                         + regular.Name + "', '"
-                        + regular.Password + "', '"
+                        + Encryptor.GetMD5(regular.Password) + "', '"
                         + regular.RealName + "', '"
                         + regular.Gender + "', "
                         + regular.Height + ", "
@@ -176,8 +174,88 @@ namespace EESDD.Class.Control
                         + regular.Contact + "', '"
                         + Encryptor.GetMD5(regular.Name) + ".exp') ";
                     break;
+                default:
+                    return false;
             }
-            return false;
+
+            return ExecuteNonQuery(sql);
+        }
+
+        public bool UpdateUserInfo(string name, User user)
+        {
+            string sql;
+            switch (user.Group)
+            {
+                case UserGroup.ADMIN:
+                    Admin admin = user as Admin;
+                    sql = "update " + admin.Group + " set "
+                        + "name = '" + admin.Name + "', "
+                        + "realName = '" + admin.RealName + "' "
+                        + "where name = " + name;
+                    break;
+                case UserGroup.REGULAR:
+                    Regular regular = user as Regular;
+                    sql = "update " + regular.Group + " set "
+                        + "name = '" + regular.Name + "', "
+                        + "realName = '" + regular.RealName + "', "
+                        + "gender = '" + regular.Gender + "', "
+                        + "height = " + regular.Height + ", "
+                        + "weight = " + regular.Weight + ", "
+                        + "age = " + regular.Age + ", "
+                        + "driAge = " + regular.DriAge + ", "
+                        + "career = '" + regular.Career + "',"
+                        + "contact = '" + regular.Contact + "' "
+                        + "where name = " + name;
+                    break;
+                default:
+                    return false;
+            }
+
+            return ExecuteNonQuery(sql);
+        }
+
+        public bool UpdatePassword(string name, string password, UserGroup group)
+        {
+            string sql = "update " + group 
+                + " set password = '" + Encryptor.GetMD5(password) 
+                + "' where name = " + name;
+
+            return ExecuteNonQuery(sql);
+        }
+
+        private SQLiteDataReader ExecuteQuery(string sql)
+        {
+            SQLiteDataReader reader;
+            try
+            {
+                connection.Open();
+                SQLiteCommand command = new SQLiteCommand(sql, connection);
+                reader = command.ExecuteReader();
+                connection.Close();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return reader;
+        }
+
+        private bool ExecuteNonQuery(string sql)
+        {
+            try
+            {
+                connection.Open();
+                SQLiteCommand command = new SQLiteCommand(sql, connection);
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

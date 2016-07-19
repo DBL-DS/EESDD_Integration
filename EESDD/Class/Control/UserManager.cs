@@ -7,10 +7,22 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
+    public enum RegisteState
+    {
+        USEREXIST,
+
+    }
+
     class UserManager
     {
         public UserManager()
         {
+            InitDbManger();
+        }
+
+        private void InitDbManger()
+        {
+            dbManger = new UserDBManger();
             dbManger.ConnectDB(FileManger.GetPath("database", "db"));
         }
 
@@ -31,6 +43,7 @@ namespace EESDD.Class.Control
 
         private bool Registe()
         {
+
             return false;
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EESDD.Module.Encryption;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,33 @@ namespace EESDD.Class.Model
 {
     class Regular:User
     {
+        public Regular() { }
+
+        public Regular(
+            string name,
+            string password,
+            string realName,
+            string gender,
+            float height,
+            float weight,
+            int age,
+            int driAge,
+            string career,
+            string contact)
+        {
+            this.Name = name;
+            this.Password = password;
+            this.RealName = realName;
+            this.gender = gender;
+            this.height = height;
+            this.weight = weight;
+            this.age = age;
+            this.driAge = driAge;
+            this.career = career;
+            this.contact = contact;
+            this.expFile = Encryptor.GetMD5(name) + ".exp";
+        }
+
         private string gender;
         private float height;
         private float weight;

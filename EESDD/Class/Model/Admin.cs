@@ -8,6 +8,20 @@ namespace EESDD.Class.Model
 {
     class Admin:User
     {
+        public Admin() { }
+
+        public Admin(
+            string name,
+            string password,
+            string realName,
+            string grantUserName)
+        {
+            this.Name = name;
+            this.Password = password;
+            this.RealName = realName;
+            this.grantUserName = grantUserName;
+        }
+
         string grantUserName;
 
         public string GrantUserName
