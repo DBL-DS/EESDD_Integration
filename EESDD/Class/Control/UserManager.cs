@@ -59,8 +59,12 @@ namespace EESDD.Class.Control
             return RegisteState.SUCCESS;
         }
 
-        private RegisteState Validate(User user)
+        private RegisteState Validate(User user, string variable)
         {
+            switch (variable)
+            {
+
+            }
             if (user.Name.Equals(""))
                 return RegisteState.NAMEEMPTY;
 

@@ -136,6 +136,7 @@
     <None Include="Setting\game.json" />
     <None Include="Setting\mode.json" />
     <None Include="Setting\path.json" />
+    <None Include="Setting\regexp.json" />
     <None Include="Setting\report.json" />
     <None Include="Setting\scene.json" />
     <None Include="Setting\style.json" />
