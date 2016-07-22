@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EESDD.Lab;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace EESDD
         {
             Application app = new Application();
 
-            app.Run();
+            app.Run(new TestWindow());
         }
     }
 }

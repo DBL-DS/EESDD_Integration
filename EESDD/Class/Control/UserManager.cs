@@ -10,7 +10,19 @@ namespace EESDD.Class.Control
     public enum RegisteState
     {
         USEREXIST,
-
+        SUCCESS,
+        VALIDATED,
+        GRANTUSERNOTEXIST,
+        NAMEEMPTY,
+        ADMINPEEMPTY,
+        REALNAMEEMPTY,
+        GENDEREMPTY,
+        HEIGHTEMPTY,
+        WEIGHTEMPTY,
+        AGEEMPTY,
+        DRIAGEEMPT,
+        CAREEREMPTY,
+        CONTACTEMPTY,
     }
 
     class UserManager
@@ -41,10 +53,46 @@ namespace EESDD.Class.Control
             return result.Item1;
         }
 
-        private bool Registe()
+        private RegisteState Registe(User user)
         {
 
-            return false;
+            return RegisteState.SUCCESS;
+        }
+
+        private RegisteState Validate(User user)
+        {
+            if (user.Name.Equals(""))
+                return RegisteState.NAMEEMPTY;
+
+            if (user.Password.Equals(""))
+                return RegisteState.ADMINPEEMPTY;
+
+            if (user.RealName.Equals(""))
+                return RegisteState.REALNAMEEMPTY;
+
+            if (user.Group == UserGroup.REGULAR)
+            {
+                Regular regular = user as Regular;
+
+                if (regular.Gender.Equals(""))
+                    return RegisteState.GENDEREMPTY;
+
+                if (regular.Career.Equals(""))
+                    return RegisteState.CAREEREMPTY;
+
+                if (regular.Contact.Equals(""))
+                    return RegisteState.CONTACTEMPTY;
+            }
+
+            if (dbManger.GetUser(user.Name, user.Group) != null)
+                return RegisteState.USEREXIST;
+
+            if (user.Group == UserGroup.ADMIN
+                && dbManger.GetUser((user as Admin).GrantUserName, UserGroup.ADMIN)
+                == null)
+                return RegisteState.GRANTUSERNOTEXIST;
+
+            return RegisteState.VALIDATED;
         }
     }
 }

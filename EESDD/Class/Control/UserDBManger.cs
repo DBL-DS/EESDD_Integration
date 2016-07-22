@@ -95,8 +95,18 @@ namespace EESDD.Class.Control
             return users;
         }
 
+        public List<User> GetAllGrantedUsers(string name)
+        {
+            string sql = "select * from " + UserGroup.ADMIN
+                + " where grantUserName = " + name;
+            List<User> users = GetUsers(sql, UserGroup.ADMIN);
+
+            return users;
+        }
+
         private List<User> GetUsers(string sql, UserGroup group)
         {
+            connection.Open();
             SQLiteDataReader reader = ExecuteQuery(sql);
 
             if (reader != null && ! reader.HasRows)
@@ -140,6 +150,7 @@ namespace EESDD.Class.Control
             }
 
             reader.Close();
+            connection.Close();
 
             return users;
         }
@@ -228,10 +239,8 @@ namespace EESDD.Class.Control
             SQLiteDataReader reader;
             try
             {
-                connection.Open();
                 SQLiteCommand command = new SQLiteCommand(sql, connection);
                 reader = command.ExecuteReader();
-                connection.Close();
             }
             catch (Exception)
             {

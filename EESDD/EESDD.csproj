@@ -104,6 +104,7 @@
       <DependentUpon>TestWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Module\Encryption\Encryptor.cs" />
+    <Compile Include="Module\RegExp\RegularExpression.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
