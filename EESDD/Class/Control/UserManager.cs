@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
-    public enum RegisteState
+    public enum RegisterState
     {
         USEREXIST,
         SUCCESS,
@@ -40,7 +40,7 @@ namespace EESDD.Class.Control
         }
 
         private User user;
-        private User registeUser;
+        private User registerUser;
         private UserDBManger dbManger;
 
         public LoginState Login(string username, string password, UserGroup group)
@@ -55,93 +55,93 @@ namespace EESDD.Class.Control
             return result.Item1;
         }
 
-        public void RegisteStart(UserGroup group)
+        public void RegisterStart(UserGroup group)
         {
             switch (group)
             {
                 case UserGroup.ADMIN:
-                    registeUser = new Admin();
-                    registeUser.Group = UserGroup.ADMIN;
-                    (registeUser as Admin).GrantUserName = user.Name;
+                    registerUser = new Admin();
+                    registerUser.Group = UserGroup.ADMIN;
+                    (registerUser as Admin).GrantUserName = user.Name;
                     break;
                 case UserGroup.REGULAR:
-                    registeUser = new Regular();
-                    registeUser.Group = UserGroup.REGULAR;
+                    registerUser = new Regular();
+                    registerUser.Group = UserGroup.REGULAR;
                     break;
                 default:
                     break;
             }
         }
 
-        public RegisteState RegisteAdd(UserVariable variable, string value)
+        public RegisterState RegisterAdd(UserVariable variable, string value)
         {
             switch (variable)
             {
                 case UserVariable.Name:
                     if (value.Equals(""))
-                        return RegisteState.NAMEEMPTY;
-                    if (dbManger.GetUser(value, registeUser.Group) != null)
-                        return RegisteState.USEREXIST;
-                    registeUser.Name = value;
+                        return RegisterState.NAMEEMPTY;
+                    if (dbManger.GetUser(value, registerUser.Group) != null)
+                        return RegisterState.USEREXIST;
+                    registerUser.Name = value;
                     break;
                 case UserVariable.Password:
-                    if (registeUser.Group 
+                    if (registerUser.Group 
                         == UserGroup.ADMIN && value.Equals(""))
-                        return RegisteState.PASSWORDPEEMPTY;
-                    registeUser.Password = value;
+                        return RegisterState.PASSWORDPEEMPTY;
+                    registerUser.Password = value;
                     break;
                 case UserVariable.RealName:
                     if (value.Equals(""))
-                        return RegisteState.REALNAMEEMPTY;
-                    registeUser.RealName = value;
+                        return RegisterState.REALNAMEEMPTY;
+                    registerUser.RealName = value;
                     break;
                 case UserVariable.Gender:
                     if (value.Equals(""))
-                        return RegisteState.GENDEREMPTY;
-                    (registeUser as Regular).Gender = value;
+                        return RegisterState.GENDEREMPTY;
+                    (registerUser as Regular).Gender = value;
                     break;
                 case UserVariable.Height:
                     if (value.Equals(""))
-                        return RegisteState.HEIGHTEMPTY;
-                    (registeUser as Regular).Height = float.Parse(value);
+                        return RegisterState.HEIGHTEMPTY;
+                    (registerUser as Regular).Height = float.Parse(value);
                     break;
                 case UserVariable.Weight:
                     if (value.Equals(""))
-                        return RegisteState.WEIGHTEMPTY;
-                    (registeUser as Regular).Weight = float.Parse(value);
+                        return RegisterState.WEIGHTEMPTY;
+                    (registerUser as Regular).Weight = float.Parse(value);
                     break;
                 case UserVariable.Age:
                     if (value.Equals(""))
-                        return RegisteState.AGEEMPTY;
-                    (registeUser as Regular).Age = int.Parse(value);
+                        return RegisterState.AGEEMPTY;
+                    (registerUser as Regular).Age = int.Parse(value);
                     break;
                 case UserVariable.DriAge:
                     if (value.Equals(""))
-                        return RegisteState.DRIAGEEMPTY;
-                    (registeUser as Regular).DriAge = int.Parse(value);
+                        return RegisterState.DRIAGEEMPTY;
+                    (registerUser as Regular).DriAge = int.Parse(value);
                     break;
                 case UserVariable.Career:
                     if (value.Equals(""))
-                        return RegisteState.CAREEREMPTY;
-                    (registeUser as Regular).Career = value;
+                        return RegisterState.CAREEREMPTY;
+                    (registerUser as Regular).Career = value;
                     break;
                 case UserVariable.Contact:
                     if (value.Equals(""))
-                        return RegisteState.CONTACTEMPTY;
-                    (registeUser as Regular).Contact = value;
+                        return RegisterState.CONTACTEMPTY;
+                    (registerUser as Regular).Contact = value;
                     break;
                 default:
                     break;
             }
-            return RegisteState.VALIDATED;
+            return RegisterState.VALIDATED;
         }
 
-        public RegisteState RegisteEnd()
+        public RegisterState RegisterEnd()
         {
-            if (dbManger.AddUser(registeUser))
-                return RegisteState.SUCCESS;
+            if (dbManger.AddUser(registerUser))
+                return RegisterState.SUCCESS;
             else
-                return RegisteState.DBFAIELD;
+                return RegisterState.DBFAIELD;
         }
 
     }
