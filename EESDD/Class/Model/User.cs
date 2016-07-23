@@ -12,6 +12,24 @@ namespace EESDD.Class.Model
         REGULAR
     }
 
+    enum UserVariable
+    {
+        Name,
+        Password,
+        RealName,
+        RegDate,
+        LastDate,
+        Group,
+        GrantUserName,
+        Gender,
+        Height,
+        Weight,
+        Age,
+        DriAge,
+        Career,
+        Contact
+    }
+
     abstract class User
     {
         private string name;
