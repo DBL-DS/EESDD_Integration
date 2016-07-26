@@ -10,21 +10,48 @@ namespace EESDD.Class.Model
     {
         public ExpCluster()
         {
-            gameExps = new Dictionary<Game, List<Exp>>();
+
         }
 
-        private Dictionary<Game, List<Exp>> gameExps;
+        public ExpCluster(List<Exp> exps)
+        {
+            Exps = exps;
+        }
 
-        public Dictionary<Game, List<Exp>> GameExps
+        private Dictionary<Tuple<string, string>, List<Exp>> gameExps;
+
+        public Dictionary<Tuple<string, string>, List<Exp>> GameExps
         {
             get { return gameExps; }
+            set { gameExps = value; }
         }
 
-        public Dictionary<Game, int> Count
+        public List<Exp> Exps
         {
             get
             {
-                Dictionary<Game, int> count = new Dictionary<Game,int>();
+                List<Exp> exps = new List<Exp>();
+                foreach (var item in gameExps)
+	            {
+                    exps.AddRange(item.Value);
+	            }
+                return exps;
+            }
+            set
+            {
+                foreach (var item in value)
+                {
+                    AddExp(item);
+                }
+            }
+        }
+
+        public Dictionary<Tuple<string, string>, int> Count
+        {
+            get
+            {
+                Dictionary<Tuple<string, string>, int> count 
+                    = new Dictionary<Tuple<string, string>, int>();
                 foreach (var exps in gameExps){
                     count.Add(exps.Key, exps.Value.Count);
                 }
@@ -32,50 +59,88 @@ namespace EESDD.Class.Model
             }
         }
 
-        public int GameCount(Game game)
+        public int GameCount(string scene, string mode)
         {
-            if (gameExps.ContainsKey(game))
-                return gameExps[game].Count;
+            var key = new Tuple<string, string>(scene, mode);
+            if (gameExps.ContainsKey(key))
+                return gameExps[key].Count;
             else
                 return 0;
         }
 
-        public void AddExp(Game game, Exp exp)
+        public int GameCount(GameIndex index)
         {
-            if (!gameExps.ContainsKey(game))
-                gameExps.Add(game, new List<Exp>());
+            return GameCount(index.Scene, index.Mode);
+        }
+
+        public int GameCount(Game game)
+        {
+            return GameCount(game.Scene.Name, game.Mode.Name);
+        }
+
+        public void AddExp(Exp exp)
+        {
+            var key = new Tuple<string, string>(exp.Scene, exp.Mode);
+            if (!gameExps.ContainsKey(key))
+                gameExps.Add(key, new List<Exp>());
          
-            gameExps[game].Add(exp);
+            gameExps[key].Add(exp);
         }
 
         public bool RemoveExp(Exp exp)
         {
-            if (gameExps.ContainsKey(exp.Game) && gameExps[exp.Game].Contains(exp))
+            var key = new Tuple<string, string>(exp.Scene, exp.Mode);
+            if (gameExps.ContainsKey(key) 
+                && gameExps[key].Contains(exp))
             {
-                gameExps[exp.Game].Remove(exp);
+                gameExps[key].Remove(exp);
 
-                if (gameExps[exp.Game].Count == 0)
-                    gameExps.Remove(exp.Game);
+                if (gameExps[key].Count == 0)
+                    gameExps.Remove(key);
 
                 return true;                  
             }
             return false;
         }
 
-        public Exp GetLastGameExp(Game game)
+        public Exp GetLastGameExp(string scene, string mode)
         {
-            if (gameExps.ContainsKey(game) && gameExps[game].Count != 0)
-                return gameExps[game][gameExps[game].Count - 1];
+            var key = new Tuple<string, string>
+                (scene, scene);
+            if (gameExps.ContainsKey(key)
+                && gameExps[key].Count != 0)
+                return gameExps[key][gameExps[key].Count - 1];
             else
                 return null;
         }
 
-        public List<Exp> GetGameExps(Game game)
+        public Exp GetLastGameExp(GameIndex index)
         {
-            if (gameExps.ContainsKey(game) && gameExps[game].Count != 0)
-                return gameExps[game];
+            return GetLastGameExp(index.Scene, index.Mode);
+        }
+
+        public Exp GetLastGameExp(Game game)
+        {
+            return GetLastGameExp(game.Scene.Name, game.Mode.Name);
+        }
+
+        public List<Exp> GetGameExps(string scene, string mode)
+        {
+            var key = new Tuple<string, string>(scene, mode);
+            if (gameExps.ContainsKey(key) && gameExps[key].Count != 0)
+                return gameExps[key];
             else
                 return null;
+        }
+
+        public List<Exp> GetGameExps(GameIndex index)
+        {
+            return GetGameExps(index.Scene, index.Mode);
+        }
+
+        public List<Exp> GetGameExps(Game game)
+        {
+            return GetGameExps(game.Scene.Name, game.Mode.Name);
         }
 
     }

@@ -48,11 +48,31 @@ namespace EESDD.Class.Control
             if (group == UserGroup.ADMIN && password.Equals(""))
                 return LoginState.NEEDPASSWORD;
 
-            Tuple<LoginState, User> result = dbManger.ValidateUser(username, password, group);
+            Tuple<LoginState, User> result 
+                = dbManger.ValidateUser(username, password, group);
             if (result.Item1 == LoginState.SUCCESS)
+            {
                 user = result.Item2;
+                if (group == UserGroup.REGULAR)
+                    LoadExp();
+            }
 
             return result.Item1;
+        }
+
+        private bool LoadExp()
+        {
+            if (user.Group != UserGroup.REGULAR)
+                return false;
+
+            ExpCluster cluster 
+                = ExpManger.GetExpCluster((user as Regular).ExpFile);
+            if (cluster != null)
+                (user as Regular).ExpCluster = cluster;
+            else
+                (user as Regular).ExpCluster = new ExpCluster();
+
+            return true;
         }
 
         public void RegisterStart(UserGroup group)
@@ -84,7 +104,8 @@ namespace EESDD.Class.Control
                         return RegisterState.USEREXIST;
                     registerUser.Name = value;
                     if (registerUser.Group == UserGroup.REGULAR)
-                        (registerUser as Regular).ExpFile = 
+                        (registerUser as Regular).ExpFile 
+                            = ExpManger.GetFileName(registerUser.Name);
                     break;
                 case UserVariable.Password:
                     if (registerUser.Group 

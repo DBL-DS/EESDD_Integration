@@ -28,6 +28,24 @@ namespace EESDD.Class.Control
             get { return new List<GameIndex>(indexDict.Values); }
         }
 
+        public GameIndex GetGameIndex(string scene, string mode)
+        {
+            var key = new Tuple<string, string>(scene, mode);
+            if (indexDict.ContainsKey(key))
+                return indexDict[key];
+            else
+                return null;
+        }
+
+        public Game GetGame(string scene, string mode)
+        {
+            var key = GetGameIndex(scene, mode);
+            if (key != null && gameDict.ContainsKey(key))
+                return gameDict[GetGameIndex(scene, mode)];
+            else
+                return null;
+        }
+
         public List<Scene> Scenes
         {
             get { return new List<Scene>(sceneDict.Values); }

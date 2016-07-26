@@ -13,7 +13,8 @@ namespace EESDD.Class.Model
             this.enable = true;
         }
 
-        public Mode(string name, string title, string description, string picture)
+        public Mode(string name, string title,
+            string description, string picture)
         {
             this.name = name;
             this.title = title;

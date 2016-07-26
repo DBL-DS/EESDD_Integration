@@ -29,25 +29,28 @@ namespace EESDD.Class.Control
         public bool ConnectDB(string dbPath)
         {
             if (!File.Exists(dbPath) 
-                && !CreateDB(dbPath, FileManger.GetPath("database", "create_sql")))
+                && !CreateDB(dbPath, 
+                FileManger.GetPath("database", "create_sql")))
                 return false;
 
-            connection = new SQLiteConnection("Data Source=" + dbPath + ";Version=3;");
+            connection = new SQLiteConnection("Data Source=" 
+                + dbPath + ";Version=3;");
 
             return true;
         }
         public bool CreateDB(string dbPath, string sqlPath)
         {
             SQLiteConnection.CreateFile(dbPath);
-            connection = new SQLiteConnection("Data Source=" + dbPath + ";Version=3;");
+            connection = new SQLiteConnection("Data Source=" 
+                + dbPath + ";Version=3;");
 
             string sql = File.ReadAllText(sqlPath);
 
             return ExecuteNonQuery(sql);
         }
 
-        public Tuple<LoginState, User> ValidateUser(string name, string password, 
-            UserGroup group)
+        public Tuple<LoginState, User> ValidateUser(string name,
+            string password, UserGroup group)
         {
             LoginState state;
             User user = GetUser(name, group);
@@ -184,7 +187,7 @@ namespace EESDD.Class.Control
                         + regular.DriAge + ", '"
                         + regular.Career + "', '"
                         + regular.Contact + "', '"
-                        + Encryptor.GetMD5(regular.Name) + ".exp') ";
+                        + ExpManger.GetFileName(regular.Name) + "') ";
                     break;
                 default:
                     return false;
@@ -201,14 +204,12 @@ namespace EESDD.Class.Control
                 case UserGroup.ADMIN:
                     Admin admin = user as Admin;
                     sql = "update " + admin.Group + " set "
-                        + "name = '" + admin.Name + "', "
                         + "realName = '" + admin.RealName + "' "
                         + "where name = " + name;
                     break;
                 case UserGroup.REGULAR:
                     Regular regular = user as Regular;
                     sql = "update " + regular.Group + " set "
-                        + "name = '" + regular.Name + "', "
                         + "realName = '" + regular.RealName + "', "
                         + "gender = '" + regular.Gender + "', "
                         + "height = " + regular.Height + ", "

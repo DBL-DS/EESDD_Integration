@@ -16,7 +16,8 @@ namespace EESDD.Class.Model
 
         private DateTime start;                 // 体验开始时间
         private DateTime end;                   // 体验结束时间
-        private Game game;                      // 体验的场景、模式
+        private string scene;                   // 体验的场景名
+        private string mode;                    // 体验的模式名
         private List<AreaExp> areas;            // 按区域划分的体验集合
 
         public DateTime Start
@@ -31,10 +32,16 @@ namespace EESDD.Class.Model
             set { end = value; }
         }
 
-        public Game Game
+        public string Scene
         {
-            get { return game; }
-            set { game = value; }
+            get { return scene; }
+            set { scene = value; }
+        }
+
+        public string Mode
+        {
+            get { return mode; }
+            set { mode = value; }
         }
 
         public List<AreaExp> Areas
@@ -71,6 +78,16 @@ namespace EESDD.Class.Model
 
                 areas[0] = value;
             }
+        }
+
+        public void Start()
+        {
+            start = DateTime.Now;
+        }
+
+        public void End()
+        {
+            end = DateTime.Now;
         }
 
     }

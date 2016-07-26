@@ -116,45 +116,61 @@ namespace EESDD.Class.Control
             return games;
         }
 
+        public static List<Exp> GetExps(string expName)
+        {
+            List<Exp> exps;
+
+            string expPath = GetPath("exp", "path") + expName;
+            try
+            {
+                string jsonStr = File.ReadAllText(expPath, Encoding.UTF8);
+                exps = JsonConvert.DeserializeObject<List<Exp>>(jsonStr);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return exps;
+        }
+
         public static bool SaveScenes(List<Scene> scenes)
         {
             string jsonStr = JsonConvert.SerializeObject(scenes);
             string scenePath = GetPath("setting", "scene");
-            try
-            {
-                File.WriteAllText(scenePath, jsonStr);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
 
-            return true;
+            return WriteFile(scenePath, jsonStr);
         }
 
         public static bool SaveModes(List<Mode> modes)
         {
             string jsonStr = JsonConvert.SerializeObject(modes);
             string modePath = GetPath("setting", "mode");
-            try
-            {
-                File.WriteAllText(modePath, jsonStr);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
 
-            return true;
+            return WriteFile(modePath, jsonStr);
         }
 
         public static bool SaveGameIndexes(List<GameIndex> indexes)
         {
             string jsonStr = JsonConvert.SerializeObject(indexes);
             string gamePath = GetPath("setting", "game");
+
+            return WriteFile(gamePath, jsonStr);
+        }
+
+        public static bool SaveExps(List<Exp> exps, string expName)
+        {
+            string jsonStr = JsonConvert.SerializeObject(exps);
+            string expPath = GetPath("exp", "path") + expName;
+
+            return WriteFile(expPath, jsonStr);
+        }
+
+        private static bool WriteFile(string path, string str)
+        {
             try
             {
-                File.WriteAllText(gamePath, jsonStr);
+                File.WriteAllText(path, str);
             }
             catch (Exception)
             {
@@ -163,5 +179,6 @@ namespace EESDD.Class.Control
 
             return true;
         }
+        
     }
 }
