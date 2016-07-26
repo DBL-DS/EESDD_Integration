@@ -10,7 +10,10 @@
         "udp": "/Setting/udp.json"
     },
     "database": {
-        "db": "/Setting/database/user.db",
-        "create_sql": "/Setting/database/create_user_table.sql"
+        "db": "/Info/database/user.db",
+        "create_sql": "/Info/database/create_user_table.sql"
+    },
+    "exp": { 
+        "path": "/Info/exp"
     }
 }

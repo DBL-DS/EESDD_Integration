@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\Control\Evaluator.cs" />
+    <Compile Include="Class\Control\ExpManger.cs" />
     <Compile Include="Class\Control\FileManger.cs" />
     <Compile Include="Class\Control\GameManager.cs" />
     <Compile Include="Class\Control\LogManager.cs" />
@@ -148,6 +149,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Info\exp\" />
     <Folder Include="Module\Chart\" />
     <Folder Include="Module\Report\" />
     <Folder Include="Module\Simulator\" />
@@ -166,13 +168,16 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Setting\database\create_user_table.sql" />
+    <Content Include="Info\database\create_user_table.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>rd /S /Q "$(ProjectDir)$(OutDir)Setting"
+rd /S /Q "$(ProjectDir)$(OutDir)Info"
 mkdir  "$(ProjectDir)$(OutDir)Setting"
-xcopy "$(ProjectDir)Setting" "$(ProjectDir)$(OutDir)Setting" /e</PreBuildEvent>
+mkdir  "$(ProjectDir)$(OutDir)Info"
+xcopy "$(ProjectDir)Setting" "$(ProjectDir)$(OutDir)Setting" /e
+xcopy "$(ProjectDir)Info" "$(ProjectDir)$(OutDir)Info" /e</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>

@@ -172,7 +172,8 @@ namespace EESDD.Class.Control
                 case UserGroup.REGULAR:
                     Regular regular = user as Regular;
                     sql = "insert into " + regular.Group
-                        + " (name, password, realName, grantUserName) values ('"
+                        + " (name, password, realName, gender, height, weight, " 
+                        + "age, dirAge, career, contact, exp) values ('"
                         + regular.Name + "', '"
                         + Encryptor.GetMD5(regular.Password) + "', '"
                         + regular.RealName + "', '"

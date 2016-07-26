@@ -83,6 +83,8 @@ namespace EESDD.Class.Control
                     if (dbManger.GetUser(value, registerUser.Group) != null)
                         return RegisterState.USEREXIST;
                     registerUser.Name = value;
+                    if (registerUser.Group == UserGroup.REGULAR)
+                        (registerUser as Regular).ExpFile = 
                     break;
                 case UserVariable.Password:
                     if (registerUser.Group 
@@ -142,6 +144,11 @@ namespace EESDD.Class.Control
                 return RegisterState.SUCCESS;
             else
                 return RegisterState.DBFAIELD;
+        }
+
+        public void LoginOut()
+        {
+            user = null;
         }
 
     }
