@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,7 @@ namespace EESDD.Class.Model
     {
         public AreaExp()
         {
-            svframes = new List<Svframe>();
-            brakes = new List<BrakeAct>();
-            reacts = new List<Reaction>();
+
         }
 
         private List<Svframe> svframes;
@@ -26,8 +25,10 @@ namespace EESDD.Class.Model
         public List<Svframe> Svframes
         {
             get { return svframes; }
+            set { svframes = value; }
         }
 
+        [JsonIgnore]
         public Svframe Start
         {
             get
@@ -39,6 +40,7 @@ namespace EESDD.Class.Model
             }
         }
 
+        [JsonIgnore]
         public Svframe End
         {
             get
@@ -65,8 +67,10 @@ namespace EESDD.Class.Model
         public List<BrakeAct> Brakes
         {
             get { return brakes; }
+            set { brakes = value; }
         }
 
+        [JsonIgnore]
         public BrakeAct LastBrake
         {
             get
@@ -81,8 +85,10 @@ namespace EESDD.Class.Model
         public List<Reaction> Reacts
         {
             get { return reacts; }
+            set { reacts = value; }
         }
 
+        [JsonIgnore]
         public Reaction LastReact
         {
             get

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace EESDD.Class.Model
     {
         public Exp()
         {
-            areas = new List<AreaExp>();
+
         }
 
         private DateTime start;                 // 体验开始时间
@@ -39,8 +40,21 @@ namespace EESDD.Class.Model
         public List<AreaExp> Areas
         {
             get { return areas; }
+            set { areas = value; }
         }
 
+        [JsonIgnore]
+        private int AreaCount
+        {
+            get {
+                if (areas != null)
+                    return areas.Count;
+                else
+                    return 0;
+            }
+        }
+
+        [JsonIgnore]
         public AreaExp TotalArea
         {
             get
@@ -55,10 +69,7 @@ namespace EESDD.Class.Model
                 if (areas == null)
                     areas = new List<AreaExp>();
 
-                if (areas.Count == 0)
-                    areas.Add(value);
-                else
-                    areas[0] = value;
+                areas[0] = value;
             }
         }
 

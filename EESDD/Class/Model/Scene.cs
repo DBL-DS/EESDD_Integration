@@ -10,7 +10,18 @@ namespace EESDD.Class.Model
     {
         public Scene()
         {
-            
+            this.enable = true;
+        }
+
+        public Scene(string name, string title,
+            string description, string picture, List<string> areaTitle)
+        {
+            this.name = name;
+            this.title = title;
+            this.description = description;
+            this.picture = picture;
+            this.areaTitle = areaTitle;
+            this.enable = true;
         }
 
         private string name;
@@ -18,6 +29,7 @@ namespace EESDD.Class.Model
         private string description;
         private string picture;
         private List<string> areaTitle;
+        private bool enable;
 
         public string Name
         {
@@ -47,6 +59,12 @@ namespace EESDD.Class.Model
         {
             get { return areaTitle; }
             set { areaTitle = value; }
+        }
+
+        public bool Enable
+        {
+            get { return enable; }
+            set { enable = value; }
         }
     }
 }
