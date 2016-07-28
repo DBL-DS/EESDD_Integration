@@ -42,6 +42,7 @@ namespace EESDD.Class.Control
         private User user;
         private User registerUser;
         private UserDBManger dbManger;
+        private ExpManger expManger;
 
         public LoginState Login(string username, string password, UserGroup group)
         {
@@ -54,25 +55,10 @@ namespace EESDD.Class.Control
             {
                 user = result.Item2;
                 if (group == UserGroup.REGULAR)
-                    LoadExp();
+                    expManger.Load(user.ExpFile);
             }
 
             return result.Item1;
-        }
-
-        private bool LoadExp()
-        {
-            if (user.Group != UserGroup.REGULAR)
-                return false;
-
-            ExpCluster cluster 
-                = ExpManger.GetExpCluster((user as Regular).ExpFile);
-            if (cluster != null)
-                (user as Regular).ExpCluster = cluster;
-            else
-                (user as Regular).ExpCluster = new ExpCluster();
-
-            return true;
         }
 
         public void RegisterStart(UserGroup group)
@@ -161,13 +147,17 @@ namespace EESDD.Class.Control
 
         public RegisterState RegisterEnd()
         {
+            RegisterState state;
             if (dbManger.AddUser(registerUser))
-                return RegisterState.SUCCESS;
+                state = RegisterState.SUCCESS;
             else
-                return RegisterState.DBFAIELD;
+                state = RegisterState.DBFAIELD;
+
+            registerUser = null;
+            return state;
         }
 
-        public void LoginOut()
+        public void LogOut()
         {
             user = null;
         }

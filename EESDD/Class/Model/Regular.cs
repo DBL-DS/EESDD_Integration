@@ -33,7 +33,7 @@ namespace EESDD.Class.Model
             this.driAge = driAge;
             this.career = career;
             this.contact = contact;
-            this.expFile = Encryptor.GetMD5(name) + ".exp";
+            this.expFile = ExpManger.GetFileName(name);
         }
 
         private string gender;
@@ -43,7 +43,6 @@ namespace EESDD.Class.Model
         private int driAge;
         private string career;
         private string contact;
-        private ExpCluster expCluster;
         private string expFile;
 
         public string Gender
@@ -86,12 +85,6 @@ namespace EESDD.Class.Model
         {
             get { return contact; }
             set { contact = value; }
-        }
-
-        public ExpCluster ExpCluster
-        {
-            get { return expCluster; }
-            set { expCluster = value; }
         }
 
         public string ExpFile
