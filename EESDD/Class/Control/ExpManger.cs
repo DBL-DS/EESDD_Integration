@@ -134,7 +134,7 @@ namespace EESDD.Class.Control
 
         public bool RemoveLastExp(string scene, string mode)
         {
-            var key = new Tuple<string, string>(exp.Scene, exp.Mode);
+            var key = new Tuple<string, string>(scene, mode);
 
             int count = gameExps[key].Count;
             if (count == 0)
