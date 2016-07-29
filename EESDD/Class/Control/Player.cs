@@ -11,20 +11,25 @@ namespace EESDD.Class.Control
     {
         private Scene scene;
         private Mode mode;
+        private Exp exp;
 
-        public void SelectScene(Scene scene)
+        public event EventHandler StartAction;
+        public event EventHandler RefreshAction;
+
+        public void Start(Scene scene, Mode mode)
         {
             this.scene = scene;
-        }
-
-        public void SelectMode(Mode mode)
-        {
             this.mode = mode;
+
+            exp = new Exp(scene.Name, mode.Name);
+            exp.Tic();
+
+            StartAction(this, new EventArgs());
         }
 
-        public bool PlayStart()
+        public void End()
         {
-            return false;
+            exp.Toc();
         }
 
     }

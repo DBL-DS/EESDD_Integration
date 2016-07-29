@@ -9,28 +9,35 @@ namespace EESDD.Class.Model
 {
     class Exp
     {
+        public Exp(string scene, string mode)
+        {
+            this.scene = scene;
+            this.mode = mode;
+            this.evaluated = false;
+        }
+
         public Exp()
         {
             evaluated = false;
         }
 
-        private DateTime start;                 // 体验开始时间
-        private DateTime end;                   // 体验结束时间
+        private DateTime startTime;                 // 体验开始时间
+        private DateTime endTime;                   // 体验结束时间
         private string scene;                   // 体验的场景名
         private string mode;                    // 体验的模式名
         private List<AreaExp> areas;            // 按区域划分的体验集合
         private bool evaluated;
 
-        public DateTime Start
+        public DateTime StartTime
         {
-            get { return start; }
-            set { start = value; }
+            get { return startTime; }
+            set { startTime = value; }
         }
 
-        public DateTime End
+        public DateTime EndTime
         {
-            get { return end; }
-            set { end = value; }
+            get { return endTime; }
+            set { endTime = value; }
         }
 
         public string Scene
@@ -87,14 +94,14 @@ namespace EESDD.Class.Model
             }
         }
 
-        public void Start()
+        public void Tic()
         {
-            start = DateTime.Now;
+            startTime = DateTime.Now;
         }
 
-        public void End()
+        public void Toc()
         {
-            end = DateTime.Now;
+            endTime = DateTime.Now;
         }
 
     }

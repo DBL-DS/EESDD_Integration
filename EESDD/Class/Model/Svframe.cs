@@ -2,6 +2,40 @@
 {
     class Svframe
     {
+        public Svframe(
+            float time,  
+            float x,
+            float y,    
+            float speed,
+            float acc,
+            float stwAngle,
+            float offset,
+            float brake,
+            float distance,
+            float braking,
+            float reacting,
+            float area,
+            float farToFront,
+            float lane,
+            float trLight)
+        {
+            this.time= time;
+            this.x= x;
+            this.y= y;
+            this.speed= speed;
+            this.acc= acc;
+            this.stwAngle= stwAngle;
+            this.offset= offset;
+            this.brake= brake;
+            this.distance= distance;
+            this.braking= braking;
+            this.reacting= reacting;
+            this.area= area;
+            this.farToFront= farToFront;
+            this.lane= lane;
+            this.trLight= trLight;   
+        }
+
         private float time;         // 行驶时间
         private float x;            // 车的坐标x
         private float y;            // 车的坐标y

@@ -155,5 +155,31 @@ namespace EESDD.Class.Control
         {
             return FileManger.SaveExps(exps, expFileName);
         }
+
+        private bool Evaluate(Exp exp)
+        {
+            if (exp.Evaluated)
+                return false;
+                
+            evaluator.Evaluate(exp);
+            return true;
+        }
+
+        private void ReEvaluate(Exp exp)
+        {
+            evaluator.Evaluate(exp);
+        }
+
+        private bool ReEvaluateAll()
+        {
+            if (exps == null || exps.Count == 0)
+                return false;
+
+            foreach (var exp in exps)
+            {
+                evaluator.Evaluate(exp);
+            }
+            return true;
+        }
     }
 }

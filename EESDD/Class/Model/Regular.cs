@@ -1,4 +1,5 @@
-﻿using EESDD.Module.Encryption;
+﻿using EESDD.Class.Control;
+using EESDD.Module.Encryption;
 using System;
 using System.Collections.Generic;
 using System.Linq;
