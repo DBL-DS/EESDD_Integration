@@ -11,16 +11,19 @@ namespace EESDD.Class.Model
         public Scene()
         {
             this.enable = true;
+            this.vissimModule = false;
         }
 
         public Scene(string name, string title,
-            string description, string picture, List<string> areaTitle)
+            string description, string picture,
+            List<string> areaTitle, bool vissimModule)
         {
             this.name = name;
             this.title = title;
             this.description = description;
             this.picture = picture;
             this.areaTitle = areaTitle;
+            this.vissimModule = vissimModule;
             this.enable = true;
         }
 
@@ -29,6 +32,7 @@ namespace EESDD.Class.Model
         private string description;
         private string picture;
         private List<string> areaTitle;
+        private bool vissimModule;
         private bool enable;
 
         public string Name
@@ -59,6 +63,12 @@ namespace EESDD.Class.Model
         {
             get { return areaTitle; }
             set { areaTitle = value; }
+        }
+
+        public bool VissimModule
+        {
+            get { return vissimModule; }
+            set { vissimModule = value; }
         }
 
         public bool Enable

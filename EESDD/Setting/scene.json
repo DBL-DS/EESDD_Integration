@@ -7,7 +7,9 @@
         "areaTitle": [
             "跟驰前车",
             "应对紧急刹车"
-        ]
+        ],
+        "vissimModule": true,
+        "enable": true
     },
     {
         "name": "normal_change",
@@ -17,7 +19,9 @@
         "areaTitle": [
             "自由驾驶",
             "应对并线"
-        ]
+        ],
+        "vissimModule": false,
+        "enable": true
     },
     {
         "name": "sudden_change",
@@ -27,7 +31,9 @@
         "areaTitle": [
             "自由驾驶",
             "应对突然并线"
-        ]
+        ],
+        "vissimModule": false,
+        "enable": true
     },
     {
         "name": "intersection",
@@ -36,6 +42,8 @@
         "picture": "intersection.jpg",
         "areaTitle": [
             "路口驾驶"
-        ]
+        ],
+        "vissimModule": true,
+        "enable": true
     }
 ]

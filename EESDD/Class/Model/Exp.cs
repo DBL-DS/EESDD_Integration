@@ -11,7 +11,7 @@ namespace EESDD.Class.Model
     {
         public Exp()
         {
-
+            evaluated = false;
         }
 
         private DateTime start;                 // 体验开始时间
@@ -19,6 +19,7 @@ namespace EESDD.Class.Model
         private string scene;                   // 体验的场景名
         private string mode;                    // 体验的模式名
         private List<AreaExp> areas;            // 按区域划分的体验集合
+        private bool evaluated;
 
         public DateTime Start
         {
@@ -48,6 +49,12 @@ namespace EESDD.Class.Model
         {
             get { return areas; }
             set { areas = value; }
+        }
+
+        public bool Evaluated
+        {
+            get { return evaluated; }
+            set { evaluated = value; }
         }
 
         [JsonIgnore]

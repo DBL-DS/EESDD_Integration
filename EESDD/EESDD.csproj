@@ -81,6 +81,7 @@
     <Compile Include="Class\Control\GameManager.cs" />
     <Compile Include="Class\Control\LogManager.cs" />
     <Compile Include="Class\Control\MessageManger.cs" />
+    <Compile Include="Class\Control\Player.cs" />
     <Compile Include="Class\Control\ThreadManager.cs" />
     <Compile Include="Class\Control\UserDBManger.cs" />
     <Compile Include="Class\Control\UserManager.cs" />
@@ -91,7 +92,6 @@
     <Compile Include="Class\Model\EvaPara.cs" />
     <Compile Include="Class\Model\Exp.cs" />
     <Compile Include="Class\Model\Game.cs" />
-    <Compile Include="Class\Model\ExpCluster.cs" />
     <Compile Include="Class\Model\GameIndex.cs" />
     <Compile Include="Class\Model\Mode.cs" />
     <Compile Include="Class\Model\Reaction.cs" />

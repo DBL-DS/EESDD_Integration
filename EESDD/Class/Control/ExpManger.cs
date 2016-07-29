@@ -151,7 +151,7 @@ namespace EESDD.Class.Control
                 return RemoveExp(exps[exps.Count - 1]);
         }
 
-        public bool SaveExp(string expFileName)
+        public bool SaveExps(string expFileName)
         {
             return FileManger.SaveExps(exps, expFileName);
         }

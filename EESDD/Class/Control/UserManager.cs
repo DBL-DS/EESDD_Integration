@@ -55,7 +55,7 @@ namespace EESDD.Class.Control
             {
                 user = result.Item2;
                 if (group == UserGroup.REGULAR)
-                    expManger.Load(user.ExpFile);
+                    expManger.Load((user as Regular).ExpFile);
             }
 
             return result.Item1;

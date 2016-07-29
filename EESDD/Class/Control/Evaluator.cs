@@ -8,5 +8,6 @@ namespace EESDD.Class.Control
 {
     class Evaluator
     {
+
     }
 }
