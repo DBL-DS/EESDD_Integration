@@ -32,5 +32,10 @@ namespace EESDD.Class.Model
         {
             get { return end.Distance - start.Distance; }
         }
+
+        public void StartAct(Svframe frame)
+        {
+            this.start = frame;
+        }
     }
 }
