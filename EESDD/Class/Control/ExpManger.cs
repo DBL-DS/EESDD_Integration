@@ -99,8 +99,19 @@ namespace EESDD.Class.Control
             return true;          
         }
 
+        public bool Save(string expFileName)
+        {
+            if (exps == null)
+                return false;
+            
+            FileManger.SaveExps(exps, expFileName);
+
+            return true;
+        }
+
         public void AddExp(Exp exp)
         {
+            Evaluate(exp);
             exps.Add(exp);
             AddExpToDict(exp);
         }
@@ -156,30 +167,44 @@ namespace EESDD.Class.Control
             return FileManger.SaveExps(exps, expFileName);
         }
 
-        private bool Evaluate(Exp exp)
+        private Exp Evaluate(Exp exp)
         {
-            if (exp.Evaluated)
-                return false;
-                
-            evaluator.Evaluate(exp);
-            return true;
+            if (!exp.Evaluated)
+                evaluator.Evaluate(exp);
+
+            return exp;
         }
 
-        private void ReEvaluate(Exp exp)
-        {
-            evaluator.Evaluate(exp);
-        }
-
-        private bool ReEvaluateAll()
+        public void EvaluateAll()
         {
             if (exps == null || exps.Count == 0)
-                return false;
+                return ;
+
+            foreach (var exp in exps)
+            {
+                if (exp.Evaluated)
+                    continue;
+
+                evaluator.Evaluate(exp);
+            }          
+        }
+
+        private Exp ReEvaluate(Exp exp)
+        {
+            evaluator.Evaluate(exp);
+
+            return exp;
+        }
+
+        public void ReEvaluateAll()
+        {
+            if (exps == null || exps.Count == 0)
+                return ;
 
             foreach (var exp in exps)
             {
                 evaluator.Evaluate(exp);
             }
-            return true;
         }
     }
 }
