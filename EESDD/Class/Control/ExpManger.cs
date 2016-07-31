@@ -69,7 +69,7 @@ namespace EESDD.Class.Control
             if (exps == null || exps.Count == 0)
                 return null;
             else
-                return exps[exps.Count - 1];            
+                return exps[exps.Count - 1];
         }
 
         public List<Exp> GetExps(string scene, string mode)

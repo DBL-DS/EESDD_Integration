@@ -7,49 +7,46 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
+    public enum ThreadCluster
+    {
+        PlayerRefresh
+    }
     static class ThreadManager
     {
         static ThreadManager()
         {
-            threads = new Dictionary<string, Thread>();
+            threads = new Dictionary<ThreadCluster, Thread>();
         }
 
-        private static Dictionary<string, Thread> threads;
+        private static Dictionary<ThreadCluster, Thread> threads;
 
-        public static Thread CreateThread(string name, ThreadStart func)
+        public static Thread DefineThread(ThreadCluster name,
+            ThreadStart func)
         {
             Thread thread = new Thread(func);
-            thread.Name = name;
-            threads.Add(name, thread);
+            thread.Name = name.ToString();
+            threads[name] = thread;
 
             return thread;
         }
 
-        public static bool StartThread(string threadName)
+        public static bool StartThread(ThreadCluster name)
         {
-            if (!threads.ContainsKey(threadName))
+            if (!threads.ContainsKey(name))
                 return false;
 
-            return StartThread(threads[threadName]);
+            threads[name].Start();
+
+            return true; ;
         }
 
-        public static bool StartThread(Thread thread)
+        public static bool StartThread(ThreadCluster name, object para)
         {
-            thread.Start();
-            return true;
-        }
-
-        public static bool StartThread(string threadName, object para)
-        {
-            if (!threads.ContainsKey(threadName))
+            if (!threads.ContainsKey(name))
                 return false;
 
-            return StartThread(threads[threadName], para);
-        }
+            threads[name].Start(para);
 
-        public static bool StartThread(Thread thread, object para)
-        {
-            thread.Start(para);
             return true;
         }
     }
