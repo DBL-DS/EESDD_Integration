@@ -111,6 +111,7 @@
     </Compile>
     <Compile Include="Module\Encryption\Encryptor.cs" />
     <Compile Include="Module\RegExp\RegularExpression.cs" />
+    <Compile Include="Module\UDP\BytesConverter.cs" />
     <Compile Include="Module\UDP\UDP.cs" />
     <Compile Include="Module\UDP\UDPSetting.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
