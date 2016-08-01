@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,17 +12,17 @@ namespace EESDD.Module.UDP
     {
         public UDPSetting()
         {
-
+            setDefault();
         }
 
         private IPAddress serverIP;     // 服务器IP （备用）
         private int serverPort;         // 服务器监听端口 （备用） 
         private IPAddress ip;           // 本机IP
         private int port;               // 监听端口
-        private int timeOut;            // 接收消息超时时长，单位：毫秒
+        private int timeOut;            // 接收、发送消息超时时长，单位：毫秒
 
-        public delegate void Change();
-        public Change OnChanged;
+        public delegate void ClientChangeHandler(UDPSetting setting);
+        public ClientChangeHandler ClientChangeAction;
 
         public IPAddress ServerIP
         {
@@ -29,7 +30,6 @@ namespace EESDD.Module.UDP
             set 
             { 
                 serverIP = value;
-                OnChanged();
             }
         }
 
@@ -39,7 +39,6 @@ namespace EESDD.Module.UDP
             set 
             { 
                 serverPort = value;
-                OnChanged();
             }
         }
 
@@ -49,7 +48,7 @@ namespace EESDD.Module.UDP
             set 
             {
                 ip = value;
-                OnChanged();
+                ClientChange();
             }
         }
 
@@ -59,7 +58,7 @@ namespace EESDD.Module.UDP
             set 
             { 
                 port = value;
-                OnChanged();
+                ClientChange();
             }
         }
 
@@ -67,6 +66,32 @@ namespace EESDD.Module.UDP
         {
             get { return timeOut; }
             set { timeOut = value;}
+        }
+
+        private void setDefault()
+        {
+            serverIP = IPAddress.Any;
+            serverPort = 9999;
+            ip = GetLocalIP();
+            port = 9999;
+            timeOut = 3000;
+        }
+
+        private IPAddress GetLocalIP()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                    return ip;
+            }
+            throw new Exception("Local IP Address Not Found!");
+        }
+
+        private void ClientChange()
+        {
+            if (ClientChangeAction != null)
+                ClientChangeAction(this);
         }
     }
 }
