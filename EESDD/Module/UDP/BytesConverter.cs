@@ -23,5 +23,11 @@ namespace EESDD.Module.UDP
         {
             return BitConverter.ToString(bytes);
         }
+
+        public static T ConvertWith<T>(byte[] bytes,
+            Func<byte[], T> convertFunc)
+        {
+            return convertFunc(bytes);
+        }
     }
 }

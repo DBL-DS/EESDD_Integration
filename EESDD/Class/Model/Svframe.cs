@@ -2,6 +2,11 @@
 {
     class Svframe
     {
+        public Svframe()
+        {
+
+        }
+
         public Svframe(
             float time,  
             float x,

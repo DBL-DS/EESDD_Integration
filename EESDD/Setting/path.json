@@ -7,13 +7,14 @@
         "report": "/Setting/report.json",
         "style": "/Setting/style.json",
         "text": "/Setting/text.json",
-        "udp": "/Setting/udp.json"
+        "udp": "/Setting/udp.json",
+        "offset": "/Setting/offset.json"
     },
     "database": {
         "db": "/Info/database/user.db",
         "create_sql": "/Info/database/create_user_table.sql"
     },
-    "exp": { 
+    "exp": {
         "path": "/Info/exp/"
     }
 }

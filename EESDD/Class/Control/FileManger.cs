@@ -134,6 +134,44 @@ namespace EESDD.Class.Control
             return exps;
         }
 
+        public static Dictionary<string, string> GetUDPSetting()
+        {
+            Dictionary<string, string> udp;
+
+            string udpPath = GetPath("setting", "udp");
+            try
+            {
+                string jsonStr = File.ReadAllText(udpPath, Encoding.UTF8);
+                udp = JsonConvert.DeserializeObject
+                    <Dictionary<string, string>>(jsonStr);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return udp;
+        }
+
+        public static Dictionary<string, int> GetOffset()
+        {
+            Dictionary<string, int> offset;
+
+            string udpPath = GetPath("setting", "offset");
+            try
+            {
+                string jsonStr = File.ReadAllText(udpPath, Encoding.UTF8);
+                offset = JsonConvert.DeserializeObject
+                    <Dictionary<string, int>>(jsonStr);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return offset;
+        }
+
         public static bool SaveScenes(List<Scene> scenes)
         {
             string jsonStr = JsonConvert.SerializeObject(scenes);
@@ -164,6 +202,14 @@ namespace EESDD.Class.Control
             string expPath = GetPath("exp", "path") + expName;
 
             return WriteFile(expPath, jsonStr);
+        }
+
+        public static bool SaveUDPSetting(Dictionary<string, string> udp)
+        {
+            string jsonStr = JsonConvert.SerializeObject(udp);
+            string udpPath = GetPath("setting", "udp");
+
+            return WriteFile(udpPath, jsonStr);            
         }
 
         private static bool WriteFile(string path, string str)

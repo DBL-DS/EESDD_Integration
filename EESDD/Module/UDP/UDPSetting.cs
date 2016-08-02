@@ -20,6 +20,7 @@ namespace EESDD.Module.UDP
         private IPAddress ip;           // 本机IP
         private int port;               // 监听端口
         private int timeOut;            // 接收、发送消息超时时长，单位：毫秒
+        private int bufferSize;         // 接受的字节数，默认为0表示所有
 
         public delegate void ClientChangeHandler(UDPSetting setting);
         public ClientChangeHandler ClientChangeAction;
@@ -68,9 +69,15 @@ namespace EESDD.Module.UDP
             set { timeOut = value;}
         }
 
+        public int BufferSize
+        {
+            get { return bufferSize; }
+            set { bufferSize = value; }
+        }
+
         private void setDefault()
         {
-            serverIP = IPAddress.Any;
+            serverIP = IPAddress.Broadcast;
             serverPort = 9999;
             ip = GetLocalIP();
             port = 9999;

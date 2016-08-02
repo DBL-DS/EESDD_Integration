@@ -7,8 +7,25 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
-    class SettingManger
+    static class SettingManger
     {
-        private UDPSetting udp;
+        static SettingManger()
+        {
+            LoadUDP();
+        }
+
+        public static UDPSetting UDP;
+        public static Dictionary<string, int> UDPOffset;
+
+        private static void LoadUDP()
+        {
+            var udpSetting = FileManger.GetUDPSetting();
+            UDP = new UDPSetting();
+            UDP.Port = Convert.ToInt32(udpSetting["Port"]);
+            UDP.BufferSize = 
+                Convert.ToInt32(udpSetting["BufferSize"]);
+
+            UDPOffset = FileManger.GetOffset();
+        }
     }
 }

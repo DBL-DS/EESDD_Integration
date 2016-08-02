@@ -1,0 +1,17 @@
+﻿{ 
+    "Time": 31,
+    "X": 32,
+    "Y": 33,
+    "Speed": 34,
+    "Acc": 35,
+    "StwAngle": 36,
+    "Offset": 37,
+    "Brake": 38,
+    "Distance": 39,
+    "Braking": 40,
+    "Reacting": 41,
+    "Area": 42,
+    "FarToFront": 43,
+    "Lane": 44,
+    "TrLight": 45
+}

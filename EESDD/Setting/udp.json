@@ -1,8 +1,4 @@
 ﻿{
-    "port": 9999,
-    "bufferSize": 184,
-    "offset": {
-        "Time": 124,
-        "X": 128
-    }
+    "port": "9999",
+    "bufferSize": "184"
 }

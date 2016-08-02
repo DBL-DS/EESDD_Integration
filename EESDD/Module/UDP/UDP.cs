@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace EESDD.Module.UDP
 {
+
+    public delegate void ReceiveTimeOutAction();
+    public delegate void SendTimeOutAction();
+
     class UDP
     {
         public UDP(UDPSetting setting)
@@ -23,11 +27,8 @@ namespace EESDD.Module.UDP
         private IPEndPoint clientEndPoint;  // 本机一律视为客户端
         private IPEndPoint serverEndPoint;  // 接收目标或发送目标一律视为服务端
 
-        public delegate void ReceiveTimeOutHandler();
-        public delegate void SendTimeOutHandler();
-
-        public ReceiveTimeOutHandler ReceiveTimeOutAction;
-        public SendTimeOutHandler SendTimeOutAction;
+        public ReceiveTimeOutAction ReceiveTimeOutHandler;
+        public SendTimeOutAction SendTimeOutHandler;
 
         private void InitUDP(UDPSetting setting)
         {
@@ -45,6 +46,8 @@ namespace EESDD.Module.UDP
             client.Client.ReceiveTimeout = setting.TimeOut;
             client.Client.SendTimeout = setting.TimeOut;
             clientEndPoint = new IPEndPoint(setting.IP, setting.Port);
+            if (setting.BufferSize > 0)
+                client.Client.ReceiveBufferSize = setting.BufferSize;
         }
 
         private void InitServer(UDPSetting setting)
@@ -66,8 +69,8 @@ namespace EESDD.Module.UDP
             }
             catch
             {
-                if (SendTimeOutAction != null)
-                    SendTimeOutAction();
+                if (SendTimeOutHandler != null)
+                    SendTimeOutHandler();
                 return false;
             }
         }
@@ -81,8 +84,8 @@ namespace EESDD.Module.UDP
             }
             catch
             {
-                if (ReceiveTimeOutAction != null)
-                    ReceiveTimeOutAction();
+                if (ReceiveTimeOutHandler != null)
+                    ReceiveTimeOutHandler();
             }
 
             setting.ServerIP = serverEndPoint.Address;
@@ -91,7 +94,7 @@ namespace EESDD.Module.UDP
             return message;
         }
 
-        public void Shut()
+        public void Close()
         {
             client.Close();
         }
