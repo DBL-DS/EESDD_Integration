@@ -34,6 +34,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
@@ -86,6 +90,7 @@
     <Compile Include="Class\Control\LogManager.cs" />
     <Compile Include="Class\Control\MessageManger.cs" />
     <Compile Include="Class\Control\Player.cs" />
+    <Compile Include="Class\Control\Recoder.cs" />
     <Compile Include="Class\Control\SettingManger.cs" />
     <Compile Include="Class\Control\ThreadManager.cs" />
     <Compile Include="Class\Control\UserDBManger.cs" />
@@ -144,6 +149,7 @@
     <None Include="Setting\database.json" />
     <None Include="Setting\game.json" />
     <None Include="Setting\mode.json" />
+    <None Include="Setting\offset.json" />
     <None Include="Setting\path.json" />
     <None Include="Setting\regexp.json" />
     <None Include="Setting\report.json" />

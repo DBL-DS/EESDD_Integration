@@ -14,6 +14,7 @@ namespace EESDD.Class.Model
 
         }
 
+        private string areaTitle;
         private List<Svframe> svframes;
         private EvaPara mean;
         private EvaPara var;
@@ -21,6 +22,12 @@ namespace EESDD.Class.Model
         private List<Reaction> reacts;
         private VissimPara vissim;
         private float score;
+
+        public string AreaTitle
+        {
+            get { return areaTitle; }
+            set { areaTitle = value; }
+        }
 
         public List<Svframe> Svframes
         {
@@ -110,6 +117,30 @@ namespace EESDD.Class.Model
         {
             get { return score; }
             set { score = value; }
+        }
+
+        public void AddFrame(Svframe frame)
+        {
+            if (svframes == null)
+                svframes = new List<Svframe>();
+
+            svframes.Add(frame);
+        }
+
+        public void AddBrakeAct(BrakeAct brake)
+        {
+            if (brakes == null)
+                brakes = new List<BrakeAct>();
+
+            brakes.Add(brake);
+        }
+
+        public void AddReaction(Reaction react)
+        {
+            if (reacts == null)
+                reacts = new List<Reaction>();
+
+            reacts.Add(react);
         }
     }
 }

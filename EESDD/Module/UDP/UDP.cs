@@ -86,6 +86,8 @@ namespace EESDD.Module.UDP
             {
                 if (ReceiveTimeOutHandler != null)
                     ReceiveTimeOutHandler();
+
+                return null;
             }
 
             setting.ServerIP = serverEndPoint.Address;

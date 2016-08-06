@@ -15,7 +15,10 @@ namespace EESDD.Class.Model
 
         public float ReactionTimeNow(float time)
         {
-            return time - Start.Time;
+            if (End == null)
+                return time - Start.Time;
+            else
+                return Time;
         }
 
         public float EndAct(Svframe frame)

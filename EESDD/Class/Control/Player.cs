@@ -15,45 +15,40 @@ namespace EESDD.Class.Control
         {
             refreshThread = ThreadManager.DefineThread(
                 ThreadCluster.PlayerRefresh, Refresh);
+
+            recorder = new Recorder();
         }
 
-        private Scene scene;
-        private Mode mode;
-        private Exp exp;
+        Recorder recorder;
 
         private bool _refreshEnable;
 
         public delegate void StartAction();
-        public delegate void RefreshAction(Svframe f);
-        public delegate void EndAction(Exp e);
+        public delegate void RefreshAction(Recorder recorder);
+        public delegate void StopAction(Exp e);
 
         public StartAction StartHandler;
         public RefreshAction RefreshHandler;
-        public EndAction EndHandler;
+        public StopAction StopHandler;
         public ReceiveTimeOutAction ReceiveTimeOutHandler;
 
         private Thread refreshThread;
 
         public void Start(Scene scene, Mode mode)
         {
-            this.scene = scene;
-            this.mode = mode;
-
-            exp = new Exp(scene.Name, mode.Name);
-            exp.Tic();
-
-            StartHandler();
-
+            recorder.Start(scene, mode);
             StartRefreshThread();
         }
 
         private void StartRefreshThread()
         {
+            StartHandler();
+
             _refreshEnable = true;
             ThreadManager.StartThread(ThreadCluster.PlayerRefresh);
         }
 
-        private void ShutRefreshThread()
+        private void StopRefreshThread()
         {
             _refreshEnable = false;
         }
@@ -67,11 +62,20 @@ namespace EESDD.Class.Control
             while (_refreshEnable)
             {
                 byte[] bytes = udp.Receive();
-                Svframe frame = 
-                    BytesConverter.ConvertWith<Svframe>(bytes,
-                    this.BytesToSvframe);
 
-                RefreshHandler(frame);
+                if (bytes != null)
+                {
+                    Svframe frame =
+                        BytesConverter.ConvertWith<Svframe>(bytes,
+                        this.BytesToSvframe);
+
+                    recorder.Record(frame);
+
+                    if (RefreshHandler != null)
+                        RefreshHandler(recorder);
+                }
+                else
+                    StopRefreshThread();
             }
 
             udp.Close();
@@ -79,9 +83,9 @@ namespace EESDD.Class.Control
 
         public void End()
         {
-            ShutRefreshThread();
-            exp.Toc();
-            EndHandler(this.exp);
+            StopRefreshThread();
+            Exp exp = recorder.Stop();
+            StopHandler(exp);
         }
 
         private Svframe BytesToSvframe(byte[] bytes)

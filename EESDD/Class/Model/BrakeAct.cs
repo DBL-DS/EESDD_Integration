@@ -14,7 +14,10 @@ namespace EESDD.Class.Model
         }
         public float BrakeDistanceNow(float distance)
         {
-            return distance - Start.Distance;
+            if (End == null)
+                return distance - Start.Distance;
+            else
+                return Distance;
         }
 
         public float EndAct(Svframe frame)
