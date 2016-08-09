@@ -1,0 +1,10 @@
+﻿<Window x:Class="EESDD.View.Pages.Container"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="678" Width="1038"
+        MinHeight="678" MinWidth="1038"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Icon="/View/Image/car_500.png">
+    <Grid/>
+</Window>

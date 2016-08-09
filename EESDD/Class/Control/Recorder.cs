@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
-    private enum AreaState
-    {
-        Outer,
-        In,
-        Inner,
-        Out
-    }
-
     class Recorder
     {
+        enum AreaState
+        {
+            Outer,
+            In,
+            Inner,
+            Out
+        }
+
         private Scene scene;
         private Mode mode;
         private Exp exp;

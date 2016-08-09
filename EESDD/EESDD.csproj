@@ -83,6 +83,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Class\Control\Evaluator.cs" />
     <Compile Include="Class\Control\ExpManger.cs" />
     <Compile Include="Class\Control\FileManger.cs" />
@@ -90,7 +93,7 @@
     <Compile Include="Class\Control\LogManager.cs" />
     <Compile Include="Class\Control\MessageManger.cs" />
     <Compile Include="Class\Control\Player.cs" />
-    <Compile Include="Class\Control\Recoder.cs" />
+    <Compile Include="Class\Control\Recorder.cs" />
     <Compile Include="Class\Control\SettingManger.cs" />
     <Compile Include="Class\Control\ThreadManager.cs" />
     <Compile Include="Class\Control\UserDBManger.cs" />
@@ -124,7 +127,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Startup.cs" />
+    <Compile Include="View\PageManger.cs" />
+    <Compile Include="View\Pages\Container.xaml.cs">
+      <DependentUpon>Container.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -169,19 +175,34 @@
     <Folder Include="Module\Simulator\" />
     <Folder Include="Module\Vissim\" />
     <Folder Include="View\Font\" />
-    <Folder Include="View\Image\" />
-    <Folder Include="View\Page\" />
-    <Folder Include="View\Style\" />
     <Folder Include="View\Widget\" />
   </ItemGroup>
   <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
     <Page Include="Lab\TestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Container.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Style\Base.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Style\Main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
+    <Resource Include="View\Image\car_500.png" />
+    <Resource Include="View\Image\car_origin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

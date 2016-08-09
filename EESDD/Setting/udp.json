@@ -1,4 +1,4 @@
 ﻿{
-    "port": "9999",
-    "bufferSize": "184"
+    "Port": "9999",
+    "BufferSize": "184"
 }
