@@ -131,6 +131,9 @@
     <Compile Include="View\Pages\Container.xaml.cs">
       <DependentUpon>Container.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Widget\ImageButton.xaml.cs">
+      <DependentUpon>ImageButton.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -175,7 +178,6 @@
     <Folder Include="Module\Simulator\" />
     <Folder Include="Module\Vissim\" />
     <Folder Include="View\Font\" />
-    <Folder Include="View\Widget\" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -198,11 +200,29 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Widget\ImageButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
+    <Resource Include="View\Image\close_50_0_cccccc.png" />
+    <Resource Include="View\Image\close_50_0_ffffff.png" />
+    <Resource Include="View\Image\compress_50_0_cccccc.png" />
+    <Resource Include="View\Image\compress_50_0_ffffff.png" />
+    <Resource Include="View\Image\expand_50_0_cccccc.png" />
+    <Resource Include="View\Image\expand_50_0_ffffff.png" />
+    <Resource Include="View\Image\gear_50_0_cccccc.png" />
+    <Resource Include="View\Image\gear_50_0_ffffff.png" />
+    <Resource Include="View\Image\minus_50_0_cccccc.png" />
+    <Resource Include="View\Image\minus_50_0_ffffff.png" />
+    <Resource Include="View\Image\unlink_50_0_cccccc.png" />
+    <Resource Include="View\Image\unlink_50_0_ffffff.png" />
+    <Resource Include="View\Image\car_100.png" />
+    <Resource Include="View\Image\car_1000.png" />
+    <Resource Include="View\Image\car_50.png" />
     <Resource Include="View\Image\car_500.png" />
-    <Resource Include="View\Image\car_origin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

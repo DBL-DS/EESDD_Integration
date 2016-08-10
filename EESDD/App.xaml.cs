@@ -32,7 +32,8 @@ namespace WpfApplication2
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            SplashScreen splash = new SplashScreen("/View/Image/car_500.png");
+            SplashScreen splash = 
+                new SplashScreen("/View/Image/car_500.png");
             splash.Show(false, true);
 
             Task();
@@ -60,7 +61,9 @@ namespace WpfApplication2
         private void Task()
         {
             LoadMainWindow();
+            FileManger.Hit();
             SettingManger.Hit();
+            ThreadManager.Hit();
         }
     }
 }

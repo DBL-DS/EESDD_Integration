@@ -49,5 +49,7 @@ namespace EESDD.Class.Control
 
             return true;
         }
+
+        public static void Hit() { }
     }
 }

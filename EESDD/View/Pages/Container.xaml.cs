@@ -19,6 +19,7 @@ namespace EESDD.View.Pages
     /// </summary>
     public partial class Container : Window
     {
+        public Color a = Color.FromArgb(0, 0, 0, 0);
         public Container()
         {
             InitializeComponent();

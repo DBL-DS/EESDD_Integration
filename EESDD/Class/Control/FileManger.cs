@@ -64,6 +64,7 @@ namespace EESDD.Class.Control
         }
         # endregion
 
+        # region GET
         public static List<Scene> GetScenes()
         {
             string path = GetPath("setting", "scene");
@@ -131,6 +132,7 @@ namespace EESDD.Class.Control
 
             return result;
         }
+        # endregion
 
         #region Save
         public static bool SaveScenes(List<Scene> scenes)
@@ -187,5 +189,7 @@ namespace EESDD.Class.Control
             return true;
         }
         # endregion
+
+        public static void Hit() { }
     }
 }
