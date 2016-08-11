@@ -7,17 +7,23 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Icon="/View/Image/car_100.png"
-        Background="{x:Null}"
+        Background="Transparent"
         Margin="0"
         Padding="0"
-        AllowsTransparency="True"
-        ResizeMode="CanResizeWithGrip"
-        StateChanged="Window_StateChanged">
+        StateChanged="Window_StateChanged"
+        ResizeMode="CanResize"
+        SourceInitialized="Window_SourceInitialized">
+    <!--> Make top white border in ResizeMode="CanResize" disappear.  <-->
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0"
+                      ResizeBorderThickness="5" />
+    </WindowChrome.WindowChrome>
+    
     <Window.Effect>
-        <DropShadowEffect ShadowDepth="5"
-                          BlurRadius="5"
-                          Opacity="0.25"
-                          Direction="-90"></DropShadowEffect>
+        <DropShadowEffect ShadowDepth="0"
+                          BlurRadius="10"
+                          Opacity="0.5">
+        </DropShadowEffect>
     </Window.Effect>
     <Window.Resources>
         <ResourceDictionary>
@@ -34,10 +40,10 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Panel.ZIndex="100"
-              Background="Black" 
+        <Grid Background="Black" 
               x:Name="TitleBar"
-              MouseDown="TitleBar_MouseDown">
+              MouseDown="TitleBar_MouseDown"
+              >
             <Grid.Effect>
                 <DropShadowEffect ShadowDepth="5" 
                                   BlurRadius="5" 
@@ -124,10 +130,6 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid VerticalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="485*"/>
-                    <ColumnDefinition Width="307*"/>
-                </Grid.ColumnDefinitions>
                 <TextBlock Margin="20,0,0,-1"
                            Style="{StaticResource PropertyBarText}" Grid.ColumnSpan="2"
                     >正在打开游戏...</TextBlock>

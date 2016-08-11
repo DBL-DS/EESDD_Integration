@@ -14,6 +14,7 @@
         <Style x:Key="ButtonText" TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="#ccc"></Setter>
             <Setter Property="Background" Value="#000" />
+            <Setter Property="FontSize" Value="12" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Foreground" Value="#fff"></Setter>
@@ -89,13 +90,6 @@
 	                Name="border1" 
                     Background="#000"
                     Padding="1">
-                <Border.Effect>
-                    <DropShadowEffect ShadowDepth="5" 
-                                  BlurRadius="5" 
-                                  Opacity="0.25">
-
-                    </DropShadowEffect>
-                </Border.Effect>
                 <TextBlock Text="是 的"  
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center"
@@ -110,13 +104,6 @@
                     Width="Auto" 
                     Background="#000"
                     Padding="1">
-                <Border.Effect>
-                    <DropShadowEffect ShadowDepth="5" 
-                                  BlurRadius="5" 
-                                  Opacity="0.25">
-
-                    </DropShadowEffect>
-                </Border.Effect>
                 <TextBlock Text="不 是"
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center"
