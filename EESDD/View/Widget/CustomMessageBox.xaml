@@ -1,0 +1,128 @@
+﻿<Window x:Class="EESDD.View.Widget.CustomMessageBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:widget="clr-namespace:EESDD.View.Widget"
+	    Title="UMessageBox" 
+        Height="150" Width="400" 
+        WindowStyle="None"   
+        Background="{x:Null}"  
+	    ResizeMode="NoResize"  
+        x:Name="main"
+	    AllowsTransparency="True" 
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="ButtonText" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="#ccc"></Setter>
+            <Setter Property="Background" Value="#000" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#fff"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded" >
+            <BeginStoryboard>
+                <Storyboard Name="sbOpShow">
+                    <DoubleAnimation
+	                    Storyboard.TargetName="main" 
+	                    Storyboard.TargetProperty="Opacity" 
+	                    From="0" To="1" Duration="0:0:0.15"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Border Background="#342947">
+        <Canvas>
+            <Border Canvas.Top="0" 
+                    Height="35" 
+                    Width="{Binding ElementName=main, 
+                        Path=Width,UpdateSourceTrigger=PropertyChanged}" 
+	                BorderThickness="0"
+                    Background="#000"
+                    MouseDown="TitleBar_MouseDown">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="5" 
+                                  BlurRadius="5" 
+                                  Opacity="0.25" 
+                                  Direction="-90">
+
+                    </DropShadowEffect>
+                </Border.Effect>
+                <Grid>
+                    <Image Source="/EESDD;component/View/Image/chatbubble-working_50_0_cccccc.png"
+                           Width="12" Height="12"
+                           HorizontalAlignment="Left"
+                           Margin="15, 0">
+                    </Image>
+                    <TextBlock x:Name="lblTitle" 
+                               Text="消息提示" 
+                               HorizontalAlignment="Left" 
+	                           Foreground="#ccc" 
+                               FontSize="14"
+	                           VerticalAlignment="Center" 
+                               Margin="40, 0"/>
+                    <widget:ImageButton NormalImage="/View/Image/close_50_0_cccccc.png"
+                                        HoverImage="/View/Image/close_50_0_ffffff.png"
+                                        Width="10" Height="10"
+                                        HorizontalAlignment="Right"
+                                        MouseDown="CloseBtn_MouseDown"
+                                        Margin="20, 0"
+                                        Click="Cancel_Click">
+                    </widget:ImageButton>
+                </Grid>
+            </Border>
+            <TextBlock x:Name="lblMsg"
+                       FontSize="14" 
+                       TextWrapping="Wrap" 
+                       Text="确定要玩玩是吗？"
+                       HorizontalAlignment="Center" 
+                       Canvas.Left="40"
+                       Canvas.Top="60"
+                       Foreground="#ccc"/>
+            <Border CornerRadius="3"
+	                Canvas.Bottom="15" 
+                    Canvas.Right="100" 
+                    MouseLeftButtonUp="True_Click"
+	                Name="border1" 
+                    Background="#000"
+                    Padding="1">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="5" 
+                                  BlurRadius="5" 
+                                  Opacity="0.25">
+
+                    </DropShadowEffect>
+                </Border.Effect>
+                <TextBlock Text="是 的"  
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center"
+                           Padding="14, 4"
+                           Style="{StaticResource ButtonText}"/>
+            </Border>
+            <Border CornerRadius="3"
+	                Canvas.Bottom="15" 
+                    Canvas.Right="20" 
+                    MouseLeftButtonUp="False_Click"
+	                Name="border2" 
+                    Width="Auto" 
+                    Background="#000"
+                    Padding="1">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="5" 
+                                  BlurRadius="5" 
+                                  Opacity="0.25">
+
+                    </DropShadowEffect>
+                </Border.Effect>
+                <TextBlock Text="不 是"
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center"
+                           Padding="14, 4"
+                           Style="{StaticResource ButtonText}"/>
+            </Border>
+        </Canvas>
+    </Border>
+</Window>

@@ -11,7 +11,8 @@
         Margin="0"
         Padding="0"
         AllowsTransparency="True"
-        ResizeMode="CanResizeWithGrip">
+        ResizeMode="CanResizeWithGrip"
+        StateChanged="Window_StateChanged">
     <Window.Effect>
         <DropShadowEffect ShadowDepth="5"
                           BlurRadius="5"
@@ -35,13 +36,14 @@
         </Grid.RowDefinitions>
         <Grid Panel.ZIndex="100"
               Background="Black" 
-              Name="TitleBar">
+              x:Name="TitleBar"
+              MouseDown="TitleBar_MouseDown">
             <Grid.Effect>
                 <DropShadowEffect ShadowDepth="5" 
                                   BlurRadius="5" 
                                   Opacity="0.25" 
                                   Direction="-90">
-                    
+
                 </DropShadowEffect>
             </Grid.Effect>
             <Grid.ColumnDefinitions>
@@ -56,7 +58,7 @@
                     Width="50"
                     Height="50"
                     Margin="20, 0, 10, 0">
-                    
+
                 </Image>
                 <TextBlock Text="EESDD" 
                            VerticalAlignment="Center"
@@ -83,19 +85,32 @@
                     NormalImage="/View/Image/minus_50_0_cccccc.png"
                     HoverImage="/View/Image/minus_50_0_ffffff.png"
                     Width="14" Height="14"
-                    Margin="0, 0, 20, 0">
+                    Margin="0, 0, 20, 0"
+                    Click="Minimize_Click">
+                </widget:ImageButton>
+                <widget:ImageButton 
+                    Visibility="Collapsed"
+                    NormalImage="/View/Image/compress_50_0_cccccc.png"
+                    HoverImage="/View/Image/compress_50_0_ffffff.png"
+                    Width="14" Height="14"
+                    Margin="0, 0, 20, 0"
+                    x:Name="Compress_Button"
+                    Click="Compress_Click">
                 </widget:ImageButton>
                 <widget:ImageButton 
                     NormalImage="/View/Image/expand_50_0_cccccc.png"
                     HoverImage="/View/Image/expand_50_0_ffffff.png"
                     Width="14" Height="14"
-                    Margin="0, 0, 20, 0">
+                    Margin="0, 0, 20, 0"
+                    x:Name="ExpandButton"
+                    Click="Expand_Click">
                 </widget:ImageButton>
                 <widget:ImageButton 
                     NormalImage="/View/Image/close_50_0_cccccc.png"
                     HoverImage="/View/Image/close_50_0_ffffff.png"
                     Width="14" Height="14"
-                    Margin="0, 0, 20, 0">
+                    Margin="0, 0, 20, 0"
+                    Click="Close_Click">
                 </widget:ImageButton>
             </StackPanel>
         </Grid>
@@ -103,22 +118,71 @@
                x:Name="PageFrame"
                NavigationUIVisibility="Hidden">
         </Frame>
-        <Grid Grid.Row="2" Background="#333">
+        <Grid Grid.Row="2" Background="#222">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid VerticalAlignment="Center">
-                <TextBlock Margin="20, 0, 0, 0"
-                           Style="{StaticResource PropertyBarText}"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="485*"/>
+                    <ColumnDefinition Width="307*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="20,0,0,-1"
+                           Style="{StaticResource PropertyBarText}" Grid.ColumnSpan="2"
                     >正在打开游戏...</TextBlock>
             </Grid>
-            <StackPanel Orientation="Horizontal"
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal"
                         VerticalAlignment="Center">
-                <Border>
-                    <TextBlock Style="{StaticResource PropertyBarText}"
-                               ></TextBlock>
-                </Border>
+                <Grid>
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 20, 0">
+                        <Line Stroke="#555" StrokeThickness="1"
+                              X1="0" X2="0" Y1="5" Y2="25"
+                              Height="30">
+                        </Line>
+                        <Image Source="/EESDD;component/View/Image/unlink_50_0_aaaaaa.png"
+                               Width="10" Height="10"
+                               Margin="10">
+                        </Image>
+                        <TextBlock Style="{StaticResource PropertyBarText}">
+                            连接断开</TextBlock>
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="Link" Visibility="Collapsed">
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 20, 0">
+                        <Line Stroke="#555" StrokeThickness="1"
+                              X1="0" X2="0" Y1="5" Y2="25"
+                              Height="30">
+                        </Line>
+                        <Image Source="/EESDD;component/View/Image/link_50_0_aaaaaa.png"
+                               Width="10" Height="10"
+                               Margin="10">
+                        </Image>
+                        <TextBlock Style="{StaticResource PropertyBarText}">
+                            连接正常</TextBlock>
+                    </StackPanel>
+                </Grid>
+                <Grid>
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 20, 0">
+                        <Line Stroke="#555" StrokeThickness="1"
+                              X1="0" X2="0" Y1="5" Y2="25"
+                              Height="30">
+                        </Line>
+                        <Image Source="/EESDD;component/View/Image/user_50_0_aaaaaa.png"
+                               Width="10" Height="10"
+                               Margin="10">
+                        </Image>
+                        <TextBlock Style="{StaticResource PropertyBarText}">
+                            silverHugh</TextBlock>
+                    </StackPanel>
+                </Grid>
             </StackPanel>
         </Grid>
     </Grid>

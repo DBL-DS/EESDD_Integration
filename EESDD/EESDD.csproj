@@ -131,6 +131,9 @@
     <Compile Include="View\Pages\Container.xaml.cs">
       <DependentUpon>Container.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Widget\CustomMessageBox.xaml.cs">
+      <DependentUpon>CustomMessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Widget\ImageButton.xaml.cs">
       <DependentUpon>ImageButton.xaml</DependentUpon>
     </Compile>
@@ -200,6 +203,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Widget\CustomMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Widget\ImageButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -207,6 +214,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
+    <Resource Include="View\Image\chatbubble-working_50_0_cccccc.png" />
+    <Resource Include="View\Image\unlink_50_0_aaaaaa.png" />
+    <Resource Include="View\Image\link_50_0_aaaaaa.png" />
+    <Resource Include="View\Image\user_50_0_aaaaaa.png" />
     <Resource Include="View\Image\close_50_0_cccccc.png" />
     <Resource Include="View\Image\close_50_0_ffffff.png" />
     <Resource Include="View\Image\compress_50_0_cccccc.png" />

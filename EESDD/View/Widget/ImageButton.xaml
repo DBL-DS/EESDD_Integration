@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="300"
-             MouseEnter="UserControl_MouseEnter"
+             MouseEnter="btn_MouseEnter"
              MouseLeave="btn_MouseLeave"
              Name="btn">
     <UserControl.Resources>
@@ -32,9 +32,10 @@
                             Stretch="UniformToFill"></ImageBrush>
             </Button.Background>
         </Button>
-        <Button Visibility="Hidden"
+        <Button Visibility="Collapsed"
             Style="{StaticResource NoDefaultBlue}" 
-                        x:Name="HoverButton">
+                        x:Name="HoverButton"
+                Click="HoverButton_Click">
             <Button.Background>
                 <ImageBrush x:Name="imgHover"
                     ImageSource="{Binding Path=HoverImage,

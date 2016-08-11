@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EESDD.View.Widget;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,5 +35,63 @@ namespace EESDD.View.Pages
         {
 
         }
+
+        public void CloseApp()
+        {
+            var result = CustomMessageBox.Show("确定退出？");
+            if (result == ResultType.True)
+                this.Close();
+        }
+
+        #region WindowEvent
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            CloseApp();
+        }
+
+        private void Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = System.Windows.WindowState.Minimized;
+        }
+
+        private void Compress_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = System.Windows.WindowState.Normal;
+        }
+
+        private void Expand_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = System.Windows.WindowState.Maximized;
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            switch(this.WindowState)
+            {
+                case System.Windows.WindowState.Maximized:
+                    Compress_Button.Visibility
+                        = System.Windows.Visibility.Visible;
+                    ExpandButton.Visibility
+                        = System.Windows.Visibility.Collapsed;
+                    break;
+                case System.Windows.WindowState.Normal:
+                    Compress_Button.Visibility
+                        = System.Windows.Visibility.Collapsed;
+                    ExpandButton.Visibility
+                        = System.Windows.Visibility.Visible;
+                    break;
+            }
+
+        }
+        # endregion
+
     }
 }

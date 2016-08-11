@@ -30,6 +30,9 @@ namespace EESDD.View.Widget
             DependencyProperty.Register("NormalImage", typeof(ImageSource), typeof(ImageButton));
         public static readonly DependencyProperty HoverImageProperty =
             DependencyProperty.Register("HoverImage", typeof(ImageSource), typeof(ImageButton));
+        public static readonly RoutedEvent ClickEvent =
+            EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble,
+            typeof(RoutedEventHandler), typeof(ImageButton));
 
         public ImageSource NormalImage
         {
@@ -43,16 +46,34 @@ namespace EESDD.View.Widget
             set { imgHover.ImageSource = value; }
         }
 
-        private void UserControl_MouseEnter(object sender, MouseEventArgs e)
+        public event RoutedEventHandler Click
         {
-            NormalButton.Visibility = System.Windows.Visibility.Hidden;
+            add { AddHandler(ClickEvent, value); }
+            remove { RemoveHandler(ClickEvent, value); }
+        }
+
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            NormalButton.Visibility = System.Windows.Visibility.Collapsed;
             HoverButton.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void btn_MouseLeave(object sender, MouseEventArgs e)
         {
             NormalButton.Visibility = System.Windows.Visibility.Visible;
-            HoverButton.Visibility = System.Windows.Visibility.Hidden;
+            HoverButton.Visibility = System.Windows.Visibility.Collapsed;
+        }
+
+        protected virtual void RaiseClickEvent()
+        {
+            RoutedEventArgs newEventArgs =
+                new RoutedEventArgs(ImageButton.ClickEvent);
+            RaiseEvent(newEventArgs);
+        }
+
+        private void HoverButton_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseClickEvent();
         }
     }
 }
