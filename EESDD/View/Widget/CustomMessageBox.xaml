@@ -3,18 +3,25 @@
 	    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:widget="clr-namespace:EESDD.View.Widget"
 	    Title="UMessageBox" 
-        Height="150" Width="400" 
-        WindowStyle="None"   
-        Background="{x:Null}"  
-	    ResizeMode="NoResize"  
+        Height="150" Width="400"
+        MinHeight="150" MinWidth="400"
+        MaxHeight="150" MaxWidth="400"
+        WindowStyle="None"
+        Background="Transparent"  
+	    ResizeMode="CanResize"  
         x:Name="main"
-	    AllowsTransparency="True" 
         WindowStartupLocation="CenterScreen">
+    <!--> Make top white border in ResizeMode="CanResize" disappear.  <-->
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0"
+                      ResizeBorderThickness="5" />
+    </WindowChrome.WindowChrome>
     <Window.Resources>
         <Style x:Key="ButtonText" TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="#ccc"></Setter>
-            <Setter Property="Background" Value="#000" />
+            <Setter Property="Background" Value="#444" />
             <Setter Property="FontSize" Value="12" />
+            <Setter Property="Padding" Value="14, 4" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Foreground" Value="#fff"></Setter>
@@ -34,8 +41,7 @@
             </BeginStoryboard>
         </EventTrigger>
     </Window.Triggers>
-
-    <Border Background="#342947">
+    <Border Background="#222">
         <Canvas>
             <Border Canvas.Top="0" 
                     Height="35" 
@@ -88,12 +94,11 @@
                     Canvas.Right="100" 
                     MouseLeftButtonUp="True_Click"
 	                Name="border1" 
-                    Background="#000"
-                    Padding="1">
+                    Background="#333"
+                    Padding="3">
                 <TextBlock Text="是 的"  
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center"
-                           Padding="14, 4"
                            Style="{StaticResource ButtonText}"/>
             </Border>
             <Border CornerRadius="3"
@@ -102,12 +107,11 @@
                     MouseLeftButtonUp="False_Click"
 	                Name="border2" 
                     Width="Auto" 
-                    Background="#000"
-                    Padding="1">
+                    Background="#333"
+                    Padding="3">
                 <TextBlock Text="不 是"
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center"
-                           Padding="14, 4"
                            Style="{StaticResource ButtonText}"/>
             </Border>
         </Canvas>

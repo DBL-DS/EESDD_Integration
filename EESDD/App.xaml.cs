@@ -1,4 +1,5 @@
 ﻿using EESDD.Class.Control;
+using EESDD.View;
 using EESDD.View.Pages;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,6 @@ namespace WpfApplication2
     /// </summary>
     public partial class App : Application
     {
-        private Window main;
         protected override void OnStartup(StartupEventArgs e)
         {
             StartAnimation();
@@ -50,17 +50,13 @@ namespace WpfApplication2
 
         private void ShowMainWindow()
         {
-            main.Show();
-        }
-
-        private void LoadMainWindow()
-        {
-            main = new Container();
+            PageManger.CurrentPage = PageCluster.Login;
+            PageManger.ShowMain();
         }
 
         private void Task()
         {
-            LoadMainWindow();
+            PageManger.Hit();
             FileManger.Hit();
             SettingManger.Hit();
             ThreadManager.Hit();

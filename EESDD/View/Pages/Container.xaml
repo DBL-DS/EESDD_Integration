@@ -13,6 +13,7 @@
         StateChanged="Window_StateChanged"
         ResizeMode="CanResize"
         SourceInitialized="Window_SourceInitialized">
+    
     <!--> Make top white border in ResizeMode="CanResize" disappear.  <-->
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0"

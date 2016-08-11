@@ -21,13 +21,17 @@ namespace EESDD.View.Pages
     /// <summary>
     /// Interaction logic for Container.xaml
     /// </summary>
+    /// 
+    public delegate bool BeforeClosedCheckAction();
+
     public partial class Container : Window
     {
-        public Color a = Color.FromArgb(0, 0, 0, 0);
         public Container()
         {
             InitializeComponent();
         }
+
+        public BeforeClosedCheckAction BeforeClosedCheckHandler;
 
         public void LoadText()
         {
@@ -39,11 +43,30 @@ namespace EESDD.View.Pages
 
         }
 
-        public void CloseApp()
+        public void SetPage(Page page)
+        {
+            PageFrame.Content = page;
+        }
+
+        private bool CloseAppActionChecked()
         {
             var result = CustomMessageBox.Show("确定退出？");
-            if (result == ResultType.True)
-                SystemCommands.CloseWindow(this);
+            if (result != ResultType.True)
+                return false;
+
+            if (BeforeClosedCheckHandler != null)
+            {
+                var CheckResult = BeforeClosedCheckHandler
+                    .GetInvocationList()
+                    .Select(x => (bool)x.DynamicInvoke());
+                foreach (var item in CheckResult)
+                {
+                    if (!item)
+                        return false;
+                }
+            }
+
+            return true;
         }
 
         #region WindowEvent
@@ -57,7 +80,14 @@ namespace EESDD.View.Pages
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            CloseApp();
+            SystemCommands.CloseWindow(this);
+        }
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            if (!CloseAppActionChecked())
+                e.Cancel = true;
         }
 
         private void Minimize_Click(object sender, RoutedEventArgs e)
@@ -94,7 +124,6 @@ namespace EESDD.View.Pages
                         = System.Windows.Visibility.Visible;
                     break;
             }
-
         }
 
         protected override void OnActivated(EventArgs e)
