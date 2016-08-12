@@ -134,6 +134,7 @@
     <Compile Include="View\Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Style\HalfValueConverter.cs" />
     <Compile Include="View\Widget\CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
@@ -225,6 +226,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
+    <Resource Include="View\Image\question-circle_50_0_333333.png" />
+    <Resource Include="View\Image\female-symbol_50_0_333333.png" />
+    <Resource Include="View\Image\male-symbol_50_0_333333.png" />
+    <Resource Include="View\Image\female_sign_50_0_333333.png" />
+    <Resource Include="View\Image\male_sign_50_0_333333.png" />
+    <Resource Include="View\Image\pencil_50_0_333333.png" />
+    <Resource Include="View\Image\chevron-right_200_0_cccccc.png" />
+    <Resource Include="View\Image\chevron-left_200_0_cccccc.png" />
+    <Resource Include="View\Image\user-secret_50_0_333333.png" />
     <Resource Include="View\Image\enter_50_0_333333.png" />
     <Resource Include="View\Image\key_50_0_333333.png" />
     <Resource Include="View\Image\user_50_0_333333.png" />
