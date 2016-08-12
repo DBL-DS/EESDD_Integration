@@ -1,10 +1,14 @@
 ﻿{
     "en": {
-        "main": { 
-
+        "main": {
+            "link": "Connected",
+            "unlink": "Disconnected"
         }
     },
-    "zh": { 
-
+    "zh": {
+        "main": {
+            "link": "连接正常",
+            "unlink":  "连接断开"
+        }
     }
 }

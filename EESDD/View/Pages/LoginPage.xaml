@@ -8,7 +8,103 @@
       VerticalAlignment="Stretch"
       HorizontalAlignment="Stretch"
       Background="#342947">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/View/Style/Login.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid VerticalAlignment="Center"
+              HorizontalAlignment="Center">
+            <Image Source="/EESDD;component/View/Image/grey_car.png"
+                   Margin="100"></Image>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Border Height="350" Width="250"
+                    Background="#eee"
+                    Margin="100, 0"
+                    CornerRadius="10">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource BoxTitle}"
+                               Padding="0, 30, 0, 0">
+                        登录
+                        </TextBlock>
+                        <Button Style="{StaticResource NoDefaultBlue}"
+                                Margin="60, 45, 0, 0"
+                                Cursor="Hand">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="15" Height="15" 
+                                       Source="/EESDD;component/View/Image/user_50_0_333333.png"
+                                       />
+                                <TextBlock Foreground="#888"
+                                           Margin="5"
+                                           FontSize="11">
+                                    普通用户
+                                </TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource NoDefaultBlue}"
+                                Margin="60, 45, 0, 0"
+                                Cursor="Hand"
+                                Visibility="Collapsed">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="15" Height="15" 
+                                       Source="/EESDD;component/View/Image/user_50_0_333333.png"
+                                       />
+                                <TextBlock Foreground="#888"
+                                           Margin="5"
+                                           FontSize="11">
+                                    管理员
+                                </TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <TextBlock Style="{StaticResource BoxTip}"
+                               TextWrapping="Wrap"
+                               Padding="0, 20">
+                        输入用户名和密码，普通用户密码非必填项。
+                        <LineBreak/>
+                        <LineBreak/>
+                        点击登录按钮，普通用户不存在时直接跳转到注册界面。
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0, 10"
+                                VerticalAlignment="Center">
+                        <Image Source="/EESDD;component/View/Image/user_50_0_333333.png"
+                               Style="{StaticResource BoxImage}"></Image>
+                        <TextBox Style="{StaticResource BoxTextBox}">
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0, 10"
+                                VerticalAlignment="Center">
+                        <Image Source="/EESDD;component/View/Image/key_50_0_333333.png"
+                                Style="{StaticResource BoxImage}"></Image>
+                        <TextBox Style="{StaticResource BoxTextBox}"></TextBox>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button Style="{StaticResource BoxButton}"
+                                Margin="0, 20">
+                            <StackPanel Orientation="Horizontal"
+                                        VerticalAlignment="Center">
+                                <TextBlock
+                                    Margin="105, 0, 10, 0">登录</TextBlock>
+                                <Image Source="/EESDD;component/View/Image/enter_50_0_333333.png" 
+                                       Width="20" Height="20"
+                                       Margin="0, 0, 90, 0"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </Page>

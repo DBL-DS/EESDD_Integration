@@ -206,6 +206,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Style\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Style\Main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -221,6 +225,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
+    <Resource Include="View\Image\enter_50_0_333333.png" />
+    <Resource Include="View\Image\key_50_0_333333.png" />
+    <Resource Include="View\Image\user_50_0_333333.png" />
+    <Resource Include="View\Image\grey_car.png" />
     <Resource Include="View\Image\chatbubble-working_50_0_cccccc.png" />
     <Resource Include="View\Image\unlink_50_0_aaaaaa.png" />
     <Resource Include="View\Image\link_50_0_aaaaaa.png" />

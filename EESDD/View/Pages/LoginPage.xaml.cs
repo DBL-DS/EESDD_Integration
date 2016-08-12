@@ -24,5 +24,7 @@ namespace EESDD.View.Pages
         {
             InitializeComponent();
         }
+
+
     }
 }
