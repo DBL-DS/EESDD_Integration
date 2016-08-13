@@ -50,15 +50,15 @@ namespace WpfApplication2
 
         private void ShowMainWindow()
         {
-            PageManger.CurrentPage = PageCluster.Login;
-            PageManger.ShowMain();
+            PageManager.CurrentPage = PageCluster.Login;
+            PageManager.ShowMain();
         }
 
         private void Task()
         {
-            PageManger.Hit();
-            FileManger.Hit();
-            SettingManger.Hit();
+            PageManager.Hit();
+            FileManager.Hit();
+            SettingManager.Hit();
             ThreadManager.Hit();
         }
     }

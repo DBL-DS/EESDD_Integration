@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
-    static class FileManger
+    static class FileManager
     {
-        static FileManger()
+        static FileManager()
         {
             WorkPath = System.Environment.CurrentDirectory;
             LoadPath();

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
-    class ExpManger
+    class ExpManager
     {
-        public ExpManger()
+        public ExpManager()
         {
             evaluator = new Evaluator();
         }
@@ -19,6 +19,7 @@ namespace EESDD.Class.Control
         private List<Exp> exps;
         private Dictionary<Tuple<string, string>, List<Exp>> gameExps;
 
+        // 指定exp文件的文件名格式
         public static string GetFileName(string name)
         {
             return Encryptor.GetMD5(name) + ".exp";
@@ -82,11 +83,13 @@ namespace EESDD.Class.Control
                 return null;               
         }
 
+
+        // 读取并加载exp文件
         public bool Load(string expFileName)
         {
             gameExps = 
                 new Dictionary<Tuple<string, string>, List<Exp>>();
-            exps = FileManger.GetExps(expFileName);
+            exps = FileManager.GetExps(expFileName);
 
             if (exps == null)
                 return false;
@@ -104,7 +107,7 @@ namespace EESDD.Class.Control
             if (exps == null)
                 return false;
             
-            FileManger.SaveExps(exps, expFileName);
+            FileManager.SaveExps(exps, expFileName);
 
             return true;
         }
@@ -164,7 +167,7 @@ namespace EESDD.Class.Control
 
         public bool SaveExps(string expFileName)
         {
-            return FileManger.SaveExps(exps, expFileName);
+            return FileManager.SaveExps(exps, expFileName);
         }
 
         private Exp Evaluate(Exp exp)

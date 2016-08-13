@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
-    static class SettingManger
+    static class SettingManager
     {
-        static SettingManger()
+        static SettingManager()
         {
             LoadUDP();
             LoadStyle();
@@ -24,24 +24,24 @@ namespace EESDD.Class.Control
 
         private static void LoadUDP()
         {
-            Dictionary<string, string> udpSetting = FileManger.GetUDPSetting();
+            Dictionary<string, string> udpSetting = FileManager.GetUDPSetting();
             UDP = new UDPSetting();
             UDP.Port = Int32.Parse(udpSetting["Port"]);
             UDP.BufferSize =
                 Int32.Parse(udpSetting["BufferSize"]);
 
-            UDPOffset = FileManger.GetOffset();
+            UDPOffset = FileManager.GetOffset();
         }
 
         private static void LoadStyle()
         {
-            Style = FileManger.GetStyle();
+            Style = FileManager.GetStyle();
         }
 
         private static void LoadText()
         {
             Dictionary<string, Dictionary<string, Dictionary<string,
-                string>>> Text = FileManger.GetText();
+                string>>> Text = FileManager.GetText();
             TextEn = Text["en"];
             TextZh = Text["zh"];
         }

@@ -15,9 +15,9 @@ namespace EESDD.View
         Login
     }
 
-    static class PageManger
+    static class PageManager
     {
-        static PageManger()
+        static PageManager()
         {
             main = new Container();
         }

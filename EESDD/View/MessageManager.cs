@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EESDD.Class.Control
+namespace EESDD.View
 {
-    class MessageManger
+    static class MessageManager
     {
+
     }
 }

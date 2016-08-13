@@ -35,14 +35,14 @@ namespace EESDD.Class.Control
 
         private void InitDbManger()
         {
-            dbManger = new UserDBManger();
-            dbManger.ConnectDB(FileManger.GetPath("database", "db"));
+            dbManger = new UserDBManager();
+            dbManger.ConnectDB(FileManager.GetPath("database", "db"));
         }
 
         private User user;
         private User registerUser;
-        private UserDBManger dbManger;
-        private ExpManger expManger;
+        private UserDBManager dbManger;
+        private ExpManager expManger;
 
         public LoginState Login(string username, string password, UserGroup group)
         {
@@ -91,7 +91,7 @@ namespace EESDD.Class.Control
                     registerUser.Name = value;
                     if (registerUser.Group == UserGroup.REGULAR)
                         (registerUser as Regular).ExpFile 
-                            = ExpManger.GetFileName(registerUser.Name);
+                            = ExpManager.GetFileName(registerUser.Name);
                     break;
                 case UserVariable.Password:
                     if (registerUser.Group 

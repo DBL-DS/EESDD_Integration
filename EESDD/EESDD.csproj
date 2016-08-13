@@ -87,16 +87,15 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class\Control\Evaluator.cs" />
-    <Compile Include="Class\Control\ExpManger.cs" />
-    <Compile Include="Class\Control\FileManger.cs" />
+    <Compile Include="Class\Control\ExpManager.cs" />
+    <Compile Include="Class\Control\FileManager.cs" />
     <Compile Include="Class\Control\GameManager.cs" />
     <Compile Include="Class\Control\LogManager.cs" />
-    <Compile Include="Class\Control\MessageManger.cs" />
     <Compile Include="Class\Control\Player.cs" />
     <Compile Include="Class\Control\Recorder.cs" />
-    <Compile Include="Class\Control\SettingManger.cs" />
+    <Compile Include="Class\Control\SettingManager.cs" />
     <Compile Include="Class\Control\ThreadManager.cs" />
-    <Compile Include="Class\Control\UserDBManger.cs" />
+    <Compile Include="Class\Control\UserDBManager.cs" />
     <Compile Include="Class\Control\UserManager.cs" />
     <Compile Include="Class\Model\Action.cs" />
     <Compile Include="Class\Model\Admin.cs" />
@@ -127,7 +126,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="View\PageManger.cs" />
+    <Compile Include="View\CentralUnit.cs" />
+    <Compile Include="View\MessageManager.cs" />
+    <Compile Include="View\PageManager.cs" />
     <Compile Include="View\Pages\Container.xaml.cs">
       <DependentUpon>Container.xaml</DependentUpon>
     </Compile>

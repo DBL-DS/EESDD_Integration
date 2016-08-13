@@ -17,9 +17,9 @@ namespace EESDD.Class.Control
         NEEDPASSWORD,
         SUCCESS
     }
-    class UserDBManger
+    class UserDBManager
     {
-        public UserDBManger()
+        public UserDBManager()
         {
 
         }
@@ -30,7 +30,7 @@ namespace EESDD.Class.Control
         {
             if (!File.Exists(dbPath) 
                 && !CreateDB(dbPath, 
-                FileManger.GetPath("database", "create_sql")))
+                FileManager.GetPath("database", "create_sql")))
                 return false;
 
             connection = new SQLiteConnection("Data Source=" 
@@ -187,7 +187,7 @@ namespace EESDD.Class.Control
                         + regular.DriAge + ", '"
                         + regular.Career + "', '"
                         + regular.Contact + "', '"
-                        + ExpManger.GetFileName(regular.Name) + "') ";
+                        + ExpManager.GetFileName(regular.Name) + "') ";
                     break;
                 default:
                     return false;

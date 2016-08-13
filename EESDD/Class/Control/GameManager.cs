@@ -262,7 +262,7 @@ namespace EESDD.Class.Control
 
         private int LoadScenes()
         {
-            List<Scene> list = FileManger.GetScenes();
+            List<Scene> list = FileManager.GetScenes();
             Scenes = list;
 
             if (list == null)
@@ -273,7 +273,7 @@ namespace EESDD.Class.Control
 
         private int LoadModes()
         {
-            List<Mode> list = FileManger.GetModes();
+            List<Mode> list = FileManager.GetModes();
             Modes = list;
 
             if (list == null)
@@ -284,7 +284,7 @@ namespace EESDD.Class.Control
 
         private int LoadGames()
         {
-            List<GameIndex> list = FileManger.GetGameIndexes();
+            List<GameIndex> list = FileManager.GetGameIndexes();
             foreach (var item in list)
             {
                 AddGame(item);
@@ -304,9 +304,9 @@ namespace EESDD.Class.Control
         public bool Save()
         {
             return 
-                FileManger.SaveScenes(Scenes) &&
-                FileManger.SaveModes(Modes) &&
-                FileManger.SaveGameIndexes(GameIndexes);
+                FileManager.SaveScenes(Scenes) &&
+                FileManager.SaveModes(Modes) &&
+                FileManager.SaveGameIndexes(GameIndexes);
         }
     }
 }

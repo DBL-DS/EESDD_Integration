@@ -55,7 +55,7 @@ namespace EESDD.Class.Control
 
         private void Refresh()
         {
-            UDP udp = new UDP(SettingManger.UDP);
+            UDP udp = new UDP(SettingManager.UDP);
 
             udp.ReceiveTimeOutHandler = this.ReceiveTimeOutHandler;
 
@@ -93,7 +93,7 @@ namespace EESDD.Class.Control
             float[] floats = BytesConverter.ToFloatArray(bytes);
             Svframe frame = new Svframe();
 
-            foreach (var item in SettingManger.UDPOffset)
+            foreach (var item in SettingManager.UDPOffset)
             {
                 var name = item.Key;
                 var offset = item.Value;

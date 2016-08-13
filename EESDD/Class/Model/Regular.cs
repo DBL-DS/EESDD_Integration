@@ -34,7 +34,7 @@ namespace EESDD.Class.Model
             this.driAge = driAge;
             this.career = career;
             this.contact = contact;
-            this.expFile = ExpManger.GetFileName(name);
+            this.expFile = ExpManager.GetFileName(name);
         }
 
         private string gender;
