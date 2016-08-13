@@ -36,8 +36,8 @@
             <Button Style="{StaticResource SwitchButton}"
                     Click="LeftButton_Click"
                     x:Name="LeftButton"
-                    Visibility="Hidden"
-                    ToolTip="登录">
+                    ToolTip="登录"
+                    Visibility="Hidden">
                 <Image Source="/EESDD;component/View/Image/chevron-left_200_0_cccccc.png"
                        />
             </Button>
@@ -122,7 +122,8 @@
                 <Border Style="{StaticResource Box}"
                     Height="400" Width="250"
                     x:Name="RegisterPanel"
-                    Visibility="Hidden">
+                    Visibility="Hidden"
+                    Opacity="0" >
                     <StackPanel>
                         <StackPanel Orientation="Horizontal"
                                 Margin="0, 0, 0, 20">

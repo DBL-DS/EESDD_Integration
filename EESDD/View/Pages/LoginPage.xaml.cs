@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -23,7 +24,27 @@ namespace EESDD.View.Pages
         public LoginPage()
         {
             InitializeComponent();
+            LoadAnimation();
         }
+
+        #region Animation
+        private Storyboard LeftFadeOut;
+        private Storyboard RightFadeOut;
+        private Storyboard FadeIn;
+        private Storyboard FadeOut;
+        private Storyboard ButtonFadeIn;
+        private Storyboard ButtonFadeOut;
+
+        private void LoadAnimation()
+        {
+            LeftFadeOut = (this.FindResource("LeftFadeOut") as Storyboard);
+            RightFadeOut = (this.FindResource("RightFadeOut") as Storyboard);
+            FadeIn = (this.FindResource("FadeIn") as Storyboard);
+            FadeOut = (this.FindResource("FadeOut") as Storyboard);
+            ButtonFadeIn = (this.FindResource("ButtonFadeIn") as Storyboard);
+            ButtonFadeOut = (this.FindResource("ButtonFadeOut") as Storyboard);
+        }
+        # endregion
 
         private void ShowRegularButton()
         {
@@ -39,18 +60,32 @@ namespace EESDD.View.Pages
 
         private void ShowRegisterPanel()
         {
-            LeftButton.Visibility = System.Windows.Visibility.Visible;
-            RightButton.Visibility = System.Windows.Visibility.Hidden;
-            LoginPanel.Visibility = System.Windows.Visibility.Hidden;
-            RegisterPanel.Visibility = System.Windows.Visibility.Visible;
+            Storyboard.SetTarget(LeftFadeOut, LoginPanel);
+            LeftFadeOut.Begin();
+
+            Storyboard.SetTarget(ButtonFadeOut, RightButton);
+            ButtonFadeOut.Begin();
+
+            Storyboard.SetTarget(FadeIn, RegisterPanel);
+            FadeIn.Begin();
+
+            Storyboard.SetTarget(ButtonFadeIn, LeftButton);
+            ButtonFadeIn.Begin();
         }
 
         private void ShowLoginPanel()
         {
-            LeftButton.Visibility = System.Windows.Visibility.Hidden;
-            RightButton.Visibility = System.Windows.Visibility.Visible;
-            LoginPanel.Visibility = System.Windows.Visibility.Visible;
-            RegisterPanel.Visibility = System.Windows.Visibility.Hidden;
+            Storyboard.SetTarget(RightFadeOut, RegisterPanel);
+            RightFadeOut.Begin();
+
+            Storyboard.SetTarget(ButtonFadeOut, LeftButton);
+            ButtonFadeOut.Begin();
+
+            Storyboard.SetTarget(FadeIn, LoginPanel);
+            FadeIn.Begin();
+
+            Storyboard.SetTarget(ButtonFadeIn, RightButton);
+            ButtonFadeIn.Begin();
         }
 
         # region Event
