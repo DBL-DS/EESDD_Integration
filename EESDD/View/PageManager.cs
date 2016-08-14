@@ -15,19 +15,19 @@ namespace EESDD.View
         Login
     }
 
-    static class PageManager
+    class PageManager
     {
-        static PageManager()
+        public PageManager()
         {
             main = new Container();
         }
 
-        private static Container main;
+        private Container main;
 
-        private static LoginPage login;
+        private LoginPage login;
 
-        private static PageCluster current;
-        public static PageCluster CurrentPage
+        private PageCluster current;
+        public PageCluster CurrentPage
         {
             set
             {
@@ -48,7 +48,7 @@ namespace EESDD.View
             }
         }
 
-        private static Page GetLoginReady()
+        private Page GetLoginReady()
         {
             if (login == null)
             {
@@ -58,10 +58,9 @@ namespace EESDD.View
             return login;
         }
 
-        public static void ShowMain()
+        public void ShowMain()
         {
             main.Show();
         }
-        public static void Hit() { }
     }
 }

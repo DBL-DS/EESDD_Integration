@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
-    static class SettingManager
+    class SettingManager
     {
-        static SettingManager()
+        public SettingManager()
         {
             LoadUDP();
             LoadStyle();
             LoadText();
         }
 
-        public static UDPSetting UDP;
-        public static Dictionary<string, int> UDPOffset;
-        public static Dictionary<string, Dictionary<string, string>> Style;
-        public static Dictionary<string, Dictionary<string, string>> TextEn;
-        public static Dictionary<string, Dictionary<string, string>> TextZh;
+        public UDPSetting UDP;
+        public Dictionary<string, int> UDPOffset;
+        public Dictionary<string, Dictionary<string, string>> Style;
+        public Dictionary<string, Dictionary<string, string>> TextEn;
+        public Dictionary<string, Dictionary<string, string>> TextZh;
 
-        private static void LoadUDP()
+        private void LoadUDP()
         {
             Dictionary<string, string> udpSetting = FileManager.GetUDPSetting();
             UDP = new UDPSetting();
@@ -33,19 +33,17 @@ namespace EESDD.Class.Control
             UDPOffset = FileManager.GetOffset();
         }
 
-        private static void LoadStyle()
+        private void LoadStyle()
         {
             Style = FileManager.GetStyle();
         }
 
-        private static void LoadText()
+        private void LoadText()
         {
             Dictionary<string, Dictionary<string, Dictionary<string,
                 string>>> Text = FileManager.GetText();
             TextEn = Text["en"];
             TextZh = Text["zh"];
         }
-
-        public static void Hit() { }
     }
 }

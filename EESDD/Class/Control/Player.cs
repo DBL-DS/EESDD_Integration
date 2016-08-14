@@ -11,8 +11,12 @@ namespace EESDD.Class.Control
 {
     class Player
     {
-        public Player()
+        public Player(UDPSetting setting,
+            Dictionary<string, int> offset)
         {
+            this.udpSetting = setting;
+            this.udpOffset = offset;
+
             refreshThread = ThreadManager.DefineThread(
                 ThreadCluster.PlayerRefresh, Refresh);
 
@@ -33,6 +37,9 @@ namespace EESDD.Class.Control
         public ReceiveTimeOutAction ReceiveTimeOutHandler;
 
         private Thread refreshThread;
+
+        private UDPSetting udpSetting;
+        private Dictionary<string, int> udpOffset;
 
         public void Start(Scene scene, Mode mode)
         {
@@ -55,7 +62,7 @@ namespace EESDD.Class.Control
 
         private void Refresh()
         {
-            UDP udp = new UDP(SettingManager.UDP);
+            UDP udp = new UDP(udpSetting);
 
             udp.ReceiveTimeOutHandler = this.ReceiveTimeOutHandler;
 
@@ -93,7 +100,7 @@ namespace EESDD.Class.Control
             float[] floats = BytesConverter.ToFloatArray(bytes);
             Svframe frame = new Svframe();
 
-            foreach (var item in SettingManager.UDPOffset)
+            foreach (var item in udpOffset)
             {
                 var name = item.Key;
                 var offset = item.Value;

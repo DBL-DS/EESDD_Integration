@@ -101,8 +101,8 @@
                                 VerticalAlignment="Center">
                             <Image Source="/EESDD;component/View/Image/key_50_0_333333.png"
                                 Style="{StaticResource BoxImage}"></Image>
-                            <TextBox Style="{StaticResource BoxTextBox}"
-                                 ToolTip="请输入密码"></TextBox>
+                            <PasswordBox Style="{StaticResource BoxPasswordBox}"
+                                 ToolTip="请输入密码"></PasswordBox>
                         </StackPanel>
                         <StackPanel>
                             <Button Style="{StaticResource BoxButton}"
