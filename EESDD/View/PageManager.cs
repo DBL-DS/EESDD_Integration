@@ -12,7 +12,8 @@ namespace EESDD.View
     public enum PageCluster
     {
         None,
-        Login
+        Login,
+        RegularMain
     }
 
     class PageManager
@@ -25,6 +26,7 @@ namespace EESDD.View
         private Container main;
 
         private LoginPage login;
+        private RegularMain regularMain;
 
         private PageCluster current;
         public PageCluster CurrentPage
@@ -39,6 +41,9 @@ namespace EESDD.View
                 {
                     case PageCluster.Login:
                         page = GetLoginReady();
+                        break;
+                    case PageCluster.RegularMain:
+                        page = GetRegularMainReady();
                         break;
                     default:
                         return;
@@ -56,6 +61,14 @@ namespace EESDD.View
             }
 
             return login;
+        }
+
+        private Page GetRegularMainReady()
+        {
+            if (regularMain == null)
+                regularMain = new RegularMain();
+
+            return regularMain;
         }
 
         public void ShowMain()

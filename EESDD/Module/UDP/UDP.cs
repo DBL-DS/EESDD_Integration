@@ -27,8 +27,8 @@ namespace EESDD.Module.UDP
         private IPEndPoint clientEndPoint;  // 本机一律视为客户端
         private IPEndPoint serverEndPoint;  // 接收目标或发送目标一律视为服务端
 
-        public ReceiveTimeOutAction ReceiveTimeOutHandler;
-        public SendTimeOutAction SendTimeOutHandler;
+        public ReceiveTimeOutAction ReceiveTimeOutHandler = null;
+        public SendTimeOutAction SendTimeOutHandler = null;
 
         private void InitUDP(UDPSetting setting)
         {

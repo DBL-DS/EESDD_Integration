@@ -37,6 +37,7 @@ namespace EESDD.Class.Control
         {
             dbManger = new UserDBManager();
             dbManger.ConnectDB(FileManager.GetPath("database", "db"));
+            expManger = new ExpManager();
         }
 
         private User user;

@@ -31,10 +31,10 @@ namespace EESDD.Class.Control
         public delegate void RefreshAction(Recorder recorder);
         public delegate void StopAction(Exp e);
 
-        public StartAction StartHandler;
-        public RefreshAction RefreshHandler;
-        public StopAction StopHandler;
-        public ReceiveTimeOutAction ReceiveTimeOutHandler;
+        public StartAction StartHandler = null;
+        public RefreshAction RefreshHandler = null;
+        public StopAction StopHandler = null;
+        public ReceiveTimeOutAction ReceiveTimeOutHandler = null;
 
         private Thread refreshThread;
 

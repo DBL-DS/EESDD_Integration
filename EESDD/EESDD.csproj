@@ -135,6 +135,9 @@
     <Compile Include="View\Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\RegularMain.xaml.cs">
+      <DependentUpon>RegularMain.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Style\HalfValueConverter.cs" />
     <Compile Include="View\Widget\CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
@@ -204,6 +207,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pages\RegularMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Style\Base.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -227,6 +234,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
+    <Resource Include="View\Image\3d_boy.png" />
+    <Resource Include="View\Image\3d_girl.png" />
     <Resource Include="View\Image\question-circle_50_0_333333.png" />
     <Resource Include="View\Image\female-symbol_50_0_333333.png" />
     <Resource Include="View\Image\male-symbol_50_0_333333.png" />
