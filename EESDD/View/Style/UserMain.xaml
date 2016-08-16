@@ -32,13 +32,14 @@
            TargetType="{x:Type Border}">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Padding" Value="5, 12" />
-        <Setter Property="CornerRadius" Value="50" />
+        <Setter Property="CornerRadius" Value="30" />
         <Setter Property="Margin" Value="10" />
+        <Setter Property="Width" Value="230" />
         <Setter Property="Background">
             <Setter.Value>
                 <RadialGradientBrush>
-                    <GradientStop Color="#777" Offset="0.75" />
-                    <GradientStop Color="#555" Offset="0.87" />
+                    <GradientStop Color="#777" Offset="0.8" />
+                    <GradientStop Color="#555" Offset="0.9" />
                     <GradientStop Color="#444" Offset="1" />
                 </RadialGradientBrush>
             </Setter.Value>
@@ -54,9 +55,9 @@
     <Style x:Key="NameTitle"
            TargetType="{x:Type TextBlock}">
         <Setter Property="Foreground" Value="#bbb" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="20" />
         <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="Margin" Value="50, 0, 0, 0" />
+        <Setter Property="Margin" Value="40, 0, 0, 0" />
         <Setter Property="Effect">
             <Setter.Value>
                 <DropShadowEffect ShadowDepth="1"
@@ -69,7 +70,7 @@
     <Style x:Key="NameText"
            TargetType="{x:Type TextBlock}">
         <Setter Property="Foreground" Value="#ddd" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="20" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="Margin" Value="0, 0, 40, 0" />
@@ -120,4 +121,6 @@
         </Setter>
         <Setter Property="TextDecorations" Value="UnderLine" />
     </Style>
+    
+    
 </ResourceDictionary>

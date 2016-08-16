@@ -71,14 +71,14 @@
                                FontSize="14"
 	                           VerticalAlignment="Center" 
                                Margin="40, 0"/>
-                    <widget:ImageButton NormalImage="/View/Image/close_50_0_cccccc.png"
+                    <widget:ImageSwitchButton NormalImage="/View/Image/close_50_0_cccccc.png"
                                         HoverImage="/View/Image/close_50_0_ffffff.png"
                                         Width="10" Height="10"
                                         HorizontalAlignment="Right"
                                         MouseDown="CloseBtn_MouseDown"
                                         Margin="20, 0"
                                         Click="Cancel_Click">
-                    </widget:ImageButton>
+                    </widget:ImageSwitchButton>
                 </Grid>
             </Border>
             <TextBlock x:Name="lblMsg"

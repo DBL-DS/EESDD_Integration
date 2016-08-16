@@ -36,8 +36,7 @@
                 Source="/EESDD;component/View/Image/3d_cartoon_boy.png"></Image>
             <StackPanel Grid.Row="1"
                         HorizontalAlignment="Center">
-                <Border Width="270"
-                        Style="{StaticResource NameBorder}">
+                <Border Style="{StaticResource NameBorder}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -45,7 +44,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Style="{StaticResource NameTitle}">姓名:</TextBlock>
                         <TextBlock Grid.Column="1"
-                                   Style="{StaticResource NameText}"
+                                   Style="{StaticResource NameText}" HorizontalAlignment="Left" Margin="0" Width="114"
                                    >暗岸晓</TextBlock>
                     </Grid>
                 </Border>
@@ -71,7 +70,7 @@
                            Width="25" Height="25"
                            VerticalAlignment="Center"
                            ToolTip="上次登录时间"
-                           Margin="40, 10, 5, 10"></Image>
+                           Margin="20, 10, 5, 10"></Image>
                     <TextBlock Style="{StaticResource LastTimeText}"
                         >2016-08-15 13:57</TextBlock>
                 </StackPanel>
@@ -95,8 +94,23 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
-                        <RowDefinition Height="200 "></RowDefinition>
+                        <RowDefinition Height="166"></RowDefinition>
                     </Grid.RowDefinitions>
+                    <widget:ImageShapeButton Margin="30"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="166"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <widget:ImageShapeButton Margin="30"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="166"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <widget:ImageShapeButton Margin="30"/>
                 </Grid>
             </Grid>
         </Grid>

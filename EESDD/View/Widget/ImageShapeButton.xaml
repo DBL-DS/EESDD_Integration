@@ -1,0 +1,153 @@
+﻿<UserControl x:Class="EESDD.View.Widget.ImageShapeButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:style="clr-namespace:EESDD.View.Style"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <style:FractionConverter x:Key="Fraction" />
+        
+        <Style x:Key="NoDefaultBlue" TargetType="Button">
+            <Setter Property="Background" Value="{x:Null}"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="OuterBorder"
+                TargetType="{x:Type Border}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="Black" Opacity="0.5" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="CornerRadius">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource Fraction}">
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualHeight" ></Binding>
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualHeight" ></Binding>
+                        <Binding>
+                            <Binding.Source>
+                                <sys:Double>20</sys:Double>
+                            </Binding.Source>
+                        </Binding>
+                        <Binding>
+                            <Binding.Source>
+                                <sys:String>CornerRadius</sys:String>
+                            </Binding.Source>
+                        </Binding>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="InnerBorder"
+                TargetType="{x:Type Border}">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource Fraction}">
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualHeight" ></Binding>
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualHeight" ></Binding>
+                        <Binding>
+                            <Binding.Source>
+                                <sys:Double>30</sys:Double>
+                            </Binding.Source>
+                        </Binding>
+                        <Binding>
+                            <Binding.Source>
+                                <sys:String>DropShadow</sys:String>
+                            </Binding.Source>
+                        </Binding>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="#333" />
+            <Setter Property="Margin">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource Fraction}">
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualHeight" ></Binding>
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualHeight" ></Binding>
+                        <Binding>
+                            <Binding.Source>
+                                <sys:Double>25</sys:Double>
+                            </Binding.Source>
+                        </Binding>
+                        <Binding>
+                            <Binding.Source>
+                                <sys:String>Thickness</sys:String>
+                            </Binding.Source>
+                        </Binding>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Padding">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource Fraction}">
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualHeight" ></Binding>
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualHeight" ></Binding>
+                        <Binding>
+                            <Binding.Source>
+                                <sys:Double>6</sys:Double>
+                            </Binding.Source>
+                        </Binding>
+                        <Binding>
+                            <Binding.Source>
+                                <sys:String>Thickness</sys:String>
+                            </Binding.Source>
+                        </Binding>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="CornerRadius">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource Fraction}">
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualHeight" ></Binding>
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualHeight" ></Binding>
+                        <Binding>
+                            <Binding.Source>
+                                <sys:Double>10</sys:Double>
+                            </Binding.Source>
+                        </Binding>
+                        <Binding>
+                            <Binding.Source>
+                                <sys:String>CornerRadius</sys:String>
+                            </Binding.Source>
+                        </Binding>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid VerticalAlignment="Stretch"
+          HorizontalAlignment="Stretch">
+        <Border Style="{StaticResource OuterBorder}"
+                x:Name="OuterBorder">
+            <Border Style="{StaticResource InnerBorder}"
+                    x:Name="InnrBorder">
+                <Button Style="{StaticResource NoDefaultBlue}">
+                    <Image Source="/EESDD;component/View/Image/info_500_0_cccccc.png"></Image>
+                </Button>
+            </Border>
+        </Border>
+    </Grid>
+</UserControl>

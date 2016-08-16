@@ -18,21 +18,21 @@ namespace EESDD.View.Widget
     /// <summary>
     /// Interaction logic for ImageButton.xaml
     /// </summary>
-    public partial class ImageButton : UserControl
+    public partial class ImageSwitchButton : UserControl
     {
-        public ImageButton()
+        public ImageSwitchButton()
         {
             InitializeComponent();
         }
 
 
         public static readonly DependencyProperty NormalImageProperty =
-            DependencyProperty.Register("NormalImage", typeof(ImageSource), typeof(ImageButton));
+            DependencyProperty.Register("NormalImage", typeof(ImageSource), typeof(ImageSwitchButton));
         public static readonly DependencyProperty HoverImageProperty =
-            DependencyProperty.Register("HoverImage", typeof(ImageSource), typeof(ImageButton));
+            DependencyProperty.Register("HoverImage", typeof(ImageSource), typeof(ImageSwitchButton));
         public static readonly RoutedEvent ClickEvent =
             EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble,
-            typeof(RoutedEventHandler), typeof(ImageButton));
+            typeof(RoutedEventHandler), typeof(ImageSwitchButton));
 
         public ImageSource NormalImage
         {
@@ -67,7 +67,7 @@ namespace EESDD.View.Widget
         protected virtual void RaiseClickEvent()
         {
             RoutedEventArgs newEventArgs =
-                new RoutedEventArgs(ImageButton.ClickEvent);
+                new RoutedEventArgs(ImageSwitchButton.ClickEvent);
             RaiseEvent(newEventArgs);
         }
 

@@ -139,11 +139,15 @@
       <DependentUpon>RegularMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Style\HalfValueConverter.cs" />
+    <Compile Include="View\Style\FractionConverter.cs" />
     <Compile Include="View\Widget\CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Widget\ImageButton.xaml.cs">
-      <DependentUpon>ImageButton.xaml</DependentUpon>
+    <Compile Include="View\Widget\ImageShapeButton.xaml.cs">
+      <DependentUpon>ImageShapeButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Widget\ImageSwitchButton.xaml.cs">
+      <DependentUpon>ImageSwitchButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Widget\SpacingTextBlock.cs" />
   </ItemGroup>
@@ -232,13 +236,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Widget\ImageButton.xaml">
+    <Page Include="View\Widget\ImageShapeButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Widget\ImageSwitchButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
+    <Resource Include="View\Image\info_500_0_cccccc.png" />
     <Resource Include="View\Image\calendar_50_0_555555.png" />
     <Resource Include="View\Image\car_50_0_555555.png" />
     <Resource Include="View\Image\3d_cartoon_boy.png" />
