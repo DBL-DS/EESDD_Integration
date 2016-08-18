@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EESDD.View.Pages
 {
     /// <summary>
-    /// Interaction logic for GameSettingPage.xaml
+    /// Interaction logic for AdminGrant.xaml
     /// </summary>
-    public partial class GameSettingPage : Page
+    public partial class AdminGrant : Page
     {
-        public GameSettingPage()
+        public AdminGrant()
         {
             InitializeComponent();
         }

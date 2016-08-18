@@ -18,9 +18,9 @@ namespace EESDD.View.Pages
     /// <summary>
     /// Interaction logic for UserManagePage.xaml
     /// </summary>
-    public partial class UserManagePage : Page
+    public partial class UserManage : Page
     {
-        public UserManagePage()
+        public UserManage()
         {
             InitializeComponent();
         }

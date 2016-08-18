@@ -7,10 +7,86 @@
       mc:Ignorable="d" 
       d:DesignHeight="538" d:DesignWidth="1000"
       VerticalAlignment="Stretch"
-      HorizontalAlignment="Stretch"
-      Background="#333">
-
+      HorizontalAlignment="Stretch">
+    <Page.Background>
+        <RadialGradientBrush>
+            <GradientStop Color="#ccc" Offset="0.1" />
+            <GradientStop Color="#bbb" Offset="0.5" />
+            <GradientStop Color="#aaa" Offset="1" />
+        </RadialGradientBrush>
+    </Page.Background>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/View/Style/UserMain.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid VerticalAlignment="Center"
+              HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource Title}">管理员</TextBlock>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <widget:ImageShapeButton Style="{StaticResource CircleButton}"
+                                             Icon="/View/Image/gamepad_100_0_ffffff.png"
+                                             />
+                <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+                    <TextBlock Style="{StaticResource ButtonText}">场景模式管理</TextBlock>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <widget:ImageShapeButton Style="{StaticResource CircleButton}"
+                                             Icon="/View/Image/users_100_0_ffffff.png"
+                                             />
+                <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+                    <TextBlock Style="{StaticResource ButtonText}">用户管理</TextBlock>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <widget:ImageShapeButton Style="{StaticResource CircleButton}"
+                                             Icon="/View/Image/edit_100_0_ffffff.png"
+                                             />
+                <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+                    <TextBlock Style="{StaticResource ButtonText}">个人信息</TextBlock>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <widget:ImageShapeButton Style="{StaticResource CircleButton}"
+                                             Icon="/View/Image/user-plus_100_0_ffffff.png"
+                                             />
+                <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+                    <TextBlock Style="{StaticResource ButtonText}">添加管理员</TextBlock>
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

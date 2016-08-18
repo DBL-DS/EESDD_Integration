@@ -8,7 +8,14 @@
       d:DesignHeight="538" d:DesignWidth="1000"
       VerticalAlignment="Stretch"
       HorizontalAlignment="Stretch"
-      Background="White">
+      >
+    <Page.Background>
+        <RadialGradientBrush GradientOrigin="0.8, 0.3">
+            <GradientStop Color="#fff" Offset="0.1" />
+            <GradientStop Color="#ccc" Offset="0.7" />
+            <GradientStop Color="#aaa" Offset="1" />
+        </RadialGradientBrush>
+    </Page.Background>
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -92,7 +99,7 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <widget:ImageShapeButton Style="{StaticResource CircleButton}"
-                                             Icon="/View/Image/car_500_0_ffffff.png"
+                                             Icon="/View/Image/car_100_0_ffffff.png"
                                              />
                     <StackPanel Grid.Row="1" HorizontalAlignment="Center">
                         <TextBlock Style="{StaticResource ButtonText}">分心体验</TextBlock>
@@ -104,7 +111,7 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <widget:ImageShapeButton Style="{StaticResource CircleButton}"
-                                             Icon="/View/Image/bar-chart_500_0_ffffff.png"
+                                             Icon="/View/Image/bar-chart_100_0_ffffff.png"
                                              />
                     <StackPanel Grid.Row="1" HorizontalAlignment="Center">
                         <TextBlock Style="{StaticResource ButtonText}">数据统计</TextBlock>
@@ -116,7 +123,7 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <widget:ImageShapeButton Style="{StaticResource CircleButton}"
-                                             Icon="/View/Image/edit_500_0_ffffff.png"
+                                             Icon="/View/Image/edit_100_0_ffffff.png"
                                              />
                     <StackPanel Grid.Row="1" HorizontalAlignment="Center">
                         <TextBlock Style="{StaticResource ButtonText}">个人信息</TextBlock>

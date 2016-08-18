@@ -11,9 +11,9 @@
         <Setter Property="Foreground">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0, 0" EndPoint="0, 1">
-                    <GradientStop Color="#fff" Offset="0.1" />
-                    <GradientStop Color="#ddd" Offset="0.7" />
-                    <GradientStop Color="#fff" Offset="1" />
+                    <GradientStop Color="#555" Offset="0.1" />
+                    <GradientStop Color="#222" Offset="0.7" />
+                    <GradientStop Color="#333" Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -38,7 +38,7 @@
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="BorderBrush">
             <Setter.Value>
-                <SolidColorBrush Color="#000" Opacity="0.3" />
+                <SolidColorBrush Color="#ccc" />
             </Setter.Value>
         </Setter>
     </Style>
@@ -115,7 +115,7 @@
     
     <Style x:Key="CircleButton" TargetType="widget:ImageShapeButton">
         <Setter Property="BGColor" Value="#333"></Setter>
-        <Setter Property="Margin" Value="50" />
+        <Setter Property="Margin" Value="60" />
         <Setter Property="Height">
             <Setter.Value>
                 <Binding RelativeSource="{RelativeSource Self}" Path="ActualWidth" />
@@ -123,11 +123,27 @@
         </Setter>
     </Style>
 
+    <Style x:Key="CircleButtonAdmin" TargetType="widget:ImageShapeButton">
+        <Setter Property="BGColor" Value="#333"></Setter>
+        <Setter Property="Width">
+            <Setter.Value>
+                <Binding RelativeSource="{RelativeSource Self}" Path="ActualHeight" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin" Value="20" />
+    </Style>
+
     <Style x:Key="ButtonText"
            TargetType="{x:Type TextBlock}">
-        <Setter Property="FontSize" Value="18" />
-        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="20" />
         <Setter Property="Foreground" Value="#333" />
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect ShadowDepth="1"
+                                  BlurRadius="2"
+                                  Opacity="0.5"/>
+            </Setter.Value>
+        </Setter>
     </Style>
 
 </ResourceDictionary>

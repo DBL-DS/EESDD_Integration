@@ -129,17 +129,41 @@
     <Compile Include="View\CentralUnit.cs" />
     <Compile Include="View\MessageManager.cs" />
     <Compile Include="View\PageManager.cs" />
+    <Compile Include="View\Pages\AdminGrant.xaml.cs">
+      <DependentUpon>AdminGrant.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\AdminInfo.xaml.cs">
+      <DependentUpon>AdminInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\AdminMain.xaml.cs">
       <DependentUpon>AdminMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\Container.xaml.cs">
       <DependentUpon>Container.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Pages\LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
+    <Compile Include="View\Pages\GameData.xaml.cs">
+      <DependentUpon>GameData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\GameRealTime.xaml.cs">
+      <DependentUpon>GameRealTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\GameSelect.xaml.cs">
+      <DependentUpon>GameSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\GameSetting.xaml.cs">
+      <DependentUpon>GameSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\RegularInfo.xaml.cs">
+      <DependentUpon>RegularInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\RegularMain.xaml.cs">
       <DependentUpon>RegularMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\UserManage.xaml.cs">
+      <DependentUpon>UserManage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Style\HalfValueConverter.cs" />
     <Compile Include="View\Style\FractionConverter.cs" />
@@ -207,6 +231,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pages\AdminGrant.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\AdminInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pages\AdminMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -215,11 +247,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Pages\LoginPage.xaml">
+    <Page Include="View\Pages\GameData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\GameRealTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\GameSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\GameSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\RegularInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\RegularMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\UserManage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -254,11 +310,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
+    <Resource Include="View\Image\bar-chart_100_0_ffffff.png" />
+    <Resource Include="View\Image\car_100_0_ffffff.png" />
+    <Resource Include="View\Image\gamepad_100_0_ffffff.png" />
+    <Resource Include="View\Image\user-plus_100_0_ffffff.png" />
+    <Resource Include="View\Image\edit_100_0_ffffff.png" />
+    <Resource Include="View\Image\users_100_0_ffffff.png" />
     <Resource Include="View\Image\exit_50_0_cccccc.png" />
     <Resource Include="View\Image\exit_50_0_ffffff.png" />
     <Resource Include="View\Image\edit_500_0_ffffff.png" />
-    <Resource Include="View\Image\bar-chart_500_0_ffffff.png" />
-    <Resource Include="View\Image\car_500_0_ffffff.png" />
     <Resource Include="View\Image\info-circle_500_0_ffffff.png" />
     <Resource Include="View\Image\info_500_0_cccccc.png" />
     <Resource Include="View\Image\calendar_50_0_555555.png" />
