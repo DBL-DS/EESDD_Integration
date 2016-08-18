@@ -8,22 +8,16 @@
       d:DesignHeight="538" d:DesignWidth="1000"
       VerticalAlignment="Stretch"
       HorizontalAlignment="Stretch">
-    <Page.Background>
-        <RadialGradientBrush>
-            <GradientStop Color="#ccc" Offset="0.1" />
-            <GradientStop Color="#bbb" Offset="0.5" />
-            <GradientStop Color="#aaa" Offset="1" />
-        </RadialGradientBrush>
-    </Page.Background>
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/View/Style/UserMain.xaml" />
+                <ResourceDictionary Source="/View/Style/Common.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    
-    <Grid>
+
+    <Grid Style="{StaticResource BackgroundLight}">
         <Grid.RowDefinitions>
             <RowDefinition Height="150"></RowDefinition>
             <RowDefinition></RowDefinition>

@@ -10,7 +10,7 @@
       HorizontalAlignment="Stretch"
       >
     <Page.Background>
-        <RadialGradientBrush GradientOrigin="0.8, 0.3">
+        <RadialGradientBrush GradientOrigin="0.7, 0.3">
             <GradientStop Color="#fff" Offset="0.1" />
             <GradientStop Color="#ccc" Offset="0.7" />
             <GradientStop Color="#aaa" Offset="1" />

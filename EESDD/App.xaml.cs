@@ -50,7 +50,7 @@ namespace WpfApplication2
 
         private void ShowMainWindow()
         {
-            CU.MG_Page.CurrentPage = PageCluster.RegularMain;
+            CU.MG_Page.CurrentPage = PageCluster.RegularInfo;
             CU.MG_Page.ShowMain();
         }
 

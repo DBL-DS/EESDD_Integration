@@ -4,10 +4,97 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-	Title="RegularInfo">
-
-    <Grid>
-        
+      d:DesignHeight="538" d:DesignWidth="1000">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/View/Style/UserInfo.xaml" />
+                <ResourceDictionary Source="/View/Style/Common.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Style="{StaticResource BackgroundLight}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid Margin="50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Border Style="{StaticResource TitleBorder}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Style="{StaticResource Title}">用户信息</TextBlock>
+                        <Button Grid.Column="1"
+                            Style="{StaticResource TitleButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Padding="3">编辑</TextBlock>
+                                <Image Source="/EESDD;component/View/Image/edit_50_0_333333.png"
+                                   Width="20" Height="20"></Image>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+            <StackPanel Style="{StaticResource InfoStackPanel}"
+                    Grid.Row="1">
+                <TextBlock Style="{StaticResource InfoTitle}">用户名</TextBlock>
+                <TextBox Style="{StaticResource InfoTextBox}" />
+            </StackPanel>
+            <StackPanel Style="{StaticResource InfoStackPanel}"
+                    Grid.Row="2">
+                <TextBlock Style="{StaticResource InfoTitle}">真实姓名</TextBlock>
+                <TextBox Style="{StaticResource InfoTextBox}" />
+            </StackPanel>
+            <StackPanel Style="{StaticResource InfoStackPanel}"
+                    Grid.Row="3">
+                <TextBlock Style="{StaticResource InfoTitle}">性别</TextBlock>
+                <TextBox Style="{StaticResource InfoTextBox}" />
+            </StackPanel>
+            <StackPanel Style="{StaticResource InfoStackPanel}"
+                    Grid.Row="4">
+                <TextBlock Style="{StaticResource InfoTitle}">年龄</TextBlock>
+                <TextBox Style="{StaticResource InfoTextBox}" />
+            </StackPanel>
+            <StackPanel Style="{StaticResource InfoStackPanel}"
+                    Grid.Row="5">
+                <TextBlock Style="{StaticResource InfoTitle}">身高</TextBlock>
+                <TextBox Style="{StaticResource InfoTextBox}" />
+            </StackPanel>
+            <StackPanel Style="{StaticResource InfoStackPanel}"
+                    Grid.Row="6">
+                <TextBlock Style="{StaticResource InfoTitle}">体重</TextBlock>
+                <TextBox Style="{StaticResource InfoTextBox}" />
+            </StackPanel>
+            <StackPanel Style="{StaticResource InfoStackPanel}"
+                    Grid.Row="7">
+                <TextBlock Style="{StaticResource InfoTitle}">驾龄</TextBlock>
+                <TextBox Style="{StaticResource InfoTextBox}" />
+            </StackPanel>
+            <StackPanel Style="{StaticResource InfoStackPanel}"
+                    Grid.Row="8">
+                <TextBlock Style="{StaticResource InfoTitle}">职业</TextBlock>
+                <TextBox Style="{StaticResource InfoTextBox}" />
+            </StackPanel>
+            <StackPanel Style="{StaticResource InfoStackPanel}"
+                    Grid.Row="9">
+                <TextBlock Style="{StaticResource InfoTitle}">联系方式</TextBlock>
+                <TextBox Style="{StaticResource InfoTextBox}" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

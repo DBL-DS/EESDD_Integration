@@ -31,6 +31,8 @@ namespace EESDD.View.Style
             {
                 case "Number":
                     return F_width < F_height ? F_width : F_height;
+                case "Width":
+                    return F_width;
                 case "DropShadow":
                     var shadow = new DropShadowEffect();
                     shadow.ShadowDepth = 0;
