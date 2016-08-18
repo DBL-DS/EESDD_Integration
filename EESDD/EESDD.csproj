@@ -129,6 +129,9 @@
     <Compile Include="View\CentralUnit.cs" />
     <Compile Include="View\MessageManager.cs" />
     <Compile Include="View\PageManager.cs" />
+    <Compile Include="View\Pages\AdminMain.xaml.cs">
+      <DependentUpon>AdminMain.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\Container.xaml.cs">
       <DependentUpon>Container.xaml</DependentUpon>
     </Compile>
@@ -204,6 +207,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pages\AdminMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pages\Container.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -247,6 +254,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
+    <Resource Include="View\Image\exit_50_0_cccccc.png" />
+    <Resource Include="View\Image\exit_50_0_ffffff.png" />
     <Resource Include="View\Image\edit_500_0_ffffff.png" />
     <Resource Include="View\Image\bar-chart_500_0_ffffff.png" />
     <Resource Include="View\Image\car_500_0_ffffff.png" />

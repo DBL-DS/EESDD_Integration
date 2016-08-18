@@ -78,6 +78,12 @@
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                 <widget:ImageSwitchButton 
+                    NormalImage="/View/Image/exit_50_0_cccccc.png"
+                    HoverImage="/View/Image/exit_50_0_ffffff.png"
+                    Width="14" Height="14"
+                    Margin="0, 0, 30, 0">
+                </widget:ImageSwitchButton>
+                <widget:ImageSwitchButton 
                     NormalImage="/View/Image/gear_50_0_cccccc.png"
                     HoverImage="/View/Image/gear_50_0_ffffff.png"
                     Width="14" Height="14"
