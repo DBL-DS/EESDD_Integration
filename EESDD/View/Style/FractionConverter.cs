@@ -34,6 +34,7 @@ namespace EESDD.View.Style
                 case "DropShadow":
                     var shadow = new DropShadowEffect();
                     shadow.ShadowDepth = 0;
+                    shadow.Opacity = 0.5;
                     shadow.BlurRadius = F_width < F_height ? F_width : F_height;
                     return shadow;
                 case "CornerRadius":

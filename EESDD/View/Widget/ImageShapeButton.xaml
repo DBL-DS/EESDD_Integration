@@ -6,9 +6,51 @@
              xmlns:style="clr-namespace:EESDD.View.Style"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             x:Name="ShapeButton">
     <UserControl.Resources>
         <style:FractionConverter x:Key="Fraction" />
+
+        <Style x:Key="Animation" TargetType="Grid">
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.05"
+                                           To="1.05"
+                                           Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                           />
+                                <DoubleAnimation Duration="0:0:0.05"
+                                           To="1.05"
+                                           Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                           />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.05"
+                                           To="1"
+                                           Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                           />
+                                <DoubleAnimation Duration="0:0:0.05"
+                                           To="1"
+                                           Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                           />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         
         <Style x:Key="NoDefaultBlue" TargetType="Button">
             <Setter Property="Background" Value="{x:Null}"></Setter>
@@ -26,9 +68,29 @@
 
         <Style x:Key="OuterBorder"
                 TargetType="{x:Type Border}">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource Fraction}">
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualHeight" ></Binding>
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualHeight" ></Binding>
+                        <Binding>
+                            <Binding.Source>
+                                <sys:Double>10</sys:Double>
+                            </Binding.Source>
+                        </Binding>
+                        <Binding>
+                            <Binding.Source>
+                                <sys:String>DropShadow</sys:String>
+                            </Binding.Source>
+                        </Binding>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
             <Setter Property="Background">
                 <Setter.Value>
-                    <SolidColorBrush Color="Black" Opacity="0.5" />
+                    <SolidColorBrush Color="White" Opacity="1" />
                 </Setter.Value>
             </Setter>
             <Setter Property="CornerRadius">
@@ -40,7 +102,7 @@
                              Path="ActualHeight" ></Binding>
                         <Binding>
                             <Binding.Source>
-                                <sys:Double>20</sys:Double>
+                                <sys:Double>2</sys:Double>
                             </Binding.Source>
                         </Binding>
                         <Binding>
@@ -55,27 +117,6 @@
 
         <Style x:Key="InnerBorder"
                 TargetType="{x:Type Border}">
-            <Setter Property="Effect">
-                <Setter.Value>
-                    <MultiBinding Converter="{StaticResource Fraction}">
-                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
-                             Path="ActualHeight" ></Binding>
-                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
-                             Path="ActualHeight" ></Binding>
-                        <Binding>
-                            <Binding.Source>
-                                <sys:Double>30</sys:Double>
-                            </Binding.Source>
-                        </Binding>
-                        <Binding>
-                            <Binding.Source>
-                                <sys:String>DropShadow</sys:String>
-                            </Binding.Source>
-                        </Binding>
-                    </MultiBinding>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Background" Value="#333" />
             <Setter Property="Margin">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource Fraction}">
@@ -85,7 +126,7 @@
                              Path="ActualHeight" ></Binding>
                         <Binding>
                             <Binding.Source>
-                                <sys:Double>25</sys:Double>
+                                <sys:Double>10</sys:Double>
                             </Binding.Source>
                         </Binding>
                         <Binding>
@@ -105,7 +146,7 @@
                              Path="ActualHeight" ></Binding>
                         <Binding>
                             <Binding.Source>
-                                <sys:Double>6</sys:Double>
+                                <sys:Double>5</sys:Double>
                             </Binding.Source>
                         </Binding>
                         <Binding>
@@ -125,7 +166,7 @@
                              Path="ActualHeight" ></Binding>
                         <Binding>
                             <Binding.Source>
-                                <sys:Double>10</sys:Double>
+                                <sys:Double>2</sys:Double>
                             </Binding.Source>
                         </Binding>
                         <Binding>
@@ -138,14 +179,28 @@
             </Setter>
         </Style>
     </UserControl.Resources>
+    
     <Grid VerticalAlignment="Stretch"
-          HorizontalAlignment="Stretch">
+          HorizontalAlignment="Stretch"
+          Style="{StaticResource Animation}"
+          Cursor="Hand">
         <Border Style="{StaticResource OuterBorder}"
                 x:Name="OuterBorder">
             <Border Style="{StaticResource InnerBorder}"
-                    x:Name="InnrBorder">
-                <Button Style="{StaticResource NoDefaultBlue}">
-                    <Image Source="/EESDD;component/View/Image/info_500_0_cccccc.png"></Image>
+                    x:Name="InnrBorder"
+                    Background="{Binding ElementName=ShapeButton, Path=BGColor}">
+
+                <Button Style="{StaticResource NoDefaultBlue}"
+                        Click="Button_Click">
+                    <Image x:Name="IconImage"
+                           Source="{Binding ElementName=ShapeButton, Path=Icon}">
+                        <Image.Effect>
+                            <DropShadowEffect Direction="205"
+                                              Opacity="0.5"
+                                              BlurRadius="5"
+                                              ShadowDepth="5"></DropShadowEffect>
+                        </Image.Effect>
+                    </Image>
                 </Button>
             </Border>
         </Border>

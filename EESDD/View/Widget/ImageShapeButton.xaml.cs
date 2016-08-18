@@ -24,5 +24,42 @@ namespace EESDD.View.Widget
         {
             InitializeComponent();
         }
+
+        public static readonly DependencyProperty BackGroundColorProperty =
+            DependencyProperty.Register("BGColor", typeof(Brush), typeof(ImageShapeButton));
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register("Icon", typeof(ImageSource), typeof(ImageSwitchButton));
+        public static readonly RoutedEvent ClickEvent =
+            EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble,
+            typeof(RoutedEventHandler), typeof(ImageShapeButton));
+
+        public Brush BGColor
+        {
+            get { return InnrBorder.Background; }
+            set { InnrBorder.Background = value; }
+        }
+
+        public ImageSource Icon
+        {
+            get { return IconImage.Source; }
+            set { IconImage.Source = value; }
+        }
+
+        public event RoutedEventHandler Click
+        {
+            add { AddHandler(ClickEvent, value); }
+            remove { RemoveHandler(ClickEvent, value); }
+        }
+        protected virtual void RaiseClickEvent()
+        {
+            RoutedEventArgs newEventArgs =
+                new RoutedEventArgs(ImageShapeButton.ClickEvent);
+            RaiseEvent(newEventArgs);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseClickEvent();
+        }
     }
 }

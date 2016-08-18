@@ -195,7 +195,7 @@
                                            To="1.42"
                                            Storyboard.TargetProperty="RenderTransform.ScaleX"
                                            />
-                            <DoubleAnimation Duration="0:0:0.2"
+                            <DoubleAnimation Duration="0:0:0.1"
                                            To="1.42"
                                            Storyboard.TargetProperty="RenderTransform.ScaleY"
                                            />

@@ -247,6 +247,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
+    <Resource Include="View\Image\edit_500_0_ffffff.png" />
+    <Resource Include="View\Image\bar-chart_500_0_ffffff.png" />
+    <Resource Include="View\Image\car_500_0_ffffff.png" />
+    <Resource Include="View\Image\info-circle_500_0_ffffff.png" />
     <Resource Include="View\Image\info_500_0_cccccc.png" />
     <Resource Include="View\Image\calendar_50_0_555555.png" />
     <Resource Include="View\Image\car_50_0_555555.png" />
