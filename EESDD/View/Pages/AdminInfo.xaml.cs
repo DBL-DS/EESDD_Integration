@@ -24,5 +24,17 @@ namespace EESDD.View.Pages
         {
             InitializeComponent();
         }
+
+        private void InfoEditButton_Click(object sender, RoutedEventArgs e)
+        {
+            InfoEditButton.Visibility = System.Windows.Visibility.Hidden;
+            InfoSaveButton.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        private void InfoSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            InfoEditButton.Visibility = System.Windows.Visibility.Visible;
+            InfoSaveButton.Visibility = System.Windows.Visibility.Hidden;
+        }
     }
 }

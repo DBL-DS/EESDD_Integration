@@ -318,6 +318,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
+    <Resource Include="View\Image\arrow-return-left_50_0_cccccc.png" />
+    <Resource Include="View\Image\arrow-return-left_50_0_ffffff.png" />
     <Resource Include="View\Image\save_50_0_333333.png" />
     <Resource Include="View\Image\edit_50_0_333333.png" />
     <Resource Include="View\Image\bar-chart_100_0_ffffff.png" />

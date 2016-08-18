@@ -40,10 +40,23 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Style="{StaticResource Title}">用户信息</TextBlock>
                         <Button Grid.Column="1"
-                            Style="{StaticResource TitleButton}">
+                            Style="{StaticResource TitleButton}"
+                                x:Name="InfoEditButton"
+                                Click="InfoEditButton_Click">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Padding="3">编辑</TextBlock>
                                 <Image Source="/EESDD;component/View/Image/edit_50_0_333333.png"
+                                   Width="20" Height="20"></Image>
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="1"
+                            Style="{StaticResource TitleButton}"
+                                Visibility="Hidden"
+                                x:Name="InfoSaveButton"
+                                Click="InfoSaveButton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Padding="3">保存</TextBlock>
+                                <Image Source="/EESDD;component/View/Image/save_50_0_333333.png"
                                    Width="20" Height="20"></Image>
                             </StackPanel>
                         </Button>
@@ -63,7 +76,24 @@
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="3">
                 <TextBlock Style="{StaticResource InfoTitle}">性别</TextBlock>
-                <TextBox Style="{StaticResource InfoTextBox}" />
+                <Grid Style="{StaticResource GenderGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton GroupName="Gender"
+                                     Style="{StaticResource InfoRadioButton}"
+                                     IsChecked="True">
+                        <Image Source="/EESDD;component/View/Image/male-symbol_50_0_333333.png" 
+                                   Style="{StaticResource InfoRadioButtonImage}"/>
+                    </RadioButton>
+                    <RadioButton Grid.Column="1"
+                                 GroupName="Gender"
+                                     Style="{StaticResource InfoRadioButton}">
+                        <Image Source="/EESDD;component/View/Image/female-symbol_50_0_333333.png" 
+                                   Style="{StaticResource InfoRadioButtonImage}"/>
+                    </RadioButton>
+                </Grid>
             </StackPanel>
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="4">
@@ -94,6 +124,46 @@
                     Grid.Row="9">
                 <TextBlock Style="{StaticResource InfoTitle}">联系方式</TextBlock>
                 <TextBox Style="{StaticResource InfoTextBox}" />
+            </StackPanel>
+        </Grid>
+        <Grid Margin="50"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Border Style="{StaticResource TitleBorder}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Style="{StaticResource Title}">密码修改</TextBlock>
+                    </Grid>
+                </Border>
+            </Grid>
+            <StackPanel Style="{StaticResource InfoStackPanel}"
+                    Grid.Row="1">
+                <TextBlock Style="{StaticResource InfoTitle}">原始密码</TextBlock>
+                <PasswordBox Style="{StaticResource InfoPasswordBox}" />
+            </StackPanel>
+            <StackPanel Style="{StaticResource InfoStackPanel}"
+                    Grid.Row="2">
+                <TextBlock Style="{StaticResource InfoTitle}">新的密码</TextBlock>
+                <PasswordBox Style="{StaticResource InfoPasswordBox}" />
+            </StackPanel>
+            <StackPanel Style="{StaticResource InfoStackPanel}"
+                    Grid.Row="3"
+                        VerticalAlignment="Bottom">
+                <Button Style="{StaticResource SaveButton}">保 存</Button>
             </StackPanel>
         </Grid>
     </Grid>

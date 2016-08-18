@@ -29,6 +29,7 @@
            TargetType="{x:Type Button}"
            BasedOn="{StaticResource NoDefaultBlue}">
         <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Cursor" Value="Hand" />
     </Style>
 
     <Style x:Key="InfoStackPanel"
@@ -70,8 +71,93 @@
                 </MultiBinding>
             </Setter.Value>
         </Setter>
-        <Setter Property="IsReadOnly" Value="True" />
         <Setter Property="Padding" Value="3" />
         <Setter Property="Foreground" Value="#333" />
+    </Style>
+
+    <Style x:Key="InfoPasswordBox" TargetType="{x:Type PasswordBox}">
+        <Setter Property="Width" >
+            <Setter.Value>
+                <MultiBinding Converter="{StaticResource Fraction}">
+                    <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualWidth"></Binding>
+                    <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualHeight"></Binding>
+                    <Binding>
+                        <Binding.Source>
+                            <sys:Double>2</sys:Double>
+                        </Binding.Source>
+                    </Binding>
+                    <Binding>
+                        <Binding.Source>
+                            <sys:String>Width</sys:String>
+                        </Binding.Source>
+                    </Binding>
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="Foreground" Value="#333" />
+    </Style>
+
+    <Style x:Key="GenderGrid" TargetType="{x:Type Grid}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Width" >
+            <Setter.Value>
+                <MultiBinding Converter="{StaticResource Fraction}">
+                    <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualWidth"></Binding>
+                    <Binding RelativeSource="{RelativeSource AncestorType={x:Type Grid}}"
+                             Path="ActualHeight"></Binding>
+                    <Binding>
+                        <Binding.Source>
+                            <sys:Double>2</sys:Double>
+                        </Binding.Source>
+                    </Binding>
+                    <Binding>
+                        <Binding.Source>
+                            <sys:String>Width</sys:String>
+                        </Binding.Source>
+                    </Binding>
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="InfoRadioButton" 
+           TargetType="{x:Type RadioButton}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="10, 0" />
+    </Style>
+
+    <Style x:Key="InfoRadioButtonImage" 
+           TargetType="{x:Type Image}">
+        <Setter Property="Width" Value="15" />
+        <Setter Property="Height" Value="15" />
+    </Style>
+
+    <Style x:Key="SaveButton"
+           TargetType="{x:Type Button}"
+           BasedOn="{StaticResource NoDefaultBlue}">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Foreground" Value="#ccc" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <RadialGradientBrush>
+                    <GradientStop Offset="0" Color="#777"></GradientStop>
+                    <GradientStop Offset="0.4" Color="#555"></GradientStop>
+                    <GradientStop Offset="0.9" Color="#333"></GradientStop>
+                </RadialGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#fff" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
