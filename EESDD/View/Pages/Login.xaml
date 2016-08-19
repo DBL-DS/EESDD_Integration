@@ -6,17 +6,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="538" d:DesignWidth="1000"
       VerticalAlignment="Stretch"
-      HorizontalAlignment="Stretch"
-      Background="#342947">
+      HorizontalAlignment="Stretch">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/View/Style/Login.xaml">
-                </ResourceDictionary>
+                <ResourceDictionary Source="/View/Style/Login.xaml" />
+                <ResourceDictionary Source="/View/Style/Common.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid>
+    <Grid Style="{StaticResource Backgroundpurple}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
