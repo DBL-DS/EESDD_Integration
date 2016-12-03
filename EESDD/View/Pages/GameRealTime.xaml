@@ -55,7 +55,7 @@
                                     <ColumnDefinition Width="2.5*"></ColumnDefinition>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Style="{StaticResource PanelValue}">100000</TextBlock>
+                                <TextBlock Style="{StaticResource PanelValue}">1000</TextBlock>
                                 <TextBlock Style="{StaticResource PanelUnit}"
                                            Grid.Column="1">m</TextBlock>
                             </Grid>
@@ -138,10 +138,10 @@
                                     <ColumnDefinition Width="2.5*"></ColumnDefinition>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Style="{StaticResource PanelValue}">100</TextBlock>
+                                <TextBlock Style="{StaticResource PanelValue}">1500</TextBlock>
                                 <StackPanel Orientation="Horizontal"
                                            Grid.Column="1">
-                                    <TextBlock Style="{StaticResource PanelUnit}">m
+                                    <TextBlock Style="{StaticResource PanelUnit}">ms
                                     </TextBlock>
                                 </StackPanel>
                             </Grid>
@@ -152,12 +152,6 @@
             <Grid Grid.Column="2">
                 <ScrollViewer Style="{StaticResource RealTimeScroll}">
                     <StackPanel>
-                        <Image Height="300" />
-                        <Image Height="300" />
-                        <Image Height="300" />
-                        <Image Height="300" />
-                        <Image Height="300" />
-                        <Image Height="300" />
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
