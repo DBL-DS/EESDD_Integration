@@ -2,7 +2,8 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
       d:DesignHeight="538" d:DesignWidth="1000">
     <Page.Resources>
@@ -126,7 +127,7 @@
                         </Grid>
                     </Border>
                     <Border Style="{StaticResource PanelCell}"
-                            Grid.Row="5">
+                            Grid.Row="5" BorderThickness="0">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*"></RowDefinition>
@@ -152,6 +153,11 @@
             <Grid Grid.Column="2">
                 <ScrollViewer Style="{StaticResource RealTimeScroll}">
                     <StackPanel>
+                        <lvc:CartesianChart Style="{StaticResource MiniLineChart}" />
+                        <lvc:CartesianChart Style="{StaticResource MiniLineChart}" />
+                        <lvc:CartesianChart Style="{StaticResource MiniLineChart}" />
+                        <lvc:CartesianChart Style="{StaticResource MiniLineChart}" />
+                        <lvc:CartesianChart Style="{StaticResource MiniLineChart}" />
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
