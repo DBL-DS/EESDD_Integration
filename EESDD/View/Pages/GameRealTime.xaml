@@ -150,6 +150,9 @@
                     </Border>
                 </Grid>
             </Border>
+            <Grid Grid.Column="1">
+                <lvc:CartesianChart Style="{StaticResource CenterChart}" />
+            </Grid>
             <Grid Grid.Column="2">
                 <ScrollViewer Style="{StaticResource RealTimeScroll}">
                     <StackPanel>

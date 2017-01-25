@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace EESDD.Class.Control
 {
+    /*
+     * GameManager is to manage all scene, mode and game.
+     */
     class GameManager
     {
         public GameManager()

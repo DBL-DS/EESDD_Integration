@@ -9,6 +9,10 @@ namespace EESDD.View
 {
     static class CU
     {
+        /* 
+         * This static Class is the center of the System.
+         * It holds all Resources except static ones.
+         */
         static CU()
         {
             MG_Set = new SettingManager();

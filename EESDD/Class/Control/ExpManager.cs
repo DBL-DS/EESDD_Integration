@@ -2,9 +2,6 @@
 using EESDD.Module.Encryption;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
@@ -19,7 +16,7 @@ namespace EESDD.Class.Control
         private List<Exp> exps;
         private Dictionary<Tuple<string, string>, List<Exp>> gameExps;
 
-        // 指定exp文件的文件名格式
+        // Generate the name of exp file
         public static string GetFileName(string name)
         {
             return Encryptor.GetMD5(name) + ".exp";
@@ -84,7 +81,7 @@ namespace EESDD.Class.Control
         }
 
 
-        // 读取并加载exp文件
+        // Read and load exp file
         public bool Load(string expFileName)
         {
             gameExps = 

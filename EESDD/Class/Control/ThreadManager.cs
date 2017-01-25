@@ -11,6 +11,10 @@ namespace EESDD.Class.Control
     {
         PlayerRefresh
     }
+
+    /*
+     * ThreadManager manages all new threads.
+     */
     static class ThreadManager
     {
         static ThreadManager()

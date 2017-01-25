@@ -1,13 +1,12 @@
 ﻿using EESDD.Class.Model;
 using MathNet.Numerics.Statistics;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
+    /*
+     * Evaluator is to evaluate an experience, do some calculation
+     */
     class Evaluator
     {
         private Exp exp;
@@ -19,14 +18,14 @@ namespace EESDD.Class.Control
 
             foreach (var area in exp.Areas)
             {
-                CacuMeanAndVar(area);
-                CacuScore(area);
+                CalcuMeanAndVar(area);
+                CalcuScore(area);
             }
 
             exp.Evaluated = true;
         }
 
-        private void CacuMeanAndVar(AreaExp area)
+        private void CalcuMeanAndVar(AreaExp area)
         {
             area.Var = new EvaPara();
             area.Mean = new EvaPara();
@@ -46,7 +45,7 @@ namespace EESDD.Class.Control
             }
         }
 
-        private void CacuScore(AreaExp area)
+        private void CalcuScore(AreaExp area)
         {
 
         }

@@ -1,14 +1,13 @@
 ﻿using EESDD.Class.Model;
 using EESDD.Module.UDP;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
+    /*
+     * Implementation of 
+     */
     class Player
     {
         public Player(UDPSetting setting,
@@ -95,6 +94,9 @@ namespace EESDD.Class.Control
             StopHandler(exp);
         }
 
+        /*
+         * Transfer UDP message from bytes to a svframe
+         */
         private Svframe BytesToSvframe(byte[] bytes)
         {
             float[] floats = BytesConverter.ToFloatArray(bytes);

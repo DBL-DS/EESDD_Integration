@@ -21,11 +21,11 @@ namespace EESDD.Class.Model
             evaluated = false;
         }
 
-        private DateTime startTime;                 // 体验开始时间
-        private DateTime endTime;                   // 体验结束时间
-        private string scene;                   // 体验的场景名
-        private string mode;                    // 体验的模式名
-        private List<AreaExp> areas;            // 按区域划分的体验集合
+        private DateTime startTime;                 // exp start time
+        private DateTime endTime;                   // exp end time
+        private string scene;                       // scene name of this exp
+        private string mode;                        // mode name of this exp
+        private List<AreaExp> areas;                // 按区域划分的体验集合
         private bool evaluated;
 
         public DateTime StartTime

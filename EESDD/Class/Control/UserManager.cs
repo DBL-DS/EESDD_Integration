@@ -30,10 +30,10 @@ namespace EESDD.Class.Control
     {
         public UserManager()
         {
-            InitDbManger();
+            InitDBManger();
         }
 
-        private void InitDbManger()
+        private void InitDBManger()
         {
             dbManger = new UserDBManager();
             dbManger.ConnectDB(FileManager.GetPath("database", "db"));

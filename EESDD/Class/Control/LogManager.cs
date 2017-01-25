@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
+    /*
+     * LogManager is to record the behavior of users.
+     */
     class LogManager
     {
     }

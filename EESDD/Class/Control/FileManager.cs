@@ -3,9 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
@@ -21,7 +19,7 @@ namespace EESDD.Class.Control
         private static string WorkPath;
 
         # region Path Setting
-        // 加载 path.json
+        // load path.json
         private static bool LoadPath()
         {
             string path = FindFile("path.json");
@@ -44,7 +42,7 @@ namespace EESDD.Class.Control
             return false;
         }
 
-        // 返回工作目录（包括子目录）下，找到的第一个符合文件名要求文件的完整路径
+        // Find the first matched file
         private static string FindFile(string fileName)
         {
             var paths = Directory.GetFiles(WorkPath, fileName, SearchOption.AllDirectories);

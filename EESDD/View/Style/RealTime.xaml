@@ -66,4 +66,8 @@
         <Setter Property="Height" Value="180" />
         <Setter Property="Margin" Value="3" />
     </Style>
+
+    <Style x:Key="CenterChart" TargetType="{x:Type lvc:CartesianChart}">
+        <Setter Property="Margin" Value="3" />
+    </Style>
 </ResourceDictionary>

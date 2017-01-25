@@ -102,6 +102,7 @@
     <Compile Include="Class\Control\Player.cs" />
     <Compile Include="Class\Control\Recorder.cs" />
     <Compile Include="Class\Control\SettingManager.cs" />
+    <Compile Include="Class\Control\SimulatorManger.cs" />
     <Compile Include="Class\Control\ThreadManager.cs" />
     <Compile Include="Class\Control\UserDBManager.cs" />
     <Compile Include="Class\Control\UserManager.cs" />
