@@ -15,11 +15,11 @@ namespace EESDD.View
          */
         static CU()
         {
-            MG_Set = new SettingManager();
+            MG_Set  = new SettingManager();
             MG_User = new UserManager();
             MG_Game = new GameManager();
             MG_Page = new PageManager();
-            Player = new Player(MG_Set.UDP, MG_Set.UDPOffset);
+            Player  = new Player(MG_Set.UDP, MG_Set.UDPOffset);
         }
 
         public static SettingManager MG_Set;
