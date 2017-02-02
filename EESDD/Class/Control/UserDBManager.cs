@@ -26,6 +26,15 @@ namespace EESDD.Class.Control
 
         private SQLiteConnection connection;
 
+        private void OpenConnection()
+        {
+            if (connection != null)
+            {
+                connection.Close();
+                connection.Open();
+            }
+        }
+
         public bool ConnectDB(string dbPath)
         {
             if (!File.Exists(dbPath) 
@@ -109,11 +118,15 @@ namespace EESDD.Class.Control
 
         private List<User> GetUsers(string sql, UserGroup group)
         {
-            connection.Open();
+            OpenConnection();
             SQLiteDataReader reader = ExecuteQuery(sql);
 
-            if (reader != null && ! reader.HasRows)
+            if (reader != null && !reader.HasRows)
+            {
+                reader.Close();
+                connection.Close();
                 return null;
+            }
 
             List<User> users = new List<User>();
             while (reader.Read())
@@ -131,16 +144,17 @@ namespace EESDD.Class.Control
                         Regular regular = user as Regular;
                         regular.Group = UserGroup.REGULAR;
                         regular.Gender = reader["gender"] as string;
-                        regular.Height = (float)reader["height"];
-                        regular.Weight = (float)reader["weight"];
-                        regular.Age = (int)reader["age"];
-                        regular.DriAge = (int)reader["driAge"];
+                        regular.Height = GetFloat(reader["height"]);
+                        regular.Weight = GetFloat(reader["weight"]);
+                        regular.Age = GetInt(reader["age"]);
+                        regular.DriAge = GetInt(reader["driAge"]);
                         regular.Career = reader["career"] as string;
                         regular.Contact = reader["contact"] as string;
                         regular.ExpFile = reader["exp"] as string;
                         break;
                     default:
-                        return null;
+                        user = null;
+                        break;
                 }
 
                 user.Name = reader["name"] as string;
@@ -176,7 +190,7 @@ namespace EESDD.Class.Control
                     Regular regular = user as Regular;
                     sql = "insert into " + regular.Group
                         + " (name, password, realName, gender, height, weight, " 
-                        + "age, dirAge, career, contact, exp) values ('"
+                        + "age, driAge, career, contact, exp) values ('"
                         + regular.Name + "', '"
                         + Encryptor.GetMD5(regular.Password) + "', '"
                         + regular.RealName + "', '"
@@ -256,7 +270,7 @@ namespace EESDD.Class.Control
         {
             try
             {
-                connection.Open();
+                OpenConnection();
                 SQLiteCommand command = new SQLiteCommand(sql, connection);
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -267,6 +281,16 @@ namespace EESDD.Class.Control
             }
 
             return true;
+        }
+
+        private float GetFloat(object value)
+        {
+            return (float)(double)value;
+        }
+
+        private int GetInt(object value)
+        {
+            return (int)(long)value;
         }
     }
 }

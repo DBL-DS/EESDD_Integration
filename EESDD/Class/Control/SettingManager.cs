@@ -19,8 +19,8 @@ namespace EESDD.Class.Control
         public UDPSetting UDP;
         public Dictionary<string, int> UDPOffset;
         public Dictionary<string, Dictionary<string, string>> Style;
-        public Dictionary<string, Dictionary<string, string>> TextEn;
-        public Dictionary<string, Dictionary<string, string>> TextZh;
+        private Dictionary<string, Dictionary<string, string>> TextEn;
+        private Dictionary<string, Dictionary<string, string>> TextZh;
 
         private void LoadUDP()
         {
@@ -41,9 +41,24 @@ namespace EESDD.Class.Control
         private void LoadText()
         {
             Dictionary<string, Dictionary<string, Dictionary<string,
-                string>>> Text = FileManager.GetText();
-            TextEn = Text["en"];
-            TextZh = Text["zh"];
+                string>>> TextCluster = FileManager.GetText();
+            TextEn = TextCluster["en"];
+            TextZh = TextCluster["zh"];
+        }
+
+        public Dictionary<string, Dictionary<string,string>> Text
+        {
+            get
+            {
+                switch (Style["common"]["lang"])
+                {
+                    case "zh":
+                        return TextZh;
+                    case "en":
+                        return TextEn;
+                }
+                    return TextZh;
+            }
         }
     }
 }

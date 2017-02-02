@@ -11,11 +11,11 @@ namespace EESDD.Class.Control
     {
         USEREXIST,
         SUCCESS,
-        DBFAIELD,
+        DBFAILED,
         VALIDATED,
         GRANTUSERNOTEXIST,
         NAMEEMPTY,
-        PASSWORDPEEMPTY,
+        PASSWORDEMPTY,
         REALNAMEEMPTY,
         GENDEREMPTY,
         HEIGHTEMPTY,
@@ -44,6 +44,7 @@ namespace EESDD.Class.Control
         private User registerUser;
         private UserDBManager dbManger;
         private ExpManager expManger;
+        private RegisterState currentState;
 
         public LoginState Login(string username, string password, UserGroup group)
         {
@@ -64,6 +65,7 @@ namespace EESDD.Class.Control
 
         public void RegisterStart(UserGroup group)
         {
+            currentState = RegisterState.VALIDATED;
             switch (group)
             {
                 case UserGroup.ADMIN:
@@ -82,13 +84,19 @@ namespace EESDD.Class.Control
 
         public RegisterState RegisterAdd(UserVariable variable, string value)
         {
-            switch (variable)
+            switch (variable) 
             {
                 case UserVariable.Name:
                     if (value.Equals(""))
+                    {
+                        updateRegisterState(RegisterState.NAMEEMPTY);
                         return RegisterState.NAMEEMPTY;
+                    }
                     if (dbManger.GetUser(value, registerUser.Group) != null)
+                    {
+                        updateRegisterState(RegisterState.USEREXIST);
                         return RegisterState.USEREXIST;
+                    }
                     registerUser.Name = value;
                     if (registerUser.Group == UserGroup.REGULAR)
                         (registerUser as Regular).ExpFile 
@@ -97,47 +105,74 @@ namespace EESDD.Class.Control
                 case UserVariable.Password:
                     if (registerUser.Group 
                         == UserGroup.ADMIN && value.Equals(""))
-                        return RegisterState.PASSWORDPEEMPTY;
+                    {
+                        updateRegisterState(RegisterState.PASSWORDEMPTY);
+                        return RegisterState.PASSWORDEMPTY;
+                    }
                     registerUser.Password = value;
                     break;
                 case UserVariable.RealName:
                     if (value.Equals(""))
+                    {
+                        updateRegisterState(RegisterState.REALNAMEEMPTY);
                         return RegisterState.REALNAMEEMPTY;
+                    }
                     registerUser.RealName = value;
                     break;
                 case UserVariable.Gender:
                     if (value.Equals(""))
+                    {
+                        updateRegisterState(RegisterState.GENDEREMPTY);
                         return RegisterState.GENDEREMPTY;
+                    }
                     (registerUser as Regular).Gender = value;
                     break;
                 case UserVariable.Height:
                     if (value.Equals(""))
+                    {
+                        updateRegisterState(RegisterState.HEIGHTEMPTY);
                         return RegisterState.HEIGHTEMPTY;
+                    }
                     (registerUser as Regular).Height = float.Parse(value);
                     break;
                 case UserVariable.Weight:
                     if (value.Equals(""))
+                    {
+                        updateRegisterState(RegisterState.WEIGHTEMPTY);
                         return RegisterState.WEIGHTEMPTY;
+                    }
                     (registerUser as Regular).Weight = float.Parse(value);
                     break;
                 case UserVariable.Age:
                     if (value.Equals(""))
+                    {
+                        updateRegisterState(RegisterState.AGEEMPTY);
                         return RegisterState.AGEEMPTY;
+                    }
                     (registerUser as Regular).Age = int.Parse(value);
                     break;
                 case UserVariable.DriAge:
                     if (value.Equals(""))
+                    {
+                        updateRegisterState(RegisterState.DRIAGEEMPTY);
                         return RegisterState.DRIAGEEMPTY;
+                    }
                     (registerUser as Regular).DriAge = int.Parse(value);
                     break;
                 case UserVariable.Career:
                     if (value.Equals(""))
+                    {
+                        updateRegisterState(RegisterState.CAREEREMPTY);
                         return RegisterState.CAREEREMPTY;
+                    }
                     (registerUser as Regular).Career = value;
                     break;
                 case UserVariable.Contact:
                     if (value.Equals(""))
+                    {
+                        updateRegisterState(RegisterState.CONTACTEMPTY);
                         return RegisterState.CONTACTEMPTY;
+                    }
                     (registerUser as Regular).Contact = value;
                     break;
                 default:
@@ -146,16 +181,23 @@ namespace EESDD.Class.Control
             return RegisterState.VALIDATED;
         }
 
+        private void updateRegisterState(RegisterState state)
+        {
+            if (currentState == RegisterState.VALIDATED)
+                currentState = state;
+        }
+
         public RegisterState RegisterEnd()
         {
-            RegisterState state;
-            if (dbManger.AddUser(registerUser))
-                state = RegisterState.SUCCESS;
-            else
-                state = RegisterState.DBFAIELD;
-
+            if (currentState == RegisterState.VALIDATED)
+            {
+                if (dbManger.AddUser(registerUser))
+                    currentState = RegisterState.SUCCESS;
+                else
+                    currentState = RegisterState.DBFAILED;
+            }
             registerUser = null;
-            return state;
+            return currentState;
         }
 
         public void LogOut()

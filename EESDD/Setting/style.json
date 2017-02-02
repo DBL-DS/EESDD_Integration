@@ -1,5 +1,8 @@
 ﻿{
-    "normal": { 
+	"normal": {
 
-    }
+	},
+	"common": {
+		"lang": "zh"
+	}
 }

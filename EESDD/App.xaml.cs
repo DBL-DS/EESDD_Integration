@@ -50,7 +50,7 @@ namespace WpfApplication2
 
         private void ShowMainWindow()
         {
-            CU.MG_Page.CurrentPage = PageCluster.GameRealTime;
+            CU.MG_Page.CurrentPage = PageCluster.Login;
             CU.MG_Page.ShowMain();
         }
 

@@ -119,10 +119,10 @@
                     </StackPanel>
                 </Border>
                 <Border Style="{StaticResource Box}"
-                    Height="400" Width="250"
+                    Height="430" Width="250"
                     x:Name="RegisterPanel"
                     Visibility="Hidden"
-                    Opacity="0" >
+                    Opacity="1" >
                     <StackPanel>
                         <StackPanel Orientation="Horizontal"
                                 Margin="0, 0, 0, 20">
@@ -133,34 +133,39 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Style="{StaticResource RegTitle}">
                             用户名</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBox}" />
+                            <TextBox Style="{StaticResource RegTextBox}" x:Name="rName" />
+                            <TextBlock Style="{StaticResource RegError}" x:Name="rNameError" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Style="{StaticResource RegTitle}">
                             密码</TextBlock>
-                            <PasswordBox Style="{StaticResource RegPasswordBox}" />
+                            <PasswordBox Style="{StaticResource RegPasswordBox}" x:Name="rPassword" />
                             <Image Source="/EESDD;component/View/Image/question-circle_50_0_333333.png" 
                                Width="15" Height="15"
                                Margin="10, 0"
                                ToolTip="密码可为空"
                                Opacity="0.7"/>
+                            <TextBlock Style="{StaticResource RegError}" x:Name="rPasswordError" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Style="{StaticResource RegTitle}">
                             真实姓名</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBox}" />
+                            <TextBox Style="{StaticResource RegTextBox}" x:Name="rRealName" />
+                            <TextBlock Style="{StaticResource RegError}" x:Name="rRealnameError" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Style="{StaticResource RegTitle}">
                             性别</TextBlock>
                             <RadioButton GroupName="Gender"
                                      Style="{StaticResource RegRadioButton}"
-                                     IsChecked="True">
+                                     IsChecked="True"
+                                         x:Name="rMale">
                                 <Image Source="/EESDD;component/View/Image/male-symbol_50_0_333333.png" 
                                    Style="{StaticResource RegRadioButtonImage}"/>
                             </RadioButton>
                             <RadioButton GroupName="Gender"
-                                     Style="{StaticResource RegRadioButton}">
+                                     Style="{StaticResource RegRadioButton}"
+                                         x:Name="rFemale">
                                 <Image Source="/EESDD;component/View/Image/female-symbol_50_0_333333.png" 
                                    Style="{StaticResource RegRadioButtonImage}"/>
                             </RadioButton>
@@ -168,46 +173,56 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Style="{StaticResource RegTitle}">
                             年龄</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBox}" />
+                            <TextBox Style="{StaticResource RegTextBox}" x:Name="rAge" />
+                            <TextBlock Style="{StaticResource RegError}" x:Name="rAgeError" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Style="{StaticResource RegTitle}">
                             身高</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBoxWithUnit}" />
+                            <TextBox Style="{StaticResource RegTextBoxWithUnit}" x:Name="rHeight" />
                             <TextBlock Style="{StaticResource RegUnit}">
                             cm
                             </TextBlock>
+                            <TextBlock Style="{StaticResource RegError}" x:Name="rHeightError" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Style="{StaticResource RegTitle}">
                             体重</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBoxWithUnit}" />
+                            <TextBox Style="{StaticResource RegTextBoxWithUnit}" x:Name="rWeight" />
                             <TextBlock Style="{StaticResource RegUnit}">
                             kg
                             </TextBlock>
+                            <TextBlock Style="{StaticResource RegError}" x:Name="rWeightError" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Style="{StaticResource RegTitle}">
                             驾龄</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBoxWithUnit}" />
+                            <TextBox Style="{StaticResource RegTextBoxWithUnit}" x:Name="rDriAge" />
                             <TextBlock Style="{StaticResource RegUnit}">
                             年
                             </TextBlock>
+                            <TextBlock Style="{StaticResource RegError}" x:Name="rDriAgeError" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Style="{StaticResource RegTitle}">
                             职业</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBox}" />
+                            <TextBox Style="{StaticResource RegTextBox}" x:Name="rCareer" />
+                            <TextBlock Style="{StaticResource RegError}" x:Name="rCareerError" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Style="{StaticResource RegTitle}">
                             联系方式</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBox}" />
+                            <TextBox Style="{StaticResource RegTextBox}" x:Name="rContact" />
+                            <TextBlock Style="{StaticResource RegError}" x:Name="rContactError" />
                         </StackPanel>
-
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource RegInfo}"
+                                       x:Name="rInfo">
+                            </TextBlock>
+                        </StackPanel>
                         <StackPanel>
                             <Button Style="{StaticResource BoxButton}"
-                                Margin="0, 20">
+                                Click="RegisterButton_Click">
                                 <StackPanel Orientation="Horizontal"
                                         VerticalAlignment="Center">
                                     <TextBlock

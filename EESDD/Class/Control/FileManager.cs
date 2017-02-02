@@ -84,7 +84,10 @@ namespace EESDD.Class.Control
         public static List<Exp> GetExps(string expName)
         {
             string path = GetPath("exp", "path") + expName;
-            return ReadJson<List<Exp>>(path);
+            if (File.Exists(path))
+                return ReadJson<List<Exp>>(path);
+            else
+                return null;
         }
 
         public static Dictionary<string, string> GetUDPSetting()

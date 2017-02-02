@@ -1,14 +1,31 @@
 ﻿{
-    "en": {
-        "main": {
-            "link": "Connected",
-            "unlink": "Disconnected"
-        }
-    },
-    "zh": {
-        "main": {
-            "link": "连接正常",
-            "unlink":  "连接断开"
-        }
-    }
+	"en": {
+		"main": {
+			"link": "Connected",
+			"unlink": "Disconnected"
+		}
+	},
+	"zh": {
+		"main": {
+			"link": "连接正常",
+			"unlink": "连接断开"
+		},
+		"register_state": {
+			"user_exist": "用户名已存在",
+			"success": "注册成功",
+			"db_failed": "注册失败，数据库错误",
+			"validated": "填写内容符合要求",
+			"grant_user_not_exist": "指定的用户不存在",
+			"name_empty": "用户名不可为空",
+			"password_empty": "用户名不可为空",
+			"realname_empty": "真实姓名不可为空",
+			"gender_empty": "性别不可为空",
+			"height_empty": "身高不可为空",
+			"weight_empty": "体重不可为空",
+			"age_empty": "年龄不可为空",
+			"driage_empty": "驾龄不可为空",
+			"career_empty": "职业不可为空",
+			"contact_empty": "联系方式不可为空"
+		}
+	}
 }

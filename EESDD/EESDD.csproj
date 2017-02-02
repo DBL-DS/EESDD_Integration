@@ -95,6 +95,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class\Control\Evaluator.cs" />
+    <Compile Include="Class\Control\ExceptionManager.cs" />
     <Compile Include="Class\Control\ExpManager.cs" />
     <Compile Include="Class\Control\FileManager.cs" />
     <Compile Include="Class\Control\GameManager.cs" />
