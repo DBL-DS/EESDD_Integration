@@ -29,6 +29,72 @@ namespace EESDD.View.Pages
             LoadAnimation();
         }
 
+        #region Reset
+        private void ClearLoginInfo()
+        {
+            lInfo.Text = "";
+        }
+
+        private void ClearLoginTable()
+        {
+            lName.Text = "";
+            lPassword.Password = "";
+        }
+
+        private void ResetLogin()
+        {
+            ClearLoginInfo();
+            ClearLoginTable();
+        }
+
+        private void ClearRegisterError()
+        {
+            rNameError.Visibility = Visibility.Hidden;
+            rPasswordError.Visibility = Visibility.Hidden;
+            rRealnameError.Visibility = Visibility.Hidden;
+            rAgeError.Visibility = Visibility.Hidden;
+            rHeightError.Visibility = Visibility.Hidden;
+            rWeightError.Visibility = Visibility.Hidden;
+            rDriAgeError.Visibility = Visibility.Hidden;
+            rCareerError.Visibility = Visibility.Hidden;
+            rContactError.Visibility = Visibility.Hidden;
+        }
+
+        private void ClearRegisterInfo()
+        {
+            rInfo.Text = "";
+        }
+
+        private void ClearRegisterTable()
+        {
+            rName.Text = "";
+            rPassword.Password = "";
+            rRealName.Text = "";
+            rMale.IsChecked = true;
+            rAge.Text = "";
+            rHeight.Text = "";
+            rWeight.Text = "";
+            rDriAge.Text = "";
+            rCareer.Text = "";
+            rContact.Text = "";
+        }
+
+        private void ResetRegister()
+        {
+            ClearRegisterError();
+            ClearRegisterInfo();
+            ClearRegisterTable();
+        }
+
+        private void ResetLoginPage()
+        {
+            ResetLogin();
+            ResetRegister();
+            ShowRegularButton();
+            ShowLoginPanel();
+        }
+        #endregion
+
         #region Animation
         private Storyboard LeftFadeOut;
         private Storyboard RightFadeOut;
@@ -46,7 +112,6 @@ namespace EESDD.View.Pages
             ButtonFadeIn    = (this.FindResource("ButtonFadeIn") as Storyboard);
             ButtonFadeOut   = (this.FindResource("ButtonFadeOut") as Storyboard);
         }
-        # endregion
 
         private void ShowRegularButton()
         {
@@ -89,6 +154,29 @@ namespace EESDD.View.Pages
             Storyboard.SetTarget(ButtonFadeIn, RightButton);
             ButtonFadeIn.Begin();
         }
+        # endregion
+
+        private void DisposeLoginInfo(LoginState state)
+        {
+            ClearLoginInfo();
+            switch (state)
+            {
+                case LoginState.NOTEXIST:
+                    lInfo.Text = CU.MG_Set.Text["login_state"]["not_exist"];
+                    break;
+                case LoginState.WRONGPASSWORD:
+                    lInfo.Text = CU.MG_Set.Text["login_state"]["wrong_password"];
+                    break;
+                case LoginState.NEEDPASSWORD:
+                    lInfo.Text = CU.MG_Set.Text["login_state"]["need_password"];
+                    break;
+                case LoginState.SUCCESS:
+                    lInfo.Text = CU.MG_Set.Text["login_state"]["success"];
+                    break;
+                default:
+                    break;
+            }
+        }
 
         private RegisterState validateRegister()
         {
@@ -108,7 +196,7 @@ namespace EESDD.View.Pages
             return CU.MG_User.RegisterEnd();
         }
 
-        private void DisposeInfo(RegisterState state)
+        private void DisposeRegInfo(RegisterState state)
         {
             ClearRegisterInfo();
             ClearRegisterError();
@@ -171,53 +259,38 @@ namespace EESDD.View.Pages
             }
         }
 
-        private void ClearRegisterError()
-        {
-            rNameError.Visibility = Visibility.Hidden;
-            rPasswordError.Visibility = Visibility.Hidden;
-            rRealnameError.Visibility = Visibility.Hidden;
-            rAgeError.Visibility = Visibility.Hidden;
-            rHeightError.Visibility = Visibility.Hidden;
-            rWeightError.Visibility = Visibility.Hidden;
-            rDriAgeError.Visibility = Visibility.Hidden;
-            rCareerError.Visibility = Visibility.Hidden;
-            rContactError.Visibility = Visibility.Hidden;
-        }
-
-        private void ClearRegisterInfo()
-        {
-            rInfo.Text = "";
-        }
-
-        private void ClearRegisterTable()
-        {
-            rName.Text = "";
-            rPassword.Password = "";
-            rRealName.Text = "";
-            rMale.IsChecked = true;
-            rAge.Text = "";
-            rHeight.Text = "";
-            rWeight.Text = "";
-            rDriAge.Text = "";
-            rCareer.Text = "";
-            rContact.Text = "";
-        }
-
-        private void ResetRegister()
-        {
-            ClearRegisterError();
-            ClearRegisterInfo();
-            ClearRegisterTable();
-        }
-
         private void LoginAction(string username, string password, UserGroup group)
+        {
+            LoginState state = LoginState.NOTEXIST;
+            switch (group)
+            {
+                case UserGroup.ADMIN:
+                    state = CU.MG_User.Login(username, password, UserGroup.ADMIN);
+                    break;
+                case UserGroup.REGULAR:
+                    state = CU.MG_User.Login(username, password, UserGroup.REGULAR);
+                    break;
+                default:
+                    break;
+            }
+
+            DisposeLoginInfo(state);
+            if (state == LoginState.SUCCESS)
+            {
+                ResetLoginPage();
+                JumpPage(group);
+            }
+        }
+
+        private void JumpPage(UserGroup group)
         {
             switch (group)
             {
                 case UserGroup.ADMIN:
+                    CU.MG_Page.CurrentPage = PageCluster.AdminMain;
                     break;
                 case UserGroup.REGULAR:
-                    CU.MG_User.Login(rName.Text, rPassword.Password, UserGroup.REGULAR);
+                    CU.MG_Page.CurrentPage = PageCluster.RegularMain;
                     break;
                 default:
                     break;
@@ -248,14 +321,19 @@ namespace EESDD.View.Pages
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             RegisterState state = validateRegister();
-            DisposeInfo(state);
+            DisposeRegInfo(state);
             if (state == RegisterState.SUCCESS)
+            {
+                ShowRegularButton();
+                ShowLoginPanel();
                 LoginAction(rName.Text, rPassword.Password, UserGroup.REGULAR);
+            }
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-
+            UserGroup group = RegularButton.IsVisible ? UserGroup.REGULAR : UserGroup.ADMIN;
+            LoginAction(lName.Text, lPassword.Password, group);
         }
         #endregion
     }

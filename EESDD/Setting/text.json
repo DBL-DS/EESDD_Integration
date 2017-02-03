@@ -26,6 +26,12 @@
 			"driage_empty": "驾龄不可为空",
 			"career_empty": "职业不可为空",
 			"contact_empty": "联系方式不可为空"
+		},
+		"login_state": {
+			"not_exist": "用户不存在",
+			"wrong_password": "密码不正确",
+			"need_password": "密码不可为空",
+			"success": "登录成功"
 		}
 	}
 }

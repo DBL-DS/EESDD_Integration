@@ -42,7 +42,7 @@
             </Button>
             <Canvas Grid.Column="1"
                     x:Name="PanelCanvas">
-                <Border Height="240" Width="250"
+                <Border Height="255" Width="250"
                     Style="{StaticResource Box}"
                     x:Name="LoginPanel"
                     Visibility="Visible"
@@ -53,7 +53,7 @@
                         登录
                             </TextBlock>
                             <Button Style="{StaticResource NoDefaultBlue}"
-                                Margin="60, 50, 0, 5"
+                                Margin="60, 50, 0, 10"
                                 Cursor="Hand"
                                 x:Name="RegularButton"
                                 Click="RegularButton_Click">
@@ -69,7 +69,7 @@
                                 </StackPanel>
                             </Button>
                             <Button Style="{StaticResource NoDefaultBlue}"
-                                Margin="60, 50, 0, 5"
+                                Margin="60, 50, 0, 10"
                                 Cursor="Hand"
                                 Visibility="Collapsed"
                                 x:Name="AdminButton"
@@ -92,7 +92,8 @@
                             <Image Source="/EESDD;component/View/Image/user_50_0_333333.png"
                                Style="{StaticResource BoxImage}"></Image>
                             <TextBox Style="{StaticResource BoxTextBox}"
-                                 ToolTip="请输入用户名">
+                                 ToolTip="请输入用户名"
+                                     x:Name="lName">
                             </TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal"
@@ -101,11 +102,17 @@
                             <Image Source="/EESDD;component/View/Image/key_50_0_333333.png"
                                 Style="{StaticResource BoxImage}"></Image>
                             <PasswordBox Style="{StaticResource BoxPasswordBox}"
-                                 ToolTip="请输入密码"></PasswordBox>
+                                 ToolTip="请输入密码"
+                                         x:Name="lPassword"></PasswordBox>
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource LoginInfo}"
+                                       x:Name="lInfo" />
                         </StackPanel>
                         <StackPanel>
                             <Button Style="{StaticResource BoxButton}"
-                                Margin="0, 20">
+                                Margin="0, 0, 0, 20"
+                                    Click="LoginButton_Click">
                                 <StackPanel Orientation="Horizontal"
                                         VerticalAlignment="Center">
                                     <TextBlock
