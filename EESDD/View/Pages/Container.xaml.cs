@@ -22,7 +22,6 @@ namespace EESDD.View.Pages
     /// Interaction logic for Container.xaml
     /// </summary>
     /// 
-    public delegate bool BeforeClosedCheckAction();
 
     public partial class Container : Window
     {
@@ -32,7 +31,15 @@ namespace EESDD.View.Pages
             ResetContainer();
         }
 
+        public delegate bool BeforeClosedCheckAction();
+        public delegate void ReturnAction();
+        public delegate void LogoutAction();
+        public delegate void SettingAction();
+
         public BeforeClosedCheckAction BeforeClosedCheckHandler;
+        public ReturnAction ReturnHandler;
+        public LogoutAction LogoutHandler;
+        public SettingAction SettingHandler;
 
         public void SetPage(Page page)
         {
@@ -420,8 +427,22 @@ namespace EESDD.View.Pages
                 this.Bottom = bottom;
             }
         }
-        # endregion
 
+        #endregion
 
+        private void ReturnButton_Click(object sender, RoutedEventArgs e)
+        {
+            ReturnHandler?.Invoke();
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            LogoutHandler?.Invoke();
+        }
+
+        private void SettingButton_Click(object sender, RoutedEventArgs e)
+        {
+            SettingHandler?.Invoke();
+        }
     }
 }

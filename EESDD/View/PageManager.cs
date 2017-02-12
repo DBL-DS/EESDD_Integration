@@ -34,6 +34,7 @@ namespace EESDD.View
         public PageManager()
         {
             Main = new Container();
+            ActionBinding();
         }
 
         private Container Main;
@@ -53,7 +54,8 @@ namespace EESDD.View
         private AdminGrant AdminGrant;
 
         private PageCluster current;
-        private PageCluster last;
+        private Stack<PageCluster> last;
+
         public PageCluster CurrentPage
         {
             set
@@ -108,7 +110,10 @@ namespace EESDD.View
                 SetReturnButton(value);
                 SetSettingButton(value);
                 Main.SetPage(page);
-                last = current;
+
+                if (last != null)
+                    last.Push(current);
+
                 current = value;
             }
         }
@@ -345,6 +350,27 @@ namespace EESDD.View
             }
         }
 
+        private void ActionBinding()
+        {
+            Main.LogoutHandler += LogoutAction;
+            Main.ReturnHandler += ReturnAction;
+            Main.SettingHandler += SettingAction;
+        }
 
+        private void LogoutAction()
+        {
+            CU.MG_User.LogOut();
+            CurrentPage = PageCluster.Login;
+        }
+
+        private void ReturnAction()
+        {
+            CurrentPage = last.Pop();
+        }
+
+        private void SettingAction()
+        {
+            
+        }
     }
 }
