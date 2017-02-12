@@ -29,19 +29,10 @@ namespace EESDD.View.Pages
         public Container()
         {
             InitializeComponent();
+            ResetContainer();
         }
 
         public BeforeClosedCheckAction BeforeClosedCheckHandler;
-
-        public void LoadText()
-        {
-
-        }
-
-        public void LoadEvent()
-        {
-
-        }
 
         public void SetPage(Page page)
         {
@@ -67,6 +58,88 @@ namespace EESDD.View.Pages
             }
 
             return true;
+        }
+
+        public void ResetName()
+        {
+            SetName(CU.MG_Set.Text["status_bar"]["name_default"]);
+        }
+
+        public void SetName(string name)
+        {
+            sName.Text = name;
+        }
+
+        public void ResetInfo()
+        {
+            SetInfo(CU.MG_Set.Text["status_bar"]["info_default"]);
+        }
+
+        public void SetInfo(string info)
+        {
+            sInfo.Text = info;
+        }
+
+        public void ResetLink()
+        {
+            SetLink(false);
+        }
+
+        public void SetLink(bool link)
+        {
+            if (link)
+                ShowLink();
+            else
+                ShowUnlink();
+        }
+
+        public void ResetContainer()
+        {
+            ResetInfo();
+            ResetName();
+            ResetLink();
+        }
+
+        private void ShowLink()
+        {
+            rLink.Visibility = Visibility.Visible;
+            rUnlink.Visibility = Visibility.Collapsed;
+        }
+
+        private void ShowUnlink()
+        {
+            rLink.Visibility = Visibility.Collapsed;
+            rUnlink.Visibility = Visibility.Visible;
+        }
+
+        public void ShowReturnButton()
+        {
+            ReturnButton.Visibility = Visibility.Visible;
+        }
+
+        public void HideReturnButton()
+        {
+            ReturnButton.Visibility = Visibility.Collapsed;
+        }
+
+        public void ShowLogoutButton()
+        {
+            LogoutButton.Visibility = Visibility.Visible;
+        }
+
+        public void HideLogoutButton()
+        {
+            LogoutButton.Visibility = Visibility.Collapsed;
+        }
+
+        public void ShowSettingButton()
+        {
+            SettingButton.Visibility = Visibility.Visible;
+        }
+
+        public void HideSettingButton()
+        {
+            SettingButton.Visibility = Visibility.Collapsed;
         }
 
         #region WindowEvent

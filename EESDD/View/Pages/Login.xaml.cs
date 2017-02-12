@@ -279,6 +279,7 @@ namespace EESDD.View.Pages
             {
                 ResetLoginPage();
                 JumpPage(group);
+                CU.MG_Page.Name = username;
             }
         }
 

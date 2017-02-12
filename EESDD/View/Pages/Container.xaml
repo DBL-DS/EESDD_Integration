@@ -78,28 +78,25 @@
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                 <widget:ImageSwitchButton 
-                    NormalImage="/View/Image/power-off_50_0_cccccc.png"
-                    HoverImage="/View/Image/power-off_50_0_ffffff.png"
-                    Width="14" Height="14"
-                    Margin="0, 0, 30, 0">
-                </widget:ImageSwitchButton>
-                <widget:ImageSwitchButton 
                     NormalImage="/View/Image/arrow-return-left_50_0_cccccc.png"
                     HoverImage="/View/Image/arrow-return-left_50_0_ffffff.png"
                     Width="14" Height="14"
-                    Margin="0, 0, 30, 0">
+                    Margin="0, 0, 30, 0"
+                    x:Name="ReturnButton">
                 </widget:ImageSwitchButton>
                 <widget:ImageSwitchButton 
                     NormalImage="/View/Image/exit_50_0_cccccc.png"
                     HoverImage="/View/Image/exit_50_0_ffffff.png"
                     Width="14" Height="14"
-                    Margin="0, 0, 30, 0">
+                    Margin="0, 0, 30, 0"
+                    x:Name="LogoutButton">
                 </widget:ImageSwitchButton>
                 <widget:ImageSwitchButton 
                     NormalImage="/View/Image/gear_50_0_cccccc.png"
                     HoverImage="/View/Image/gear_50_0_ffffff.png"
                     Width="14" Height="14"
-                    Margin="0, 0, 30, 0">
+                    Margin="0, 0, 30, 0"
+                    x:Name="SettingButton">
                 </widget:ImageSwitchButton>
                 <Line Stroke="#777" StrokeThickness="1"
                       X1="0" X2="0" Y1="15" Y2="35"
@@ -131,8 +128,8 @@
                     Click="Expand_Click">
                 </widget:ImageSwitchButton>
                 <widget:ImageSwitchButton 
-                    NormalImage="/View/Image/close_50_0_cccccc.png"
-                    HoverImage="/View/Image/close_50_0_ffffff.png"
+                    NormalImage="/View/Image/power-off_50_0_cccccc.png"
+                    HoverImage="/View/Image/power-off_50_0_ffffff.png"
                     Width="14" Height="14"
                     Margin="0, 0, 20, 0"
                     Click="Close_Click">
@@ -151,12 +148,13 @@
             <Grid VerticalAlignment="Center">
                 <TextBlock Margin="20,0,0,-1"
                            Style="{StaticResource PropertyBarText}" Grid.ColumnSpan="2"
+                           x:Name="sInfo"
                     >正在打开游戏...</TextBlock>
             </Grid>
             <StackPanel Grid.Column="1"
                         Orientation="Horizontal"
                         VerticalAlignment="Center">
-                <Grid>
+                <Grid x:Name="rUnlink">
                     <StackPanel Orientation="Horizontal"
                                 VerticalAlignment="Center"
                                 Margin="0, 0, 20, 0">
@@ -172,7 +170,7 @@
                             连接断开</TextBlock>
                     </StackPanel>
                 </Grid>
-                <Grid x:Name="Link" Visibility="Collapsed">
+                <Grid x:Name="rLink" Visibility="Collapsed">
                     <StackPanel Orientation="Horizontal"
                                 VerticalAlignment="Center"
                                 Margin="0, 0, 20, 0">
@@ -200,8 +198,9 @@
                                Width="10" Height="10"
                                Margin="10">
                         </Image>
-                        <TextBlock Style="{StaticResource PropertyBarText}">
-                            silverHugh</TextBlock>
+                        <TextBlock Style="{StaticResource PropertyBarText}"
+                                   x:Name="sName">
+                            - -</TextBlock>
                     </StackPanel>
                 </Grid>
             </StackPanel>

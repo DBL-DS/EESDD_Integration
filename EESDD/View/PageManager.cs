@@ -52,6 +52,7 @@ namespace EESDD.View
         private AdminGrant AdminGrant;
 
         private PageCluster current;
+        private PageCluster last;
         public PageCluster CurrentPage
         {
             set
@@ -102,7 +103,11 @@ namespace EESDD.View
                         page = null;
                         break;
                 }
+                SetLogoutButton(value);
+                SetReturnButton(value);
+                SetSettingButton(value);
                 Main.SetPage(page);
+                last = current;
                 current = value;
             }
         }
@@ -222,6 +227,104 @@ namespace EESDD.View
         public void ShowMain()
         {
             Main.Show();
+        }
+
+        public string Info
+        {
+            set
+            {
+                if (value == null)
+                    Main.ResetInfo();
+                else
+                    Main.SetInfo(value);
+            }
+        }
+
+        public string Name
+        {
+            set
+            {
+                if (value == null)
+                    Main.ResetName();
+                else
+                    Main.SetName(value);
+            }
+        }
+
+        public bool? Link
+        {
+            set
+            {
+                if (value == null)
+                    Main.ResetLink();
+                else
+                    Main.SetLink((bool)value);
+            }
+        }
+
+        public void SetReturnButton(PageCluster page)
+        {
+            switch (page)
+            {
+                case PageCluster.GameSelect:
+                case PageCluster.GameRealTime:
+                case PageCluster.GameData:
+                case PageCluster.RegularInfo:
+                case PageCluster.GameSetting:
+                case PageCluster.UserManage:
+                case PageCluster.AdminInfo:
+                case PageCluster.AdminGrant:
+                    Main.ShowReturnButton();
+                    break;
+                default:
+                    Main.HideReturnButton();
+                    break;
+            }
+        }
+
+        public void SetLogoutButton(PageCluster page)
+        {
+            switch (page)
+            {
+                case PageCluster.RegularMain:
+                case PageCluster.GameSelect:
+                case PageCluster.GameRealTime:
+                case PageCluster.GameData:
+                case PageCluster.RegularInfo:
+                case PageCluster.AdminMain:
+                case PageCluster.GameSetting:
+                case PageCluster.UserManage:
+                case PageCluster.AdminInfo:
+                case PageCluster.AdminGrant:
+                    Main.ShowLogoutButton();
+                    break;
+                default:
+                    Main.HideLogoutButton();
+                    break;
+            }
+        }
+
+        public void SetSettingButton(PageCluster page)
+        {
+            switch (page)
+            {
+                case PageCluster.Login:
+                case PageCluster.RegularMain:
+                case PageCluster.GameSelect:
+                case PageCluster.GameRealTime:
+                case PageCluster.GameData:
+                case PageCluster.RegularInfo:
+                case PageCluster.AdminMain:
+                case PageCluster.GameSetting:
+                case PageCluster.UserManage:
+                case PageCluster.AdminInfo:
+                case PageCluster.AdminGrant:
+                    Main.ShowSettingButton();
+                    break;
+                default:
+                    Main.HideSettingButton();
+                    break;
+            }
         }
     }
 }

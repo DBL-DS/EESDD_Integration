@@ -32,6 +32,13 @@
 			"wrong_password": "密码不正确",
 			"need_password": "密码不可为空",
 			"success": "登录成功"
+		},
+		"status_bar": {
+			"name_default": "--",
+			"info_default": "欢迎使用分心驾驶模拟与评估系统！",
+			"udp_default": "连接检测中...",
+			"udp_link": "连接正常",
+			"udp_unlink": "连接断开"
 		}
 	}
 }
