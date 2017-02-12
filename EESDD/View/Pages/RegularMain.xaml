@@ -93,23 +93,11 @@
             </Grid.RowDefinitions>
             <Grid VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <widget:ImageShapeButton Style="{StaticResource CircleButton}"
-                                             Icon="/View/Image/car_100_0_ffffff.png"
-                                             />
-                    <StackPanel Grid.Row="1" HorizontalAlignment="Center">
-                        <TextBlock Style="{StaticResource ButtonText}">分心体验</TextBlock>
-                    </StackPanel>
-                </Grid>
-                <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition></RowDefinition>
@@ -121,6 +109,18 @@
                         <TextBlock Style="{StaticResource ButtonText}">数据统计</TextBlock>
                     </StackPanel>
                 </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <widget:ImageShapeButton Style="{StaticResource CircleButton}"
+                                             Icon="/View/Image/car_100_0_ffffff.png"
+                                             />
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+                        <TextBlock Style="{StaticResource ButtonText}">分心体验</TextBlock>
+                    </StackPanel>
+                </Grid>
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -128,7 +128,7 @@
                     </Grid.RowDefinitions>
                     <widget:ImageShapeButton Style="{StaticResource CircleButton}"
                                              Icon="/View/Image/edit_100_0_ffffff.png"
-                                             />
+                                             Click="InfoButton_Click"/>
                     <StackPanel Grid.Row="1" HorizontalAlignment="Center">
                         <TextBlock Style="{StaticResource ButtonText}">个人信息</TextBlock>
                     </StackPanel>

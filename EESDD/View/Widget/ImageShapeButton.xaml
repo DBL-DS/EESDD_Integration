@@ -186,12 +186,13 @@
           Cursor="Hand">
         <Border Style="{StaticResource OuterBorder}"
                 x:Name="OuterBorder">
-            <Border Style="{StaticResource InnerBorder}"
-                    x:Name="InnrBorder"
-                    Background="{Binding ElementName=ShapeButton, Path=BGColor}">
 
                 <Button Style="{StaticResource NoDefaultBlue}"
                         Click="Button_Click">
+                <Border Style="{StaticResource InnerBorder}"
+                    x:Name="InnrBorder"
+                    Background="{Binding ElementName=ShapeButton, Path=BGColor}">
+
                     <Image x:Name="IconImage"
                            Source="{Binding ElementName=ShapeButton, Path=Icon}">
                         <Image.Effect>
@@ -201,8 +202,9 @@
                                               ShadowDepth="5"></DropShadowEffect>
                         </Image.Effect>
                     </Image>
-                </Button>
-            </Border>
+
+                </Border>
+            </Button>
         </Border>
     </Grid>
 </UserControl>

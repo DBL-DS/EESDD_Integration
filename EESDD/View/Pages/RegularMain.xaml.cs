@@ -33,5 +33,10 @@ namespace EESDD.View.Pages
             iDriAge.Text = regular.DriAge.ToString();
             iLastDate.Text = regular.LastDate.ToString();
         }
+
+        private void InfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            CU.MG_Page.CurrentPage = PageCluster.RegularInfo;
+        }
     }
 }

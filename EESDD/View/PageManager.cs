@@ -86,6 +86,7 @@ namespace EESDD.View
                         break;
                     case PageCluster.RegularInfo:
                         page = GetRegularInfoReady();
+                        RegularInfo.SetPage(CU.MG_User.User as Regular);
                         break;
                     case PageCluster.AdminMain:
                         page = GetAdminMainReady();
@@ -113,6 +114,8 @@ namespace EESDD.View
 
                 if (last != null)
                     last.Push(current);
+                else
+                    last = new Stack<PageCluster>();
 
                 current = value;
             }

@@ -115,7 +115,7 @@
     
     <Style x:Key="CircleButton" TargetType="widget:ImageShapeButton">
         <Setter Property="BGColor" Value="#333"></Setter>
-        <Setter Property="Margin" Value="60" />
+        <Setter Property="Margin" Value="40" />
         <Setter Property="Height">
             <Setter.Value>
                 <Binding RelativeSource="{RelativeSource Self}" Path="ActualWidth" />

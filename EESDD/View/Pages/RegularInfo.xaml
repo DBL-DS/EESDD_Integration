@@ -66,12 +66,14 @@
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="1">
                 <TextBlock Style="{StaticResource InfoTitle}">用户名</TextBlock>
-                <TextBox Style="{StaticResource InfoTextBox}" />
+                <TextBox Style="{StaticResource InfoTextBox}" 
+                         x:Name="iName"/>
             </StackPanel>
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="2">
                 <TextBlock Style="{StaticResource InfoTitle}">真实姓名</TextBlock>
-                <TextBox Style="{StaticResource InfoTextBox}" />
+                <TextBox Style="{StaticResource InfoTextBox}" 
+                         x:Name="iRealName"/>
             </StackPanel>
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="3">
@@ -83,13 +85,15 @@
                     </Grid.ColumnDefinitions>
                     <RadioButton GroupName="Gender"
                                      Style="{StaticResource InfoRadioButton}"
-                                     IsChecked="True">
+                                     IsChecked="True"
+                                 x:Name="iMale">
                         <Image Source="/EESDD;component/View/Image/male-symbol_50_0_333333.png" 
                                    Style="{StaticResource InfoRadioButtonImage}"/>
                     </RadioButton>
                     <RadioButton Grid.Column="1"
                                  GroupName="Gender"
-                                     Style="{StaticResource InfoRadioButton}">
+                                     Style="{StaticResource InfoRadioButton}"
+                                 x:Name="iFemale">
                         <Image Source="/EESDD;component/View/Image/female-symbol_50_0_333333.png" 
                                    Style="{StaticResource InfoRadioButtonImage}"/>
                     </RadioButton>
@@ -98,32 +102,38 @@
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="4">
                 <TextBlock Style="{StaticResource InfoTitle}">年龄</TextBlock>
-                <TextBox Style="{StaticResource InfoTextBox}" />
+                <TextBox Style="{StaticResource InfoTextBox}" 
+                         x:Name="iAge"/>
             </StackPanel>
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="5">
                 <TextBlock Style="{StaticResource InfoTitle}">身高</TextBlock>
-                <TextBox Style="{StaticResource InfoTextBox}" />
+                <TextBox Style="{StaticResource InfoTextBox}" 
+                         x:Name="iHeight"/>
             </StackPanel>
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="6">
                 <TextBlock Style="{StaticResource InfoTitle}">体重</TextBlock>
-                <TextBox Style="{StaticResource InfoTextBox}" />
+                <TextBox Style="{StaticResource InfoTextBox}" 
+                         x:Name="iWeight"/>
             </StackPanel>
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="7">
                 <TextBlock Style="{StaticResource InfoTitle}">驾龄</TextBlock>
-                <TextBox Style="{StaticResource InfoTextBox}" />
+                <TextBox Style="{StaticResource InfoTextBox}" 
+                         x:Name="iDriAge"/>
             </StackPanel>
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="8">
                 <TextBlock Style="{StaticResource InfoTitle}">职业</TextBlock>
-                <TextBox Style="{StaticResource InfoTextBox}" />
+                <TextBox Style="{StaticResource InfoTextBox}" 
+                         x:Name="iCareer"/>
             </StackPanel>
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="9">
                 <TextBlock Style="{StaticResource InfoTitle}">联系方式</TextBlock>
-                <TextBox Style="{StaticResource InfoTextBox}" />
+                <TextBox Style="{StaticResource InfoTextBox}" 
+                         x:Name="iContact"/>
             </StackPanel>
         </Grid>
         <Grid Margin="50"
@@ -153,12 +163,14 @@
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="1">
                 <TextBlock Style="{StaticResource InfoTitle}">原始密码</TextBlock>
-                <PasswordBox Style="{StaticResource InfoPasswordBox}" />
+                <PasswordBox Style="{StaticResource InfoPasswordBox}" 
+                             x:Name="OldPassword"/>
             </StackPanel>
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="2">
                 <TextBlock Style="{StaticResource InfoTitle}">新的密码</TextBlock>
-                <PasswordBox Style="{StaticResource InfoPasswordBox}" />
+                <PasswordBox Style="{StaticResource InfoPasswordBox}" 
+                             x:Name="NewPassword"/>
             </StackPanel>
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="3"
