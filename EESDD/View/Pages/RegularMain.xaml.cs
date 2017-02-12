@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EESDD.Class.Model;
 
 namespace EESDD.View.Pages
 {
@@ -23,6 +24,14 @@ namespace EESDD.View.Pages
         public RegularMain()
         {
             InitializeComponent();
+        }
+
+        public void SetPage(Regular regular)
+        {
+            iName.Text = regular.RealName;
+            iAge.Text = regular.Age.ToString();
+            iDriAge.Text = regular.DriAge.ToString();
+            iLastDate.Text = regular.LastDate.ToString();
         }
     }
 }

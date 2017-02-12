@@ -1,4 +1,5 @@
-﻿using EESDD.View.Pages;
+﻿using EESDD.Class.Model;
+using EESDD.View.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -326,5 +327,24 @@ namespace EESDD.View
                     break;
             }
         }
+
+        public void LoginAction(User user)
+        {
+            Name = user.Name;
+            switch (user.Group)
+            {
+                case UserGroup.ADMIN:
+                    CurrentPage = PageCluster.AdminMain;
+                    break;
+                case UserGroup.REGULAR:
+                    CurrentPage = PageCluster.RegularMain;
+                    RegularMain.SetPage(user as Regular);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
     }
 }

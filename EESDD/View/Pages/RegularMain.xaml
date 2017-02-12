@@ -50,7 +50,9 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="1"
-                                   Style="{StaticResource NameText}" HorizontalAlignment="Center" Margin="0" Width="114"
+                                   Style="{StaticResource NameText}" 
+                                   HorizontalAlignment="Center" Margin="0" Width="114"
+                                   x:Name="iName"
                                    >暗岸晓</TextBlock>
                     </Grid>
                 </Border>
@@ -60,12 +62,14 @@
                     <StackPanel Orientation="Horizontal"
                                 Margin="0, 0, 20, 0">
                         <TextBlock Style="{StaticResource AttrTitle}">年龄:</TextBlock>
-                        <TextBlock Style="{StaticResource AttrText}">22</TextBlock>
+                        <TextBlock Style="{StaticResource AttrText}"
+                                   x:Name="iAge">22</TextBlock>
                         <TextBlock Style="{StaticResource AttrTitle}">岁</TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Style="{StaticResource AttrTitle}">驾龄:</TextBlock>
-                        <TextBlock Style="{StaticResource AttrText}">0</TextBlock>
+                        <TextBlock Style="{StaticResource AttrText}"
+                                   x:Name="iDriAge">0</TextBlock>
                         <TextBlock Style="{StaticResource AttrTitle}">年</TextBlock>
                     </StackPanel>
                 </StackPanel>
@@ -78,7 +82,7 @@
                            ToolTip="上次登录时间"
                            Margin="30, 10, 5, 10"></Image>
                     <TextBlock Style="{StaticResource LastTimeText}"
-                        >2016-08-15 13:57</TextBlock>
+                        x:Name="iLastDate">2016-08-15 13:57</TextBlock>
                 </StackPanel>
             </StackPanel>
         </Grid>

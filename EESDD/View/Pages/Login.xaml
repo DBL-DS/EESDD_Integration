@@ -46,6 +46,7 @@
                     Style="{StaticResource Box}"
                     x:Name="LoginPanel"
                     Visibility="Visible"
+                    KeyDown="LoginKeyDown"
                     >
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -129,7 +130,8 @@
                     Height="430" Width="250"
                     x:Name="RegisterPanel"
                     Visibility="Hidden"
-                    Opacity="1" >
+                    Opacity="1" 
+                    KeyDown="RegisterKeyDown">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal"
                                 Margin="0, 0, 0, 20">

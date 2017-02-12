@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Model
 {
-    enum UserGroup      // 数据库表名应与此保持一致（小写）
+    public enum UserGroup      // 数据库表名应与此保持一致（小写）
     {
         ADMIN,
         REGULAR
     }
 
-    enum UserVariable
+    public enum UserVariable
     {
         Name,
         Password,
@@ -30,7 +30,7 @@ namespace EESDD.Class.Model
         Contact
     }
 
-    abstract class User
+    public abstract class User
     {
         private string name;
         private string password;

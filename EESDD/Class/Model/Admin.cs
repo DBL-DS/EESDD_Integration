@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Model
 {
-    class Admin:User
+    public class Admin:User
     {
         public Admin() { }
 

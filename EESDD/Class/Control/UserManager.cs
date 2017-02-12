@@ -89,12 +89,12 @@ namespace EESDD.Class.Control
                 case UserVariable.Name:
                     if (value.Equals(""))
                     {
-                        updateRegisterState(RegisterState.NAMEEMPTY);
+                        UpdateRegisterState(RegisterState.NAMEEMPTY);
                         return RegisterState.NAMEEMPTY;
                     }
                     if (dbManger.GetUser(value, registerUser.Group) != null)
                     {
-                        updateRegisterState(RegisterState.USEREXIST);
+                        UpdateRegisterState(RegisterState.USEREXIST);
                         return RegisterState.USEREXIST;
                     }
                     registerUser.Name = value;
@@ -106,7 +106,7 @@ namespace EESDD.Class.Control
                     if (registerUser.Group 
                         == UserGroup.ADMIN && value.Equals(""))
                     {
-                        updateRegisterState(RegisterState.PASSWORDEMPTY);
+                        UpdateRegisterState(RegisterState.PASSWORDEMPTY);
                         return RegisterState.PASSWORDEMPTY;
                     }
                     registerUser.Password = value;
@@ -114,7 +114,7 @@ namespace EESDD.Class.Control
                 case UserVariable.RealName:
                     if (value.Equals(""))
                     {
-                        updateRegisterState(RegisterState.REALNAMEEMPTY);
+                        UpdateRegisterState(RegisterState.REALNAMEEMPTY);
                         return RegisterState.REALNAMEEMPTY;
                     }
                     registerUser.RealName = value;
@@ -122,7 +122,7 @@ namespace EESDD.Class.Control
                 case UserVariable.Gender:
                     if (value.Equals(""))
                     {
-                        updateRegisterState(RegisterState.GENDEREMPTY);
+                        UpdateRegisterState(RegisterState.GENDEREMPTY);
                         return RegisterState.GENDEREMPTY;
                     }
                     (registerUser as Regular).Gender = value;
@@ -130,7 +130,7 @@ namespace EESDD.Class.Control
                 case UserVariable.Height:
                     if (value.Equals(""))
                     {
-                        updateRegisterState(RegisterState.HEIGHTEMPTY);
+                        UpdateRegisterState(RegisterState.HEIGHTEMPTY);
                         return RegisterState.HEIGHTEMPTY;
                     }
                     (registerUser as Regular).Height = float.Parse(value);
@@ -138,7 +138,7 @@ namespace EESDD.Class.Control
                 case UserVariable.Weight:
                     if (value.Equals(""))
                     {
-                        updateRegisterState(RegisterState.WEIGHTEMPTY);
+                        UpdateRegisterState(RegisterState.WEIGHTEMPTY);
                         return RegisterState.WEIGHTEMPTY;
                     }
                     (registerUser as Regular).Weight = float.Parse(value);
@@ -146,7 +146,7 @@ namespace EESDD.Class.Control
                 case UserVariable.Age:
                     if (value.Equals(""))
                     {
-                        updateRegisterState(RegisterState.AGEEMPTY);
+                        UpdateRegisterState(RegisterState.AGEEMPTY);
                         return RegisterState.AGEEMPTY;
                     }
                     (registerUser as Regular).Age = int.Parse(value);
@@ -154,7 +154,7 @@ namespace EESDD.Class.Control
                 case UserVariable.DriAge:
                     if (value.Equals(""))
                     {
-                        updateRegisterState(RegisterState.DRIAGEEMPTY);
+                        UpdateRegisterState(RegisterState.DRIAGEEMPTY);
                         return RegisterState.DRIAGEEMPTY;
                     }
                     (registerUser as Regular).DriAge = int.Parse(value);
@@ -162,7 +162,7 @@ namespace EESDD.Class.Control
                 case UserVariable.Career:
                     if (value.Equals(""))
                     {
-                        updateRegisterState(RegisterState.CAREEREMPTY);
+                        UpdateRegisterState(RegisterState.CAREEREMPTY);
                         return RegisterState.CAREEREMPTY;
                     }
                     (registerUser as Regular).Career = value;
@@ -170,7 +170,7 @@ namespace EESDD.Class.Control
                 case UserVariable.Contact:
                     if (value.Equals(""))
                     {
-                        updateRegisterState(RegisterState.CONTACTEMPTY);
+                        UpdateRegisterState(RegisterState.CONTACTEMPTY);
                         return RegisterState.CONTACTEMPTY;
                     }
                     (registerUser as Regular).Contact = value;
@@ -181,7 +181,7 @@ namespace EESDD.Class.Control
             return RegisterState.VALIDATED;
         }
 
-        private void updateRegisterState(RegisterState state)
+        private void UpdateRegisterState(RegisterState state)
         {
             if (currentState == RegisterState.VALIDATED)
                 currentState = state;
@@ -199,6 +199,8 @@ namespace EESDD.Class.Control
             registerUser = null;
             return currentState;
         }
+
+        public User User { get { return user; } }
 
         public void LogOut()
         {

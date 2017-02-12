@@ -259,7 +259,7 @@ namespace EESDD.View.Pages
             }
         }
 
-        private void LoginAction(string username, string password, UserGroup group)
+        private void DoLogin(string username, string password, UserGroup group)
         {
             LoginState state = LoginState.NOTEXIST;
             switch (group)
@@ -278,23 +278,7 @@ namespace EESDD.View.Pages
             if (state == LoginState.SUCCESS)
             {
                 ResetLoginPage();
-                JumpPage(group);
-                CU.MG_Page.Name = username;
-            }
-        }
-
-        private void JumpPage(UserGroup group)
-        {
-            switch (group)
-            {
-                case UserGroup.ADMIN:
-                    CU.MG_Page.CurrentPage = PageCluster.AdminMain;
-                    break;
-                case UserGroup.REGULAR:
-                    CU.MG_Page.CurrentPage = PageCluster.RegularMain;
-                    break;
-                default:
-                    break;
+                CU.MG_Page.LoginAction(CU.MG_User.User);
             }
         }
 
@@ -319,7 +303,7 @@ namespace EESDD.View.Pages
             ShowRegularButton();
         }
 
-        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        private void RegisterButtonClickAction()
         {
             RegisterState state = validateRegister();
             DisposeRegInfo(state);
@@ -327,14 +311,35 @@ namespace EESDD.View.Pages
             {
                 ShowRegularButton();
                 ShowLoginPanel();
-                LoginAction(rName.Text, rPassword.Password, UserGroup.REGULAR);
+                DoLogin(rName.Text, rPassword.Password, UserGroup.REGULAR);
             }
+        }
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterButtonClickAction();
+        }
+
+        private void LoginButtionClickAction()
+        {
+            UserGroup group = RegularButton.IsVisible ? UserGroup.REGULAR : UserGroup.ADMIN;
+            DoLogin(lName.Text, lPassword.Password, group);
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            UserGroup group = RegularButton.IsVisible ? UserGroup.REGULAR : UserGroup.ADMIN;
-            LoginAction(lName.Text, lPassword.Password, group);
+            LoginButtionClickAction();
+        }
+
+        private void LoginKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                LoginButtionClickAction();
+        }
+
+        private void RegisterKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                RegisterButtonClickAction();
         }
         #endregion
     }

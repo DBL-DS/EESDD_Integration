@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Model
 {
-    class Regular:User
+    public class Regular:User
     {
         public Regular() { }
 
