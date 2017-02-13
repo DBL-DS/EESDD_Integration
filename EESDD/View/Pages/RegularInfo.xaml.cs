@@ -38,6 +38,7 @@ namespace EESDD.View.Pages
             InfoEditButton.Visibility = System.Windows.Visibility.Visible;
             InfoSaveButton.Visibility = System.Windows.Visibility.Hidden;
             SetUneditable();
+            UpdateInfo();
         }
 
         public void SetPage(Regular regular)
@@ -56,7 +57,6 @@ namespace EESDD.View.Pages
 
         private void SetEditable()
         {
-            iName.IsEnabled = true;
             iRealName.IsEnabled = true;
             iMale.IsEnabled = true;
             iFemale.IsEnabled = true;
@@ -82,5 +82,21 @@ namespace EESDD.View.Pages
             iContact.IsEnabled = false;
         }
 
+        private void UpdateInfo()
+        {
+            Regular regular = new Regular();
+            //TODO
+            //CU.MG_User.UpdateUser(regular);
+        }
+
+        private void ChangePassword()
+        {
+            CU.MG_User.UpdatePassword(OldPassword.Password, NewPassword.Password);
+        }
+
+        private void SavePasswordButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangePassword(); 
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using EESDD.Class.Model;
+using EESDD.Module.Encryption;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -205,6 +206,19 @@ namespace EESDD.Class.Control
         public void LogOut()
         {
             user = null;
+        }
+
+        public bool UpdateUser(User user)
+        {
+            return dbManger.UpdateUserInfo(user);
+        }
+
+        public bool UpdatePassword(string oldP, string newP)
+        {
+            if (Encryptor.GetMD5(oldP) == user.Password)
+                return dbManger.UpdatePassword(user.Name, newP, user.Group);
+            else
+                return false;
         }
 
     }

@@ -175,7 +175,8 @@
             <StackPanel Style="{StaticResource InfoStackPanel}"
                     Grid.Row="3"
                         VerticalAlignment="Bottom">
-                <Button Style="{StaticResource SaveButton}">保 存</Button>
+                <Button Style="{StaticResource SaveButton}"
+                        Click="SavePasswordButton">保 存</Button>
             </StackPanel>
         </Grid>
     </Grid>

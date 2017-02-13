@@ -210,7 +210,7 @@ namespace EESDD.Class.Control
             return ExecuteNonQuery(sql);
         }
 
-        public bool UpdateUserInfo(string name, User user)
+        public bool UpdateUserInfo(User user)
         {
             string sql;
             switch (user.Group)
@@ -219,7 +219,7 @@ namespace EESDD.Class.Control
                     Admin admin = user as Admin;
                     sql = "update " + admin.Group + " set "
                         + "realName = '" + admin.RealName + "' "
-                        + "where name = " + name;
+                        + "where name = " + admin.Name;
                     break;
                 case UserGroup.REGULAR:
                     Regular regular = user as Regular;
@@ -232,7 +232,7 @@ namespace EESDD.Class.Control
                         + "driAge = " + regular.DriAge + ", "
                         + "career = '" + regular.Career + "',"
                         + "contact = '" + regular.Contact + "' "
-                        + "where name = " + name;
+                        + "where name = " + regular.Name;
                     break;
                 default:
                     return false;
