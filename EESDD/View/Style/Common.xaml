@@ -1,5 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/View/Style/Base.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
     <Style x:Key="BackgroundLight" TargetType="{x:Type Grid}">
         <Setter Property="Background">
             <Setter.Value>
@@ -11,6 +16,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
     <Style x:Key="Backgroundpurple" TargetType="{x:Type Grid}">
         <Setter Property="Background">
             <Setter.Value>
@@ -22,4 +28,17 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <Style x:Key="ImageBackground"
+           TargetType="Border">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/EESDD;component/View/Image/c4fv77ovibm-eric-micheal.jpg" 
+                    Stretch="UniformToFill" 
+                    Opacity="0.7"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
 </ResourceDictionary>

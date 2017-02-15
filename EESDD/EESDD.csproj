@@ -186,6 +186,9 @@
     <Compile Include="View\Widget\ImageSwitchButton.xaml.cs">
       <DependentUpon>ImageSwitchButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Widget\ModeButton.xaml.cs">
+      <DependentUpon>ModeButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Widget\SpacingTextBlock.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +302,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Style\GameSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Style\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -331,9 +338,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Widget\ModeButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
+    <Resource Include="View\Image\start.png" />
+    <Resource Include="View\Image\c4fv77ovibm-eric-micheal.jpg" />
     <Resource Include="View\Image\power-off_50_0_cccccc.png" />
     <Resource Include="View\Image\power-off_50_0_ffffff.png" />
     <Resource Include="View\Image\arrow-return-left_50_0_cccccc.png" />

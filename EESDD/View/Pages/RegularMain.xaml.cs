@@ -38,5 +38,10 @@ namespace EESDD.View.Pages
         {
             CU.MG_Page.CurrentPage = PageCluster.RegularInfo;
         }
+
+        private void GameButton_Click(object sender, RoutedEventArgs e)
+        {
+            CU.MG_Page.CurrentPage = PageCluster.GameSelect;
+        }
     }
 }

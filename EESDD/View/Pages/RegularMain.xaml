@@ -116,7 +116,7 @@
                     </Grid.RowDefinitions>
                     <widget:ImageShapeButton Style="{StaticResource CircleButton}"
                                              Icon="/View/Image/car_100_0_ffffff.png"
-                                             />
+                                             Click="GameButton_Click"/>
                     <StackPanel Grid.Row="1" HorizontalAlignment="Center">
                         <TextBlock Style="{StaticResource ButtonText}">分心体验</TextBlock>
                     </StackPanel>

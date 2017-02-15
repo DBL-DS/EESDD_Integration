@@ -32,7 +32,7 @@
                 <ColumnDefinition Width="300"></ColumnDefinition>
                 <ColumnDefinition Width="50"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Style="{StaticResource SwitchButton}"
+            <Button Style="{StaticResource LoginSwitchButton}"
                     Click="LeftButton_Click"
                     x:Name="LeftButton"
                     ToolTip="登录"
@@ -248,12 +248,11 @@
                 </Border>
             </Canvas>
             <Button Grid.Column="2"
-                    Style="{StaticResource SwitchButton}"
+                    Style="{StaticResource LoginSwitchButton}"
                     Click="RightButton_Click"
                     x:Name="RightButton"
                     ToolTip="注册">
-                <Image Source="/EESDD;component/View/Image/chevron-right_200_0_cccccc.png"
-                       />
+                <Image Source="/EESDD;component/View/Image/chevron-right_200_0_cccccc.png"/>
             </Button>
         </Grid>
     </Grid>
