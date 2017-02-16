@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Control
 {
-    class Recorder
+    public class Recorder
     {
         enum AreaState
         {

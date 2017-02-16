@@ -94,6 +94,7 @@ namespace EESDD.View.Pages
                 ModeButton button = new ModeButton();
                 button.ModeText = game.Mode.Title;
                 button.ModeImage = FileManager.GetImage(game.Mode.Picture);
+                // ModeButton Click Event
                 button.Click += (sender, e) =>
                 {
                     ChooseGame(game);
@@ -123,6 +124,11 @@ namespace EESDD.View.Pages
         private void SceneNextButton_Click(object sender, RoutedEventArgs e)
         {
             NextScene();
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            CU.MG_Page.GameStartAction(CurrentGame);
         }
     }
 }

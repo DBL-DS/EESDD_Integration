@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Model
 {
-    class Exp
+    public class Exp
     {
         public Exp(string scene, string mode)
         {

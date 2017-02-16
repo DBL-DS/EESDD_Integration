@@ -121,7 +121,9 @@
                     </TextBlock>
                 </Grid>
                 <Grid Grid.Row="2" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource StartButton}">
+                    <Button Style="{StaticResource StartButton}"
+                            x:Name="StartButton"
+                            Click="StartButton_Click">
                         <Image Source="/EESDD;component/View/Image/start.png" />
                     </Button>
                 </Grid>

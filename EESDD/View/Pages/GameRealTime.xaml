@@ -31,6 +31,7 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
+                        <RowDefinition Height="0.5*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Border Style="{StaticResource PanelCell}">
                         <Grid>
@@ -40,7 +41,7 @@
                             </Grid.RowDefinitions>
                             <TextBlock Style="{StaticResource PanelTip}">总时间</TextBlock>
                             <TextBlock Style="{StaticResource PanelValue}"
-                               Grid.Row="1">00:00:00</TextBlock>
+                               Grid.Row="1" x:Name="pTime">00:00:00</TextBlock>
                         </Grid>
                     </Border>
                     <Border Style="{StaticResource PanelCell}"
@@ -56,9 +57,10 @@
                                     <ColumnDefinition Width="2.5*"></ColumnDefinition>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Style="{StaticResource PanelValue}">1000</TextBlock>
+                                <TextBlock Style="{StaticResource PanelValue}"
+                                           x:Name="pDistance">1000</TextBlock>
                                 <TextBlock Style="{StaticResource PanelUnit}"
-                                           Grid.Column="1">m</TextBlock>
+                                           x:Name="pDistanceUnit" Grid.Column="1">m</TextBlock>
                             </Grid>
                         </Grid>
                     </Border>
@@ -75,9 +77,11 @@
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Style="{StaticResource PanelValue}">100</TextBlock>
+                                <TextBlock Style="{StaticResource PanelValue}"
+                                           x:Name="pSpeed">100</TextBlock>
                                 <TextBlock Style="{StaticResource PanelUnit}"
-                                           Grid.Column="1">km/h</TextBlock>
+                                           Grid.Column="1"
+                                           x:Name="pSpeedUnit">km/h</TextBlock>
                             </Grid>
                         </Grid>
                     </Border>
@@ -94,10 +98,12 @@
                                     <ColumnDefinition Width="2*"></ColumnDefinition>
                                     <ColumnDefinition Width="1.5*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Style="{StaticResource PanelValue}">100</TextBlock>
+                                <TextBlock Style="{StaticResource PanelValue}"
+                                           x:Name="pAcceleration">100</TextBlock>
                                 <StackPanel Orientation="Horizontal"
                                            Grid.Column="1">
-                                    <TextBlock Style="{StaticResource PanelUnit}">m/s
+                                    <TextBlock Style="{StaticResource PanelUnit}"
+                                               x:Name="pAccelerationUnit">m/s
                                     </TextBlock>
                                     <TextBlock Style="{StaticResource PanelUnitPower}" >2</TextBlock>
                                 </StackPanel>
@@ -117,7 +123,8 @@
                                     <ColumnDefinition Width="2.5*"></ColumnDefinition>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Style="{StaticResource PanelValue}">100</TextBlock>
+                                <TextBlock Style="{StaticResource PanelValue}"
+                                           x:Name="pBrakeDistance">100</TextBlock>
                                 <StackPanel Orientation="Horizontal"
                                            Grid.Column="1">
                                     <TextBlock Style="{StaticResource PanelUnit}">m
@@ -127,7 +134,7 @@
                         </Grid>
                     </Border>
                     <Border Style="{StaticResource PanelCell}"
-                            Grid.Row="5" BorderThickness="0">
+                            Grid.Row="5">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*"></RowDefinition>
@@ -139,14 +146,23 @@
                                     <ColumnDefinition Width="2.5*"></ColumnDefinition>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Style="{StaticResource PanelValue}">1500</TextBlock>
+                                <TextBlock Style="{StaticResource PanelValue}"
+                                           x:Name="pReactionTime">1500</TextBlock>
                                 <StackPanel Orientation="Horizontal"
                                            Grid.Column="1">
-                                    <TextBlock Style="{StaticResource PanelUnit}">ms
+                                    <TextBlock Style="{StaticResource PanelUnit}"
+                                               x:Name="pReactionTimeUnit">ms
                                     </TextBlock>
                                 </StackPanel>
                             </Grid>
                         </Grid>
+                    </Border>
+                    <Border Style="{StaticResource PanelCell}"
+                            Grid.Row="6" BorderThickness="0">
+                        <Button Style="{StaticResource ShutDownButton}" Height="19" Margin="0,0,0,-0.333" VerticalAlignment="Top"
+                                Click="EndGameButton_Click">
+                            <Image Source="/EESDD;component/View/Image/power-off_50_0_cccccc.png" />
+                        </Button>
                     </Border>
                 </Grid>
             </Border>

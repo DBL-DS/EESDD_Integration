@@ -48,7 +48,7 @@ namespace EESDD.Class.Control
 
         private void StartRefreshThread()
         {
-            StartHandler();
+            StartHandler?.Invoke();
 
             _refreshEnable = true;
             ThreadManager.StartThread(ThreadCluster.PlayerRefresh);

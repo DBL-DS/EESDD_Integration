@@ -1,6 +1,6 @@
 ﻿namespace EESDD.Class.Model
 {
-    class Svframe
+    public class Svframe
     {
         public Svframe()
         {

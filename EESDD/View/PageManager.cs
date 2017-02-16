@@ -337,23 +337,6 @@ namespace EESDD.View
             }
         }
 
-        public void LoginAction(User user)
-        {
-            Name = user.Name;
-            switch (user.Group)
-            {
-                case UserGroup.ADMIN:
-                    CurrentPage = PageCluster.AdminMain;
-                    break;
-                case UserGroup.REGULAR:
-                    CurrentPage = PageCluster.RegularMain;
-                    RegularMain.SetPage(user as Regular);
-                    break;
-                default:
-                    break;
-            }
-        }
-
         private void ActionBinding()
         {
             Main.LogoutHandler += LogoutAction;
@@ -374,7 +357,35 @@ namespace EESDD.View
 
         private void SettingAction()
         {
-            
+
+        }
+
+        public void LoginAction(User user)
+        {
+            Name = user.Name;
+            switch (user.Group)
+            {
+                case UserGroup.ADMIN:
+                    CurrentPage = PageCluster.AdminMain;
+                    break;
+                case UserGroup.REGULAR:
+                    CurrentPage = PageCluster.RegularMain;
+                    RegularMain.SetPage(user as Regular);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void GameStartAction(Game game)
+        {
+            CU.Player.Start(game.Scene, game.Mode);
+            CurrentPage = PageCluster.GameRealTime;
+        }
+
+        public void GameEndAction()
+        {
+
         }
     }
 }
