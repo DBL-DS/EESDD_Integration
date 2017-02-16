@@ -97,10 +97,22 @@ namespace EESDD.View.Pages
                 button.Click += (sender, e) =>
                 {
                     ChooseGame(game);
+                    SetChecked(button);
                 };
                 ModeStack.Children.Add(button);
+                if (games.IndexOf(game) == 0)
+                    SetChecked(button);
             }
             ModeViewer.ScrollToTop();
+        }
+
+        private void SetChecked(ModeButton button)
+        {
+            foreach (var item in ModeStack.Children)
+            {
+                (item as ModeButton).IsChecked = false;
+            }
+            button.IsChecked = true;
         }
 
         private void SceneLastButton_Click(object sender, RoutedEventArgs e)

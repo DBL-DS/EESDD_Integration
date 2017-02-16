@@ -35,6 +35,10 @@ namespace EESDD.View.Widget
             EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble,
             typeof(RoutedEventHandler), typeof(ModeButton));
 
+        private const double CHECKEDOPACITY = 0.8;
+        private const double UNCHECKEDOPACITY = 0.3;
+        private const double CHECKEBLUR = 2;
+        private const double UNCHECKEDBLUR = 10;
 
         public ImageSource ModeImage
         {
@@ -52,6 +56,16 @@ namespace EESDD.View.Widget
         {
             add { AddHandler(ClickEvent, value); }
             remove { RemoveHandler(ClickEvent, value); }
+        }
+
+        public bool IsChecked
+        {
+            get { return mImage.Opacity == CHECKEDOPACITY; }
+            set
+            {
+                mImage.Opacity = value ? CHECKEDOPACITY : UNCHECKEDOPACITY;
+                mBlur.Radius = value ? CHECKEBLUR : UNCHECKEDBLUR;
+            }
         }
 
         protected virtual void RaiseClickEvent()

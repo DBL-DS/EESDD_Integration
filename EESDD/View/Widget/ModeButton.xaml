@@ -54,9 +54,9 @@
                             <Image Source="{Binding ElementName=btn, Path=ModeImage}"
                                 x:Name="mImage"
                                         Stretch="UniformToFill"
-                                   Opacity="0.5">
+                                   Opacity="0.3">
                                 <Image.Effect>
-                                    <BlurEffect Radius="3"></BlurEffect>
+                                    <BlurEffect x:Name="mBlur" Radius="10"></BlurEffect>
                                 </Image.Effect>
                             </Image>
                             <TextBlock Text="{Binding ElementName=btn, Path=ModeText}"
