@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Model
 {
-    class Scene
+    public class Scene
     {
         public Scene()
         {

@@ -14,7 +14,11 @@
         "db": "/Info/database/user.db",
         "create_sql": "/Info/database/create_user_table.sql"
     },
-    "exp": {
-        "path": "/Info/exp/"
-    }
+	"exp": {
+		"path": "/Info/exp/"
+	},
+	"graphic": {
+		"image": "/Info/image/",
+		"image_default": "/Info/image/default.jpg"
+	}
 }

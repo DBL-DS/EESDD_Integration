@@ -25,9 +25,9 @@
     </Page.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/EESDD;component/View/Image/racing_flag-wallpaper-2560x1600.jpg" 
+            <ImageBrush ImageSource="/EESDD;component/View/Image/yhdegf-qwli-sven-scheuermeier.jpg" 
                     Stretch="UniformToFill" 
-                    Opacity="0.3"/>
+                    Opacity="0.7"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -89,7 +89,6 @@
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
-                <RowDefinition Height="150"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>

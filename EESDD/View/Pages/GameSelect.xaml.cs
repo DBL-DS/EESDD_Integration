@@ -1,4 +1,7 @@
-﻿using System;
+﻿using EESDD.Class.Control;
+using EESDD.Class.Model;
+using EESDD.View.Widget;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +26,91 @@ namespace EESDD.View.Pages
         public GameSelect()
         {
             InitializeComponent();
+        }
+
+        private Game CurrentGame;
+
+        public void ResetPage()
+        {
+            SetPage(CU.MG_Game.Scenes[0]);
+        }
+
+        public void SetPage(Scene scene)
+        {
+            SetScene(scene);
+            SetModes(scene);
+            SetSceneButtonVisible(scene);
+        }
+
+        private void SetSceneButtonVisible(Scene scene)
+        {
+            SceneLastButton.Visibility = Visibility.Visible;
+            SceneNextButton.Visibility = Visibility.Visible;
+            if (CU.MG_Game.Scenes.IndexOf(scene) == 0)
+                SceneLastButton.Visibility = Visibility.Hidden;
+            if (CU.MG_Game.Scenes.IndexOf(scene) == CU.MG_Game.Scenes.Count - 1)
+                SceneNextButton.Visibility = Visibility.Hidden;
+        }
+
+        private void SetScene(Scene scene)
+        {
+            SceneTitleText.Text = scene.Title;
+            SceneDetailText.Text = scene.Description;
+            SceneImage.Source = FileManager.GetImage(scene.Picture);
+        }
+
+        private void NextScene()
+        {
+            int next = CU.MG_Game.Scenes.IndexOf(CurrentGame.Scene) + 1;
+            if (next < CU.MG_Game.Scenes.Count)
+                SetPage(CU.MG_Game.Scenes[next]);
+        }
+
+        private void LastScene()
+        {
+            int last = CU.MG_Game.Scenes.IndexOf(CurrentGame.Scene) - 1;
+            if (last >= 0)
+                SetPage(CU.MG_Game.Scenes[last]);
+        }
+
+        private void SetModes(Scene scene)
+        {
+            List<Game> games = CU.MG_Game.GamesWithScene(scene.Name);
+            ChooseGame(games[0]);
+            SetModeStack(games);
+        }
+
+        private void ChooseGame(Game game)
+        {
+            CurrentGame = game;
+            ModeDetailText.Text = game.Mode.Description;
+        }
+
+        private void SetModeStack(List<Game> games)
+        {
+            ModeStack.Children.Clear();
+            foreach (var game in games)
+            {
+                ModeButton button = new ModeButton();
+                button.ModeText = game.Mode.Title;
+                button.ModeImage = FileManager.GetImage(game.Mode.Picture);
+                button.Click += (sender, e) =>
+                {
+                    ChooseGame(game);
+                };
+                ModeStack.Children.Add(button);
+            }
+            ModeViewer.ScrollToTop();
+        }
+
+        private void SceneLastButton_Click(object sender, RoutedEventArgs e)
+        {
+            LastScene();
+        }
+
+        private void SceneNextButton_Click(object sender, RoutedEventArgs e)
+        {
+            NextScene();
         }
     }
 }

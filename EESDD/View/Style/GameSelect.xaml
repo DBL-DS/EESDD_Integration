@@ -21,8 +21,10 @@
            TargetType="Border">
         <Setter Property="Effect">
             <Setter.Value>
-                <DropShadowEffect BlurRadius="20" 
-                                              Opacity="0.7"></DropShadowEffect>
+                <DropShadowEffect BlurRadius="50" 
+                                    Opacity="0.3"
+                                  Color="White"
+                                  ShadowDepth="0"></DropShadowEffect>
             </Setter.Value>
         </Setter>
     </Style>

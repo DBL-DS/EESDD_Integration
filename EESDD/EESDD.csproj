@@ -345,6 +345,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
+    <Resource Include="View\Image\yhdegf-qwli-sven-scheuermeier.jpg" />
+    <Resource Include="Info\image\wechat_voice.jpg" />
+    <Resource Include="Info\image\addition_difficult.jpg" />
+    <Resource Include="Info\image\addition_easy.jpg" />
+    <Resource Include="Info\image\navigation.jpg" />
+    <Resource Include="Info\image\dial.jpg" />
+    <Resource Include="Info\image\radio.jpg" />
+    <Resource Include="Info\image\wechat_text.jpg" />
+    <Resource Include="Info\image\normal.jpg" />
+    <Resource Include="View\Image\zi_y7euekfq-kyle-murfin.jpg" />
+    <Resource Include="Info\image\default.jpg" />
+    <Resource Include="Info\image\brake.jpg" />
+    <Resource Include="Info\image\normal_change.jpg" />
+    <Resource Include="Info\image\sudden_change.jpg" />
+    <Resource Include="Info\image\intersection.jpg" />
     <Resource Include="View\Image\start.png" />
     <Resource Include="View\Image\c4fv77ovibm-eric-micheal.jpg" />
     <Resource Include="View\Image\power-off_50_0_cccccc.png" />

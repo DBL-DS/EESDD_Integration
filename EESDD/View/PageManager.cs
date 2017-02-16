@@ -147,6 +147,7 @@ namespace EESDD.View
             if (GameSelect == null)
             {
                 GameSelect = new GameSelect();
+                GameSelect.ResetPage();
             }
 
             return GameSelect;

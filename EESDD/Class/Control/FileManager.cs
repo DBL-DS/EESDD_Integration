@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace EESDD.Class.Control
 {
@@ -132,6 +134,15 @@ namespace EESDD.Class.Control
             }
 
             return result;
+        }
+
+        public static BitmapImage GetImage(string imageName)
+        {
+            string path = GetPath("graphic", "image") + imageName;
+            if (File.Exists(path))
+                return new BitmapImage(new Uri(path));
+            else
+                return new BitmapImage(new Uri(GetPath("graphic", "image_default")));
         }
         # endregion
 

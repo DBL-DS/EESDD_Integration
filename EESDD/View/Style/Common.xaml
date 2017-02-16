@@ -33,7 +33,7 @@
            TargetType="Border">
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush ImageSource="/EESDD;component/View/Image/c4fv77ovibm-eric-micheal.jpg" 
+                <ImageBrush ImageSource="/EESDD;component/View/Image/zi_y7euekfq-kyle-murfin.jpg" 
                     Stretch="UniformToFill" 
                     Opacity="0.7"/>
             </Setter.Value>

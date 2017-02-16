@@ -34,13 +34,15 @@
                     <Grid>
                         <Button Style="{StaticResource SceneSwitchButton}"
                                 Margin="0, 0, 20, 0"
-                                x:Name="SceneLastButton">
+                                x:Name="SceneLastButton"
+                                Click="SceneLastButton_Click">
                             <Image Source="/EESDD;component/View/Image/chevron-left_200_0_cccccc.png"/>
                         </Button>
                     </Grid>
                     <Border Grid.Column="1" Style="{StaticResource SceneBorder}">
                         <Grid>
-                            <Image Source="/EESDD;component/View/Image/racing_flag-wallpaper-2560x1600.jpg" Stretch="UniformToFill" />
+                            <Image x:Name="SceneImage" 
+                                   Source="/EESDD;component/View/Image/racing_flag-wallpaper-2560x1600.jpg" Stretch="UniformToFill" />
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -68,7 +70,8 @@
                     <Grid Grid.Column="2">
                         <Button Style="{StaticResource SceneSwitchButton}"
                                 Margin="20, 0, 0, 0"
-                                x:Name="SceneNextButton">
+                                x:Name="SceneNextButton"
+                                Click="SceneNextButton_Click">
                             <Image Source="/EESDD;component/View/Image/chevron-right_200_0_cccccc.png"/>
                         </Button>
                     </Grid>
@@ -82,7 +85,8 @@
                     <RowDefinition Height="20"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid>
-                    <ScrollViewer Style="{StaticResource ModesView}">
+                    <ScrollViewer Style="{StaticResource ModesView}"
+                                  x:Name="ModeViewer">
                         <StackPanel x:Name="ModeStack">
                             <widget:ModeButton ModeText="分心模式1"
                                                ModeImage="/EESDD;component/View/Image/racing_flag-wallpaper-2560x1600.jpg"

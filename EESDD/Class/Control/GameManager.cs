@@ -11,7 +11,7 @@ namespace EESDD.Class.Control
     {
         public GameManager()
         {
-
+            Load();
         }
 
         private Dictionary<Tuple<string, string>, GameIndex> indexDict;     // key - scene, mode;   value - GameIndex

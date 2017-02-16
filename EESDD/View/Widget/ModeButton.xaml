@@ -7,7 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="250"
              Height="50"
-             Width="Auto"
              Name="btn">
     <UserControl.Resources>
         <Style x:Key="NoDefaultBlue" 
@@ -29,9 +28,10 @@
             <Setter Property="CornerRadius" Value="10" />
             <Setter Property="Background">
                 <Setter.Value>
-                    <SolidColorBrush Color="#33000000"></SolidColorBrush>
+                    <SolidColorBrush Color="#aa000000"></SolidColorBrush>
                 </Setter.Value>
             </Setter>
+            <Setter Property="Cursor" Value="Hand" />
         </Style>
 
         <Style x:Key="ButtonInnerBorder"
@@ -47,7 +47,8 @@
     <Grid>
         <Border Style="{StaticResource ButtonBorder}">
             <Grid Margin="5">
-                <Button Style="{StaticResource NoDefaultBlue}">
+                <Button Style="{StaticResource NoDefaultBlue}"
+                        Click="ModeButton_Click">
                     <Border Style="{StaticResource ButtonInnerBorder}">
                         <Grid>
                             <Image Source="{Binding ElementName=btn, Path=ModeImage}"
@@ -55,13 +56,13 @@
                                         Stretch="UniformToFill"
                                    Opacity="0.5">
                                 <Image.Effect>
-                                    <BlurEffect Radius="10"></BlurEffect>
+                                    <BlurEffect Radius="3"></BlurEffect>
                                 </Image.Effect>
                             </Image>
                             <TextBlock Text="{Binding ElementName=btn, Path=ModeText}"
                                    x:Name="mText"
-                                       VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
                                        FontSize="15"
                                        Foreground="White"
                                        Margin="5"></TextBlock>

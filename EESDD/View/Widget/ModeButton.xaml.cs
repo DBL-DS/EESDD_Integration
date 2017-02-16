@@ -31,6 +31,9 @@ namespace EESDD.View.Widget
             DependencyProperty.Register("ModeText", typeof(string), typeof(ModeButton));
         public static readonly DependencyProperty CheckProperty =
             DependencyProperty.Register("IsChecked", typeof(bool), typeof(ModeButton));
+        public static readonly RoutedEvent ClickEvent =
+            EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble,
+            typeof(RoutedEventHandler), typeof(ModeButton));
 
 
         public ImageSource ModeImage
@@ -44,6 +47,23 @@ namespace EESDD.View.Widget
             get { return mText.Text; }
             set { mText.Text = value; }
         }
-       
+
+        public event RoutedEventHandler Click
+        {
+            add { AddHandler(ClickEvent, value); }
+            remove { RemoveHandler(ClickEvent, value); }
+        }
+
+        protected virtual void RaiseClickEvent()
+        {
+            RoutedEventArgs newEventArgs =
+                new RoutedEventArgs(ModeButton.ClickEvent);
+            RaiseEvent(newEventArgs);
+        }
+
+        private void ModeButton_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseClickEvent();
+        }
     }
 }

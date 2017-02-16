@@ -23,11 +23,11 @@
                     <Trigger.EnterActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <DoubleAnimation Duration="0:0:0.05"
+                                <DoubleAnimation Duration="0:0:0.02"
                                            To="1.05"
                                            Storyboard.TargetProperty="RenderTransform.ScaleX"
                                            />
-                                <DoubleAnimation Duration="0:0:0.05"
+                                <DoubleAnimation Duration="0:0:0.02"
                                            To="1.05"
                                            Storyboard.TargetProperty="RenderTransform.ScaleY"
                                            />
