@@ -29,6 +29,10 @@ namespace EESDD.Class.Control
         {
             Thread thread = new Thread(func);
             thread.Name = name.ToString();
+
+            if (threads.ContainsKey(name))
+                threads[name].Abort();
+
             threads[name] = thread;
 
             return thread;

@@ -116,6 +116,7 @@
     <Compile Include="Class\Model\Game.cs" />
     <Compile Include="Class\Model\GameIndex.cs" />
     <Compile Include="Class\Model\Mode.cs" />
+    <Compile Include="Class\Model\Progress.cs" />
     <Compile Include="Class\Model\Reaction.cs" />
     <Compile Include="Class\Model\Regular.cs" />
     <Compile Include="Class\Model\Scene.cs" />

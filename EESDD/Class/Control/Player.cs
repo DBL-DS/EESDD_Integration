@@ -16,9 +16,6 @@ namespace EESDD.Class.Control
             this.udpSetting = setting;
             this.udpOffset = offset;
 
-            refreshThread = ThreadManager.DefineThread(
-                ThreadCluster.PlayerRefresh, Refresh);
-
             recorder = new Recorder();
         }
 
@@ -43,7 +40,14 @@ namespace EESDD.Class.Control
         public void Start(Scene scene, Mode mode)
         {
             recorder.Start(scene, mode);
+            DefineRefreshThread();
             StartRefreshThread();
+        }
+
+        private void DefineRefreshThread()
+        {
+            refreshThread = ThreadManager.DefineThread(
+                ThreadCluster.PlayerRefresh, Refresh);
         }
 
         private void StartRefreshThread()
@@ -79,7 +83,10 @@ namespace EESDD.Class.Control
                         RefreshHandler?.Invoke(recorder);
                 }
                 else
+                {
                     StopRefreshThread();
+                    ReceiveTimeOutHandler?.Invoke();
+                }
             }
 
             udp.Close();

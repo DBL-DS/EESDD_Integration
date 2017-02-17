@@ -396,12 +396,33 @@ namespace EESDD.View
 
         public void GameStartAction(Game game)
         {
-            CU.Player.RefreshHandler = null;
-            GetGameRealTimeReady();
+            FirstRun();
+            
             GameRealTime.ResetPage();
-            CU.Player.RefreshHandler += CU.MG_Page.GameRealTime.SetPage;
-            CU.Player.Start(game.Scene, game.Mode);
             CurrentPage = PageCluster.GameRealTime;
+
+            /* Start the UDP receiving thread */
+            CU.Player.Start(game.Scene, game.Mode);
+        }
+
+        private void FirstRun()
+        {
+            if (GameRealTime == null)
+            {
+                GetGameRealTimeReady();
+                SetUDPRefreshAction();
+                SetUDPTimeOutAction();
+            }
+        }
+
+        private void SetUDPRefreshAction()
+        {
+            CU.Player.RefreshHandler += CU.MG_Page.GameRealTime.SetPage;
+        }
+
+        private void SetUDPTimeOutAction()
+        {
+            //TODO
         }
 
         public void GameEndAction()

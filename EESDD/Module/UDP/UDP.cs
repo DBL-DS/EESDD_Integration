@@ -84,8 +84,7 @@ namespace EESDD.Module.UDP
             }
             catch
             {
-                if (ReceiveTimeOutHandler != null)
-                    ReceiveTimeOutHandler();
+                    ReceiveTimeOutHandler?.Invoke();
 
                 return null;
             }
