@@ -106,7 +106,7 @@ namespace EESDD.Class.Control
             }
         }
 
-        public void Record(Svframe frame)
+        public bool Record(Svframe frame)
         {
             if (DetectStart(frame))
             {
@@ -115,7 +115,9 @@ namespace EESDD.Class.Control
                 RecordReaction(frame);
 
                 currentFrame = frame;
+                return true;
             }
+            return false;
         }
 
         private bool DetectStart(Svframe frame)

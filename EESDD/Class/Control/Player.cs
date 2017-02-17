@@ -75,9 +75,8 @@ namespace EESDD.Class.Control
                         BytesConverter.ConvertWith<Svframe>(bytes,
                         this.BytesToSvframe);   
 
-                    recorder.Record(frame);
-                    
-                    RefreshHandler?.Invoke(recorder);
+                    if (recorder.Record(frame))
+                        RefreshHandler?.Invoke(recorder);
                 }
                 else
                     StopRefreshThread();

@@ -400,6 +400,7 @@ namespace EESDD.View
         {
             CU.Player.RefreshHandler = null;
             GetGameRealTimeReady();
+            GameRealTime.ResetPage();
             CU.Player.RefreshHandler += CU.MG_Page.GameRealTime.SetPage;
             CU.Player.Start(game.Scene, game.Mode);
             CurrentPage = PageCluster.GameRealTime;
