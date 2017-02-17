@@ -353,14 +353,12 @@ namespace EESDD.View
             if (ThreadManager.IsBusy())
             {
                 var result = CustomMessageBox.Show("存在任务正在运行，确定强行退出？");
-                if (result == ResultType.True)
-                {
-                    ThreadManager.KillAll();
-                    return true;
-                }
+                if (result != ResultType.True)
+                    return false;
+                ThreadManager.KillAll();
             }
 
-            return false;
+            return true;
         }
 
         private void LogoutAction()
