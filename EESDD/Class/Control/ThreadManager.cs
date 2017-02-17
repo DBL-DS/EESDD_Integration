@@ -54,6 +54,20 @@ namespace EESDD.Class.Control
             return true;
         }
 
+        public static bool IsBusy()
+        {
+            foreach (var thread in threads.Values)
+                if (thread.IsAlive)
+                    return true;
+            return false;
+        }
+
+        public static void KillAll()
+        {
+            foreach (var thread in threads.Values)
+                thread.Abort();
+        }
+
         public static void Hit() { }
     }
 }

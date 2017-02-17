@@ -1,5 +1,7 @@
-﻿using EESDD.Class.Model;
+﻿using EESDD.Class.Control;
+using EESDD.Class.Model;
 using EESDD.View.Pages;
+using EESDD.View.Widget;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -342,6 +344,23 @@ namespace EESDD.View
             Main.LogoutHandler += LogoutAction;
             Main.ReturnHandler += ReturnAction;
             Main.SettingHandler += SettingAction;
+
+            Main.BeforeClosedCheckHandler += ForceShutDown;
+        }
+
+        private bool ForceShutDown()
+        {
+            if (ThreadManager.IsBusy())
+            {
+                var result = CustomMessageBox.Show("存在任务正在运行，确定强行退出？");
+                if (result == ResultType.True)
+                {
+                    ThreadManager.KillAll();
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void LogoutAction()
@@ -380,6 +399,7 @@ namespace EESDD.View
         public void GameStartAction(Game game)
         {
             CU.Player.RefreshHandler = null;
+            GetGameRealTimeReady();
             CU.Player.RefreshHandler += CU.MG_Page.GameRealTime.SetPage;
             CU.Player.Start(game.Scene, game.Mode);
             CurrentPage = PageCluster.GameRealTime;

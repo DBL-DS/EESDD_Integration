@@ -28,8 +28,10 @@ namespace EESDD.Class.Control
 
         private AreaState areaState;
         private int currentArea;
+        private bool START;
 
         private float _ZERO = 0.000001f;
+        private float _MINSTARTINTERVAL = 1;
 
         public void Start(Scene scene, Mode mode)
         {
@@ -52,12 +54,14 @@ namespace EESDD.Class.Control
                 areas.Add(area);
             }
 
-            currentFrame = null;
+            currentFrame = new Svframe(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
             currentBrake = null;
             currentReaction = null;
 
             areaState = AreaState.Outer;
             currentArea = 0;
+
+            START = false;
         }
 
         public Svframe CurrentFrame
@@ -104,13 +108,24 @@ namespace EESDD.Class.Control
 
         public void Record(Svframe frame)
         {
-            ChangeState(frame);
+            if (DetectStart(frame))
+            {
+                RecordArea(frame);
+                RecordBrake(frame);
+                RecordReaction(frame);
 
-            RecordArea(frame);
-            RecordBrake(frame);
-            RecordReaction(frame);
+                currentFrame = frame;
+            }
+        }
 
-            this.currentFrame = frame;
+        private bool DetectStart(Svframe frame)
+        {
+            if (START)
+                return true;
+            else if (frame.Time < _MINSTARTINTERVAL)
+                START = true;
+
+            return START;
         }
 
         private void ChangeState(Svframe frame)
@@ -132,6 +147,7 @@ namespace EESDD.Class.Control
         {
             TotalArea.AddFrame(frame);
 
+            ChangeState(frame);
             if (areaState == AreaState.In || areaState == AreaState.Inner)
                 CurrentArea.AddFrame(frame);
         }

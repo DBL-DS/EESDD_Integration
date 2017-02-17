@@ -28,6 +28,16 @@ namespace EESDD.View.Pages
             KMPERHOUR,
             MPERSECOND
         }
+
+        private enum ChartType
+        {
+            Speed,
+            Acc,
+            Offset,
+            STWAngle,
+            FarToFront
+        }
+
         public GameRealTime()
         {
             InitializeComponent();
@@ -41,8 +51,11 @@ namespace EESDD.View.Pages
 
         public void SetPage (Recorder record)
         {
-            SetPage(record);
-            SetChart(record);
+            this.Dispatcher.BeginInvoke((System.Action)(delegate() 
+            {
+                SetPanel(record);
+                SetChart(record);
+            }));
         }
 
 
@@ -60,8 +73,12 @@ namespace EESDD.View.Pages
 
         private static string GetTimeString(float seconds, bool WithHour)
         {
-            return DateTime.Parse("2017-02-17 00:00:00").AddSeconds(seconds)
-                .ToLongDateString();
+            if (WithHour)
+                return DateTime.Parse("2017-02-17 00:00:00").AddSeconds(seconds)
+                    .ToString("HH:mm:ss");
+            else
+                return DateTime.Parse("2017-02-17 00:00:00").AddSeconds(seconds)
+                    .ToString("mm:ss");
         }
 
         private void SetDistance(float distance)

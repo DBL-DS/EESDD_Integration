@@ -76,9 +76,8 @@ namespace EESDD.Class.Control
                         this.BytesToSvframe);   
 
                     recorder.Record(frame);
-
-                    if (RefreshHandler != null)
-                        RefreshHandler(recorder);
+                    
+                    RefreshHandler?.Invoke(recorder);
                 }
                 else
                     StopRefreshThread();
@@ -91,7 +90,7 @@ namespace EESDD.Class.Control
         {
             StopRefreshThread();
             Exp exp = recorder.Stop();
-            StopHandler(exp);
+            StopHandler?.Invoke(exp);
         }
 
         /*
