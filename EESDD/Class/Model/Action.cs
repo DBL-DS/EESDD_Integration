@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Model
 {
-    abstract class Action
+    public abstract class Action
     {
         private Svframe start;
         private Svframe end;

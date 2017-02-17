@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Model
 {
-    class Reaction:Action
+    public class Reaction:Action
     {
         public float ReactionTimeNow(Svframe frame)
         {

@@ -1,5 +1,6 @@
 ﻿using EESDD.Class.Control;
 using EESDD.Class.Model;
+using LiveCharts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,11 +35,22 @@ namespace EESDD.View.Pages
 
         private SpeedType CurrentType;
 
-        public void SetPanel(Recorder record)
+        #region Formatter
+        private Func<float, string> fTime = val => GetTimeString(val, false);
+        #endregion
+
+        public void SetPage (Recorder record)
+        {
+            SetPage(record);
+            SetChart(record);
+        }
+
+
+        private void SetPanel(Recorder record)
         {
             Svframe frame = record.CurrentFrame;
 
-            SetTime(frame.Time);
+            pTime.Text = GetTimeString(frame.Time, true);
             SetDistance(frame.Distance);
             SetSpeed(frame.Speed, CurrentType);
             pAcceleration.Text = frame.Acc.ToString();
@@ -46,13 +58,10 @@ namespace EESDD.View.Pages
             SetReactionTime(record.ReactionTime);
         }
 
-        private void SetTime(float time)
+        private static string GetTimeString(float seconds, bool WithHour)
         {
-            int t = Convert.ToInt32(time);
-            string s = (t % 60).ToString("D2");
-            string min = (t / 60 % 60).ToString("D2");
-            string h = (t / 360).ToString("D2");
-            pTime.Text = h + ":" + min + ":" + s;
+            return DateTime.Parse("2017-02-17 00:00:00").AddSeconds(seconds)
+                .ToLongDateString();
         }
 
         private void SetDistance(float distance)
@@ -98,6 +107,11 @@ namespace EESDD.View.Pages
                 pReactionTime.Text = (reactionTime / 1000).ToString("F2");
                 pReactionTimeUnit.Text = "s";
             }
+        }
+
+        private void SetChart(Recorder record)
+        {
+
         }
 
         private void EndGameButton_Click(object sender, RoutedEventArgs e)

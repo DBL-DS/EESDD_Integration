@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Model
 {
-    class BrakeAct:Action
+    public class BrakeAct:Action
     {
         public float BrakeDistanceNow(Svframe frame)
         {

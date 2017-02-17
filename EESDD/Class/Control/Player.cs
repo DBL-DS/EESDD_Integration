@@ -73,7 +73,7 @@ namespace EESDD.Class.Control
                 {
                     Svframe frame =
                         BytesConverter.ConvertWith<Svframe>(bytes,
-                        this.BytesToSvframe);
+                        this.BytesToSvframe);   
 
                     recorder.Record(frame);
 

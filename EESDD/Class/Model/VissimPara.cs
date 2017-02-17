@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Model
 {
-    class VissimPara
+    public class VissimPara
     {
         private float delay;
         private float queueLenAvg;

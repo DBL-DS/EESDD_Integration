@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Model
 {
-    class EvaPara
+    public class EvaPara
     {
         private float speed;        // 速度
         private float acc;          // 加速度

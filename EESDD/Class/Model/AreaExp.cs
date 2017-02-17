@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Model
 {
-    class AreaExp
+    public class AreaExp
     {
         public AreaExp()
         {

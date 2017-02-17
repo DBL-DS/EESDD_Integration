@@ -379,13 +379,16 @@ namespace EESDD.View
 
         public void GameStartAction(Game game)
         {
+            CU.Player.RefreshHandler = null;
+            CU.Player.RefreshHandler += CU.MG_Page.GameRealTime.SetPage;
             CU.Player.Start(game.Scene, game.Mode);
             CurrentPage = PageCluster.GameRealTime;
         }
 
         public void GameEndAction()
         {
-
+            CU.Player.End();
+            CurrentPage = PageCluster.GameSelect;
         }
     }
 }
