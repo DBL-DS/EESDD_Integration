@@ -363,15 +363,9 @@ namespace EESDD.View
         {
             while (true)
             {
-                if (!ThreadManager.IsBusy(ThreadCluster.PlayerRefresh))
-                {
-                    UDP udp = CU.MG_UDP.UDP;
-                    udp.Open();
-                    byte[] message = udp.Receive();
-                    if (!ThreadManager.IsBusy(ThreadCluster.PlayerRefresh))
-                        Link = (message != null);
-                    udp.Close();
-                }
+                bool? link = CU.MG_UDP.TestLink();
+                if (link != null)
+                    Link = link;
                 Thread.Sleep(1000);
             }
         }
@@ -450,7 +444,7 @@ namespace EESDD.View
 
         private void SetUDPTimeOutAction()
         {
-            CU.MG_UDP.UDP.ReceiveTimeOutHandler += () =>
+            CU.MG_UDP.ReceiveTimeOutAction += () =>
             {
                 if (current == PageCluster.GameRealTime)
                 {

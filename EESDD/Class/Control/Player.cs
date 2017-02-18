@@ -58,31 +58,22 @@ namespace EESDD.Class.Control
 
         private void Refresh()
         {
-            UDP udp = CU.MG_UDP.UDP;
-            udp.Open();
+            CU.MG_UDP.PrepareReceive();
             
             while (_refreshEnable)
             {
-                byte[] bytes = udp.Receive();
+                Svframe frame = CU.MG_UDP.ReceiveFrame();
 
-                if (bytes != null)
+                if (frame != null)
                 {
-                    Svframe frame =
-                        BytesConverter.ConvertWith<Svframe>(bytes,
-                        this.BytesToSvframe);
-
                     if (recorder.Record(frame))
                         RefreshHandler?.Invoke(recorder);
-                    //recorder.Record(frame);
-                    //RefreshHandler?.Invoke(recorder);
                 }
                 else
-                {
                     StopRefreshThread();
-                }
             }
 
-            udp.Close();
+            CU.MG_UDP.EndReceive();
         }
 
         public void End()
@@ -92,24 +83,6 @@ namespace EESDD.Class.Control
             StopHandler?.Invoke(exp);
         }
 
-        /*
-         * Transfer UDP message from bytes to a svframe
-         */
-        private Svframe BytesToSvframe(byte[] bytes)
-        {
-            float[] floats = BytesConverter.ToFloatArray(bytes);
-            Svframe frame = new Svframe();
-
-            foreach (var item in CU.MG_Set.UDPOffset)
-            {
-                var name = item.Key;
-                var offset = item.Value;
-                frame.GetType().GetProperty(name)
-                    .SetValue(frame, floats[item.Value]);
-            }
-
-            return frame;
-        }
 
     }
 }
