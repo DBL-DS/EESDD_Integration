@@ -19,13 +19,15 @@ namespace EESDD.View
             MG_User = new UserManager();
             MG_Game = new GameManager();
             MG_Page = new PageManager();
-            Player  = new Player(MG_Set.UDP, MG_Set.UDPOffset);
+            MG_UDP = new UDPManager(MG_Set.UDP);
+            Player  = new Player();
         }
 
         public static SettingManager MG_Set;
         public static UserManager MG_User;
         public static GameManager MG_Game;
         public static PageManager MG_Page;
+        public static UDPManager MG_UDP;
         public static Player Player;
 
         public static void Hit() { }

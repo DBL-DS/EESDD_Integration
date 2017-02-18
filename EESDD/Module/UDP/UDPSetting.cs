@@ -97,8 +97,7 @@ namespace EESDD.Module.UDP
 
         private void ClientChange()
         {
-            if (ClientChangeAction != null)
-                ClientChangeAction(this);
+            ClientChangeAction?.Invoke(this);
         }
     }
 }

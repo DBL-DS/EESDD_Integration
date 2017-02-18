@@ -17,9 +17,6 @@ namespace EESDD.Module.UDP
         public UDP(UDPSetting setting)
         {
             this.setting = setting;
-            setting.ClientChangeAction 
-                += new UDPSetting.ClientChangeHandler(InitClient);
-            InitUDP(setting);
         }
 
         private UDPSetting setting;
@@ -30,18 +27,22 @@ namespace EESDD.Module.UDP
         public ReceiveTimeOutAction ReceiveTimeOutHandler = null;
         public SendTimeOutAction SendTimeOutHandler = null;
 
+
+        public void Open()
+        {
+            InitUDP(setting);
+        }
+
         private void InitUDP(UDPSetting setting)
         {
             InitClient(setting);
             InitServer(setting);
-            setting.ClientChangeAction 
-                = new UDPSetting.ClientChangeHandler(InitClient);
         }
 
         private void InitClient(UDPSetting setting)
         {
             if (client != null)
-                client.Close();
+                Close();
             client = new UdpClient(setting.Port);
             client.Client.ReceiveTimeout = setting.TimeOut;
             client.Client.SendTimeout = setting.TimeOut;

@@ -1,5 +1,6 @@
 ﻿using EESDD.Class.Model;
 using EESDD.Module.UDP;
+using EESDD.View;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -10,12 +11,8 @@ namespace EESDD.Class.Control
      */
     class Player
     {
-        public Player(UDPSetting setting,
-            Dictionary<string, int> offset)
+        public Player()
         {
-            this.udpSetting = setting;
-            this.udpOffset = offset;
-
             recorder = new Recorder();
         }
 
@@ -33,9 +30,6 @@ namespace EESDD.Class.Control
         public ReceiveTimeOutAction ReceiveTimeOutHandler = null;
 
         private Thread refreshThread;
-
-        private UDPSetting udpSetting;
-        private Dictionary<string, int> udpOffset;
 
         public void Start(Scene scene, Mode mode)
         {
@@ -65,7 +59,8 @@ namespace EESDD.Class.Control
 
         private void Refresh()
         {
-            UDP udp = new UDP(udpSetting);
+            UDP udp = CU.MG_UDP.UDP;
+            udp.Open();
 
             udp.ReceiveTimeOutHandler = this.ReceiveTimeOutHandler;
 
@@ -107,7 +102,7 @@ namespace EESDD.Class.Control
             float[] floats = BytesConverter.ToFloatArray(bytes);
             Svframe frame = new Svframe();
 
-            foreach (var item in udpOffset)
+            foreach (var item in CU.MG_Set.UDPOffset)
             {
                 var name = item.Key;
                 var offset = item.Value;
