@@ -1,11 +1,13 @@
 ﻿using EESDD.Class.Control;
 using EESDD.Class.Model;
+using EESDD.Module.UDP;
 using EESDD.View.Pages;
 using EESDD.View.Widget;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,6 +39,7 @@ namespace EESDD.View
         {
             Main = new Container();
             ActionBinding();
+            StartUDPTest();
         }
 
         private Container Main;
@@ -350,6 +353,29 @@ namespace EESDD.View
             Main.BeforeClosedCheckHandler += ForceShutDown;
         }
 
+        private void StartUDPTest()
+        {
+            ThreadManager.DefineThread(ThreadCluster.UDPTest, UDPTest);
+            ThreadManager.StartThread(ThreadCluster.UDPTest);
+        }
+
+        private void UDPTest()
+        {
+            while (true)
+            {
+                if (!ThreadManager.IsBusy(ThreadCluster.PlayerRefresh))
+                {
+                    UDP udp = CU.MG_UDP.UDP;
+                    udp.Open();
+                    byte[] message = udp.Receive();
+                    if (!ThreadManager.IsBusy(ThreadCluster.PlayerRefresh))
+                        Link = (message != null);
+                    udp.Close();
+                }
+                Thread.Sleep(1000);
+            }
+        }
+
         private bool ForceShutDown()
         {
             if (ThreadManager.IsBusy())
@@ -357,9 +383,9 @@ namespace EESDD.View
                 var result = CustomMessageBox.Show("存在任务正在运行，确定强行退出？");
                 if (result != ResultType.True)
                     return false;
-                ThreadManager.KillAll();
             }
 
+            ThreadManager.KillAll();
             return true;
         }
 
@@ -426,11 +452,14 @@ namespace EESDD.View
         {
             CU.MG_UDP.UDP.ReceiveTimeOutHandler += () =>
             {
-                Application.Current.Dispatcher.BeginInvoke((System.Action)(delegate ()
+                if (current == PageCluster.GameRealTime)
                 {
-                    CustomMessageBox.Show("UDP连接超时，请检查网络是否正常连通！");
-                    GameEndAction();
-                }));
+                    Application.Current.Dispatcher.BeginInvoke((System.Action)(delegate ()
+                    {
+                        CustomMessageBox.Show("UDP连接超时，请检查网络是否正常连通！");
+                        GameEndAction();
+                    }));
+                }
             };
         }
 

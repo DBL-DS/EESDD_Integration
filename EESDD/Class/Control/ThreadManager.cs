@@ -9,7 +9,8 @@ namespace EESDD.Class.Control
 {
     public enum ThreadCluster
     {
-        PlayerRefresh
+        PlayerRefresh,
+        UDPTest
     }
 
     /*
@@ -61,9 +62,14 @@ namespace EESDD.Class.Control
         public static bool IsBusy()
         {
             foreach (var thread in threads.Values)
-                if (thread.IsAlive)
+                if (thread.IsAlive && thread.Name != ThreadCluster.UDPTest.ToString())
                     return true;
             return false;
+        }
+
+        public static bool IsBusy(ThreadCluster name)
+        {
+            return threads.ContainsKey(name) && threads[name].IsAlive;
         }
 
         public static void KillAll()

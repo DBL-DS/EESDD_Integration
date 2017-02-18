@@ -94,10 +94,13 @@ namespace EESDD.View.Pages
 
         public void SetLink(bool link)
         {
-            if (link)
-                ShowLink();
-            else
-                ShowUnlink();
+            this.Dispatcher.BeginInvoke((System.Action)(delegate ()
+            {
+                if (link)
+                    ShowLink();
+                else
+                    ShowUnlink();
+            }));
         }
 
         public void ResetContainer()
