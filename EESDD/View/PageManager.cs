@@ -422,7 +422,14 @@ namespace EESDD.View
 
         private void SetUDPTimeOutAction()
         {
-            //TODO
+            CU.MG_UDP.UDP.ReceiveTimeOutHandler += () =>
+            {
+                Application.Current.Dispatcher.BeginInvoke((System.Action)(delegate ()
+                {
+                    CustomMessageBox.Show("UDP连接超时，请检查网络是否正常连通！");
+                    GameEndAction();
+                }));
+            };
         }
 
         public void GameEndAction()

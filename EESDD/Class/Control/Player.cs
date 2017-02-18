@@ -27,7 +27,6 @@ namespace EESDD.Class.Control
         public StartAction StartHandler = null;
         public RefreshAction RefreshHandler = null;
         public StopAction StopHandler = null;
-        public ReceiveTimeOutAction ReceiveTimeOutHandler = null;
 
         private Thread refreshThread;
 
@@ -61,9 +60,7 @@ namespace EESDD.Class.Control
         {
             UDP udp = CU.MG_UDP.UDP;
             udp.Open();
-
-            udp.ReceiveTimeOutHandler = this.ReceiveTimeOutHandler;
-
+            
             while (_refreshEnable)
             {
                 byte[] bytes = udp.Receive();
@@ -80,7 +77,6 @@ namespace EESDD.Class.Control
                 else
                 {
                     StopRefreshThread();
-                    ReceiveTimeOutHandler?.Invoke();
                 }
             }
 
