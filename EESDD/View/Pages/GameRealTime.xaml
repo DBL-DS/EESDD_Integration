@@ -15,7 +15,8 @@
         </ResourceDictionary>
     </Page.Resources>
     
-    <Grid Style="{StaticResource BackgroundLight}">
+    <Grid Style="{StaticResource BackgroundLight}"
+          x:Name="ContentGrid">
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"></ColumnDefinition>

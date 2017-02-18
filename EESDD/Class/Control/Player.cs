@@ -69,10 +69,12 @@ namespace EESDD.Class.Control
                 {
                     Svframe frame =
                         BytesConverter.ConvertWith<Svframe>(bytes,
-                        this.BytesToSvframe);   
+                        this.BytesToSvframe);
 
                     if (recorder.Record(frame))
                         RefreshHandler?.Invoke(recorder);
+                    //recorder.Record(frame);
+                    //RefreshHandler?.Invoke(recorder);
                 }
                 else
                 {

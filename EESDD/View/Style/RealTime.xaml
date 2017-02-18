@@ -68,15 +68,25 @@
     <Style x:Key="MiniLineChart" TargetType="{x:Type lvc:CartesianChart}">
         <Setter Property="Height" Value="180" />
         <Setter Property="Margin" Value="3" />
+        <Setter Property="DisableAnimations" Value="True" />
+        <Setter Property="Hoverable" Value="False" />
+        <Setter Property="DataTooltip" Value="{x:Null}" />
     </Style>
 
     <Style x:Key="CenterChart" TargetType="{x:Type lvc:CartesianChart}">
         <Setter Property="Margin" Value="3" />
+        <Setter Property="DisableAnimations" Value="True" />
+        <Setter Property="Hoverable" Value="False" />
+        <Setter Property="DataTooltip" Value="{x:Null}" />
     </Style>
 
     <Style x:Key="ShutDownButton"
            TargetType="Button"
            BasedOn="{StaticResource NoDefaultBlue}">
         <Setter Property="Cursor" Value="Hand" />
+    </Style>
+
+    <Style x:Key="MiniLine"
+           TargetType="lvc:LineSeries">
     </Style>
 </ResourceDictionary>

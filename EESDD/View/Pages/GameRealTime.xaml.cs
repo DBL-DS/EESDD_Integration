@@ -39,7 +39,7 @@ namespace EESDD.View.Pages
             FarToFront
         }
 
-        private class Point
+        public class Point
         {
             public Point(float x, float y)
             {
@@ -53,6 +53,7 @@ namespace EESDD.View.Pages
         public GameRealTime()
         {
             InitializeComponent();
+            ContentGrid.DataContext = this;
         }
 
         private SpeedType CurrentType;
@@ -157,13 +158,28 @@ namespace EESDD.View.Pages
         private ChartValues<Point> DSTWAngle;
         private ChartValues<Point> DFarToFront;
 
+        /* Cache Points */
+        private ChartValues<Point> CacheTSpeed;
+        private ChartValues<Point> CacheTAcc;
+        private ChartValues<Point> CacheTOffset;
+        private ChartValues<Point> CacheTSTWAngle;
+        private ChartValues<Point> CacheTFarToFront;
+        private ChartValues<Point> CacheDSpeed;
+        private ChartValues<Point> CacheDAcc;
+        private ChartValues<Point> CacheDOffset;
+        private ChartValues<Point> CacheDSTWAngle;
+        private ChartValues<Point> CacheDFarToFront;
+
+        private const int CacheSize = 10;
+        private int CacheCount;
+
         /* ChartValues */
-        private ChartValues<Point> CenterChart { get; set; }
-        private ChartValues<Point> SpeedChart { get; set; }
-        private ChartValues<Point> AccChart { get; set; }
-        private ChartValues<Point> OffsetChart { get; set; }
-        private ChartValues<Point> STWAngleChart { get; set; }
-        private ChartValues<Point> FarToFrontChart { get; set; }
+        public ChartValues<Point> CenterChart { get; set; }
+        public ChartValues<Point> SpeedChart { get; set; }
+        public ChartValues<Point> AccChart { get; set; }
+        public ChartValues<Point> OffsetChart { get; set; }
+        public ChartValues<Point> STWAngleChart { get; set; }
+        public ChartValues<Point> FarToFrontChart { get; set; }
 
         private void ClearValues()
         {
@@ -183,6 +199,7 @@ namespace EESDD.View.Pages
         {
             SetMapper();
             BindTime();
+            CacheCount = 0;
         }
 
         private void BindTime()
@@ -215,20 +232,61 @@ namespace EESDD.View.Pages
 
         private void UpdateChart(Recorder record)
         {
+            if (CacheCount >= CacheSize)
+                FlushCache();
+            if (CacheCount == 0)
+                ClearCache();
+
+            Cache(record);
+        }
+
+        private void ClearCache()
+        {
+            CacheTSpeed = new ChartValues<Point>();
+            CacheTAcc = new ChartValues<Point>();
+            CacheTOffset = new ChartValues<Point>();
+            CacheTSTWAngle = new ChartValues<Point>();
+            CacheTFarToFront = new ChartValues<Point>();
+            CacheDSpeed = new ChartValues<Point>();
+            CacheDAcc = new ChartValues<Point>();
+            CacheDOffset = new ChartValues<Point>();
+            CacheDSTWAngle = new ChartValues<Point>();
+            CacheDFarToFront = new ChartValues<Point>();
+        }
+
+        private void Cache(Recorder record)
+        {
             Svframe f = record.CurrentFrame;
             float t = f.Time;
             float d = f.Distance;
 
-            TSpeed.Add(new Point(t, f.Speed));
-            TAcc.Add(new Point(t, f.Acc));
-            TOffset.Add(new Point(t, f.Offset));
-            TSTWAngle.Add(new Point(t, f.StwAngle));
-            TFarToFront.Add(new Point(t, f.FarToFront));
-            DSpeed.Add(new Point(d, f.Speed));
-            DAcc.Add(new Point(d, f.Acc));
-            DOffset.Add(new Point(d, f.Offset));
-            DSTWAngle.Add(new Point(d, f.StwAngle));
-            DFarToFront.Add(new Point(d, f.FarToFront));
+            CacheTSpeed.Add(new Point(t, f.Speed));
+            CacheTAcc.Add(new Point(t, f.Acc));
+            CacheTOffset.Add(new Point(t, f.Offset));
+            CacheTSTWAngle.Add(new Point(t, f.StwAngle));
+            CacheTFarToFront.Add(new Point(t, f.FarToFront));
+            CacheDSpeed.Add(new Point(d, f.Speed));
+            CacheDAcc.Add(new Point(d, f.Acc));
+            CacheDOffset.Add(new Point(d, f.Offset));
+            CacheDSTWAngle.Add(new Point(d, f.StwAngle));
+            CacheDFarToFront.Add(new Point(d, f.FarToFront));
+
+            CacheCount++;
+        }
+        private void FlushCache()
+        {
+            TSpeed.AddRange(CacheTSpeed);
+            TAcc.AddRange(CacheTAcc);
+            TOffset.AddRange(CacheTOffset);
+            TSTWAngle.AddRange(CacheTSTWAngle);
+            TFarToFront.AddRange(CacheTFarToFront);
+            DSpeed.AddRange(CacheDSpeed);
+            DAcc.AddRange(CacheDAcc);
+            DOffset.AddRange(CacheDOffset);
+            DSTWAngle.AddRange(CacheDSTWAngle);
+            DFarToFront.AddRange(CacheDFarToFront);
+
+            CacheCount = 0;
         }
         #endregion
 

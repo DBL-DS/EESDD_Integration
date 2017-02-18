@@ -114,13 +114,18 @@ namespace EESDD.View
                 SetSettingButton(value);
                 Main.SetPage(page);
 
-                if (last != null)
-                    last.Push(current);
-                else
-                    last = new Stack<PageCluster>();
-
+                PushPage();
                 current = value;
             }
+        }
+
+        private void PushPage()
+        {
+            if (last == null)
+                last = new Stack<PageCluster>();
+
+            if (current != PageCluster.GameRealTime)
+                last.Push(current);
         }
 
         # region GetPageReady
@@ -279,7 +284,6 @@ namespace EESDD.View
             switch (page)
             {
                 case PageCluster.GameSelect:
-                case PageCluster.GameRealTime:
                 case PageCluster.GameData:
                 case PageCluster.RegularInfo:
                 case PageCluster.GameSetting:
@@ -300,7 +304,6 @@ namespace EESDD.View
             {
                 case PageCluster.RegularMain:
                 case PageCluster.GameSelect:
-                case PageCluster.GameRealTime:
                 case PageCluster.GameData:
                 case PageCluster.RegularInfo:
                 case PageCluster.AdminMain:
@@ -323,7 +326,6 @@ namespace EESDD.View
                 case PageCluster.Login:
                 case PageCluster.RegularMain:
                 case PageCluster.GameSelect:
-                case PageCluster.GameRealTime:
                 case PageCluster.GameData:
                 case PageCluster.RegularInfo:
                 case PageCluster.AdminMain:
