@@ -27,9 +27,15 @@ namespace EESDD.View.Pages
         {
             InitializeComponent();
             LoadAnimation();
+            SetFocus();
         }
 
         #region Reset
+        private void SetFocus()
+        {
+            lName.Focus();
+        }
+
         private void ClearLoginInfo()
         {
             lInfo.Text = "";
@@ -92,6 +98,7 @@ namespace EESDD.View.Pages
             ResetRegister();
             ShowRegularButton();
             ShowLoginPanel();
+            SetFocus();
         }
         #endregion
 
