@@ -17,6 +17,13 @@ namespace EESDD.Class.Control
             Out
         }
 
+        enum ReceiveState
+        {
+            Waiting,
+            Running,
+            End
+        }
+
         private Scene scene;
         private Mode mode;
         private Exp exp;
@@ -46,6 +53,7 @@ namespace EESDD.Class.Control
             exp = new Exp(scene.Name, mode.Name);
             exp.Tic();
 
+            /* Init Areas */
             areas = new List<AreaExp>();
             foreach (var item in scene.AreaTitle)
             {
@@ -128,6 +136,12 @@ namespace EESDD.Class.Control
                 START = true;
 
             return START;
+        }
+
+        private ReceiveState DetectState(Svframe frame)
+        {
+            //TODO
+            return ReceiveState.End;
         }
 
         private void ChangeState(Svframe frame)
