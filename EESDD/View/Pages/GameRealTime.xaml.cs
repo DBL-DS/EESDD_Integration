@@ -1,5 +1,6 @@
 ﻿using EESDD.Class.Control;
 using EESDD.Class.Model;
+using EESDD.View.Widget;
 using LiveCharts;
 using LiveCharts.Configurations;
 using System;
@@ -309,7 +310,9 @@ namespace EESDD.View.Pages
 
         private void EndGameButton_Click(object sender, RoutedEventArgs e)
         {
-            CU.MG_Page.GameEndAction();
+            ExpType type = ExpTypeBox.Show();
+            if (type != ExpType.Cancel)
+                CU.MG_Page.GameEndAction(type);
         }
     }
 }

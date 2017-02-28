@@ -461,7 +461,7 @@ namespace EESDD.View
                     Application.Current.Dispatcher.BeginInvoke((System.Action)(delegate ()
                     {
                         CustomMessageBox.Show("UDP连接超时，请检查网络是否正常连通！");
-                        GameEndAction();
+                        GameEndAction(ExpType.Others);
                     }));
                 }
             };
@@ -478,14 +478,10 @@ namespace EESDD.View
             CU.MG_Exp.ThreadSave(CU.MG_User.User as Regular);
         }
 
-        public void GameEndAction()
+        public void GameEndAction(ExpType type)
         {
-            ExpType type = ExpTypeBox.Show();
-            if (type != ExpType.Cancel)
-            {
-                CU.Player.End(type);
-                CurrentPage = PageCluster.GameSelect;
-            }
+            CU.Player.End(type);
+            CurrentPage = PageCluster.GameSelect;
         }
         #endregion
     }

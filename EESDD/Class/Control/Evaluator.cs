@@ -30,18 +30,20 @@ namespace EESDD.Class.Control
             area.Var = new EvaPara();
             area.Mean = new EvaPara();
             var frames = area.Svframes;
-
-            foreach (var attr in area.Var.GetType().GetProperties())
+            if (frames != null && frames.Count > 0)
             {
-                var attrName = attr.Name;
-                var array = frames.Select<Svframe, float>
-                    (x => 
-                        (float)x.GetType().GetProperty(attrName)
-                        .GetValue(x, null))
-                    .ToArray();
+                foreach (var attr in area.Var.GetType().GetProperties())
+                {
+                    var attrName = attr.Name;
+                    var array = frames.Select<Svframe, float>
+                        (x =>
+                            (float)x.GetType().GetProperty(attrName)
+                            .GetValue(x, null))
+                        .ToArray();
 
-                attr.SetValue(area.Mean, (float)Statistics.Mean(array));
-                attr.SetValue(area.Var, (float)Statistics.Variance(array));
+                    attr.SetValue(area.Mean, (float)Statistics.Mean(array));
+                    attr.SetValue(area.Var, (float)Statistics.Variance(array));
+                }
             }
         }
 

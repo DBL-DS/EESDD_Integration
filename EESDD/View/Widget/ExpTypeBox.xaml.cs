@@ -63,5 +63,30 @@ namespace EESDD.View.Widget
                 this.DragMove();
             }
         }
+
+        private void tNormal_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            tNormalButton.IsChecked = true;
+        }
+
+        private void tCarCrashNormal_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            tCarCrashNormalButton.IsChecked = true;
+        }
+
+        private void tCarCrashAccident_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            tCarCrashAccidentButton.IsChecked = true;
+        }
+
+        private void tOperatorAccident_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            tOperatorAccidentButton.IsChecked = true;
+        }
+
+        private void tOther_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            tOtherButton.IsChecked = true;
+        }
     }
 }

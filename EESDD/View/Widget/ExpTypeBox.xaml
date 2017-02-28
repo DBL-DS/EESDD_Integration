@@ -115,7 +115,8 @@
                                  IsChecked="True"
                          />
                     <TextBlock x:Name="tNormalText" Grid.Column="1"
-                               Style="{StaticResource TypeRadioText}">
+                               Style="{StaticResource TypeRadioText}"
+                               MouseDown="tNormal_MouseDown">
                         正常
                     </TextBlock>
                 </Grid>
@@ -130,7 +131,8 @@
                                  GroupName="tExpType"
                          />
                     <TextBlock x:Name="tCarCrashNormalText" Grid.Column="1"
-                               Style="{StaticResource TypeRadioText}">
+                               Style="{StaticResource TypeRadioText}"
+                               MouseDown="tCarCrashNormal_MouseDown">
                         正常撞车
                     </TextBlock>
                 </Grid>
@@ -145,7 +147,8 @@
                                  GroupName="tExpType"
                          />
                     <TextBlock x:Name="tCarCrashAccidentText" Grid.Column="1"
-                               Style="{StaticResource TypeRadioText}">
+                               Style="{StaticResource TypeRadioText}"
+                               MouseDown="tCarCrashAccident_MouseDown">
                         意外撞车
                     </TextBlock>
                     <TextBlock Grid.Column="2"
@@ -162,7 +165,8 @@
                                  GroupName="tExpType"
                          />
                     <TextBlock x:Name="tOperatorAccidentText" Grid.Column="1"
-                               Style="{StaticResource TypeRadioText}">
+                               Style="{StaticResource TypeRadioText}"
+                               MouseDown="tOperatorAccident_MouseDown">
                         软件操作失误
                     </TextBlock>
                     <TextBlock Grid.Column="2"
@@ -179,7 +183,8 @@
                                  GroupName="tExpType"
                          />
                     <TextBlock x:Name="tOtherText" Grid.Column="1"
-                               Style="{StaticResource TypeRadioText}">
+                               Style="{StaticResource TypeRadioText}"
+                               MouseDown="tOther_MouseDown">
                         其他问题
                     </TextBlock>
                     <TextBlock Grid.Column="2"

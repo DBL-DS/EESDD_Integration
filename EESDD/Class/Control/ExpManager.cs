@@ -142,6 +142,8 @@ namespace EESDD.Class.Control
         {
             if (evaluateNow)
                 Evaluate(exp);
+            if (exps == null)
+                exps = new List<Exp>();
             exps.Add(exp);
             AddExpToDict(exp);
         }
