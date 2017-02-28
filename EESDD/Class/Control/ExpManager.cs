@@ -38,6 +38,8 @@ namespace EESDD.Class.Control
             }
         }
 
+        public bool Loading { get; set; }
+
         public int GetExpCount()
         {
             return ExpCount;
@@ -77,34 +79,47 @@ namespace EESDD.Class.Control
                 && gameExps[key].Count != 0)
                 return gameExps[key];
             else
-                return null;               
+                return null;
         }
 
 
         // Read and load exp file
-        public bool Load(string expFileName)
+        public bool Load(Regular regular)
         {
-            gameExps = 
-                new Dictionary<Tuple<string, string>, List<Exp>>();
-            exps = FileManager.GetExps(expFileName);
+            Loading = true;
+            exps = FileManager.GetExps(GetFileName(regular.Name));
 
             if (exps == null)
+            {
+                Loading = false;
                 return false;
+            }
 
             foreach (var item in exps)
-            {
                 AddExpToDict(item);
-            } 
 
-            return true;          
+            Loading = false;
+            return true;
         }
 
-        public bool Save(string expFileName)
+        private void LoadWithoutResult(object regular)
+        {
+            Load(regular as Regular);
+        }
+
+        public void ThreadLoad(Regular regular)
+        {
+            ThreadManager.DefineThread(ThreadCluster.LoadExp, LoadWithoutResult);
+            ThreadManager.StartThread(ThreadCluster.LoadExp, regular);
+        }
+
+        public bool Save(Regular regular)
         {
             if (exps == null)
                 return false;
             
-            FileManager.SaveExps(exps, expFileName);
+            FileManager.SaveExps(exps, GetFileName(regular.Name));
+            regular.ExpFile = GetFileName(regular.Name);
 
             return true;
         }
@@ -118,6 +133,10 @@ namespace EESDD.Class.Control
 
         private void AddExpToDict(Exp exp)
         {
+            if (gameExps == null)
+                gameExps =
+                    new Dictionary<Tuple<string, string>, List<Exp>>();
+
             var key = new Tuple<string, string>(exp.Scene, exp.Mode);
             if (!gameExps.ContainsKey(key))
                 gameExps.Add(key, new List<Exp>());

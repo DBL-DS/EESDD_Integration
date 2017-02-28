@@ -249,6 +249,7 @@ namespace EESDD.View
             Main.Show();
         }
 
+        #region Container Button
         public string Info
         {
             set
@@ -398,6 +399,7 @@ namespace EESDD.View
         {
 
         }
+        #endregion
 
         public void LoginAction(User user)
         {
@@ -410,16 +412,34 @@ namespace EESDD.View
                 case UserGroup.REGULAR:
                     CurrentPage = PageCluster.RegularMain;
                     RegularMain.SetPage(user as Regular);
+                    CU.MG_Exp.ThreadLoad(user as Regular);
                     break;
                 default:
                     break;
             }
         }
+        
+
+        #region GamePlay
+        /* 
+         * This runs only once to get GameRealTime Page ready 
+         * and binds actions before, during and after game. 
+         */
+        private void GameFirstStep()
+        {
+            if (GameRealTime == null)
+            {
+                GetGameRealTimeReady();
+                SetUDPRefreshAction();
+                SetUDPTimeOutAction();
+                SetEndAction();
+            }
+        }
 
         public void GameStartAction(Game game)
         {
-            FirstRun();
-            
+            GameFirstStep();
+
             GameRealTime.ResetPage();
             CurrentPage = PageCluster.GameRealTime;
 
@@ -427,18 +447,9 @@ namespace EESDD.View
             CU.Player.Start(game.Scene, game.Mode);
         }
 
-        private void FirstRun()
-        {
-            if (GameRealTime == null)
-            {
-                GetGameRealTimeReady();
-                SetUDPRefreshAction();
-                SetUDPTimeOutAction();
-            }
-        }
-
         private void SetUDPRefreshAction()
         {
+            CU.Player.RefreshHandler = null;
             CU.Player.RefreshHandler += CU.MG_Page.GameRealTime.SetPage;
         }
 
@@ -457,10 +468,21 @@ namespace EESDD.View
             };
         }
 
+        private void SetEndAction()
+        {
+            
+        }
+
+        private void SaveExp(Exp exp)
+        {
+            //CU.MG_User.
+        }
+
         public void GameEndAction()
         {
             CU.Player.End();
             CurrentPage = PageCluster.GameSelect;
         }
+        #endregion
     }
 }

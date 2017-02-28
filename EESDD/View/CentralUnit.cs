@@ -17,6 +17,7 @@ namespace EESDD.View
         {
             MG_Set  = new SettingManager();
             MG_User = new UserManager();
+            MG_Exp = new ExpManager();
             MG_Game = new GameManager();
             MG_Page = new PageManager();
             MG_UDP = new UDPManager(MG_Set.UDP);
@@ -25,6 +26,7 @@ namespace EESDD.View
 
         public static SettingManager MG_Set;
         public static UserManager MG_User;
+        public static ExpManager MG_Exp;
         public static GameManager MG_Game;
         public static PageManager MG_Page;
         public static UDPManager MG_UDP;

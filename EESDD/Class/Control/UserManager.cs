@@ -38,14 +38,14 @@ namespace EESDD.Class.Control
         {
             dbManger = new UserDBManager();
             dbManger.ConnectDB(FileManager.GetPath("database", "db"));
-            expManger = new ExpManager();
         }
 
         private User user;
         private User registerUser;
         private UserDBManager dbManger;
-        private ExpManager expManger;
         private RegisterState currentState;
+
+        public User User { get { return user; } }
 
         public LoginState Login(string username, string password, UserGroup group)
         {
@@ -57,8 +57,6 @@ namespace EESDD.Class.Control
             if (result.Item1 == LoginState.SUCCESS)
             {
                 user = result.Item2;
-                if (group == UserGroup.REGULAR)
-                    expManger.Load((user as Regular).ExpFile);
             }
 
             return result.Item1;
@@ -200,8 +198,6 @@ namespace EESDD.Class.Control
             registerUser = null;
             return currentState;
         }
-
-        public User User { get { return user; } }
 
         public void LogOut()
         {

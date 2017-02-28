@@ -10,7 +10,8 @@ namespace EESDD.Class.Control
     public enum ThreadCluster
     {
         PlayerRefresh,
-        UDPTest
+        UDPTest,
+        LoadExp
     }
 
     /*
@@ -27,6 +28,19 @@ namespace EESDD.Class.Control
 
         public static Thread DefineThread(ThreadCluster name,
             ThreadStart func)
+        {
+            Thread thread = new Thread(func);
+            thread.Name = name.ToString();
+
+            if (threads.ContainsKey(name))
+                threads[name].Abort();
+
+            threads[name] = thread;
+
+            return thread;
+        }
+        public static Thread DefineThread(ThreadCluster name,
+            ParameterizedThreadStart func)
         {
             Thread thread = new Thread(func);
             thread.Name = name.ToString();
