@@ -11,7 +11,7 @@ namespace EESDD.View
     {
         /* 
          * This static Class is the center of the System.
-         * It holds all Resources except static ones.
+         * It holds all Resources except Thread and File.
          */
         static CU()
         {

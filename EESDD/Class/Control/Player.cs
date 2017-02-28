@@ -76,13 +76,12 @@ namespace EESDD.Class.Control
             CU.MG_UDP.EndReceive();
         }
 
-        public void End()
+        public void End(ExpType type)
         {
             StopRefreshThread();
             Exp exp = recorder.Stop();
+            exp.ExpType = type;
             StopHandler?.Invoke(exp);
         }
-
-
     }
 }

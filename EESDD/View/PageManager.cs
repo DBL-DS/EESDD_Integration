@@ -427,9 +427,9 @@ namespace EESDD.View
          */
         private void GameFirstStep()
         {
-            if (GameRealTime == null)
+            GetGameRealTimeReady();
+            if (GameRealTime.FirstRun)
             {
-                GetGameRealTimeReady();
                 SetUDPRefreshAction();
                 SetUDPTimeOutAction();
                 SetEndAction();
@@ -449,7 +449,6 @@ namespace EESDD.View
 
         private void SetUDPRefreshAction()
         {
-            CU.Player.RefreshHandler = null;
             CU.Player.RefreshHandler += CU.MG_Page.GameRealTime.SetPage;
         }
 
@@ -470,18 +469,23 @@ namespace EESDD.View
 
         private void SetEndAction()
         {
-            
+            CU.Player.StopHandler += SaveExp;
         }
 
         private void SaveExp(Exp exp)
         {
-            //CU.MG_User.
+            CU.MG_Exp.AddExp(exp, true);
+            CU.MG_Exp.ThreadSave(CU.MG_User.User as Regular);
         }
 
         public void GameEndAction()
         {
-            CU.Player.End();
-            CurrentPage = PageCluster.GameSelect;
+            ExpType type = ExpTypeBox.Show();
+            if (type != ExpType.Cancel)
+            {
+                CU.Player.End(type);
+                CurrentPage = PageCluster.GameSelect;
+            }
         }
         #endregion
     }

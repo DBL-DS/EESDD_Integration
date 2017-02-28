@@ -11,7 +11,8 @@ namespace EESDD.Class.Control
     {
         PlayerRefresh,
         UDPTest,
-        LoadExp
+        LoadExp,
+        SaveExp
     }
 
     /*

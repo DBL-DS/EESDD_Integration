@@ -39,6 +39,7 @@ namespace EESDD.Class.Control
         }
 
         public bool Loading { get; set; }
+        public bool Saving { get; set; }
 
         public int GetExpCount()
         {
@@ -117,16 +118,30 @@ namespace EESDD.Class.Control
         {
             if (exps == null)
                 return false;
-            
+
+            Saving = true;
             FileManager.SaveExps(exps, GetFileName(regular.Name));
             regular.ExpFile = GetFileName(regular.Name);
+            Saving = false;
 
             return true;
         }
 
-        public void AddExp(Exp exp)
+        private void SaveWithoutResult(object regular)
         {
-            Evaluate(exp);
+            Save(regular as Regular);
+        }
+
+        public void ThreadSave(Regular regular)
+        {
+            ThreadManager.DefineThread(ThreadCluster.SaveExp, LoadWithoutResult);
+            ThreadManager.StartThread(ThreadCluster.SaveExp, regular);
+        }
+
+        public void AddExp(Exp exp, bool evaluateNow)
+        {
+            if (evaluateNow)
+                Evaluate(exp);
             exps.Add(exp);
             AddExpToDict(exp);
         }

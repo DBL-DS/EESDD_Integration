@@ -54,11 +54,28 @@ namespace EESDD.View.Pages
         {
             InitializeComponent();
             ContentGrid.DataContext = this;
+            first = true;
         }
 
         private SpeedType CurrentType;
 
         private Func<float, string> fTime = val => GetTimeString(val, false);
+        /* For Action Binding. Action Binding Only Once */
+        private bool first;
+        public bool FirstRun
+        {
+            get
+            {
+                bool tmp= first;
+                first = false;
+                return tmp;
+            }
+
+            set
+            {
+                first = value;
+            }
+        }
 
 
         public void SetPage (Recorder record)

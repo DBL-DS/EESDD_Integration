@@ -7,6 +7,15 @@ using System.Threading.Tasks;
 
 namespace EESDD.Class.Model
 {
+    public enum ExpType
+    {
+        Cancel,  /* For MessageBox */
+        Normal,
+        CarCrashNormal,
+        CarCrashAccident,
+        OperatorAccident,
+        Others
+    }
     public class Exp
     {
         public Exp(string scene, string mode)
@@ -27,6 +36,7 @@ namespace EESDD.Class.Model
         private string mode;                        // mode name of this exp
         private List<AreaExp> areas;                // 按区域划分的体验集合
         private bool evaluated;
+        private ExpType expType;
 
         public DateTime StartTime
         {
@@ -62,6 +72,12 @@ namespace EESDD.Class.Model
         {
             get { return evaluated; }
             set { evaluated = value; }
+        }
+
+        public ExpType ExpType
+        {
+            get { return expType; }
+            set { expType = value; }
         }
 
         [JsonIgnore]
