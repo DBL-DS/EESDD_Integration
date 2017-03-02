@@ -310,9 +310,7 @@ namespace EESDD.View.Pages
 
         private void EndGameButton_Click(object sender, RoutedEventArgs e)
         {
-            ExpType type = ExpTypeBox.Show();
-            if (type != ExpType.Cancel)
-                CU.MG_Page.GameEndAction(type);
+            CU.MG_Page.GameEndAction();
         }
     }
 }

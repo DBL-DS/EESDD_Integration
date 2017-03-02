@@ -61,6 +61,8 @@ namespace EESDD.View
         private PageCluster current;
         private Stack<PageCluster> last;
 
+        private bool Ending;
+
         public PageCluster CurrentPage
         {
             set
@@ -460,8 +462,11 @@ namespace EESDD.View
                 {
                     Application.Current.Dispatcher.BeginInvoke((System.Action)(delegate ()
                     {
-                        CustomMessageBox.Show("UDP连接超时，请检查网络是否正常连通！");
-                        GameEndAction(ExpType.Others);
+                        if (!Ending)
+                        {
+                            CustomMessageBox.Show("UDP连接超时，请检查网络是否正常连通！");
+                            GameEndAction();
+                        }
                     }));
                 }
             };
@@ -478,10 +483,16 @@ namespace EESDD.View
             CU.MG_Exp.ThreadSave(CU.MG_User.User as Regular);
         }
 
-        public void GameEndAction(ExpType type)
+        public void GameEndAction()
         {
-            CU.Player.End(type);
-            CurrentPage = PageCluster.GameSelect;
+            Ending = true;
+            ExpType type = ExpTypeBox.Show();
+            if (type != ExpType.Cancel)
+            {
+                CU.Player.End(type);
+                CurrentPage = PageCluster.GameSelect;
+            }
+            Ending = false;
         }
         #endregion
     }
