@@ -62,6 +62,7 @@ namespace EESDD.View
         private Stack<PageCluster> last;
 
         private bool Ending;
+        private bool Warning;
 
         public PageCluster CurrentPage
         {
@@ -462,9 +463,11 @@ namespace EESDD.View
                 {
                     Application.Current.Dispatcher.BeginInvoke((System.Action)(delegate ()
                     {
-                        if (!Ending)
+                        if (!Ending && !Warning)
                         {
+                            Warning = true;
                             CustomMessageBox.Show("UDP连接超时，请检查网络是否正常连通！");
+                            Warning = false;
                             GameEndAction();
                         }
                     }));
