@@ -8,7 +8,8 @@
         "style": "/Setting/style.json",
         "text": "/Setting/text.json",
         "udp": "/Setting/udp.json",
-        "offset": "/Setting/offset.json"
+		"offset": "/Setting/offset.json",
+		"app": "/Setting/app.json"
     },
     "database": {
         "db": "/Info/database/user.db",

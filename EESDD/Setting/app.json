@@ -1,0 +1,12 @@
+﻿{
+	"udp": {
+		"port": "6000",
+		"buffer_size": "184"
+	},
+	"evaluation": {
+		"after_exp": true
+	},
+	"style": {
+		"lang": "zh"
+	}
+}

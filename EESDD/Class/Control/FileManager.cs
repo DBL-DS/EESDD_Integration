@@ -120,6 +120,12 @@ namespace EESDD.Class.Control
                 Dictionary<string, Dictionary<string, string>>>>(path);
         }
 
+        public static Dictionary<string, Dictionary<string, string>> GetAppSetting()
+        {
+            string path = GetPath("setting", "app");
+            return ReadJson<Dictionary<string, Dictionary<string, string>>> (path);
+        }
+
         public static T ReadJson<T>(string path)
         {
             T result;

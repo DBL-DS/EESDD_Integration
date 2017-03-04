@@ -220,6 +220,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Setting\app.json" />
     <None Include="Setting\database.json" />
     <None Include="Setting\game.json" />
     <None Include="Setting\mode.json" />
@@ -230,7 +231,6 @@
     <None Include="Setting\scene.json" />
     <None Include="Setting\style.json" />
     <None Include="Setting\text.json" />
-    <None Include="Setting\udp.json" />
     <None Include="Setting\user.json" />
   </ItemGroup>
   <ItemGroup>

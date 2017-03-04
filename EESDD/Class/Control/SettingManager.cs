@@ -11,11 +11,13 @@ namespace EESDD.Class.Control
     {
         public SettingManager()
         {
+            LoadAppSetting();
             LoadUDP();
             LoadStyle();
             LoadText();
         }
 
+        public Dictionary<string, Dictionary<string, string>> App;
         public UDPSetting UDP;
         public Dictionary<string, int> UDPOffset;
         public Dictionary<string, Dictionary<string, string>> Style;
@@ -24,13 +26,17 @@ namespace EESDD.Class.Control
 
         private void LoadUDP()
         {
-            Dictionary<string, string> udpSetting = FileManager.GetUDPSetting();
             UDP = new UDPSetting();
-            UDP.Port = Int32.Parse(udpSetting["Port"]);
+            UDP.Port = Int32.Parse(App["udp"]["port"]);
             UDP.BufferSize =
-                Int32.Parse(udpSetting["BufferSize"]);
+                Int32.Parse(App["udp"]["port"]);
 
             UDPOffset = FileManager.GetOffset();
+        }
+
+        private void LoadAppSetting()
+        {
+            App = FileManager.GetAppSetting();
         }
 
         private void LoadStyle()
@@ -50,7 +56,7 @@ namespace EESDD.Class.Control
         {
             get
             {
-                switch (Style["common"]["lang"])
+                switch (App["style"]["lang"])
                 {
                     case "zh":
                         return TextZh;
@@ -59,6 +65,16 @@ namespace EESDD.Class.Control
                 }
                     return TextZh;
             }
+        }
+
+        public void SaveAppSetting()
+        {
+            //TODO
+        }
+
+        public void SaveStyleSetting()
+        {
+            //TODO
         }
     }
 }

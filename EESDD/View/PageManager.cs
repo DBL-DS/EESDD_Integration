@@ -479,7 +479,7 @@ namespace EESDD.View
 
         private void SaveExp(Exp exp)
         {
-            CU.MG_Exp.AddExp(exp, true);
+            CU.MG_Exp.AddExp(exp, bool.Parse(CU.MG_Set.App["evaluation"]["after_exp"]));
             CU.MG_Exp.ThreadSave(CU.MG_User.User as Regular);
         }
 
