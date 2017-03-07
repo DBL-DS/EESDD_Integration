@@ -68,6 +68,7 @@
 
         <Style x:Key="OuterBorder"
                 TargetType="{x:Type Border}">
+            <Setter Property="Opacity" Value="0.8" />
             <Setter Property="Effect">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource Fraction}">

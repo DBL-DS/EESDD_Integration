@@ -10,7 +10,7 @@
     <Style x:Key="TitleBorder" TargetType="{x:Type Border}">
         <Setter Property="Padding" Value="30, 0" />
         <Setter Property="BorderThickness" Value="0, 0, 0, 1" />
-        <Setter Property="BorderBrush" Value="#333" />
+        <Setter Property="BorderBrush" Value="#ccc" />
         <Setter Property="Margin" Value="0, 0, 0, 10" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Height" Value="50" />
@@ -21,7 +21,7 @@
         <Setter Property="TextAlignment" Value="Left" />
         <Setter Property="FontSize" Value="24" />
         <Setter Property="Padding" Value="5" />
-        <Setter Property="Foreground" Value="#333" />
+        <Setter Property="Foreground" Value="#ccc" />
         <Setter Property="FontWeight" Value="SemiBold" />
     </Style>
 
@@ -46,7 +46,7 @@
         <Setter Property="Margin" Value="0, 0, 30, 0" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="Padding" Value="5" />
-        <Setter Property="Foreground" Value="#333" />
+        <Setter Property="Foreground" Value="#ccc" />
         <Setter Property="FontWeight" Value="SemiBold" />
     </Style>
     
@@ -141,7 +141,7 @@
            TargetType="{x:Type Button}"
            BasedOn="{StaticResource NoDefaultBlue}">
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Foreground" Value="#ccc" />
+        <Setter Property="Foreground" Value="#333" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Width" Value="100" />
         <Setter Property="Height" Value="30" />
@@ -149,8 +149,8 @@
             <Setter.Value>
                 <RadialGradientBrush>
                     <GradientStop Offset="0" Color="#777"></GradientStop>
-                    <GradientStop Offset="0.4" Color="#555"></GradientStop>
-                    <GradientStop Offset="0.9" Color="#333"></GradientStop>
+                    <GradientStop Offset="0.4" Color="#ccc"></GradientStop>
+                    <GradientStop Offset="0.9" Color="#eee"></GradientStop>
                 </RadialGradientBrush>
             </Setter.Value>
         </Setter>

@@ -54,20 +54,20 @@ namespace EESDD.View.Widget
 
         private void btn_MouseEnter(object sender, MouseEventArgs e)
         {
-            NormalButton.Visibility = System.Windows.Visibility.Collapsed;
-            HoverButton.Visibility = System.Windows.Visibility.Visible;
+            NormalButton.Visibility = Visibility.Collapsed;
+            HoverButton.Visibility = Visibility.Visible;
         }
 
         private void btn_MouseLeave(object sender, MouseEventArgs e)
         {
-            NormalButton.Visibility = System.Windows.Visibility.Visible;
-            HoverButton.Visibility = System.Windows.Visibility.Collapsed;
+            NormalButton.Visibility = Visibility.Visible;
+            HoverButton.Visibility = Visibility.Collapsed;
         }
 
         protected virtual void RaiseClickEvent()
         {
             RoutedEventArgs newEventArgs =
-                new RoutedEventArgs(ImageSwitchButton.ClickEvent);
+                new RoutedEventArgs(ClickEvent);
             RaiseEvent(newEventArgs);
         }
 

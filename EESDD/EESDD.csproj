@@ -184,6 +184,9 @@
     <Compile Include="View\Widget\CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Widget\ExpCell.xaml.cs">
+      <DependentUpon>ExpCell.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Widget\ExpTypeBox.xaml.cs">
       <DependentUpon>ExpTypeBox.xaml</DependentUpon>
     </Compile>
@@ -337,6 +340,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Widget\ExpCell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Widget\ExpTypeBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -356,6 +363,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
+    <Resource Include="View\Image\peter-court-45419.jpg" />
     <Resource Include="View\Image\yhdegf-qwli-sven-scheuermeier.jpg" />
     <Resource Include="Info\image\wechat_voice.jpg" />
     <Resource Include="Info\image\addition_difficult.jpg" />

@@ -15,245 +15,248 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid Style="{StaticResource Backgroundpurple}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid VerticalAlignment="Center"
-              HorizontalAlignment="Center">
-            <Image Source="/EESDD;component/View/Image/grey_car.png"
-                   Margin="100"></Image>
-        </Grid>
-        <Grid Grid.Column="1"
-              Margin="30, 0">
+    <Border Style="{StaticResource ImageBackground}">
+        <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"></ColumnDefinition>
-                <ColumnDefinition Width="300"></ColumnDefinition>
-                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Style="{StaticResource LoginSwitchButton}"
+            <Grid VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+                  Visibility="Hidden">
+                <Image Source="/EESDD;component/View/Image/grey_car.png"
+                   Margin="100"></Image>
+            </Grid>
+            <Grid Grid.Column="1"
+              Margin="30, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource LoginSwitchButton}"
                     Click="LeftButton_Click"
                     x:Name="LeftButton"
                     ToolTip="登录"
                     Visibility="Hidden">
-                <Image Source="/EESDD;component/View/Image/chevron-left_200_0_cccccc.png"
+                    <Image Source="/EESDD;component/View/Image/chevron-left_200_0_cccccc.png"
                        />
-            </Button>
-            <Canvas Grid.Column="1"
+                </Button>
+                <Canvas Grid.Column="1"
                     x:Name="PanelCanvas">
-                <Border Height="255" Width="250"
+                    <Border Height="255" Width="250"
                     Style="{StaticResource Box}"
                     x:Name="LoginPanel"
                     Visibility="Visible"
                     KeyDown="LoginKeyDown"
                     >
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource BoxTitle}">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource BoxTitle}">
                         登录
-                            </TextBlock>
-                            <Button Style="{StaticResource NoDefaultBlue}"
+                                </TextBlock>
+                                <Button Style="{StaticResource NoDefaultBlue}"
                                 Margin="60, 50, 0, 10"
                                 Cursor="Hand"
                                 x:Name="RegularButton"
                                 Click="RegularButton_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Width="15" Height="15" 
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="15" Height="15" 
                                        Source="/EESDD;component/View/Image/user_50_0_333333.png"
                                        />
-                                    <TextBlock Foreground="#888"
+                                        <TextBlock Foreground="#333"
                                            Margin="5"
                                            FontSize="11">
                                     普通用户
-                                    </TextBlock>
-                                </StackPanel>
-                            </Button>
-                            <Button Style="{StaticResource NoDefaultBlue}"
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Button>
+                                <Button Style="{StaticResource NoDefaultBlue}"
                                 Margin="60, 50, 0, 10"
                                 Cursor="Hand"
                                 Visibility="Collapsed"
                                 x:Name="AdminButton"
                                 Click="AdminButton_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Width="15" Height="15" 
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="15" Height="15" 
                                        Source="/EESDD;component/View/Image/user-secret_50_0_333333.png"
                                        />
-                                    <TextBlock Foreground="#888"
+                                        <TextBlock Foreground="#333"
                                            Margin="5"
                                            FontSize="11">
                                     管理员
-                                    </TextBlock>
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"
                                 Margin="0, 10"
                                 VerticalAlignment="Center">
-                            <Image Source="/EESDD;component/View/Image/user_50_0_333333.png"
+                                <Image Source="/EESDD;component/View/Image/user_50_0_333333.png"
                                Style="{StaticResource BoxImage}"></Image>
-                            <TextBox Style="{StaticResource BoxTextBox}"
+                                <TextBox Style="{StaticResource BoxTextBox}"
                                  ToolTip="请输入用户名"
                                      x:Name="lName">
-                            </TextBox>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"
+                                </TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"
                                 Margin="0, 10"
                                 VerticalAlignment="Center">
-                            <Image Source="/EESDD;component/View/Image/key_50_0_333333.png"
+                                <Image Source="/EESDD;component/View/Image/key_50_0_333333.png"
                                 Style="{StaticResource BoxImage}"></Image>
-                            <PasswordBox Style="{StaticResource BoxPasswordBox}"
+                                <PasswordBox Style="{StaticResource BoxPasswordBox}"
                                  ToolTip="请输入密码"
                                          x:Name="lPassword"></PasswordBox>
-                        </StackPanel>
-                        <StackPanel>
-                            <TextBlock Style="{StaticResource LoginInfo}"
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource LoginInfo}"
                                        x:Name="lInfo" />
-                        </StackPanel>
-                        <StackPanel>
-                            <Button Style="{StaticResource BoxButton}"
+                            </StackPanel>
+                            <StackPanel>
+                                <Button Style="{StaticResource BoxButton}"
                                 Margin="0, 0, 0, 20"
                                     Click="LoginButton_Click">
-                                <StackPanel Orientation="Horizontal"
+                                    <StackPanel Orientation="Horizontal"
                                         VerticalAlignment="Center">
-                                    <TextBlock
+                                        <TextBlock
                                     Margin="105, 0, 10, 0">登录</TextBlock>
-                                    <Image Source="/EESDD;component/View/Image/enter_50_0_333333.png" 
+                                        <Image Source="/EESDD;component/View/Image/enter_50_0_333333.png" 
                                        Width="20" Height="20"
                                        Margin="0, 0, 90, 0"/>
-                                </StackPanel>
-                            </Button>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
-                </Border>
-                <Border Style="{StaticResource Box}"
+                    </Border>
+                    <Border Style="{StaticResource Box}"
                     Height="430" Width="250"
                     x:Name="RegisterPanel"
                     Visibility="Hidden"
                     Opacity="1" 
                     KeyDown="RegisterKeyDown">
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal"
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal"
                                 Margin="0, 0, 0, 20">
-                            <TextBlock Style="{StaticResource BoxTitle}">
+                                <TextBlock Style="{StaticResource BoxTitle}">
                         注册
-                            </TextBlock>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource RegTitle}">
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource RegTitle}">
                             用户名</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBox}" x:Name="rName" />
-                            <TextBlock Style="{StaticResource RegError}" x:Name="rNameError" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource RegTitle}">
+                                <TextBox Style="{StaticResource RegTextBox}" x:Name="rName" />
+                                <TextBlock Style="{StaticResource RegError}" x:Name="rNameError" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource RegTitle}">
                             密码</TextBlock>
-                            <PasswordBox Style="{StaticResource RegPasswordBox}" x:Name="rPassword" />
-                            <Image Source="/EESDD;component/View/Image/question-circle_50_0_333333.png" 
+                                <PasswordBox Style="{StaticResource RegPasswordBox}" x:Name="rPassword" />
+                                <Image Source="/EESDD;component/View/Image/question-circle_50_0_333333.png" 
                                Width="15" Height="15"
                                Margin="10, 0"
                                ToolTip="密码可为空"
                                Opacity="0.7"/>
-                            <TextBlock Style="{StaticResource RegError}" x:Name="rPasswordError" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource RegTitle}">
+                                <TextBlock Style="{StaticResource RegError}" x:Name="rPasswordError" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource RegTitle}">
                             真实姓名</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBox}" x:Name="rRealName" />
-                            <TextBlock Style="{StaticResource RegError}" x:Name="rRealnameError" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource RegTitle}">
+                                <TextBox Style="{StaticResource RegTextBox}" x:Name="rRealName" />
+                                <TextBlock Style="{StaticResource RegError}" x:Name="rRealnameError" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource RegTitle}">
                             性别</TextBlock>
-                            <RadioButton GroupName="Gender"
+                                <RadioButton GroupName="Gender"
                                      Style="{StaticResource RegRadioButton}"
                                      IsChecked="True"
                                          x:Name="rMale">
-                                <Image Source="/EESDD;component/View/Image/male-symbol_50_0_333333.png" 
+                                    <Image Source="/EESDD;component/View/Image/male-symbol_50_0_333333.png" 
                                    Style="{StaticResource RegRadioButtonImage}"/>
-                            </RadioButton>
-                            <RadioButton GroupName="Gender"
+                                </RadioButton>
+                                <RadioButton GroupName="Gender"
                                      Style="{StaticResource RegRadioButton}"
                                          x:Name="rFemale">
-                                <Image Source="/EESDD;component/View/Image/female-symbol_50_0_333333.png" 
+                                    <Image Source="/EESDD;component/View/Image/female-symbol_50_0_333333.png" 
                                    Style="{StaticResource RegRadioButtonImage}"/>
-                            </RadioButton>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource RegTitle}">
+                                </RadioButton>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource RegTitle}">
                             年龄</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBox}" x:Name="rAge" />
-                            <TextBlock Style="{StaticResource RegError}" x:Name="rAgeError" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource RegTitle}">
+                                <TextBox Style="{StaticResource RegTextBox}" x:Name="rAge" />
+                                <TextBlock Style="{StaticResource RegError}" x:Name="rAgeError" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource RegTitle}">
                             身高</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBoxWithUnit}" x:Name="rHeight" />
-                            <TextBlock Style="{StaticResource RegUnit}">
+                                <TextBox Style="{StaticResource RegTextBoxWithUnit}" x:Name="rHeight" />
+                                <TextBlock Style="{StaticResource RegUnit}">
                             cm
-                            </TextBlock>
-                            <TextBlock Style="{StaticResource RegError}" x:Name="rHeightError" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource RegTitle}">
+                                </TextBlock>
+                                <TextBlock Style="{StaticResource RegError}" x:Name="rHeightError" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource RegTitle}">
                             体重</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBoxWithUnit}" x:Name="rWeight" />
-                            <TextBlock Style="{StaticResource RegUnit}">
+                                <TextBox Style="{StaticResource RegTextBoxWithUnit}" x:Name="rWeight" />
+                                <TextBlock Style="{StaticResource RegUnit}">
                             kg
-                            </TextBlock>
-                            <TextBlock Style="{StaticResource RegError}" x:Name="rWeightError" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource RegTitle}">
+                                </TextBlock>
+                                <TextBlock Style="{StaticResource RegError}" x:Name="rWeightError" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource RegTitle}">
                             驾龄</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBoxWithUnit}" x:Name="rDriAge" />
-                            <TextBlock Style="{StaticResource RegUnit}">
+                                <TextBox Style="{StaticResource RegTextBoxWithUnit}" x:Name="rDriAge" />
+                                <TextBlock Style="{StaticResource RegUnit}">
                             年
-                            </TextBlock>
-                            <TextBlock Style="{StaticResource RegError}" x:Name="rDriAgeError" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource RegTitle}">
+                                </TextBlock>
+                                <TextBlock Style="{StaticResource RegError}" x:Name="rDriAgeError" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource RegTitle}">
                             职业</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBox}" x:Name="rCareer" />
-                            <TextBlock Style="{StaticResource RegError}" x:Name="rCareerError" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource RegTitle}">
+                                <TextBox Style="{StaticResource RegTextBox}" x:Name="rCareer" />
+                                <TextBlock Style="{StaticResource RegError}" x:Name="rCareerError" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource RegTitle}">
                             联系方式</TextBlock>
-                            <TextBox Style="{StaticResource RegTextBox}" x:Name="rContact" />
-                            <TextBlock Style="{StaticResource RegError}" x:Name="rContactError" />
-                        </StackPanel>
-                        <StackPanel>
-                            <TextBlock Style="{StaticResource RegInfo}"
+                                <TextBox Style="{StaticResource RegTextBox}" x:Name="rContact" />
+                                <TextBlock Style="{StaticResource RegError}" x:Name="rContactError" />
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource RegInfo}"
                                        x:Name="rInfo">
-                            </TextBlock>
-                        </StackPanel>
-                        <StackPanel>
-                            <Button Style="{StaticResource BoxButton}"
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel>
+                                <Button Style="{StaticResource BoxButton}"
                                 Click="RegisterButton_Click">
-                                <StackPanel Orientation="Horizontal"
+                                    <StackPanel Orientation="Horizontal"
                                         VerticalAlignment="Center">
-                                    <TextBlock
+                                        <TextBlock
                                     Margin="105, 0, 10, 0">
                                     注 册
-                                    </TextBlock>
-                                    <Image Source="/EESDD;component/View/Image/pencil_50_0_333333.png" 
+                                        </TextBlock>
+                                        <Image Source="/EESDD;component/View/Image/pencil_50_0_333333.png" 
                                        Width="20" Height="20"
                                        Margin="0, 0, 90, 0"/>
-                                </StackPanel>
-                            </Button>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
-                </Border>
-            </Canvas>
-            <Button Grid.Column="2"
+                    </Border>
+                </Canvas>
+                <Button Grid.Column="2"
                     Style="{StaticResource LoginSwitchButton}"
                     Click="RightButton_Click"
                     x:Name="RightButton"
                     ToolTip="注册">
-                <Image Source="/EESDD;component/View/Image/chevron-right_200_0_cccccc.png"/>
-            </Button>
+                    <Image Source="/EESDD;component/View/Image/chevron-right_200_0_cccccc.png"/>
+                </Button>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </Page>

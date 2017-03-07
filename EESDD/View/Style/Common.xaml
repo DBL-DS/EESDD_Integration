@@ -4,7 +4,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/View/Style/Base.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style x:Key="BackgroundLight" TargetType="{x:Type Grid}">
         <Setter Property="Background">
             <Setter.Value>
@@ -16,26 +16,13 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    <Style x:Key="Backgroundpurple" TargetType="{x:Type Grid}">
-        <Setter Property="Background">
-            <Setter.Value>
-                <RadialGradientBrush>
-                    <GradientStop Color="#564b69" Offset="0.1" />
-                    <GradientStop Color="#453a58" Offset="0.6" />
-                    <GradientStop Color="#342947" Offset="1" />
-                </RadialGradientBrush>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    
+
     <Style x:Key="ImageBackground"
            TargetType="Border">
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush ImageSource="/EESDD;component/View/Image/zi_y7euekfq-kyle-murfin.jpg" 
-                    Stretch="UniformToFill" 
-                    Opacity="0.7"/>
+                <ImageBrush ImageSource="/EESDD;component/View/Image/peter-court-45419.jpg" 
+                    Stretch="UniformToFill" />
             </Setter.Value>
         </Setter>
     </Style>

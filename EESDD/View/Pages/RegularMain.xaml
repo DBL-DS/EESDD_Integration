@@ -25,9 +25,9 @@
     </Page.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/EESDD;component/View/Image/yhdegf-qwli-sven-scheuermeier.jpg" 
+            <ImageBrush ImageSource="/EESDD;component/View/Image/peter-court-45419.jpg" 
                     Stretch="UniformToFill" 
-                    Opacity="0.7"/>
+                        />
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -75,7 +75,8 @@
                 </StackPanel>
                 <StackPanel VerticalAlignment="Center"
                             Orientation="Horizontal"
-                            HorizontalAlignment="Left">
+                            HorizontalAlignment="Left"
+                            Visibility="Hidden">
                     <Image Source="/EESDD;component/View/Image/calendar_50_0_555555.png"
                            Width="20" Height="20"
                            VerticalAlignment="Center"

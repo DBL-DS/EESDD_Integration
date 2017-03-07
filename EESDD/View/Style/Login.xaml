@@ -9,7 +9,7 @@
     
     <Style x:Key="Box"
            TargetType="{x:Type Border}">
-        <Setter Property="Background" Value="#eeeeee"/>
+        <Setter Property="Background" Value="#eee"/>
         <Setter Property="CornerRadius" Value="10" />
         <Setter Property="Canvas.Top">
             <Setter.Value>
@@ -72,7 +72,7 @@
     <Style x:Key="BoxButton"
            TargetType="{x:Type Button}"
            BasedOn="{StaticResource NoDefaultBlue}">
-        <Setter Property="Background" Value="#ddd" />
+        <Setter Property="Background" Value="#fff" />
         <Setter Property="Height" Value="30" />
         <Setter Property="Foreground" Value="#333" />
         <Setter Property="FontSize" Value="14" />
