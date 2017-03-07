@@ -27,5 +27,16 @@
         </Setter>
     </Style>
 
+    <Style x:Key="SimpleBackground"
+           TargetType="Border">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/EESDD;component/View/Image/textures-patterns-graphique-21.jpg" 
+                    Stretch="UniformToFill" 
+                            Opacity="0.1"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 </ResourceDictionary>

@@ -6,8 +6,17 @@
       mc:Ignorable="d" 
       d:DesignHeight="538" d:DesignWidth="1000"
 	Title="GameData">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/View/Style/GameData.xaml" />
+                <ResourceDictionary Source="/View/Style/Common.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Border Style="{StaticResource SimpleBackground}">
+        <Grid>
 
-    <Grid>
-        
-    </Grid>
+        </Grid>
+    </Border>
 </Page>

@@ -35,7 +35,7 @@
     </Window.Resources>
     <Grid HorizontalAlignment="Stretch" 
           VerticalAlignment="Stretch" 
-          Background="#FF000000">
+          Background="#FFffffff">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
