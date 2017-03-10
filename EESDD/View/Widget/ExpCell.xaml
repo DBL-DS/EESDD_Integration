@@ -5,25 +5,100 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EESDD.View.Widget"
              mc:Ignorable="d" 
-             d:DesignHeight="30" d:DesignWidth="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"></ColumnDefinition>
-            <ColumnDefinition Width="40"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <CheckBox Checked="RaiseCheckedEvent"
-                  Unchecked="RaiseUncheckedEvent"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Center">
-        </CheckBox>
-        <TextBlock Grid.Column="1" >
+             d:DesignHeight="30" d:DesignWidth="700"
+             Background="White"
+             MouseLeftButtonDown="Cell_Click">
+    <UserControl.Resources>
+        <Style x:Key="CellBorder"
+               TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="#333" />
+            <Setter Property="BorderThickness" Value="0, 0, 0, 1" />
+        </Style>
+        <Style x:Key="CellText"
+               TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="#777" />
+            <Setter Property="Padding" Value="10, 0" />
+            <Setter Property="TextAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="CellCoverUnable"
+               TargetType="{x:Type Border}">
+            <Setter Property="Opacity" Value="0.5" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#aaa" Offset="0"/>
+                        <GradientStop Color="#777" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="CellCoverChecked"
+               TargetType="{x:Type Border}">
+            <Setter Property="Opacity" Value="0.5" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#2196F3" Offset="0"/>
+                        <GradientStop Color="#673AB7" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Border Style="{StaticResource CellBorder}">
+        <Grid>
+            <Grid VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" 
+                   Style="{StaticResource CellText}"
+                   x:Name="eNum">
             0
-        </TextBlock>
-    </Grid>
+                </TextBlock>
+                <TextBlock Grid.Column="1" 
+                   Style="{StaticResource CellText}"
+                   x:Name="eScene">
+            正常并线
+                </TextBlock>
+                <TextBlock Grid.Column="2" 
+                   Style="{StaticResource CellText}"
+                   x:Name="eMode">
+            微信语音
+                </TextBlock>
+                <TextBlock Grid.Column="3" 
+                   Style="{StaticResource CellText}"
+                   x:Name="eStartTime">
+            2017-03-08 21:22:00
+                </TextBlock>
+                <TextBlock Grid.Column="4" 
+                   Style="{StaticResource CellText}"
+                   x:Name="eEndTime">
+            2017-03-08 21:23:00
+                </TextBlock>
+                <TextBlock Grid.Column="5" 
+                   Style="{StaticResource CellText}"
+                   x:Name="eType">
+            软件操作失误
+                </TextBlock>
+                <TextBlock Grid.Column="6" 
+                   Style="{StaticResource CellText}"
+                   x:Name="eScore">
+            100
+                </TextBlock>
+            </Grid>
+            <Border Style="{StaticResource CellCoverUnable}" 
+                    x:Name="eCoverUnable"
+                    Visibility="Hidden"/>
+            <Border Style="{StaticResource CellCoverChecked}" 
+                    x:Name="eCoverChecked"
+                    Visibility="Hidden"/>
+        </Grid>
+    </Border>
 </UserControl>

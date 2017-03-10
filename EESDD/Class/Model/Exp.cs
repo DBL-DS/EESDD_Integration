@@ -12,9 +12,9 @@ namespace EESDD.Class.Model
         Cancel,  /* For MessageBox */
         Normal,
         CarCrashNormal,
-        CarCrashAccident,
-        OperatorAccident,
-        Others
+        CarCrashAccident,   /* Not Evaluate */
+        OperatorAccident,   /* Not Evaluate */
+        Others              /* Not Evaluate */
     }
     public class Exp
     {
