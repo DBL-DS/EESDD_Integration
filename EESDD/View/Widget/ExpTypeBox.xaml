@@ -178,13 +178,13 @@
                         <ColumnDefinition Width="auto"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <RadioButton x:Name="tOtherButton"
+                    <RadioButton x:Name="tOthersButton"
                                  Style="{StaticResource TypeRadioButton}"
                                  GroupName="tExpType"
                          />
-                    <TextBlock x:Name="tOtherText" Grid.Column="1"
+                    <TextBlock x:Name="tOthersText" Grid.Column="1"
                                Style="{StaticResource TypeRadioText}"
-                               MouseDown="tOther_MouseDown">
+                               MouseDown="tOthers_MouseDown">
                         其他问题
                     </TextBlock>
                     <TextBlock Grid.Column="2"

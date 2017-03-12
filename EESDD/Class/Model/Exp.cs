@@ -11,9 +11,9 @@ namespace EESDD.Class.Model
     {
         Cancel,  /* For MessageBox */
         Normal,
-        CarCrashNormal,
-        CarCrashAccident,   /* Not Evaluate */
-        OperatorAccident,   /* Not Evaluate */
+        CarCrash_Normal,
+        CarCrash_Accident,   /* Not Evaluate */
+        Operator_Accident,   /* Not Evaluate */
         Others              /* Not Evaluate */
     }
     public class Exp
@@ -119,6 +119,5 @@ namespace EESDD.Class.Model
         {
             endTime = DateTime.Now;
         }
-
     }
 }

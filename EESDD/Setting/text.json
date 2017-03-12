@@ -39,6 +39,13 @@
 			"udp_default": "连接检测中...",
 			"udp_link": "连接正常",
 			"udp_unlink": "连接断开"
+		},
+		"exp_type": {
+			"normal": "正常",
+			"carcrash_normal": "正常撞车",
+			"carcrash_accident": "意外撞车",
+			"operator_accident": "软件操作失误",
+			"others": "其他问题"
 		}
 	}
 }

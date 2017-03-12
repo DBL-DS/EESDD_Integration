@@ -23,9 +23,19 @@ namespace EESDD.View.Widget
         public ExpTypeBox()
         {
             InitializeComponent();
+            SetText();
         }
 
         private static ExpType result;
+
+        private void SetText()
+        {
+            tNormalText.Text = CU.MG_Set.Text["exp_type"]["normal"];
+            tCarCrashNormalText.Text = CU.MG_Set.Text["exp_type"]["carcrash_normal"];
+            tCarCrashNormalText.Text = CU.MG_Set.Text["exp_type"]["carcrash_accident"];
+            tOperatorAccidentText.Text = CU.MG_Set.Text["exp_type"]["operator_accident"];
+            tOthersText.Text = CU.MG_Set.Text["exp_type"]["others"];
+        }
 
         public static new ExpType Show()
         {
@@ -45,13 +55,13 @@ namespace EESDD.View.Widget
             if (tNormalButton.IsChecked == true)
                 result = ExpType.Normal;
             if (tCarCrashNormalButton.IsChecked == true)
-                result = ExpType.CarCrashNormal;
+                result = ExpType.CarCrash_Normal;
             if (tCarCrashAccidentButton.IsChecked == true)
-                result = ExpType.CarCrashAccident;
+                result = ExpType.CarCrash_Accident;
             if (tOperatorAccidentButton.IsChecked == true)
-                result = ExpType.OperatorAccident;
-            if (tOtherButton.IsChecked == true)
-                result = ExpType.CarCrashNormal;
+                result = ExpType.Operator_Accident;
+            if (tOthersButton.IsChecked == true)
+                result = ExpType.CarCrash_Normal;
 
             this.Close();
         }
@@ -84,9 +94,9 @@ namespace EESDD.View.Widget
             tOperatorAccidentButton.IsChecked = true;
         }
 
-        private void tOther_MouseDown(object sender, MouseButtonEventArgs e)
+        private void tOthers_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            tOtherButton.IsChecked = true;
+            tOthersButton.IsChecked = true;
         }
     }
 }

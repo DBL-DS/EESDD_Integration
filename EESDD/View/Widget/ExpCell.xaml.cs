@@ -63,7 +63,7 @@ namespace EESDD.View.Widget
             eMode.Text = exp.Mode;
             eStartTime.Text = exp.StartTime.ToString(DateFormat);
             eEndTime.Text = exp.EndTime.ToString(DateFormat);
-            eType.Text = exp.ExpType.ToString();
+            eType.Text = CU.MG_Set.Text["exp_type"][exp.ExpType.ToString().ToLower()];
             eScore.Text = exp.TotalArea.Score.ToString();
             Enable = enable;
         }
