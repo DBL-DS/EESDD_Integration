@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EESDD.View.Widget"
              mc:Ignorable="d" 
-             d:DesignHeight="30" d:DesignWidth="700"
+             d:DesignHeight="30" d:DesignWidth="500"
              Background="White"
              MouseLeftButtonDown="Cell_Click">
     <UserControl.Resources>
@@ -17,7 +17,6 @@
         <Style x:Key="CellText"
                TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="#777" />
-            <Setter Property="Padding" Value="10, 0" />
             <Setter Property="TextAlignment" Value="Center" />
         </Style>
         <Style x:Key="CellCoverUnable"
@@ -49,13 +48,13 @@
         <Grid>
             <Grid VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition Width="40"></ColumnDefinition>
+                    <ColumnDefinition Width="30"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1.7*"></ColumnDefinition>
+                    <ColumnDefinition Width="45"></ColumnDefinition>
+                    <ColumnDefinition Width="1.1*"></ColumnDefinition>
+                    <ColumnDefinition Width="45"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" 
                    Style="{StaticResource CellText}"
@@ -79,8 +78,8 @@
                 </TextBlock>
                 <TextBlock Grid.Column="4" 
                    Style="{StaticResource CellText}"
-                   x:Name="eEndTime">
-            2017-03-08 21:23:00
+                   x:Name="eDuration">
+                    160
                 </TextBlock>
                 <TextBlock Grid.Column="5" 
                    Style="{StaticResource CellText}"
