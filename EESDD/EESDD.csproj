@@ -367,7 +367,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Info\database\create_user_table.sql" />
-    <Resource Include="View\Image\textures-patterns-graphique-21.jpg" />
+    <Resource Include="View\Image\Minimalistic_technology_circuits_1920x1200.jpg" />
     <Resource Include="View\Image\peter-court-45419.jpg" />
     <Resource Include="View\Image\yhdegf-qwli-sven-scheuermeier.jpg" />
     <Resource Include="Info\image\wechat_voice.jpg" />

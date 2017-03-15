@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EESDD.Class.Model;
+using EESDD.View.Widget;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,46 @@ namespace EESDD.View.Pages
         public GameData()
         {
             InitializeComponent();
+        }
+
+        private int ExpNum;
+        private List<Exp> CheckedExp;
+
+        public void LoadExpList()
+        {
+            ClearExpList();
+            if (CU.MG_User.User.Group == UserGroup.REGULAR &&
+                CU.MG_Exp.Exps != null)
+            {
+                foreach (var exp in CU.MG_Exp.Exps)
+                {
+                    AddExpCell(exp);
+                }
+            }
+        }
+
+        public void ClearExpList()
+        {
+            ExpNum = 0;
+            CheckedExp = new List<Exp>();
+            ExpListPanel.Children.Clear();
+        }
+
+        public void AddExpCell(Exp exp)
+        {
+            var expCell = new ExpCell(++ExpNum ,exp);
+            expCell.Checked += (sender, e) => { CheckAction(exp); };
+            expCell.Unchecked += (sender, e) => { UncheckAction(exp); };
+        }
+
+        public void CheckAction(Exp exp)
+        {
+            CheckedExp.Add(exp);
+        }
+
+        public void UncheckAction(Exp exp)
+        {
+            CheckedExp.Remove(exp);
         }
     }
 }

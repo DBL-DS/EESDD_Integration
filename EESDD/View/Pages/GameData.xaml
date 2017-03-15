@@ -3,9 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:widget="clr-namespace:EESDD.View.Widget"
       mc:Ignorable="d"
       d:DesignHeight="538" d:DesignWidth="1000"
-      Background="#ffffff"
 	Title="GameData">
     <Page.Resources>
         <ResourceDictionary>
@@ -17,7 +17,15 @@
     </Page.Resources>
     <Border Style="{StaticResource SimpleBackground}">
         <Grid>
-            
+            <Border>
+                <ScrollViewer>
+                    <StackPanel x:Name="ExpListPanel">
+                        <widget:ExpCell></widget:ExpCell>
+                        <widget:ExpCell></widget:ExpCell>
+                        <widget:ExpCell></widget:ExpCell>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
         </Grid>
     </Border>
 </Page>

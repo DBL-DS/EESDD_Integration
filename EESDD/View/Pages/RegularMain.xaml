@@ -104,7 +104,7 @@
                     </Grid.RowDefinitions>
                     <widget:ImageShapeButton Style="{StaticResource CircleButton}"
                                              Icon="/View/Image/bar-chart_100_0_ffffff.png"
-                                             />
+                                             Click="GameData_Click"/>
                     <StackPanel Grid.Row="1" HorizontalAlignment="Center">
                         <TextBlock Style="{StaticResource ButtonText}">数据统计</TextBlock>
                     </StackPanel>

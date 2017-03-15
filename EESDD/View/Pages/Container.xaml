@@ -30,12 +30,13 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/View/Style/Main.xaml" />
+                <ResourceDictionary Source="/View/Style/Common.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
     <Grid HorizontalAlignment="Stretch" 
           VerticalAlignment="Stretch" 
-          Background="#FFffffff">
+          Style="{StaticResource BackgroundLight}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>

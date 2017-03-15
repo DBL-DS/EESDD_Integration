@@ -8,11 +8,10 @@
     <Style x:Key="BackgroundLight" TargetType="{x:Type Grid}">
         <Setter Property="Background">
             <Setter.Value>
-                <RadialGradientBrush>
-                    <GradientStop Color="#fff" Offset="0.1" />
-                    <GradientStop Color="#ccc" Offset="0.6" />
-                    <GradientStop Color="#aaa" Offset="1" />
-                </RadialGradientBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#eee" Offset="0" />
+                    <GradientStop Color="#C5CAE9" Offset="1" />
+                </LinearGradientBrush>
             </Setter.Value>
         </Setter>
     </Style>
@@ -31,9 +30,9 @@
            TargetType="Border">
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush ImageSource="/EESDD;component/View/Image/textures-patterns-graphique-21.jpg" 
+                <ImageBrush ImageSource="/EESDD;component/View/Image/Minimalistic_technology_circuits_1920x1200.jpg" 
                     Stretch="UniformToFill" 
-                            Opacity="0.1"/>
+                            Opacity="0.05"/>
             </Setter.Value>
         </Setter>
     </Style>

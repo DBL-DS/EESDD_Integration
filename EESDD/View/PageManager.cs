@@ -91,6 +91,7 @@ namespace EESDD.View
                         break;
                     case PageCluster.GameData:
                         page = GetGameDataReady();
+                        GameData.LoadExpList();
                         break;
                     case PageCluster.RegularInfo:
                         page = GetRegularInfoReady();

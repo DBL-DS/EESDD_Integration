@@ -50,6 +50,7 @@
                     Visibility="Visible"
                     KeyDown="LoginKeyDown"
                     >
+
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource BoxTitle}">

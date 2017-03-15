@@ -68,7 +68,6 @@
 
         <Style x:Key="OuterBorder"
                 TargetType="{x:Type Border}">
-            <Setter Property="Opacity" Value="0.8" />
             <Setter Property="Effect">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource Fraction}">
@@ -91,7 +90,10 @@
             </Setter>
             <Setter Property="Background">
                 <Setter.Value>
-                    <SolidColorBrush Color="White" Opacity="1" />
+                    <RadialGradientBrush>
+                        <GradientStop Color="#fff" Offset="0.9" />
+                        <GradientStop Color="#ccc" Offset="1" />
+                    </RadialGradientBrush>
                 </Setter.Value>
             </Setter>
             <Setter Property="CornerRadius">
@@ -127,7 +129,7 @@
                              Path="ActualHeight" ></Binding>
                         <Binding>
                             <Binding.Source>
-                                <sys:Double>10</sys:Double>
+                                <sys:Double>15</sys:Double>
                             </Binding.Source>
                         </Binding>
                         <Binding>
