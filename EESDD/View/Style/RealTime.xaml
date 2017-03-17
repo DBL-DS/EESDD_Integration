@@ -8,32 +8,39 @@
     <Style x:Key="Panel"
            TargetType="{x:Type Border}">
         <Setter Property="Height" Value="500" />
-        <Setter Property="Background" Value="#000" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#90CAF9" Offset="0" />
+                    <GradientStop Color="#CE93D8" Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
         <Setter Property="CornerRadius" Value="10" />
         <Setter Property="Effect">
             <Setter.Value>
-                <DropShadowEffect Opacity="0.5" />
+                <DropShadowEffect Opacity="0.3" BlurRadius="10" ShadowDepth="0"/>
             </Setter.Value>
         </Setter>
-        <Setter Property="Opacity" Value="0.7" />
     </Style>
 
     <Style x:Key="PanelCell"
            TargetType="{x:Type Border}">
         <Setter Property="Padding" Value="10" />
-        <Setter Property="BorderBrush" Value="#ccc" />
+        <Setter Property="BorderBrush" Value="#FFEBEE" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
     </Style>
 
     <Style x:Key="PanelTip"
            TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="#aaa" />
+        <Setter Property="Foreground" Value="#E3F2FD" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Microsoft YaHei" />
     </Style>
     
     <Style x:Key="PanelValue"
            TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="#ccc" />
+        <Setter Property="Foreground" Value="white" />
         <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="FontSize" Value="32" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -41,7 +48,7 @@
 
     <Style x:Key="PanelUnit"
            TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="#777" />
+        <Setter Property="Foreground" Value="#F5F5F5" />
         <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="FontSize" Value="24" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -49,7 +56,7 @@
 
     <Style x:Key="PanelUnitPower"
            TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="#777" />
+        <Setter Property="Foreground" Value="#fff" />
         <Setter Property="FontSize" Value="12" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Margin" Value="0, 0, 0, 15" />
@@ -67,17 +74,56 @@
 
     <Style x:Key="MiniLineChart" TargetType="{x:Type lvc:CartesianChart}">
         <Setter Property="Height" Value="180" />
-        <Setter Property="Margin" Value="3" />
+        <Setter Property="Margin" Value="5" />
         <Setter Property="DisableAnimations" Value="True" />
         <Setter Property="Hoverable" Value="False" />
         <Setter Property="DataTooltip" Value="{x:Null}" />
     </Style>
 
+    <Style x:Key="MiniBorder" TargetType="{x:Type Border}">
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#90CAF9" Offset="0" />
+                    <GradientStop Color="#CE93D8" Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Margin" Value="5, 0" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="CornerRadius" Value="5" />
+    </Style>
+
     <Style x:Key="CenterChart" TargetType="{x:Type lvc:CartesianChart}">
-        <Setter Property="Margin" Value="3" />
+        <Setter Property="Margin" Value="10" />
         <Setter Property="DisableAnimations" Value="True" />
         <Setter Property="Hoverable" Value="False" />
         <Setter Property="DataTooltip" Value="{x:Null}" />
+    </Style>
+    
+    <Style x:Key="CenterBorder" TargetType="{x:Type Border}">
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#90CAF9" Offset="1" />
+                    <GradientStop Color="#CE93D8" Offset="0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Margin" Value="15, 0" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="CornerRadius" Value="5" />
+    </Style>
+
+    <Style TargetType="lvc:Axis">
+        <Setter Property="Foreground" Value="#455A64"></Setter>
+    </Style>
+
+    <Style TargetType="lvc:Separator">
+        <Setter Property="Stroke" Value="#546E7A"></Setter>
+        <Setter Property="StrokeThickness" Value="0.1" />
     </Style>
 
     <Style x:Key="ShutDownButton"

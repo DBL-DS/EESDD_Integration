@@ -38,14 +38,18 @@
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="BorderBrush">
             <Setter.Value>
-                <SolidColorBrush Color="#ccc" />
+                <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                    <GradientStop Color="#BBDEFB" Offset="0.1" />
+                    <GradientStop Color="#C5CAE9" Offset="0.7" />
+                    <GradientStop Color="#D1C4E9" Offset="1" />
+                </LinearGradientBrush>
             </Setter.Value>
         </Setter>
     </Style>
     
     <Style x:Key="NameTitle"
            TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="#ddd" />
+        <Setter Property="Foreground" Value="#E1BEE7" />
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Margin" Value="28, 0, 0, 0" />
@@ -60,7 +64,15 @@
 
     <Style x:Key="NameText"
            TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="#fff" />
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="1, 1" EndPoint="0, 0">
+                    <GradientStop Color="#BBDEFB" Offset="0.1" />
+                    <GradientStop Color="#C5CAE9" Offset="0.7" />
+                    <GradientStop Color="#D1C4E9" Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="TextAlignment" Value="Center" />
@@ -76,7 +88,7 @@
     
     <Style x:Key="AttrTitle"
            TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="#999" />
+        <Setter Property="Foreground" Value="#9FA8DA" />
         <Setter Property="FontSize" Value="13" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -85,7 +97,7 @@
     <Style x:Key="AttrText"
            TargetType="{x:Type TextBlock}">
         <Setter Property="Margin" Value="10, 0" />
-        <Setter Property="Foreground" Value="#eee" />
+        <Setter Property="Foreground" Value="#E8EAF6" />
         <Setter Property="FontSize" Value="13" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Effect">
@@ -116,9 +128,9 @@
     <Style x:Key="CircleButton" TargetType="widget:ImageShapeButton">
         <Setter Property="BGColor">
             <Setter.Value>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                    <GradientStop Color="#555" Offset="0" />
-                    <GradientStop Color="#000" Offset="1" />
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#263238" Offset="0" />
+                    <GradientStop Color="#1A237E" Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -143,12 +155,21 @@
     <Style x:Key="ButtonText"
            TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="25" />
-        <Setter Property="Foreground" Value="#eee" />
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="1, 1" EndPoint="0, 0">
+                    <GradientStop Color="#BBDEFB" Offset="0.1" />
+                    <GradientStop Color="#C5CAE9" Offset="0.7" />
+                    <GradientStop Color="#D1C4E9" Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Effect">
             <Setter.Value>
-                <DropShadowEffect ShadowDepth="1"
-                                  BlurRadius="2"
-                                  Opacity="0.5"/>
+                <DropShadowEffect ShadowDepth="2"
+                                  BlurRadius="5"
+                                  Opacity="0.5"
+                                  />
             </Setter.Value>
         </Setter>
     </Style>

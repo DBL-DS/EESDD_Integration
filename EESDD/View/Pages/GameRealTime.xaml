@@ -166,44 +166,48 @@
                         </Border>
                     </Grid>
                 </Border>
-                <Grid Grid.Column="1">
-                    <lvc:CartesianChart Style="{StaticResource CenterChart}">
-                        <lvc:CartesianChart.Series>
-                            <lvc:LineSeries Fill="Transparent" Values="{Binding CenterChart}"/>
-                        </lvc:CartesianChart.Series>
-                    </lvc:CartesianChart>
-                </Grid>
-                <Grid Grid.Column="2">
-                    <ScrollViewer Style="{StaticResource RealTimeScroll}">
-                        <StackPanel>
-                            <lvc:CartesianChart Style="{StaticResource MiniLineChart}" >
-                                <lvc:CartesianChart.Series>
-                                    <lvc:LineSeries Fill="Transparent" Values="{Binding SpeedChart}"/>
-                                </lvc:CartesianChart.Series>
-                            </lvc:CartesianChart>
-                            <lvc:CartesianChart Style="{StaticResource MiniLineChart}" >
-                                <lvc:CartesianChart.Series>
-                                    <lvc:LineSeries Fill="Transparent" Values="{Binding AccChart}"/>
-                                </lvc:CartesianChart.Series>
-                            </lvc:CartesianChart>
-                            <lvc:CartesianChart Style="{StaticResource MiniLineChart}" >
-                                <lvc:CartesianChart.Series>
-                                    <lvc:LineSeries Fill="Transparent" Values="{Binding OffsetChart}"/>
-                                </lvc:CartesianChart.Series>
-                            </lvc:CartesianChart>
-                            <lvc:CartesianChart Style="{StaticResource MiniLineChart}" >
-                                <lvc:CartesianChart.Series>
-                                    <lvc:LineSeries Fill="Transparent" Values="{Binding STWAngleChart}"/>
-                                </lvc:CartesianChart.Series>
-                            </lvc:CartesianChart>
-                            <lvc:CartesianChart Style="{StaticResource MiniLineChart}" >
-                                <lvc:CartesianChart.Series>
-                                    <lvc:LineSeries Fill="Transparent" Values="{Binding FarToFrontChart}"/>
-                                </lvc:CartesianChart.Series>
-                            </lvc:CartesianChart>
-                        </StackPanel>
-                    </ScrollViewer>
-                </Grid>
+                <Border Grid.Column="1" Style="{StaticResource CenterBorder}">
+                    <Grid>
+                        <lvc:CartesianChart Style="{StaticResource CenterChart}">
+                            <lvc:CartesianChart.Series>
+                                <lvc:LineSeries Fill="Transparent" Values="{Binding CenterChart}"/>
+                            </lvc:CartesianChart.Series>
+                        </lvc:CartesianChart>
+                    </Grid>
+                </Border>
+                <Border Grid.Column="2" Style="{StaticResource MiniBorder}">
+                    <Grid>
+                        <ScrollViewer Style="{StaticResource RealTimeScroll}">
+                            <StackPanel>
+                                <lvc:CartesianChart Style="{StaticResource MiniLineChart}" >
+                                    <lvc:CartesianChart.Series>
+                                        <lvc:LineSeries Fill="Transparent" Values="{Binding SpeedChart}"/>
+                                    </lvc:CartesianChart.Series>
+                                </lvc:CartesianChart>
+                                <lvc:CartesianChart Style="{StaticResource MiniLineChart}" >
+                                    <lvc:CartesianChart.Series>
+                                        <lvc:LineSeries Fill="Transparent" Values="{Binding AccChart}"/>
+                                    </lvc:CartesianChart.Series>
+                                </lvc:CartesianChart>
+                                <lvc:CartesianChart Style="{StaticResource MiniLineChart}" >
+                                    <lvc:CartesianChart.Series>
+                                        <lvc:LineSeries Fill="Transparent" Values="{Binding OffsetChart}"/>
+                                    </lvc:CartesianChart.Series>
+                                </lvc:CartesianChart>
+                                <lvc:CartesianChart Style="{StaticResource MiniLineChart}" >
+                                    <lvc:CartesianChart.Series>
+                                        <lvc:LineSeries Fill="Transparent" Values="{Binding STWAngleChart}"/>
+                                    </lvc:CartesianChart.Series>
+                                </lvc:CartesianChart>
+                                <lvc:CartesianChart Style="{StaticResource MiniLineChart}" >
+                                    <lvc:CartesianChart.Series>
+                                        <lvc:LineSeries Fill="Transparent" Values="{Binding FarToFrontChart}"/>
+                                    </lvc:CartesianChart.Series>
+                                </lvc:CartesianChart>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
             </Grid>
         </Grid>
     </Border>
