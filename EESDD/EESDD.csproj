@@ -181,6 +181,9 @@
     </Compile>
     <Compile Include="View\Style\HalfValueConverter.cs" />
     <Compile Include="View\Style\FractionConverter.cs" />
+    <Compile Include="View\Widget\CheckButton.xaml.cs">
+      <DependentUpon>CheckButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Widget\CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
@@ -215,6 +218,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="Info\exp\06b53047cf294f7207789ff5293ad2dc.exp" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -240,7 +244,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Info\exp\" />
     <Folder Include="Module\Chart\" />
     <Folder Include="Module\Report\" />
     <Folder Include="Module\Simulator\" />
@@ -337,6 +340,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Style\UserMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Widget\CheckButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

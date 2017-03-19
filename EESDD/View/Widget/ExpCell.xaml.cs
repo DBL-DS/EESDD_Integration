@@ -59,12 +59,12 @@ namespace EESDD.View.Widget
         public void SetCell(int num, Exp exp, bool enable)
         {
             eNum.Text = num.ToString();
-            eScene.Text = exp.Scene;
-            eMode.Text = exp.Mode;
+            eScene.Text = CU.MG_Game.GetScene(exp.Scene).Title;
+            eMode.Text = CU.MG_Game.GetMode(exp.Mode).Title;
             eStartTime.Text = exp.StartTime.ToString(DateFormat);
-            eDuration.Text = (exp.EndTime - exp.StartTime).TotalSeconds.ToString();
+            eDuration.Text = (exp.EndTime - exp.StartTime).TotalSeconds.ToString("0");
             eType.Text = CU.MG_Set.Text["exp_type"][exp.ExpType.ToString().ToLower()];
-            eScore.Text = exp.TotalArea.Score.ToString();
+            eScore.Text = exp.TotalArea.Score.ToString("0.0");
             Enable = enable;
         }
 

@@ -49,6 +49,22 @@ namespace EESDD.Class.Control
                 return null;
         }
 
+        public Scene GetScene(string scene)
+        {
+            if (scene != null && sceneDict.ContainsKey(scene))
+                return sceneDict[scene];
+            else
+                return null;
+        }
+
+        public Mode GetMode(string mode)
+        {
+            if (mode != null && modeDict.ContainsKey(mode))
+                return modeDict[mode];
+            else
+                return null;
+        }
+
         public List<Scene> Scenes
         {
             get { return new List<Scene>(sceneDict.Values); }

@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:widget="clr-namespace:EESDD.View.Widget"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d"
       d:DesignHeight="538" d:DesignWidth="1000"
 	Title="GameData">
@@ -16,15 +17,134 @@
         </ResourceDictionary>
     </Page.Resources>
     <Border Style="{StaticResource SimpleBackground}">
-        <Grid>
-            <Border>
-                <ScrollViewer>
-                    <StackPanel x:Name="ExpListPanel">
-                        <widget:ExpCell></widget:ExpCell>
-                        <widget:ExpCell></widget:ExpCell>
-                        <widget:ExpCell></widget:ExpCell>
-                    </StackPanel>
-                </ScrollViewer>
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Style="{StaticResource StyleBorder}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Border Style="{StaticResource StyleBorder}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="125"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Border Margin="0,0,20,0">
+                                <lvc:CartesianChart>
+
+                                </lvc:CartesianChart>
+                            </Border>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="25"></RowDefinition>
+                                    <RowDefinition Height="65"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource AxixTitleTipText}" Text="纵轴" />
+                                    <Line Style="{StaticResource AxixTitleTipLine}"/>
+                                </StackPanel>
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <widget:CheckButton Grid.Row="0"
+                                    Style="{StaticResource DisplayContentButton}" Text="速度" />
+                                    <widget:CheckButton Grid.Row="1"
+                                     Style="{StaticResource DisplayContentButton}"  Text="加速度" />
+                                    <widget:CheckButton Grid.Row="2"
+                                     Style="{StaticResource DisplayContentButton}"  Text="方向盘转角" />
+                                    <widget:CheckButton Grid.Row="3"
+                                     Style="{StaticResource DisplayContentButton}"  Text="偏离道路中心线距离" />
+                                    <widget:CheckButton Grid.Row="4"
+                                     Style="{StaticResource DisplayContentButton}"  Text="与前车距离" />
+                                    <widget:CheckButton Grid.Row="5"
+                                     Style="{StaticResource DisplayContentButton}"  Text="车道" />
+                                </Grid>
+                                <StackPanel Orientation="Horizontal" Grid.Row="2">
+                                    <TextBlock Style="{StaticResource AxixTitleTipText}" Text="横轴" />
+                                    <Line Style="{StaticResource AxixTitleTipLine}"/>
+                                </StackPanel>
+                                <Grid Grid.Row="3">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <widget:CheckButton Style="{StaticResource DisplayContentButton}"  
+                                                    Text="时间" />
+                                    <widget:CheckButton Style="{StaticResource DisplayContentButton}" 
+                                                    Text="行驶距离" Grid.Row="1"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Border>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1.7*"></ColumnDefinition>
+                                        <ColumnDefinition Width="45"></ColumnDefinition>
+                                        <ColumnDefinition Width="1.1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="45"></ColumnDefinition>
+                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="序号" Style="{StaticResource ExpListTitleText}"/>
+                                    <TextBlock Grid.Column="1" Text="场景" Style="{StaticResource ExpListTitleText}"/>
+                                    <TextBlock Grid.Column="2" Text="模式" Style="{StaticResource ExpListTitleText}"/>
+                                    <TextBlock Grid.Column="3" Text="开始时间" Style="{StaticResource ExpListTitleText}"/>
+                                    <TextBlock Grid.Column="4" Text="时长(s)" Style="{StaticResource ExpListTitleText}"/>
+                                    <TextBlock Grid.Column="5" Text="体验描述" Style="{StaticResource ExpListTitleText}"/>
+                                    <TextBlock Grid.Column="6" Text="评分" Style="{StaticResource ExpListTitleText}"/>
+                                </Grid>
+                                <ScrollViewer Grid.Row="1" IsTabStop="False">
+                                    <StackPanel x:Name="ExpListPanel">
+                                        <widget:ExpCell></widget:ExpCell>
+                                        <widget:ExpCell></widget:ExpCell>
+                                        <widget:ExpCell></widget:ExpCell>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <widget:CheckButton Text="删 除"  Style="{StaticResource FunctionButton}"/>
+                            <widget:CheckButton Text="评 估" Grid.Row="1"  
+                                                Style="{StaticResource FunctionButton}"/>
+                            <widget:CheckButton Text="演 示" Grid.Row="2"  
+                                                Style="{StaticResource FunctionButton}"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
+            <Border Grid.Column="1" Width="200">
+                
             </Border>
         </Grid>
     </Border>

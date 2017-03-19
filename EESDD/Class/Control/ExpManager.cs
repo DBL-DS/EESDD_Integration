@@ -134,7 +134,7 @@ namespace EESDD.Class.Control
 
         public void ThreadSave(Regular regular)
         {
-            ThreadManager.DefineThread(ThreadCluster.SaveExp, LoadWithoutResult);
+            ThreadManager.DefineThread(ThreadCluster.SaveExp, SaveWithoutResult);
             ThreadManager.StartThread(ThreadCluster.SaveExp, regular);
         }
 

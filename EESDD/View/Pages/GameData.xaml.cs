@@ -55,6 +55,7 @@ namespace EESDD.View.Pages
             var expCell = new ExpCell(++ExpNum ,exp);
             expCell.Checked += (sender, e) => { CheckAction(exp); };
             expCell.Unchecked += (sender, e) => { UncheckAction(exp); };
+            ExpListPanel.Children.Add(expCell);
         }
 
         public void CheckAction(Exp exp)
