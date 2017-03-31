@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,20 +19,19 @@ namespace EESDD.View.Widget
     /// <summary>
     /// Interaction logic for CheckButton.xaml
     /// </summary>
-    public partial class CheckButton : UserControl
+    public partial class CheckButton : UserControl, INotifyPropertyChanged
     {
         public CheckButton()
         {
             InitializeComponent();
-            defaultColor = new SolidColorBrush(Colors.White);
-            checkedColor = new SolidColorBrush(Colors.LightCyan);
+            this.DataContext = this;
+            DefaultColor = new SolidColorBrush(Colors.White);
+            CheckedColor = new SolidColorBrush(Colors.LightCyan);
             IsChecked = false;
         }
-
-        private Brush defaultColor;
-        private Brush checkedColor;
-        private bool isChecked;
+        
         private string text;
+        private Brush buttonBack;
 
         public static readonly DependencyProperty DefaultColorProperty =
             DependencyProperty.Register("DefaultColor", typeof(Brush), typeof(CheckButton));
@@ -47,16 +47,31 @@ namespace EESDD.View.Widget
             EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble,
             typeof(RoutedEventHandler), typeof(CheckButton));
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void NotifyPropertyChange(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public Brush DefaultColor
         {
-            get { return defaultColor; }
-            set { defaultColor = value; }
+            get { return GetValue(DefaultColorProperty) as Brush; }
+            set
+            {
+                SetValue(DefaultColorProperty, value);
+                IsChecked = IsChecked;
+            }
         }
 
         public Brush CheckedColor
         {
-            get { return checkedColor; }
-            set { CheckedColor = value; }
+            get { return GetValue(CheckedColorProperty) as Brush; }
+            set
+            {
+                SetValue(CheckedColorProperty, value);
+                IsChecked = IsChecked;
+            }
         }
 
         public Brush TextColor
@@ -71,13 +86,23 @@ namespace EESDD.View.Widget
             set { text = value; }
         }
 
-        public bool IsChecked
+        public Brush ButtonBack
         {
-            get { return isChecked; }
+            get { return buttonBack; }
             set
             {
-                isChecked = value;
-                btnBorder.Background = isChecked ? checkedColor : defaultColor;
+                buttonBack = value;
+                NotifyPropertyChange("ButtonBack");
+            }
+        }
+
+        public bool IsChecked
+        {
+            get { return (bool)GetValue(CheckedProperty); }
+            set
+            {
+                SetValue(CheckedProperty, value);
+                ButtonBack = IsChecked ? CheckedColor : DefaultColor;
             }
         }
 
@@ -97,6 +122,7 @@ namespace EESDD.View.Widget
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             RaiseClickEvent();
+            IsChecked = !IsChecked;
         }
     }
 }

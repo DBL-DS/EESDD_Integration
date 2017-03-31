@@ -10,7 +10,7 @@
            TargetType="{x:Type widget:CheckButton}">
         <Setter Property="DefaultColor">
             <Setter.Value>
-                <LinearGradientBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="AliceBlue" Offset="0" />
                     <GradientStop Color="AntiqueWhite" Offset="1" />
                 </LinearGradientBrush>

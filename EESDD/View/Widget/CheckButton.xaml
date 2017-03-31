@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EESDD.View.Widget"
+             xmlns:widget="clr-namespace:EESDD.View.Widget"
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="100"
-             x:Name="checkBtn">
+             x:Name="checkBtn"
+             Cursor="Hand">
     <UserControl.Resources>
         <Style x:Key="NoDefaultBlue" TargetType="Button">
             <Setter Property="Background" Value="{x:Null}"></Setter>
@@ -21,9 +23,9 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Border x:Name="btnBorder" CornerRadius="5">
+    <Border x:Name="btnBorder" CornerRadius="5" Background="{Binding ButtonBack}">
         <Border.Effect>
-            <DropShadowEffect ShadowDepth="0" BlurRadius="10"/>
+            <DropShadowEffect ShadowDepth="3" Direction="270" BlurRadius="5" Opacity="0.2"/>
         </Border.Effect>
         <Button Style="{StaticResource NoDefaultBlue}"
                 Click="Button_Click">

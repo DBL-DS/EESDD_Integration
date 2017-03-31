@@ -28,7 +28,9 @@
                         <RowDefinition Height="2*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Border Style="{StaticResource StyleBorder}">
+                    <Border Style="{StaticResource StyleBorder}"
+                            BorderThickness="0, 0, 0, 0.5"
+                            Padding="10 ,0, 0, 10">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
