@@ -9,13 +9,6 @@
       VerticalAlignment="Stretch"
       HorizontalAlignment="Stretch"
       >
-    <Page.Background>
-        <RadialGradientBrush GradientOrigin="0.7, 0.3">
-            <GradientStop Color="#fff" Offset="0.1" />
-            <GradientStop Color="#ccc" Offset="0.7" />
-            <GradientStop Color="#aaa" Offset="1" />
-        </RadialGradientBrush>
-    </Page.Background>
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,6 +16,13 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
+    <Page.Background>
+        <RadialGradientBrush GradientOrigin="0.7, 0.3">
+            <GradientStop Color="#fff" Offset="0.1" />
+            <GradientStop Color="#ccc" Offset="0.7" />
+            <GradientStop Color="#aaa" Offset="1" />
+        </RadialGradientBrush>
+    </Page.Background>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/EESDD;component/View/Image/peter-court-45419.jpg" 

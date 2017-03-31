@@ -194,10 +194,10 @@
                         Click="Button_Click">
                 <Border Style="{StaticResource InnerBorder}"
                     x:Name="InnrBorder"
-                    Background="{Binding ElementName=ShapeButton, Path=BGColor}">
+                    Background="{Binding BGColor}">
 
                     <Image x:Name="IconImage"
-                           Source="{Binding ElementName=ShapeButton, Path=Icon}">
+                           Source="{Binding Icon}">
                         <Image.Effect>
                             <DropShadowEffect Direction="205"
                                               Opacity="0.5"

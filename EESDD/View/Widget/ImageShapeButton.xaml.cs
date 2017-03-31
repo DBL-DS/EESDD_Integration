@@ -23,6 +23,7 @@ namespace EESDD.View.Widget
         public ImageShapeButton()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
 
         public static readonly DependencyProperty BackGroundColorProperty =
@@ -35,14 +36,14 @@ namespace EESDD.View.Widget
 
         public Brush BGColor
         {
-            get { return InnrBorder.Background; }
-            set { InnrBorder.Background = value; }
+            get { return GetValue(BackGroundColorProperty) as Brush; }
+            set { SetValue(BackGroundColorProperty, value); }
         }
 
         public ImageSource Icon
         {
-            get { return IconImage.Source; }
-            set { IconImage.Source = value; }
+            get { return GetValue(IconProperty) as ImageSource; }
+            set { SetValue(IconProperty, value); }
         }
 
         public event RoutedEventHandler Click
