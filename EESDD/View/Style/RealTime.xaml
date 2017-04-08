@@ -10,9 +10,9 @@
         <Setter Property="Height" Value="500" />
         <Setter Property="Background">
             <Setter.Value>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#90CAF9" Offset="0" />
-                    <GradientStop Color="#CE93D8" Offset="1" />
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" Opacity="0.7">
+                    <GradientStop Color="{StaticResource MainBlue}" Offset="0"/>
+                    <GradientStop Color="{StaticResource MainRed}" Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -83,9 +83,9 @@
     <Style x:Key="MiniBorder" TargetType="{x:Type Border}">
         <Setter Property="BorderBrush">
             <Setter.Value>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#90CAF9" Offset="0" />
-                    <GradientStop Color="#CE93D8" Offset="1" />
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" Opacity="0.5">
+                    <GradientStop Color="{StaticResource MainBlueLight}" Offset="0" />
+                    <GradientStop Color="{StaticResource MainGreenLight}" Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -105,9 +105,9 @@
     <Style x:Key="CenterBorder" TargetType="{x:Type Border}">
         <Setter Property="BorderBrush">
             <Setter.Value>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#90CAF9" Offset="1" />
-                    <GradientStop Color="#CE93D8" Offset="0" />
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" Opacity="0.5">
+                    <GradientStop Color="{StaticResource MainBlueLight}" Offset="0" />
+                    <GradientStop Color="{StaticResource MainGreenLight}" Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>

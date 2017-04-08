@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:style="clr-namespace:EESDD.View.Style">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/View/Style/Base.xaml" />
+        <ResourceDictionary Source="/View/Style/Common.xaml" />
     </ResourceDictionary.MergedDictionaries>
     
     <style:HalfValueConverter x:Key="HalfConverter" />
@@ -11,9 +11,9 @@
            TargetType="{x:Type Border}">
         <Setter Property="Background">
             <Setter.Value>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#C5CAE9" Offset="1" />
-                    <GradientStop Color="#FFEBEE" Offset="0" />
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0.1, 0.6">
+                    <GradientStop Color="{StaticResource MainBlueLight}" Offset="0" />
+                    <GradientStop Color="{StaticResource GrayE}" Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -81,10 +81,11 @@
            BasedOn="{StaticResource NoDefaultBlue}">
         <Setter Property="Background">
             <Setter.Value>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <GradientStop Color="#fff" Offset="0" />
-                    <GradientStop Color="#FFEBEE" Offset="0.5" />
-                    <GradientStop Color="#fff" Offset="1" />
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" Opacity="1">
+                    <GradientStop Color="{StaticResource MainBlueLight}" Offset="0" />
+                    <GradientStop Color="{StaticResource MainBlueLight}" Offset="1" />
+                    <GradientStop Color="{StaticResource GrayE}" Offset="0.7" />
+                    <GradientStop Color="{StaticResource GrayE}" Offset="0.3" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -135,7 +136,7 @@
 
     <Style x:Key="LoginInfo" 
            TargetType="TextBlock">
-        <Setter Property="Foreground" Value="#009688" />
+        <Setter Property="Foreground" Value="{StaticResource MainGreenLightBrush}" />
         <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="Margin" Value="0, 2, 0, 12" />
     </Style>
@@ -268,7 +269,7 @@
 
     <Style x:Key="RegError"
            TargetType="TextBlock">
-        <Setter Property="Foreground" Value="#F44336" />
+        <Setter Property="Foreground" Value="{StaticResource MainRedBrush}" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Margin" Value="10, 0, 0, 0" />
         <Setter Property="Text" Value="!" />
@@ -277,7 +278,7 @@
 
     <Style x:Key="RegInfo"
            TargetType="TextBlock">
-        <Setter Property="Foreground" Value="#009688" />
+        <Setter Property="Foreground" Value="{StaticResource MainGreenLightBrush}" />
         <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="Margin" Value="7" />
     </Style>

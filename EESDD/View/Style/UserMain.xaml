@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:widget="clr-namespace:EESDD.View.Widget">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/View/Style/Base.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/View/Style/Common.xaml" />
     </ResourceDictionary.MergedDictionaries>
     
     <Style x:Key="Title"
@@ -39,9 +39,8 @@
         <Setter Property="BorderBrush">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
-                    <GradientStop Color="#BBDEFB" Offset="0.1" />
-                    <GradientStop Color="#C5CAE9" Offset="0.7" />
-                    <GradientStop Color="#D1C4E9" Offset="1" />
+                    <GradientStop Color="{StaticResource GrayE}" Offset="0.1" />
+                    <GradientStop Color="{StaticResource MainBlueLight}" Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -67,9 +66,8 @@
         <Setter Property="Foreground">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="1, 1" EndPoint="0, 0">
-                    <GradientStop Color="#BBDEFB" Offset="0.1" />
-                    <GradientStop Color="#C5CAE9" Offset="0.7" />
-                    <GradientStop Color="#D1C4E9" Offset="1" />
+                    <GradientStop Color="{StaticResource GrayE}" Offset="0.1" />
+                    <GradientStop Color="{StaticResource GrayF}" Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -88,7 +86,7 @@
     
     <Style x:Key="AttrTitle"
            TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="#9FA8DA" />
+        <Setter Property="Foreground" Value="{StaticResource MainBlueLightBrush}" />
         <Setter Property="FontSize" Value="13" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -97,7 +95,7 @@
     <Style x:Key="AttrText"
            TargetType="{x:Type TextBlock}">
         <Setter Property="Margin" Value="10, 0" />
-        <Setter Property="Foreground" Value="#E8EAF6" />
+        <Setter Property="Foreground" Value="{StaticResource GrayEBrush}" />
         <Setter Property="FontSize" Value="13" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Effect">
@@ -112,7 +110,7 @@
     <Style x:Key="LastTimeText"
            TargetType="{x:Type TextBlock}">
         <Setter Property="Margin" Value="10, 0" />
-        <Setter Property="Foreground" Value="#eee" />
+        <Setter Property="Foreground" Value="{StaticResource GrayEBrush}" />
         <Setter Property="FontSize" Value="13" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Effect">
@@ -129,8 +127,8 @@
         <Setter Property="BGColor">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#263238" Offset="0" />
-                    <GradientStop Color="#1A237E" Offset="1" />
+                    <GradientStop Color="{StaticResource MainBlue}" Offset="0" />
+                    <GradientStop Color="{StaticResource MainBlueHeavy}" Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -158,9 +156,8 @@
         <Setter Property="Foreground">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="1, 1" EndPoint="0, 0">
-                    <GradientStop Color="#BBDEFB" Offset="0.1" />
-                    <GradientStop Color="#C5CAE9" Offset="0.7" />
-                    <GradientStop Color="#D1C4E9" Offset="1" />
+                    <GradientStop Color="{StaticResource GrayF}" Offset="0" />
+                    <GradientStop Color="{StaticResource GrayC}" Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>

@@ -5,9 +5,32 @@
         <ResourceDictionary Source="/View/Style/Base.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <Color x:Key="GrayA">#AAA</Color>
+    <Color x:Key="GrayC">#ccc</Color>
+    <Color x:Key="GrayE">#eee</Color>
+    <Color x:Key="GrayF">#fff</Color>
     <Color x:Key="PastelRed">#AA3939</Color>
     <Color x:Key="PastelGreen">#7A9F35</Color>
     <Color x:Key="PastelBlue">#226666</Color>
+    <Color x:Key="MainBlue">#433E78</Color>
+    <Color x:Key="MainGreen">#6D9A44</Color>
+    <Color x:Key="MainRed">#A74952</Color>
+    <Color x:Key="MainBlueLight">#8A87AE</Color>
+    <Color x:Key="MainGreenLight">#C2E1A6</Color>
+    <Color x:Key="MainRedLight">#F3B3B9</Color>
+    <Color x:Key="MainBlueHeavy">#181447</Color>
+    <Color x:Key="MainGreenHeavy">#335B0F</Color>
+    <Color x:Key="MainRedHeavy">#631018</Color>
+    <SolidColorBrush x:Key="GrayABrush" Color="{StaticResource GrayA}" />
+    <SolidColorBrush x:Key="GrayCBrush" Color="{StaticResource GrayC}" />
+    <SolidColorBrush x:Key="GrayEBrush" Color="{StaticResource GrayE}" />
+    <SolidColorBrush x:Key="GrayFBrush" Color="{StaticResource GrayF}" />
+    <SolidColorBrush x:Key="MainBlueBrush" Color="{StaticResource MainBlue}" />
+    <SolidColorBrush x:Key="MainGreenBrush" Color="{StaticResource MainGreen}" />
+    <SolidColorBrush x:Key="MainRedBrush" Color="{StaticResource MainRed}" />
+    <SolidColorBrush x:Key="MainBlueLightBrush" Color="{StaticResource MainBlueLight}" />
+    <SolidColorBrush x:Key="MainGreenLightBrush" Color="{StaticResource MainGreenLight}" />
+    <SolidColorBrush x:Key="MainRedLightBrush" Color="{StaticResource MainRedLight}" />
 
     <Style x:Key="BackgroundLight" TargetType="{x:Type Grid}">
         <Setter Property="Background">

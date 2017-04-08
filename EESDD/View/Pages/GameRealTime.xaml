@@ -9,8 +9,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/View/Style/RealTime.xaml" />
-                <ResourceDictionary Source="/View/Style/Common.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/View/Style/RealTime.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
