@@ -41,6 +41,7 @@ namespace EESDD.View.Widget
         public void Init()
         {
             InitializeComponent();
+            IsChecked = false;
         }
 
         public static readonly RoutedEvent CheckEvent =
@@ -101,10 +102,10 @@ namespace EESDD.View.Widget
 
         public bool IsChecked
         {
-            get { return eCoverChecked.Visibility != Visibility.Visible; }
+            get { return eCoverChecked.Visibility == Visibility.Visible; }
             set
             {
-                eCoverChecked.Visibility = value ? Visibility.Hidden : Visibility.Visible;
+                eCoverChecked.Visibility = value ? Visibility.Visible : Visibility.Hidden;
             }
         }
 

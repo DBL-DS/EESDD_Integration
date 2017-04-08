@@ -122,7 +122,6 @@ namespace EESDD.View.Widget
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             RaiseClickEvent();
-            IsChecked = !IsChecked;
         }
     }
 }

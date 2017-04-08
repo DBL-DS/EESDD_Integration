@@ -94,7 +94,7 @@ namespace EESDD.View.Pages
 
         public void SetLink(bool link)
         {
-            this.Dispatcher.BeginInvoke((System.Action)(delegate ()
+            Dispatcher.BeginInvoke((System.Action)(delegate ()
             {
                 if (link)
                     ShowLink();

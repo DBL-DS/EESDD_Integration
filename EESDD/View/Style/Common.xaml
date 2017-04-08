@@ -5,6 +5,10 @@
         <ResourceDictionary Source="/View/Style/Base.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <Color x:Key="PastelRed">#AA3939</Color>
+    <Color x:Key="PastelGreen">#7A9F35</Color>
+    <Color x:Key="PastelBlue">#226666</Color>
+
     <Style x:Key="BackgroundLight" TargetType="{x:Type Grid}">
         <Setter Property="Background">
             <Setter.Value>
@@ -36,6 +40,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-
+    
 </ResourceDictionary>
