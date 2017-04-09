@@ -39,71 +39,55 @@
                             <Border Margin="0,0,20,0">
                                 <lvc:CartesianChart x:Name="LineChart" Style="{StaticResource LineChart}">
                                     <lvc:CartesianChart.Series>
-                                        <lvc:LineSeries Values="1,1" />
+                                        <lvc:LineSeries Fill="Transparent" Values="1" />
                                     </lvc:CartesianChart.Series>
-                                    <lvc:CartesianChart.AxisX>
-                                        <lvc:Axis />
-                                    </lvc:CartesianChart.AxisX>
-                                    <lvc:CartesianChart.AxisY>
-                                        <lvc:Axis MinRange="0.01"/>
-                                    </lvc:CartesianChart.AxisY>
                                 </lvc:CartesianChart>
                             </Border>
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="25"></RowDefinition>
                                     <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
                                     <RowDefinition Height="25"></RowDefinition>
-                                    <RowDefinition Height="65"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Style="{StaticResource AxixTitleTipText}" Text="纵轴" />
                                     <Line Style="{StaticResource AxixTitleTipLine}"/>
                                 </StackPanel>
-                                <Grid Grid.Row="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <widget:CheckButton Grid.Row="0" x:Name="cSpeed"
+                                <widget:CheckButton Grid.Row="1" x:Name="cSpeed"
                                     Style="{StaticResource DisplayContentButton}" Text="速度" 
                                                         Click="AxisYButton_Click"/>
-                                    <widget:CheckButton Grid.Row="1" x:Name="cAcc"
+                                <widget:CheckButton Grid.Row="2" x:Name="cAcc"
                                      Style="{StaticResource DisplayContentButton}"  Text="加速度" 
                                                         Click="AxisYButton_Click"/>
-                                    <widget:CheckButton Grid.Row="2" x:Name="cStwAngle"
+                                <widget:CheckButton Grid.Row="3" x:Name="cStwAngle"
                                      Style="{StaticResource DisplayContentButton}"  Text="方向盘转角" 
                                                         Click="AxisYButton_Click"/>
-                                    <widget:CheckButton Grid.Row="3" x:Name="cOffset"
+                                <widget:CheckButton Grid.Row="4" x:Name="cOffset"
                                      Style="{StaticResource DisplayContentButton}"  Text="偏离道路中心线距离" 
                                                         Click="AxisYButton_Click"/>
-                                    <widget:CheckButton Grid.Row="4" x:Name="cFarToFront"
+                                <widget:CheckButton Grid.Row="5" x:Name="cFarToFront"
                                      Style="{StaticResource DisplayContentButton}"  Text="与前车距离" 
                                                         Click="AxisYButton_Click"/>
-                                    <widget:CheckButton Grid.Row="5" x:Name="cLane"
+                                <widget:CheckButton Grid.Row="6" x:Name="cLane"
                                      Style="{StaticResource DisplayContentButton}"  Text="车道" 
                                                         Click="AxisYButton_Click"/>
-                                </Grid>
-                                <StackPanel Orientation="Horizontal" Grid.Row="2">
+                                <StackPanel Orientation="Horizontal" Grid.Row="7">
                                     <TextBlock Style="{StaticResource AxixTitleTipText}" Text="横轴" />
                                     <Line Style="{StaticResource AxixTitleTipLine}"/>
                                 </StackPanel>
-                                <Grid Grid.Row="3">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <widget:CheckButton Style="{StaticResource DisplayContentButton}"  
-                                                    Text="时间" x:Name="cTime" 
+                                <widget:CheckButton Style="{StaticResource DisplayContentButton}"  
+                                                    Text="时间" Grid.Row="8" x:Name="cTime" 
                                                         Click="AxisXButton_Click"/>
-                                    <widget:CheckButton Style="{StaticResource DisplayContentButton}" 
-                                                    Text="行驶距离" Grid.Row="1" x:Name="cDistance" 
+                                <widget:CheckButton Style="{StaticResource DisplayContentButton}" 
+                                                    Text="行驶距离" Grid.Row="9" x:Name="cDistance" 
                                                         Click="AxisXButton_Click"/>
-                                </Grid>
                             </Grid>
                         </Grid>
                     </Border>

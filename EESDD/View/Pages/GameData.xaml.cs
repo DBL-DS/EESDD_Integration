@@ -91,9 +91,9 @@ namespace EESDD.View.Pages
 
         private void LoadChart()
         {
-            LineChart.Series.Clear();
             if (CheckedExp != null && CheckedExp.Count != 0)
             {
+                LineChart.Series.Clear();
                 foreach (var exp in CheckedExp)
                 {
                     AddLineToChart(exp);
