@@ -25,25 +25,19 @@ namespace EESDD.View.Pages
 
         private CheckButton checkedX;
         private CheckButton checkedY;
-        private List<CheckButton> CheckButtonX;
-        private List<CheckButton> CheckButtonY;
+
+        private List<CheckButton> CheckButtons;
 
         private void Init()
         {
-            CheckButtonX = new List<CheckButton>() { cTime, cDistance };
-            CheckButtonY = new List<CheckButton>()
+            CheckButtons = new List<CheckButton>()
             {
-                cSpeed, cAcc, cStwAngle, cOffset, cFarToFront, cLane
+                cTime, cDistance,
+                cSpeed, cAcc, cStwAngle, cOffset, cFarToFront, cLane,
+                cDelete, cEvaluate, cPlot
             };
             SetMapper();
-        }
-
-        private void SetMapper()
-        {
-            var mapper = Mappers.Xy<CorePoint>()
-                .X(point => point.X)
-                .Y(point => point.Y);
-            Charting.For<CorePoint>(mapper);
+            InitButtons();
         }
 
         /* Run when swithed to this page, called in PageManager */
@@ -53,6 +47,26 @@ namespace EESDD.View.Pages
             CheckedX = cTime;
             CheckedY = cSpeed;
             LoadChart();
+        }
+
+        /* 
+         * Temp way to init button backgrounds. 
+         * There are some problems with checkbutton's property dynamic binding
+         */
+        private void InitButtons()
+        {
+            foreach (var button in CheckButtons)
+                button.IsChecked = false;
+        }
+
+        #region chart
+        /* For Chart Plot */
+        private void SetMapper()
+        {
+            var mapper = Mappers.Xy<CorePoint>()
+                .X(point => point.X)
+                .Y(point => point.Y);
+            Charting.For<CorePoint>(mapper);
         }
 
         private CheckButton CheckedX
@@ -91,9 +105,9 @@ namespace EESDD.View.Pages
 
         private void LoadChart()
         {
+            LineChart.Series.Clear();
             if (CheckedExp != null && CheckedExp.Count != 0)
             {
-                LineChart.Series.Clear();
                 foreach (var exp in CheckedExp)
                 {
                     AddLineToChart(exp);
@@ -148,7 +162,9 @@ namespace EESDD.View.Pages
             }
             return points;
         }
+        #endregion
 
+        #region explist
         public void LoadExpList()
         {
             ClearExpList();
@@ -169,7 +185,7 @@ namespace EESDD.View.Pages
             ExpListPanel.Children.Clear();
         }
 
-        public void AddExpCell(Exp exp)
+        private void AddExpCell(Exp exp)
         {
             var expCell = new ExpCell(++ExpNum ,exp);
             expCell.Checked += (sender, e) => { CheckAction(exp); };
@@ -178,6 +194,18 @@ namespace EESDD.View.Pages
                 expCell.Enable = false;
             ExpListPanel.Children.Add(expCell);
         }
+
+        private void DeleteExps()
+        {
+            foreach (var exp in CheckedExp)
+            {
+                CU.MG_Exp.RemoveExp(exp);
+            }
+            CheckedExp.Clear();
+            LoadExpList();
+            LoadChart();
+        }
+        #endregion
 
         public void CheckAction(Exp exp)
         {
@@ -202,6 +230,11 @@ namespace EESDD.View.Pages
         private void AxisYButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             CheckedY = sender as CheckButton;
+        }
+
+        private void DeleteExpButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            DeleteExps();
         }
     }
 }

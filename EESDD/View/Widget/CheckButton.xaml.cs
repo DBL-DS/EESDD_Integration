@@ -24,10 +24,7 @@ namespace EESDD.View.Widget
         public CheckButton()
         {
             InitializeComponent();
-            this.DataContext = this;
-            DefaultColor = new SolidColorBrush(Colors.White);
-            CheckedColor = new SolidColorBrush(Colors.LightCyan);
-            IsChecked = false;
+            DataContext = this;
         }
         
         private string text;
@@ -76,8 +73,8 @@ namespace EESDD.View.Widget
 
         public Brush TextColor
         {
-            get { return btnText.Foreground; }
-            set { btnText.Foreground = value; }
+            get { return GetValue(TextColorProperty) as Brush; }
+            set { SetValue(TextColorProperty, value); }
         }
 
         public string Text

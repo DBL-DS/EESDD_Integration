@@ -29,7 +29,13 @@
         </Border.Effect>
         <Button Style="{StaticResource NoDefaultBlue}"
                 Click="Button_Click">
-            <TextBlock x:Name="btnText" Text="{Binding ElementName=checkBtn, Path=Text}" />
+            <Grid Width="{Binding ActualWidth, ElementName=checkBtn}"
+                    Height="{Binding ActualHeight, ElementName=checkBtn}">
+                <TextBlock x:Name="btnText" Text="{Binding ElementName=checkBtn, Path=Text}" 
+                       Foreground="{Binding TextColor}" FontFamily="Microsoft YaHei UI Light"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"/>
+            </Grid>
         </Button>
     </Border>
 </UserControl>

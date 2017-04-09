@@ -37,11 +37,7 @@
                                 <ColumnDefinition Width="125"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Border Margin="0,0,20,0">
-                                <lvc:CartesianChart x:Name="LineChart" Style="{StaticResource LineChart}">
-                                    <lvc:CartesianChart.Series>
-                                        <lvc:LineSeries Fill="Transparent" Values="1" />
-                                    </lvc:CartesianChart.Series>
-                                </lvc:CartesianChart>
+                                <lvc:CartesianChart x:Name="LineChart" Style="{StaticResource LineChart}" />
                             </Border>
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
@@ -138,12 +134,16 @@
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <widget:CheckButton Text="删 除" Grid.Row="1"  
-                                                Style="{StaticResource FunctionButton}"/>
+                                                Style="{StaticResource FunctionButton}"
+                                                Click="DeleteExpButton_Click"
+                                                x:Name="cDelete"/>
                             <widget:CheckButton Text="评 估" Grid.Row="2"  
-                                                Style="{StaticResource FunctionButton}"/>
+                                                Style="{StaticResource FunctionButton}"
+                                                x:Name="cEvaluate"/>
                             <widget:CheckButton Text="演 示" Grid.Row="3"  
                                                 Style="{StaticResource FunctionButton}"
-                                                Click="CheckButton_Click"/>
+                                                Click="CheckButton_Click"
+                                                x:Name="cPlot"/>
                         </Grid>
                     </Grid>
                 </Grid>
