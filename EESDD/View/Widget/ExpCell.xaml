@@ -8,45 +8,56 @@
              d:DesignHeight="40" d:DesignWidth="500"
              MouseLeftButtonDown="Cell_Click">
     <UserControl.Resources>
-        <Style x:Key="CellBorder"
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/EESDD;component/View/Style/Common.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="CellBorder"
                TargetType="{x:Type Border}">
-            <Setter Property="BorderBrush" Value="#aaa" />
-            <Setter Property="BorderThickness" Value="0, 0, 0, 0.1" />
-        </Style>
-        <Style x:Key="CellText"
+                <Setter Property="BorderBrush" Value="#aaa" />
+                <Setter Property="BorderThickness" Value="0, 0, 0, 0.5" />
+                <Setter Property="Margin" Value="1" />
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0.2">
+                            <GradientStop Color="{StaticResource GrayE}" Offset="0"/>
+                            <GradientStop Color="{StaticResource GrayC}" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius" Value="2" />
+            </Style>
+            <Style x:Key="CellText"
                TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="#777" />
-            <Setter Property="TextAlignment" Value="Center" />
-        </Style>
-        <Style x:Key="CellCoverUnable"
+                <Setter Property="Foreground" Value="{StaticResource Gray3Brush}" />
+                <Setter Property="TextAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="CellCoverUnable"
                TargetType="{x:Type Border}">
-            <Setter Property="Opacity" Value="0.5" />
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="#aaa" Offset="0"/>
-                        <GradientStop Color="#777" Offset="1"/>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="CellCoverChecked"
+                <Setter Property="Opacity" Value="0.5" />
+                <Setter Property="Background" Value="{StaticResource GrayFBrush}" />
+
+                <Setter Property="CornerRadius" Value="2" />
+            </Style>
+            <Style x:Key="CellCoverChecked"
                TargetType="{x:Type Border}">
-            <Setter Property="Opacity" Value="0.5" />
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#2196F3" Offset="0"/>
-                        <GradientStop Color="#673AB7" Offset="1"/>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
-        </Style>
+                <Setter Property="Opacity" Value="0.5" />
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="{StaticResource MainBlue}" Offset="0"/>
+                            <GradientStop Color="{StaticResource MainGreen}" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius" Value="2" />
+            </Style>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Border Style="{StaticResource CellBorder}">
         <Grid>
             <Grid VerticalAlignment="Center"
-                  Margin="0, 5">
+                  Margin="0, 4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30"></ColumnDefinition>
                     <ColumnDefinition Width="1*"></ColumnDefinition>

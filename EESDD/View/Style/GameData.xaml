@@ -3,9 +3,9 @@
                     xmlns:local="clr-namespace:EESDD.View.Style"
                     xmlns:widget="clr-namespace:EESDD.View.Widget"
                     xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf">
-    <Style x:Key="ExpListBorder"
-           TargetType="{x:Type Border}">
-    </Style>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/View/Style/Common.xaml" />
+    </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="FunctionButton"
            TargetType="{x:Type widget:CheckButton}">
@@ -24,9 +24,9 @@
     <Style TargetType="{x:Type ScrollBar}">
         <Setter Property="Width" Value="10" />
         <Setter Property="MinWidth" Value="10" />
-        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="Background" Value="{StaticResource GrayEBrush}" />
         <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="Margin" Value="10, 0, 0, 0" />
     </Style>
 
     <Style x:Key="ExpListTitleText" 

@@ -174,6 +174,8 @@ namespace EESDD.View.Pages
             var expCell = new ExpCell(++ExpNum ,exp);
             expCell.Checked += (sender, e) => { CheckAction(exp); };
             expCell.Unchecked += (sender, e) => { UncheckAction(exp); };
+            if (exp.ExpType != ExpType.Normal && exp.ExpType != ExpType.CarCrash_Normal)
+                expCell.Enable = false;
             ExpListPanel.Children.Add(expCell);
         }
 

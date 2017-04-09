@@ -5,6 +5,7 @@
         <ResourceDictionary Source="/View/Style/Base.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <Color x:Key="Gray3">#333</Color>
     <Color x:Key="GrayA">#AAA</Color>
     <Color x:Key="GrayC">#ccc</Color>
     <Color x:Key="GrayE">#eee</Color>
@@ -21,6 +22,7 @@
     <Color x:Key="MainBlueHeavy">#181447</Color>
     <Color x:Key="MainGreenHeavy">#335B0F</Color>
     <Color x:Key="MainRedHeavy">#631018</Color>
+    <SolidColorBrush x:Key="Gray3Brush" Color="{StaticResource Gray3}" />
     <SolidColorBrush x:Key="GrayABrush" Color="{StaticResource GrayA}" />
     <SolidColorBrush x:Key="GrayCBrush" Color="{StaticResource GrayC}" />
     <SolidColorBrush x:Key="GrayEBrush" Color="{StaticResource GrayE}" />

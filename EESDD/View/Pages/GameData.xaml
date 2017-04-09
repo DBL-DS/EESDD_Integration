@@ -94,7 +94,7 @@
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Border>
                             <Grid>
@@ -111,7 +111,7 @@
                                         <ColumnDefinition Width="45"></ColumnDefinition>
                                         <ColumnDefinition Width="1.1*"></ColumnDefinition>
                                         <ColumnDefinition Width="45"></ColumnDefinition>
-                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                        <ColumnDefinition Width="20"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="序号" Style="{StaticResource ExpListTitleText}"/>
                                     <TextBlock Grid.Column="1" Text="场景" Style="{StaticResource ExpListTitleText}"/>
@@ -124,22 +124,24 @@
                                 <ScrollViewer Grid.Row="1" IsTabStop="False">
                                     <StackPanel x:Name="ExpListPanel">
                                         <widget:ExpCell></widget:ExpCell>
-                                        <widget:ExpCell></widget:ExpCell>
-                                        <widget:ExpCell></widget:ExpCell>
+                                        <widget:ExpCell IsChecked="True"></widget:ExpCell>
+                                        <widget:ExpCell Enable="False"></widget:ExpCell>
                                     </StackPanel>
                                 </ScrollViewer>
                             </Grid>
                         </Border>
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <widget:CheckButton Text="删 除"  Style="{StaticResource FunctionButton}"/>
-                            <widget:CheckButton Text="评 估" Grid.Row="1"  
+                            <widget:CheckButton Text="删 除" Grid.Row="1"  
                                                 Style="{StaticResource FunctionButton}"/>
-                            <widget:CheckButton Text="演 示" Grid.Row="2"  
+                            <widget:CheckButton Text="评 估" Grid.Row="2"  
+                                                Style="{StaticResource FunctionButton}"/>
+                            <widget:CheckButton Text="演 示" Grid.Row="3"  
                                                 Style="{StaticResource FunctionButton}"
                                                 Click="CheckButton_Click"/>
                         </Grid>

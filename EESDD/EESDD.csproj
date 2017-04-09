@@ -308,14 +308,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Style\Base.xaml">
+    <Resource Include="View\Style\Base.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Style\Common.xaml">
+    </Resource>
+    <Resource Include="View\Style\Common.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
+    </Resource>
     <Page Include="View\Style\GameData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
