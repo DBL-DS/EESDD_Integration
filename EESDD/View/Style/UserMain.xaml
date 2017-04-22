@@ -7,13 +7,13 @@
     
     <Style x:Key="Title"
            TargetType="{x:Type TextBlock}">
-        <Setter Property="FontSize" Value="54" />
+        <Setter Property="FontSize" Value="72" />
         <Setter Property="Foreground">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0, 0" EndPoint="0, 1">
-                    <GradientStop Color="#555" Offset="0.1" />
-                    <GradientStop Color="#222" Offset="0.7" />
-                    <GradientStop Color="#333" Offset="1" />
+                    <GradientStop Color="{StaticResource GrayA}" Offset="0.1" />
+                    <GradientStop Color="{StaticResource MainBlueLight}" Offset="0.7" />
+                    <GradientStop Color="{StaticResource GrayC}" Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
